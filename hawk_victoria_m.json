@@ -1,0 +1,130 @@
+{
+	"order": {
+		"date": "5-23-2012", // date (m-d-y)
+		"by": "Kyle MacKay Rives", // kyle, mike jr, mike sr, opal
+		"at": "Benchmark", // benchmark, admiral, mms, 
+		"notes": "Pick up June 20th.\nCall to come see proof when it is ready." // textbox
+	},
+	"name": {
+		"full": "Victoria M. Charging Hawk", // text
+		"first": "Victoria", // text
+		"middle": "M.", // text
+		"last": "Charging Hawk", // text
+		"prefix": "", // text
+		"suffix": "" // text
+	},
+	"materials": {
+		"piece": {
+			"material": "granite", // granite, bronze, marble
+			"color": "gray", // n/a if bronze
+			"type": "tablet", // tablet, base, vase, slant, bevel, flat, sub-base, bench, leg, special
+			"quantity": 1, // number
+			"length": 24, // number
+			"width": 6, // number
+			"height": 16, // number
+			"shape": "serp-top", // serp-top, flat-top, heart, special
+			"finish": "pol2", // pol2, pol3, pol5, sawn, flamed, rock-pitch
+			"size": "single" // single, double, family
+		},
+		"piece": {
+			"material": "granite",
+			"color": "gray",
+			"type": "base",
+			"quantity": 1,
+			"length": 36,
+			"width": 12,
+			"height": 6,
+			"margin": ""
+		},
+		"piece": {
+			"material": "granite",
+			"color": "gray",
+			"type": "vase",
+			"quantity": 2,
+			"length": 4,
+			"width": 4,
+			"height": 9,
+			"shape": "square", // square, round
+			"finish": "pol2"
+		},
+		"piece": {
+			"material": "granite",
+			"color": "gray",
+			"type": "slant",
+			"quantity": 1,
+			"length": 20,
+			"width": 10,
+			"height": 16,
+			"finish": "face"
+		},
+		"foundation": {
+			"deep": true, // boolean
+			"depth": 18, // number
+			"pad": "granite", // granite, concrete
+			"thickness": 3 // number
+		}
+	},
+	"design": {
+		"preview": "./preview.svg",
+		"title": "Wild roses in an oval panel.",
+		"carving": "flat", // flat, shape, deep
+		"artwork": "",
+		"family-name": "",
+		"match": false,
+		"face": {
+			"direction": "east", // n, s, e, w
+			"on-left": "",
+			"verified": ""
+		}
+	},
+	"setting": {
+		"cemetery": "", // select
+		"pick-up": true // boolean
+	},
+	"signature": {
+		"image": "./signature.png",
+		"name": "Roger Whipple",
+		"address": {
+			"street": "4811 S. Jackson Ave, Apt. 33",
+			"city": "Tulsa", // city
+			"state": "OK", // state
+			"zip": 74107, // zip code
+			"phone": 9188925544 // number
+		}
+	},
+	"status": {
+		"date": {
+			"written": "5-24-2012",
+			"special": "ASAP",
+			"ordered": ""
+		},
+		"drawing": {
+			"completed": "5-24-2012",
+			"sent": "",
+			"approved": "",
+			"production": ""
+		},
+		"bronze": {
+			"ordered": "",
+			"recieved": ""
+		},
+		"vases": {
+			"ordered": "",
+			"recieved": ""
+		},
+		"stone": {
+			"ordered": "",
+			"recieved": "",
+			"production": "",
+			"office": "",
+			"contacted": "",
+			"approved": ""
+		},
+		"setting": {
+			"fee": "",
+			"installed": "",
+			"notified": "",
+			"via": "" // email, phone, visit
+		}
+	}
+}
