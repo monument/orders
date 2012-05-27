@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Benchmark Order Form</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="form.css" />
+</head>
+<body class="container" onload="calc()">
+
+<header class="row">
+    <span id="print-cemetery"></span>
+    <span id="print-name"></span>
+    <div>
+        <h1>Benchmark Monument</h1>
+        <p>
+            1735 E. 11th St. &mdash; Tulsa, OK 74104 <br/>
+            Ph. 918.582.8600 &mdash; Fx. 918.582.8601 <br/>
+            Email: info@benchmarkmonument.com <br/>
+            Web: www.benchmarkmonument.com
+        </p>
+    </div>
+    <img src="bmc-logo.png" alt="The Benchmark Monument Building" />
+</header>
+
+<form id="order">
+
+    <fieldset id="money">
+        <table>
+            <tr><td><label for="money-monument">Monument</label></td>        
+                <td><input  id="money-monument" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-marker">Marker</label></td>
+                <td><input  id="money-marker" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-vase">Vase(s)</label></td>             
+                <td><input  id="money-vase" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-lettering">Extra Lettering</label></td>
+                <td><input  id="money-lettering" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-foundation">Foundation</label></td>    
+                <td><input  id="money-foundation" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-subtotal">Sub-total</label></td>       
+                <td><input  id="money-subtotal" type="number" readonly /></td></tr>
+            <tr><td><label for="money-tax">Sales Tax</label></td>            
+                <td><input  id="money-tax" type="number" readonly /></td></tr>
+            <tr><td><label for="money-installation">Install/Delivery</label></td>
+                <td><input  id="money-installation" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-fees">Applicable Fees</label></td>     
+                <td><input  id="money-fees" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-total">Total Price</label></td>
+                <td><input  id="money-total" type="number" readonly /></td></tr>
+            <tr><td><label for="money-paid">Paid</label></td>
+                <td><input  id="money-paid" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-balanace">Balance Due</label></td>
+                <td><input  id="money-balance" type="number" readonly /></td></tr>
+        </table>
+    </fieldset>
+
+    <fieldset id="material">
+        <div class="form-inline">
+            <label for="date-ordered">Date</label><input id="date-ordered" type="date" />
+        </div>
+
+        <table>
+            <tr>
+                <th class="qty"><label for="qty-piece-1">Qty</label></th>
+                <th class="material"><label for="material-piece-1">Material</label></th>
+                <th class="type"><label for="type-piece-1">Type</label></th>
+                <th class="length"><label for="length-piece-1">Length</label></th>
+                <th class="width"><label for="width-piece-1">Width</label></th>
+                <th class="height"><label for="height-piece-1">Height</label></th>
+                <th class="finish"><label for="finish-piece-1">Finish / Shape</label></th>
+            </tr>
+            <tr>
+                <td class="qty"><input id="qty-piece-1" type="number" /></td>
+                <td class="material"><input id="material-piece-1" list="material-granite-list" /></td>
+                <td class="type"><input id="type-piece-1" list="material-type-list" /></td>
+                <td class="length"><input id="length-piece-1" type="number" /></td>
+                <td class="width"><input id="width-piece-1" type="number" /></td>
+                <td class="height"><input id="height-piece-1" type="number" /></td>
+                <td class="finish"><textarea id="finish-piece-1" rows="1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="qty"><input id="qty-piece-2" type="number" /></td>
+                <td class="material"><input id="material-piece-2" list="material-material-list" /></td>
+                <td class="type"><input id="type-piece-2" list="material-type-list" /></td>
+                <td class="length"><input id="length-piece-2" type="number" /></td>
+                <td class="width"><input id="width-piece-2" type="number" /></td>
+                <td class="height"><input id="height-piece-2" type="number" /></td>
+                <td class="finish"><textarea id="finish-piece-2" rows="1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="qty"><input id="qty-piece-3" type="number" /></td>
+                <td class="material"><input id="material-piece-3" list="material-material-list" /></td>
+                <td class="type"><input id="type-piece-3" list="material-type-list" /></td>
+                <td class="length"><input id="length-piece-3" type="number" /></td>
+                <td class="width"><input id="width-piece-3" type="number" /></td>
+                <td class="height"><input id="height-piece-3" type="number" /></td>
+                <td class="finish"><textarea id="finish-piece-3" rows="1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="qty"><input id="qty-foundation" type="number" value="1" /></td>
+                <td class="material"><input id="material-foundation" list="material-foundation-list" /></td>
+                <td class="type">
+                    <select id="type-foundation">
+                        <option value="pad">Pad Only</option>
+                        <option value="deep">Deep (18")</option>
+                    </select>
+                </td>
+                <td class="length"><input id="length-foundation" type="number" /></td>
+                <td class="width"><input id="width-foundation" type="number" /></td>
+                <td class="height"><input id="height-foundation" type="number" /></td>
+                <td class="finish"><textarea id="finish-foundation" rows="1"></textarea></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset id="design" class="form-horizontal">
+        <div class="control-group form-inline"><label for="design-carving">Carving</label>
+            <input value="flat" id="design-carving-flat" name="design-carving" type="radio" checked />
+            <label for="design-carving-flat">Flat</label>
+            <input value="shape" id="design-carving-shape" name="design-carving" type="radio" />
+            <label for="design-carving-shape">Shape</label>
+            <input value="etching" id="design-carving-etching" name="design-carving" type="radio" />
+            <label for="design-carving-etching">Etching</label>
+        </div>
+        <div class="control-group form-inline"><label for="design-name">Family Name on Back</label><input id="design-name" type="checkbox" /></div>
+        <div class="control-group form-inline"><label for="design-artwork">Special Artwork</label><input id="design-artwork" type="checkbox" /></div>
+        <div class="control-group form-inline"><label for="design-match">Match Rubbing</label><input id="design-match" type="checkbox" /></div>
+        <div class="control-group form-inline"><label for="design-facing">Lettering Faces</label>
+            <select id="design-facing-direction">
+                <option value="east">East</option>
+                <option value="west">West</option>
+                <option value="north">North</option>
+                <option value="south">South</option>
+            </select>
+            <input id="design-facing" /> <label for="design-facing">On Left</label>
+            <label for="design-facing-checked">Name Positions Checked</label><input id="design-facing-checked" type="checkbox" />
+        </div>
+        <div class="col both"><label for="design-title">Design</label><input id="design-title" /></div>
+        <div class="col both"><label for="design-info">Additional Information</label><input id="design-info" /></div>
+    </fieldset>
+
+    <fieldset id="delivery">
+        <label for="delivery-to">Memorial to be delivered to</label><input id="delivery-to" />
+        <label for="delivery-near">Cemetery in/near</label><input id="delivery-near" />
+        <label for="delivery-contact">Name/Ph of Person who can show location</label><input id="delivery-contact" />
+    </fieldset>
+
+    <fieldset id="info">
+        <div id="info-preview"></div>
+        <textarea id="info-more"></textarea>
+        <p>
+            Lettering other than above will be done for a charge at the rate
+            prevailing at the time additional lettering is ordered.
+        </p>
+        <h2>Location in Cemetery</h2>
+        <label for="info-cemetery-section">Section</label><input id="info-cemetery-section">
+        <label for="info-cemetery-block">Block</label><input id="info-cemetery-block" />
+        <label for="info-cemetery-lot">Lot</label><input id="info-cemetery-lot" />
+        <label for="info-cemetery-space">Space(s)</label><input id="info-cemetery-space" />
+        <label for="info-rep">Representative</label><input id="info-rep" />
+        <label for="info-sig-signature">Signature</label><input id="info-sig-signature" />
+        <label for="info-sig-name">Name</label><input id="info-sig-name" />
+        <label for="info-sig-address">Address</label><input id="info-sig-address" />
+        <label for="info-sig-city">City</label><input id="info-sig-city" />
+        <label for="info-sig-state">State</label><input id="info-sig-state" />
+        <label for="info-sig-zip">Zip</label><input id="info-sig-zip" />
+        <label for="info-sig-phone">Phone</label><input id="info-sig-phone" type="tel" />
+    </fieldset>
+</form>
+
+<datalist id="material-type-list">
+    <option value="Tablet" />
+    <option value="Base" />
+    <option value="Vase" />
+    <option value="Slant" />
+    <option value="Bevel" />
+    <option value="Sub-Base" />
+</datalist>
+
+<datalist id="material-material-list">
+    <option value="Bronze" />
+    <option value="Gray" />
+    <option value="Morning Rose" />
+    <option value="Mahogany" />
+    <option value="Black" />
+    <option value="Marble" />
+    <option value="Green" />
+</datalist>
+
+<datalist id="material-foundation-list">
+    <option value="Concrete Pad" />
+    <option value="Granite Pad" />
+</datalist>
+
+<script src="bootstrap/jquery.js"></script>
+<script src="bootstrap/jquery.ui.min.js"></script>
+<script src="form.js"></script>
+
+</body>
+</html>

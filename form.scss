@@ -1,0 +1,132 @@
+@import "fonts";
+@import "./bootstrap/lib/bootstrap.scss";
+
+body {
+    margin: 0 auto;
+    font-family: $baseFontFamily;
+    
+    label { text-transform: uppercase; }
+
+    input {
+        border: none;
+        border-bottom: 1px solid $textColor;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        &:focus {
+            box-shadow: none; 
+            background: $grayDarker;
+            outline: none;
+            color: $white;
+        }
+    }
+
+    textarea {
+        box-shadow: none;
+        margin: 0;
+        //padding: 8px 4px 0; // Chrome doesn;t need this; Fx does. Phooey.
+        width: inherit;
+        border: none;
+        border-radius: 0;
+        -webkit-appearance: textfield;
+        height: 28px;
+        &:focus {
+            background: $grayDarker;
+            box-shadow: none;
+            color: $white;
+        }
+    }
+
+    fieldset { 
+        border: 0; 
+        margin: 0; 
+        padding: 0; 
+    }
+}
+
+header {
+    margin-top: 10px;
+    margin-left: 0 !important;
+    text-align: center;
+    @include core-span(12);
+
+    div { @include core-span(8); float: left; }
+    img { @include core-span(4); height: 150px; }
+}
+
+#money {
+    @include core-span(3);
+    float: right;
+
+    td:nth-child(odd) { width: 50%; }
+    td:nth-child(even) {
+        border-bottom: dotted 1px black;
+        width: 50%;
+        //:hover {color: $grayLight; background: $grayDarker;}
+        &::before { content: "$"; padding-top: 1px; }
+    }
+    input {
+        width: 90%;
+        text-align: right;
+        -webkit-appearance: textfield;
+        height: 20px;
+        padding: 0 4px;
+    }
+}
+
+#material {
+    @include core-span(9);
+    table {
+        td {
+            border: 1px solid black;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .qty    { @include core-span(.75) }
+        .material {@include core-span(2)}
+        .type   { @include core-span(2) }
+        .length { @include core-span(.9) }
+        .width  { @include core-span(.9) }
+        .height { @include core-span(.9) }
+        .finish { @include core-span(4) }
+    }
+    textarea {
+        font-size: 11px;
+        line-height: 14px;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    input {
+        border: 0; 
+        -webkit-appearance: textfield;
+        width: inherit;
+    }
+    select {
+        border:0; 
+        margin: 0;
+        width: inherit;
+    }
+}
+
+#design {
+    [for="design-title"], [for="design-carving"], [for="design-name"], 
+    [for="design-artwork"], [for="design-match"], [for="design-info"],
+    [for="design-facing"], [for="design-facing-checked"], [for="design-info"] {
+        font-weight: bold;
+    }
+    input[type="radio"] { 
+        vertical-align: top;
+        margin: 3px 0px 0px 5px;
+        padding-top: 38px;
+        display: table-cell;
+    }
+}
+
+input {
+    &[type="checkbox"] { margin: 3px 3px 3px 4px; } 
+    &[type="radio"] {margin: 3px 3px 0px 5px;}
+}
