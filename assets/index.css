@@ -2,13 +2,13 @@
   font-family: 'Cabin';
   font-style: normal;
   font-weight: 400;
-  src: local("Cabin"), url("./fnt/Cabin.woff") format("woff"); }
+  src: local("Cabin"), url("../fonts/Cabin.woff") format("woff"); }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: normal;
-  src: local("Ubuntu"), url("./fnt/Ubuntu.woff") format("woff"); }
+  src: local("Ubuntu"), url("../fonts/Ubuntu.woff") format("woff"); }
 
 /*
  * Bootstrap v2.0.3
