@@ -1,33 +1,27 @@
-function f(element) {
-    return document.querySelectorAll(element)[0];
-}
+function f(element) { return document.querySelectorAll(element)[0] }
 
 function calc() {
-    money = [ f('#money-monument'), f('#money-marker'), f('#money-vase'), 
-              f('#money-lettering'), f('#money-foundation'), 
-              f('#money-subtotal'), f('#money-tax'),
-              f('#money-installation'), f('#money-fees'), 
-              f('#money-total'), f('#money-paid'), f('#money-balance') ];
+    var money = [ f('#money-monument'), f('#money-marker'), f('#money-vase'), f('#money-lettering'), f('#money-foundation'), f('#money-subtotal'), f('#money-tax'), f('#money-installation'), f('#money-fees'), f('#money-total'), f('#money-paid'), f('#money-balance') ];
 
-    var subtotal = money[0].valueAsNumber + money[1].valueAsNumber + money[2].valueAsNumber 
-               + money[3].valueAsNumber + money[4].valueAsNumber;
+    var subtotal = money[0].valueAsNumber + money[1].valueAsNumber + money[2].valueAsNumber + money[3].valueAsNumber + money[4].valueAsNumber;
 
-    var taxRate = 0.08517;
-    var tax     = subtotal * taxRate;
-    var installation = money[7].valueAsNumber;
-    var fees    = money[8].valueAsNumber;
-    var total   = tax + subtotal + installation + fees;
-    var paid    = money[10].valueAsNumber;
-    var balance = total - paid;
+    var taxRate = 0.08517;            // The local tax rate.
+    var tax     = subtotal * taxRate;   // The amount of tax.
+    var setting = money[7].valueAsNumber; // The setting fees.
+    var fees    = money[8].valueAsNumber;   // Any other fees.
+    var total   = tax + subtotal + setting + fees;  // Add these together...
+    var paid    = money[10].valueAsNumber;          // ...mix in the amount paid...
+    var balance = total - paid;                     // ...and return the balance.
     
     money[5].value  = subtotal;
     money[6].value  = tax;
     money[9].value  = total;
     money[11].value = balance;
 
-    for (var i = 0; i < money.length; i++) {
-        money[i].onchange = calc;
-    };
+    // Set the onchange attribute to call calc for each money cell that is editable.
+    for (var i = 0; i < money.length; i++)
+        if(money[i].readOnly === false)
+            money[i].onchange = calc;
 }
 
 var order = {
@@ -45,7 +39,7 @@ var order = {
         "last": "Charging Hawk", 
         "prefix": "", 
         "suffix": "" 
-    },
+    }
 }
 
 function nameMerge() {
@@ -57,12 +51,6 @@ function nameMerge() {
     full = first + " " + middle + " " + last;
     order.name.full = full
 }
-
-//var date = new Date(parseInt(jsonDate.substr(6)));
-t = $('table')[1];
-td = $('td')[47]
-tr = $('tr')[16]
-tb = $('tbody')[1]
 
 function init() {
     calc();

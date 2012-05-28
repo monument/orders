@@ -3,15 +3,16 @@
 		"date": "5-23-2012", // date (m-d-y)
 		"by": "Kyle MacKay Rives", // kyle, mike jr, mike sr, opal
 		"at": "Benchmark", // benchmark, admiral, mms, 
-		"notes": "Pick up June 20th.\nCall to come see proof when it is ready." // textbox
+		"notes": "Pick up June 20th.\nCall to come see proof when it is ready."
 	},
 	"name": {
-		"full": "Victoria M. Charging Hawk", // text
-		"first": "Victoria", // text
-		"middle": "M.", // text
-		"last": "Charging Hawk", // text
-		"prefix": "", // text
-		"suffix": "" // text
+		"full": "Victoria M. Charging Hawk",
+		"sort": "hawk_victoria_m",
+		"first": "Victoria", 
+		"middle": "M.", 
+		"last": "Charging Hawk", 
+		"prefix": "", 
+		"suffix": "" 
 	},
 	"materials": {
 		"piece": {
