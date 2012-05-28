@@ -1,5 +1,5 @@
 {
-	"order": {
+	"details": {
 		"date": "5-23-2012", // date (m-d-y)
 		"by": "Kyle MacKay Rives", // kyle, mike jr, mike sr, opal
 		"at": "Benchmark", // benchmark, admiral, mms, 
