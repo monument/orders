@@ -24,38 +24,15 @@
 </header>
 
 <form id="order">
-    <fieldset id="details" class="form-inline">
-        <label for="order-date">Date</label><input id="order-date" type="date" />
-        <label for="order-name">Name On Order</label><input id="order-name" type="text" />
-    </fieldset>
-
-    <fieldset id="money">
-        <table>
-            <tr><td><label for="money-monument">Monument</label></td>        
-                <td><input  id="money-monument" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-marker">Marker</label></td>
-                <td><input  id="money-marker" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-vase">Vase(s)</label></td>             
-                <td><input  id="money-vase" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-lettering">Extra Lettering</label></td>
-                <td><input  id="money-lettering" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-foundation">Foundation</label></td>    
-                <td><input  id="money-foundation" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-subtotal">Sub-total</label></td>       
-                <td><input  id="money-subtotal" type="number" readonly /></td></tr>
-            <tr><td><label for="money-tax">Sales Tax</label></td>            
-                <td><input  id="money-tax" type="number" readonly /></td></tr>
-            <tr><td><label for="money-installation">Install/Delivery</label></td>
-                <td><input  id="money-installation" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-fees">Applicable Fees</label></td>     
-                <td><input  id="money-fees" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-total">Total Price</label></td>
-                <td><input  id="money-total" type="number" readonly /></td></tr>
-            <tr><td><label for="money-paid">Paid</label></td>
-                <td><input  id="money-paid" type="number" value="0" /></td></tr>
-            <tr><td><label for="money-balanace">Balance Due</label></td>
-                <td><input  id="money-balance" type="number" readonly /></td></tr>
-        </table>
+    <fieldset id="details">
+        <div id="detail-name">
+            <label for="order-name">Name On Order</label>
+            <input id="order-name" />
+        </div>
+        <div id="detail-date">
+            <label for="order-date">Today's Date</label>
+            <input id="order-date" type="date" />
+        </div>
     </fieldset>
 
     <fieldset id="material">
@@ -70,7 +47,7 @@
                 <th class="finish"><label for="finish-piece-1">Finish / Shape</label></th>
             </tr>
             <tr>
-                <td class="qty"><input id="qty-piece-1" type="number" /></td>
+                <td class="qty"><input id="qty-piece-1" /></td>
                 <td class="material"><input id="material-piece-1" list="material-granite-list" /></td>
                 <td class="type"><input id="type-piece-1" list="material-type-list" /></td>
                 <td class="length"><input id="length-piece-1" type="number" /></td>
@@ -113,19 +90,48 @@
         </table>
     </fieldset>
 
+    <fieldset id="money">
+        <table>
+            <tr><td><label for="money-monument">Monument</label></td>        
+                <td><input  id="money-monument" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-marker">Marker</label></td>
+                <td><input  id="money-marker" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-vase">Vase(s)</label></td>             
+                <td><input  id="money-vase" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-lettering">Extra Lettering</label></td>
+                <td><input  id="money-lettering" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-foundation">Foundation</label></td>    
+                <td><input  id="money-foundation" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-subtotal">Sub-total</label></td>       
+                <td><input  id="money-subtotal" type="number" readonly /></td></tr>
+            <tr><td><label for="money-tax">Sales Tax</label></td>            
+                <td><input  id="money-tax" type="number" readonly /></td></tr>
+            <tr><td><label for="money-installation">Install/Delivery</label></td>
+                <td><input  id="money-installation" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-fees">Applicable Fees</label></td>     
+                <td><input  id="money-fees" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-total">Total Price</label></td>
+                <td><input  id="money-total" type="number" readonly /></td></tr>
+            <tr><td><label for="money-paid">Paid</label></td>
+                <td><input  id="money-paid" type="number" value="0" /></td></tr>
+            <tr><td><label for="money-balanace">Balance Due</label></td>
+                <td><input  id="money-balance" type="number" readonly /></td></tr>
+        </table>
+    </fieldset>
+
     <fieldset id="design" class="form-horizontal">
         <div class="control-group form-inline"><label for="design-carving">Carving</label>
-            <input value="flat" id="design-carving-flat" name="design-carving" type="radio" checked />
-            <label for="design-carving-flat">Flat</label>
-            <input value="shape" id="design-carving-shape" name="design-carving" type="radio" />
-            <label for="design-carving-shape">Shape</label>
-            <input value="etching" id="design-carving-etching" name="design-carving" type="radio" />
-            <label for="design-carving-etching">Etching</label>
+            <input value="flat" id="carving-flat" name="design-carving" type="radio" checked />
+            <label for="carving-flat">Flat</label>
+            <input value="shape" id="carving-shape" name="design-carving" type="radio" />
+            <label for="carving-shape">Shape</label>
+            <input value="etching" id="carving-etching" name="design-carving" type="radio" />
+            <label for="carving-etching">Etching</label>
         </div>
         <div class="control-group form-inline"><label for="design-name">Family Name on Back</label><input id="design-name" type="checkbox" /></div>
         <div class="control-group form-inline"><label for="design-artwork">Special Artwork</label><input id="design-artwork" type="checkbox" /></div>
         <div class="control-group form-inline"><label for="design-match">Match Rubbing</label><input id="design-match" type="checkbox" /></div>
-        <div class="control-group form-inline"><label for="design-facing">Lettering Faces</label>
+        <div class="control-group form-vertical"><label for="design-facing">Lettering Faces</label>
             <select id="design-facing-direction">
                 <option value="east">East</option>
                 <option value="west">West</option>
@@ -133,7 +139,7 @@
                 <option value="south">South</option>
             </select>
             <input id="design-facing" /> <label for="design-facing">On Left</label>
-            <label for="design-facing-checked">Name Positions Checked</label><input id="design-facing-checked" type="checkbox" />
+            <label for="design-facing-checked">Name Positions Checked</label><input id="design-facing-checked" class="form-horizontal" type="checkbox" />
         </div>
         <div class="col both"><label for="design-title">Design</label><input id="design-title" /></div>
         <div class="col both"><label for="design-info">Additional Information</label><input id="design-info" /></div>

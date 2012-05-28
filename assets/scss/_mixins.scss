@@ -629,3 +629,12 @@
     $i: $i - 1;
   }
 }
+
+
+@mixin removeSpin {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}

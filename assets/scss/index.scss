@@ -1,5 +1,6 @@
 @import "fonts";
 @import "bootstrap";
+@import "print";
 
 body {
     margin: 0 auto;
@@ -13,27 +14,32 @@ body {
         border-radius: 0;
         box-shadow: none;
         margin: 0;
-        &:focus {
+        &:focus, &:hover {
             box-shadow: none; 
-            background: $grayDarker;
-            outline: none;
-            color: $white;
+            color: $textColor;
         }
+        &[type="checkbox"] { margin: 3px 3px 3px 4px; } 
+        &[type="radio"] {margin: 3px 3px 0px 5px;}
+    }
+
+    table {
+        @extend .table;
     }
 
     textarea {
         box-shadow: none;
         margin: 0;
-        //padding: 8px 4px 0; // Chrome doesn;t need this; Fx does. Phooey.
+        //padding: 8px 4px 0; // Chrome doesn't need this; Fx does. Phooey.
         width: inherit;
         border: none;
         border-radius: 0;
         -webkit-appearance: textfield;
         height: 28px;
         &:focus {
-            background: $grayDarker;
+            //background: $grayLighter;
             box-shadow: none;
-            color: $white;
+            color: $textColor;
+            outline: none;
         }
     }
 
@@ -42,27 +48,44 @@ body {
         margin: 0; 
         padding: 0; 
     }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+
+        input {
+            border: 0; 
+            width: inherit;
+        }
+        select {
+            border:0; 
+            margin: 0;
+            width: inherit;
+        }
+    }
 }
 
 header {
-    margin-top: 10px;
-    margin-left: 0 !important;
+    margin: 15px 0 !important;
     text-align: center;
     @include core-span(12);
 
-    div { @include core-span(8); float: left; }
-    img { @include core-span(4); height: 150px; }
+    div { @include core-span(6); float: left; }
+    p   { margin: 1em 0;}
+    h1  { font-family: Cabin; margin: .25em 0 0;}
+    img { @include core-span(4);  }
 }
 
 #money {
     @include core-span(3);
+    @include removeSpin;
+
     float: right;
 
     td:nth-child(odd) { width: 50%; }
     td:nth-child(even) {
         border-bottom: dotted 1px black;
         width: 50%;
-        //:hover {color: $grayLight; background: $grayDarker;}
         &::before { content: "$"; padding-top: 1px; }
     }
     input {
@@ -74,22 +97,50 @@ header {
     }
 }
 
+
+#details {
+    @include core-span(10);
+    @include core-offset(1);
+    margin-bottom: 10px;
+
+    div {
+        display: inline-block;
+        @include core-span(4);
+        label {text-align: center;}
+        input {width: inherit;}
+    }
+    #detail-date {
+        @include core-offset(1);
+    }
+}
+
 #material {
-    @include core-span(9);
+    @include core-span(12);
+    width: auto;
+
     table {
-        td {
-            border: 1px solid black;
-            margin: 0;
-            padding: 0;
+        @extend .table-bordered;
+        tr:hover td input, tr:hover td textarea,
+        tr:focus td input, tr:focus td textarea {
+            border-radius: $inputBorderRadius;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border: solid 1px $tableBackgroundHover;
+            border-radius: $inputBorderRadius;
+        }
+
+        th, .qty {
+            text-align: center;
         }
         
-        .qty    { @include core-span(.75) }
-        .material {@include core-span(2)}
-        .type   { @include core-span(2) }
-        .length { @include core-span(.9) }
-        .width  { @include core-span(.9) }
-        .height { @include core-span(.9) }
-        .finish { @include core-span(4) }
+        .qty      { @include tableColumns(0.75); @include removeSpin; }
+        .material { @include tableColumns(3.00) }
+        .type     { @include tableColumns(2.25) }
+        .length   { @include tableColumns(1.00) }
+        .width    { @include tableColumns(1.00) }
+        .height   { @include tableColumns(1.00) }
+        .finish   { @include tableColumns(4.00) }
     }
     textarea {
         font-size: 11px;
@@ -97,36 +148,16 @@ header {
     }
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    input {
-        border: 0; 
-        -webkit-appearance: textfield;
-        width: inherit;
-    }
-    select {
-        border:0; 
-        margin: 0;
-        width: inherit;
-    }
-}
+
 
 #design {
-    [for="design-title"], [for="design-carving"], [for="design-name"], 
-    [for="design-artwork"], [for="design-match"], [for="design-info"],
-    [for="design-facing"], [for="design-facing-checked"], [for="design-info"] {
-        font-weight: bold;
-    }
+    label[for*="design-"] { font-weight: bold }
+
     input[type="radio"] { 
-        vertical-align: top;
-        margin: 3px 0px 0px 5px;
-        padding-top: 38px;
-        display: table-cell;
+        margin: -5px 0 0 5px;
+    }
+    input[type="checkbox"] {
+        margin: 0 0 5px 7px;
     }
 }
 
-input {
-    &[type="checkbox"] { margin: 3px 3px 3px 4px; } 
-    &[type="radio"] {margin: 3px 3px 0px 5px;}
-}
