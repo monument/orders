@@ -20,10 +20,14 @@
             Web: www.benchmarkmonument.com
         </p>
     </div>
-    <img src="bmc-logo.png" alt="The Benchmark Monument Building" />
+    <img src="../assets/img/benchmarklogo.png" alt="The Benchmark Monument Building" />
 </header>
 
 <form id="order">
+    <fieldset id="details" class="form-inline">
+        <label for="order-date">Date</label><input id="order-date" type="date" />
+        <label for="order-name">Name On Order</label><input id="order-name" type="text" />
+    </fieldset>
 
     <fieldset id="money">
         <table>
@@ -55,11 +59,7 @@
     </fieldset>
 
     <fieldset id="material">
-        <div class="form-inline">
-            <label for="date-ordered">Date</label><input id="date-ordered" type="date" />
-        </div>
-
-        <table>
+        <table id="material-table">
             <tr>
                 <th class="qty"><label for="qty-piece-1">Qty</label></th>
                 <th class="material"><label for="material-piece-1">Material</label></th>
@@ -195,6 +195,7 @@
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/jquery.ui.min.js"></script>
 <script src="form.js"></script>
+<script src="database.js"></script>
 
 </body>
 </html>
