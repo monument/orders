@@ -17,7 +17,7 @@ function getName(type) {
 }
 function setName(type) {
 	var orderName = $('#order-name')[0];
-	var firstName = orderName.value.substr/\b/)
+	//var firstName = orderName.value.substr/\b/)
 	var localName = {
 		'first': order.name.first,
 		'middle': order.name.middle,
