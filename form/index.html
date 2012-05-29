@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="../assets/index.css" />
 </head>
-<body class="container" onload="calc()">
+<body class="container">
 
 <header class="row">
     <span id="print-cemetery"></span>
@@ -44,7 +44,7 @@
                 <th class="length"><label for="length-piece-1">Length</label></th>
                 <th class="width"><label for="width-piece-1">Width</label></th>
                 <th class="height"><label for="height-piece-1">Height</label></th>
-                <th class="finish"><label for="finish-piece-1">Finish / Shape</label></th>
+                <th class="notes"><label for="notes-piece-1">notes / Shape</label></th>
             </tr>
             <tr>
                 <td class="qty"><input id="qty-piece-1" /></td>
@@ -53,7 +53,7 @@
                 <td class="length"><input id="length-piece-1" type="number" /></td>
                 <td class="width"><input id="width-piece-1" type="number" /></td>
                 <td class="height"><input id="height-piece-1" type="number" /></td>
-                <td class="finish"><textarea id="finish-piece-1" rows="1"></textarea></td>
+                <td class="notes"><textarea id="notes-piece-1" rows="1"></textarea></td>
             </tr>
             <tr>
                 <td class="qty"><input id="qty-piece-2" type="number" /></td>
@@ -62,7 +62,7 @@
                 <td class="length"><input id="length-piece-2" type="number" /></td>
                 <td class="width"><input id="width-piece-2" type="number" /></td>
                 <td class="height"><input id="height-piece-2" type="number" /></td>
-                <td class="finish"><textarea id="finish-piece-2" rows="1"></textarea></td>
+                <td class="notes"><textarea id="notes-piece-2" rows="1"></textarea></td>
             </tr>
             <tr>
                 <td class="qty"><input id="qty-piece-3" type="number" /></td>
@@ -71,21 +71,19 @@
                 <td class="length"><input id="length-piece-3" type="number" /></td>
                 <td class="width"><input id="width-piece-3" type="number" /></td>
                 <td class="height"><input id="height-piece-3" type="number" /></td>
-                <td class="finish"><textarea id="finish-piece-3" rows="1"></textarea></td>
+                <td class="notes"><textarea id="notes-piece-3" rows="1"></textarea></td>
             </tr>
             <tr>
                 <td class="qty"><input id="qty-foundation" type="number" value="1" /></td>
                 <td class="material"><input id="material-foundation" list="material-foundation-list" /></td>
-                <td class="type">
-                    <select id="type-foundation">
-                        <option value="pad">Pad Only</option>
-                        <option value="deep">Deep (18")</option>
-                    </select>
-                </td>
+                <td class="type"><select id="type-foundation">
+                    <option value="pad">Pad Only</option>
+                    <option value="deep">Deep (18")</option>
+                </select></td>
                 <td class="length"><input id="length-foundation" type="number" /></td>
                 <td class="width"><input id="width-foundation" type="number" /></td>
                 <td class="height"><input id="height-foundation" type="number" /></td>
-                <td class="finish"><textarea id="finish-foundation" rows="1"></textarea></td>
+                <td class="notes$"><textarea id="notes-foundation" rows="1"></textarea></td>
             </tr>
         </table>
     </fieldset>
@@ -120,29 +118,34 @@
     </fieldset>
 
     <fieldset id="design" class="form-horizontal">
-        <div class="control-group form-inline"><label for="design-carving">Carving</label>
-            <input value="flat" id="carving-flat" name="design-carving" type="radio" checked />
-            <label for="carving-flat">Flat</label>
-            <input value="shape" id="carving-shape" name="design-carving" type="radio" />
-            <label for="carving-shape">Shape</label>
-            <input value="etching" id="carving-etching" name="design-carving" type="radio" />
-            <label for="carving-etching">Etching</label>
+        <div id="design-info-basic">
+            <div><label for="design-carving">Carving</label>
+                <input value="flat" id="carving-flat" name="design-carving" type="radio" checked />
+                <label for="carving-flat">Flat</label>
+                <input value="shape" id="carving-shape" name="design-carving" type="radio" />
+                <label for="carving-shape">Shape</label>
+                <input value="etching" id="carving-etching" name="design-carving" type="radio" />
+                <label for="carving-etching">Etching</label>
+            </div>
+            <div><label for="design-name">Family Name on Back</label><input id="design-name" type="checkbox" /></div>
+            <div><label for="design-artwork">Special Artwork</label><input id="design-artwork" type="checkbox" /></div>
+            <div><label for="design-match">Match Rubbing</label><input id="design-match" type="checkbox" /></div>
         </div>
-        <div class="control-group form-inline"><label for="design-name">Family Name on Back</label><input id="design-name" type="checkbox" /></div>
-        <div class="control-group form-inline"><label for="design-artwork">Special Artwork</label><input id="design-artwork" type="checkbox" /></div>
-        <div class="control-group form-inline"><label for="design-match">Match Rubbing</label><input id="design-match" type="checkbox" /></div>
-        <div class="control-group form-vertical"><label for="design-facing">Lettering Faces</label>
-            <select id="design-facing-direction">
-                <option value="east">East</option>
-                <option value="west">West</option>
-                <option value="north">North</option>
-                <option value="south">South</option>
-            </select>
-            <input id="design-facing" /> <label for="design-facing">On Left</label>
-            <label for="design-facing-checked">Name Positions Checked</label><input id="design-facing-checked" class="form-horizontal" type="checkbox" />
+        <div id="design-info-more">
+            <div class="form-vertical">
+                <label for="design-facing-direction">Lettering Faces</label>
+                <select id="design-facing-direction">
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                </select>
+                <input id="design-facing" /><label for="design-facing">On Left</label>
+                <label for="design-facing-checked">Name Positions Checked</label><input id="design-facing-checked" class="form-horizontal" type="checkbox" />
+            </div>
+            <div><label for="design-title">Design</label><input id="design-title" /></div>
+            <div><label for="design-info">Additional Information</label><input id="design-info" /></div>
         </div>
-        <div class="col both"><label for="design-title">Design</label><input id="design-title" /></div>
-        <div class="col both"><label for="design-info">Additional Information</label><input id="design-info" /></div>
     </fieldset>
 
     <fieldset id="delivery">
