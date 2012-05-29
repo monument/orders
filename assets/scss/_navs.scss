@@ -342,7 +342,7 @@
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover {
   border-color: #ddd transparent #ddd #ddd;
-  *border-right-color: $white;
+  //*border-right-color: $white;
 }
 
 // Tabs on the right
@@ -361,5 +361,5 @@
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
-  *border-left-color: $white;
+  //*border-left-color: $white;
 }

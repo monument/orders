@@ -12,7 +12,7 @@
 }
 .dropdown-toggle {
   // The caret makes the toggle a bit too tall in IE7
-  *margin-bottom: -3px;
+  //*margin-bottom: -3px;
 }
 .dropdown-toggle:active,
 .open .dropdown-toggle {
@@ -59,8 +59,8 @@
   background-color: $dropdownBackground;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.2);
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
+  //*border-right-width: 2px;
+  //*border-bottom-width: 2px;
   @include border-radius(5px);
   @include box-shadow(0 5px 10px rgba(0,0,0,.2));
   -webkit-background-clip: padding-box;
@@ -105,7 +105,7 @@
 .open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
-  *z-index: $zindexDropdown;
+  //*z-index: $zindexDropdown;
 
   .dropdown-menu {
     display: block;

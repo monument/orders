@@ -20,7 +20,7 @@
 // --------
 // For clearing floats like a boss h5bp.com/q
 @mixin clearfix {
-  *zoom: 1;
+  //*zoom: 1;
   &:before,
   &:after {
     display: table;
@@ -56,8 +56,8 @@
 // IE7 inline-block
 // ----------------
 @mixin ie7-inline-block() {
-  *display: inline; // IE7 inline-block hack
-  *zoom: 1;
+  //*display: inline; // IE7 inline-block hack
+  //*zoom: 1;
 }
 
 // IE7 likes to collapse whitespace on either side of the inline-block elements.
@@ -67,18 +67,18 @@
 // mean that space between those elements will be .6em (~2 space characters) in IE7,
 // instead of the 1 space in other browsers.
 @mixin ie7-restore-left-whitespace() {
-  *margin-left: .3em;
+  //*margin-left: .3em;
 
   &:first-child {
-    *margin-left: 0;
+    //*margin-left: 0;
   }
 }
 
 @mixin ie7-restore-right-whitespace() {
-  *margin-right: .3em;
+  //*margin-right: .3em;
 
   &:last-child {
-    *margin-left: 0;
+    //*margin-left: 0;
   }
 }
 
@@ -284,10 +284,7 @@
 
 // Background sizing
 @mixin background-size($size) {
-  -webkit-background-size: $size;
-     -moz-background-size: $size;
-       -o-background-size: $size;
-          background-size: $size;
+  background-size: $size;
 }
 
 
@@ -333,7 +330,7 @@
 // Opacity
 @mixin opacity($opacity) {
   opacity: $opacity / 100;
-  filter: alpha(opacity=$opacity);
+  //filter: alpha(opacity=$opacity);
 }
 
 
@@ -367,7 +364,7 @@
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
   background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
 }
 @mixin gradient-vertical($startColor: #555, $endColor: #333) {
   background-color: mix($startColor, $endColor, 60%);
@@ -377,7 +374,7 @@
   background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: linear-gradient(top, $startColor, $endColor); // The standard
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
 }
 @mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -396,7 +393,7 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
 }
 @mixin gradient-radial($innerColor: #555, $outerColor: #333)  {
   background-color: $outerColor;
@@ -417,7 +414,7 @@
 
 // Reset filters for IE
 @mixin gradient-reset-filter() {
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+//   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
 
@@ -433,10 +430,10 @@
   // to IE7 to keep the 1px left/right space in other browsers.
   // It is unclear where IE is getting the extra space that we need
   // to negative-margin away, but so it goes.
-  *width: 100%;
+  //*width: 100%;
   height: 1px;
   margin: (($baseLineHeight / 2) - 1) 1px; // 8px 1px
-  *margin: -5px 0 5px;
+  //*margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid $white;
@@ -447,20 +444,20 @@
 @mixin buttonBackground($startColor, $endColor) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   @include gradientBar($startColor, $endColor);
-  *background-color: $endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  //*background-color: $endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   @include gradient-reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
     background-color: $endColor;
-    *background-color: darken($endColor, 5%);
+    //*background-color: darken($endColor, 5%);
   }
 
   // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
-  &:active,
-  &.active {
-    background-color: darken($endColor, 10%) \9;
-  }
+  // &:active,
+  // &.active {
+  //   background-color: darken($endColor, 10%) \9;
+  // }
 }
 
 // Navbar vertical align

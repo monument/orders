@@ -17,7 +17,7 @@
   margin-bottom: 0; // For input.btn
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
-  *line-height: 20px;
+  //*line-height: 20px;
   color: $grayDark;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
@@ -25,7 +25,7 @@
   cursor: pointer;
   @include buttonBackground($btnBackground, $btnBackgroundHighlight);
   border: 1px solid $btnBorder;
-  *border: 0; // Remove the border to prevent IE7's black border on input:focus
+  //*border: 0; // Remove the border to prevent IE7's black border on input:focus
   border-bottom-color: darken($btnBorder, 10%);
   @include border-radius(4px);
   @include ie7-restore-left-whitespace(); // Give IE7 some love
@@ -38,7 +38,7 @@
   color: $grayDark;
   text-decoration: none;
   background-color: darken($white, 10%);
-  *background-color: darken($white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
+  //*background-color: darken($white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
   background-position: 0 -15px;
 
   // transition is only when going to hover, otherwise the background
@@ -55,7 +55,7 @@
 .btn.active,
 .btn:active {
   background-color: darken($white, 10%);
-  background-color: darken($white, 15%) \9;
+  //background-color: darken($white, 15%) \9;
   background-image: none;
   outline: 0;
   $shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
@@ -180,18 +180,18 @@ input[type="submit"].btn {
   }
 
   // IE7 has some default padding on button controls
-  *padding-top: 2px;
-  *padding-bottom: 2px;
+  //*padding-top: 2px;
+  //*padding-bottom: 2px;
   &.btn-large {
-    *padding-top: 7px;
-    *padding-bottom: 7px;
+    //*padding-top: 7px;
+    //*padding-bottom: 7px;
   }
   &.btn-small {
-    *padding-top: 3px;
-    *padding-bottom: 3px;
+    //*padding-top: 3px;
+    //*padding-bottom: 3px;
   }
   &.btn-mini {
-    *padding-top: 1px;
-    *padding-bottom: 1px;
+    //*padding-top: 1px;
+    //*padding-bottom: 1px;
   }
 }
