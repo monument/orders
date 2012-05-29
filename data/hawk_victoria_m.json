@@ -1,8 +1,8 @@
 {
 	"details": {
-		"date": "5-23-2012", // date (m-d-y)
-		"by": "Kyle MacKay Rives", // kyle, mike jr, mike sr, opal
-		"at": "Benchmark", // benchmark, admiral, mms, 
+		"date": "5-23-2012", 
+		"by": "Kyle MacKay Rives", 
+		"at": "Benchmark", 
 		"notes": "Pick up June 20th.\nCall to come see proof when it is ready."
 	},
 	"name": {
@@ -15,19 +15,17 @@
 		"suffix": "" 
 	},
 	"materials": {
-		"piece": {
-			"material": "granite", // granite, bronze, marble
-			"color": "gray", // n/a if bronze
-			"type": "tablet", // tablet, base, vase, slant, bevel, flat, sub-base, bench, leg, special
-			"quantity": 1, // number
-			"length": 24, // number
-			"width": 6, // number
-			"height": 16, // number
-			"shape": "serp-top", // serp-top, flat-top, heart, special
-			"finish": "pol2", // pol2, pol3, pol5, sawn, flamed, rock-pitch
-			"size": "single" // single, double, family
+		"piece-1": {
+			"material": "granite", 
+			"color": "gray", 
+			"type": "tablet", 
+			"quantity": 1, 
+			"length": 24, 
+			"width": 6, 
+			"height": 16, 
+			"notes": "serp-top, pol2, single" 
 		},
-		"piece": {
+		"piece-2": {
 			"material": "granite",
 			"color": "gray",
 			"type": "base",
@@ -35,9 +33,9 @@
 			"length": 36,
 			"width": 12,
 			"height": 6,
-			"margin": ""
+			"notes": ""
 		},
-		"piece": {
+		"piece-3": {
 			"material": "granite",
 			"color": "gray",
 			"type": "vase",
@@ -45,10 +43,10 @@
 			"length": 4,
 			"width": 4,
 			"height": 9,
-			"shape": "square", // square, round
-			"finish": "pol2"
+			"shape": "square", 
+			"notes": "pol2"
 		},
-		"piece": {
+		"piece-4": {
 			"material": "granite",
 			"color": "gray",
 			"type": "slant",
@@ -56,41 +54,43 @@
 			"length": 20,
 			"width": 10,
 			"height": 16,
-			"finish": "face"
+			"notes": "face"
 		},
 		"foundation": {
-			"deep": true, // boolean
-			"depth": 18, // number
-			"pad": "granite", // granite, concrete
-			"thickness": 3 // number
+			"deep": true, 
+			"pad": "granite", 
+			"length": 48,
+			"width": 25,
+			"height": 3,
+			"notes": ""
 		}
 	},
 	"design": {
 		"preview": "./preview.svg",
 		"title": "Wild roses in an oval panel.",
-		"carving": "flat", // flat, shape, deep
+		"carving": "flat", 
 		"artwork": "",
 		"family-name": "",
 		"match": false,
 		"face": {
-			"direction": "east", // n, s, e, w
+			"direction": "east", 
 			"on-left": "",
 			"verified": ""
 		}
 	},
 	"setting": {
-		"cemetery": "", // select
-		"pick-up": true // boolean
+		"cemetery": "", 
+		"pick-up": true 
 	},
 	"signature": {
 		"image": "./signature.png",
 		"name": "Roger Whipple",
 		"address": {
 			"street": "4811 S. Jackson Ave, Apt. 33",
-			"city": "Tulsa", // city
-			"state": "OK", // state
-			"zip": 74107, // zip code
-			"phone": 9188925544 // number
+			"city": "Tulsa", 
+			"state": "OK", 
+			"zip": 74107, 
+			"phone": 9188925544 
 		}
 	},
 	"status": {
@@ -125,7 +125,7 @@
 			"fee": "",
 			"installed": "",
 			"notified": "",
-			"via": "" // email, phone, visit
+			"via": "" 
 		}
 	}
 }
