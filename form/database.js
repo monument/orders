@@ -1,19 +1,18 @@
 function orderFile(what, part) {
 	function details(what) {
 		if (what === 'load') {
-			$('#order-date')[0].value = order.details.date;
-			$('#info-rep')[0].value   = order.details.by;
+			f('order-date').value = order.details.date;
+			f('info-rep').value   = order.details.by;
 		} else if (what === 'save') {
-			order.details.date = $('#order-date')[0].value
-			order.details.by   = $('#info-rep')[0].value 
-			order.details
+			order.details.date = f('order-date').value
+			order.details.by   = f('info-rep').value 
 		}
 	}
 	function name() {
 		if (what === 'load') {
-			$('#order-name')[0].value = order.name.full;
+			f('order-name').value = order.name.full;
 		} else if (what === 'save') {
-			var orderName = $('#order-name')[0];
+			var orderName = f('order-name');
 			var localName = {
 				'first': order.name.first,
 				'middle': order.name.middle,
@@ -25,35 +24,33 @@ function orderFile(what, part) {
 			// if( type === 'sort' )
 			// 	order.name.sort = localName.sort
 
-			order.name.full    = $('#order-name')[0].value
+			order.name.full    = f('order-name').value
 		}
 	}
 	function materials() {
-		$('#qty-foundation')[0]
-		$('#material-foundation')[0]
-		$('#type-foundation')[0]
-		$('#length-foundation')[0]
-		$('#width-foundation')[0]
-		$('#height-foundation')[0]
-		$('#notes-foundation')[0]
+		f('qty-foundation')
+		f('material-foundation')
+		f('type-foundation')
+		f('length-foundation')
+		f('width-foundation')
+		f('height-foundation')
+		f('notes-foundation')
+		var foundation = order.materials.foundation
 
 		function getPiece(i) {}
 		function setPiece(i) {}
-		function getFoundation() {
-
-
-		}
+		function getFoundation() {}
 		function setFoundation() {
-			var foundation = order.materials.foundation
-			if ($('#type-foundation')[0].value === 'deep')
+			if (f('type-foundation').value === 'deep')
 				foundation.deep = true;
-			else if ($('#type-foundation')[0].value === 'pad')
+			else if (f('type-foundation').value === 'pad')
 				foundation.deep = false
-			foundation.pad    = $('#material-foundation')[0].value
-			foundation.length = $('#length-foundation')[0].value
-			foundation.width  = $('#width-foundation')[0].value
-			foundation.height = $('#height-foundation')[0].value
-			foundation.notes  = $('#notes-foundation')[0].value
+
+			foundation.pad    = f('material-foundation').value
+			foundation.length = f('length-foundation').value
+			foundation.width  = f('width-foundation').value
+			foundation.height = f('height-foundation').value
+			foundation.notes  = f('notes-foundation').value
 		}
 		if (what === 'load') {
 			//getPiece(i)
@@ -109,26 +106,4 @@ function orderFile(what, part) {
 	}
 }
 
-
-function setOrder() {
-	stringOrder();
-	orderFile('save', 'details')
-	orderFile('save', 'name')
-	localStorage.setItem(order.name.sort, order.stringy);
-}
-
-function getOrder() {
-	orderFile('load', 'details')
-	orderFile('load', 'name')
-	//orderFile('load', 'materials')
-	//orderFile('load', 'design')
-	//orderFile('load', 'setting')
-	//orderFile('load', 'signature')
-	//orderFile('load', 'status')
-}
-
-function stringOrder() {
-	var stringy = JSON.stringify(order);
-	order.stringy = stringy;
-}
 
