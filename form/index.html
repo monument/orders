@@ -6,12 +6,10 @@
 
     <link rel="stylesheet" type="text/css" href="../assets/index.css" />
 </head>
-<body class="container">
+<body>
 
-<header class="row">
-    <span id="print-cemetery"></span>
-    <span id="print-name"></span>
-    <div>
+<header>
+    <hgroup>
         <h1>Benchmark Monument</h1>
         <p>
             1735 E. 11th St. &mdash; Tulsa, OK 74104 <br/>
@@ -19,20 +17,14 @@
             Email: info@benchmarkmonument.com <br/>
             Web: www.benchmarkmonument.com
         </p>
-    </div>
-    <img src="../assets/img/benchmarklogo.png" alt="The Benchmark Monument Building" width="300px" height="147px" />
+    </hgroup>
+    <div><img src="../assets/img/benchmarklogo.png" alt="The Benchmark Monument Building" /></div>
 </header>
 
 <form id="order">
     <fieldset id="details">
-        <div id="detail-name">
-            <label for="order-name">Name On Order</label>
-            <input id="order-name" />
-        </div>
-        <div id="detail-date">
-            <label for="order-date">Today's Date</label>
-            <input id="order-date" type="date" />
-        </div>
+            <label>Name On Order <input id="order-name" /></label>
+            <label>Today's Date <input id="order-date" type="date" /></label>
     </fieldset>
 
     <fieldset id="material">
@@ -44,7 +36,7 @@
                 <th class="length"><label for="length-piece-1">Length</label></th>
                 <th class="width"><label for="width-piece-1">Width</label></th>
                 <th class="height"><label for="height-piece-1">Height</label></th>
-                <th class="notes"><label for="notes-piece-1">notes / Shape</label></th>
+                <th class="notes"><label for="notes-piece-1">Notes</label></th>
             </tr>
             <tr>
                 <td class="qty"><input id="qty-piece-1" /></td>
@@ -83,7 +75,7 @@
                 <td class="length"><input id="length-foundation" type="number" /></td>
                 <td class="width"><input id="width-foundation" type="number" /></td>
                 <td class="height"><input id="height-foundation" type="number" /></td>
-                <td class="notes$"><textarea id="notes-foundation" rows="1"></textarea></td>
+                <td class="notes"><textarea id="notes-foundation" rows="1"></textarea></td>
             </tr>
         </table>
     </fieldset>
@@ -117,41 +109,33 @@
         </table>
     </fieldset>
 
-    <fieldset id="design" class="form-horizontal">
-        <div id="design-info-basic">
-            <div><label for="design-carving">Carving</label>
-                <input value="flat" id="carving-flat" name="design-carving" type="radio" checked />
-                <label for="carving-flat">Flat</label>
-                <input value="shape" id="carving-shape" name="design-carving" type="radio" />
-                <label for="carving-shape">Shape</label>
-                <input value="etching" id="carving-etching" name="design-carving" type="radio" />
-                <label for="carving-etching">Etching</label>
-            </div>
-            <div><label for="design-name">Family Name on Back</label><input id="design-name" type="checkbox" /></div>
-            <div><label for="design-artwork">Special Artwork</label><input id="design-artwork" type="checkbox" /></div>
-            <div><label for="design-match">Match Rubbing</label><input id="design-match" type="checkbox" /></div>
-        </div>
-        <div id="design-info-more">
-            <div class="form-vertical">
-                <label for="design-facing-direction">Lettering Faces</label>
-                <select id="design-facing-direction">
-                    <option value="east">East</option>
-                    <option value="west">West</option>
-                    <option value="north">North</option>
-                    <option value="south">South</option>
-                </select>
-                <input id="design-facing" /><label for="design-facing">On Left</label>
-                <label for="design-facing-checked">Name Positions Checked</label><input id="design-facing-checked" class="form-horizontal" type="checkbox" />
-            </div>
-            <div><label for="design-title">Design</label><input id="design-title" /></div>
-            <div><label for="design-info">Additional Information</label><input id="design-info" /></div>
-        </div>
+    <fieldset id="design">
+        <label>Carving
+            <label><input value="flat" name="design-carving" type="radio" checked />Flat</label>
+            <label><input value="shape" name="design-carving" type="radio" />Shape</label>
+            <label><input value="etching" name="design-carving" type="radio" />Etching</label>
+        </label>
+        <label>Family Name on Back <input id="design-name" type="checkbox" /></label>
+        <label>Special Artwork <input id="design-artwork" type="checkbox" /></label>
+        <label>Match Rubbing <input id="design-match" type="checkbox" /></label>
+        <label>Lettering Faces
+            <select id="design-facing">
+                <option value="east">East</option>
+                <option value="west">West</option>
+                <option value="north">North</option>
+                <option value="south">South</option>
+            </select>
+        </label>
+        <label>Name On Left <input id="design-onleft" /></label>
+        <label>Name Positions Checked <input id="design-positions" type="checkbox" /></label>
+        <label>Design <input id="design-title" /></label>
+        <label>Additional Information <input id="design-info" /></label>
     </fieldset>
 
     <fieldset id="delivery">
-        <label for="delivery-to">Memorial to be delivered to</label><input id="delivery-to" />
-        <label for="delivery-near">Cemetery in/near</label><input id="delivery-near" />
-        <label for="delivery-contact">Name/Ph of Person who can show location</label><input id="delivery-contact" />
+        <label>Memorial to be delivered to <input id="delivery-to" /></label>
+        <label>Cemetery in/near <input id="delivery-near" /></label>
+        <label>Name/Ph of Person who can show location <input id="delivery-contact" /></label>
     </fieldset>
 
     <fieldset id="info">
@@ -162,18 +146,18 @@
             prevailing at the time additional lettering is ordered.
         </p>
         <h2>Location in Cemetery</h2>
-        <label for="info-cemetery-section">Section</label><input id="info-cemetery-section">
-        <label for="info-cemetery-block">Block</label><input id="info-cemetery-block" />
-        <label for="info-cemetery-lot">Lot</label><input id="info-cemetery-lot" />
-        <label for="info-cemetery-space">Space(s)</label><input id="info-cemetery-space" />
-        <label for="info-rep">Representative</label><input id="info-rep" />
-        <label for="info-sig-signature">Signature</label><input id="info-sig-signature" />
-        <label for="info-sig-name">Name</label><input id="info-sig-name" />
-        <label for="info-sig-address">Address</label><input id="info-sig-address" />
-        <label for="info-sig-city">City</label><input id="info-sig-city" />
-        <label for="info-sig-state">State</label><input id="info-sig-state" />
-        <label for="info-sig-zip">Zip</label><input id="info-sig-zip" />
-        <label for="info-sig-phone">Phone</label><input id="info-sig-phone" type="tel" />
+        <label>Section <input id="info-cemetery-section" /></label>
+        <label>Block <input id="info-cemetery-block" /></label>
+        <label>Lot <input id="info-cemetery-lot" /></label>
+        <label>Space(s) <input id="info-cemetery-space" /></label>
+        <label>Representative <input id="info-rep" /></label>
+        <label>Signature <input id="info-sig-signature" /></label>
+        <label>Name <input id="info-sig-name" /></label>
+        <label>Address <input id="info-sig-address" /></label>
+        <label>City <input id="info-sig-city" /></label>
+        <label>State <input id="info-sig-state" /></label>
+        <label>Zip <input id="info-sig-zip" /></label>
+        <label>Phone <input id="info-sig-phone" type="tel" /></label>
     </fieldset>
 </form>
 
