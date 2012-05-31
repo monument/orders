@@ -1,7 +1,8 @@
-function f(element) { return document.querySelectorAll(element)[0] }
+document.body.onload = init;
+function f(element) { return document.getElementById(element) }
 
 function calc() {
-    var money = [ f('#money-monument'), f('#money-marker'), f('#money-vase'), f('#money-lettering'), f('#money-foundation'), f('#money-subtotal'), f('#money-tax'), f('#money-installation'), f('#money-fees'), f('#money-total'), f('#money-paid'), f('#money-balance') ];
+    var money = [ f('money-monument'), f('money-marker'), f('money-vase'), f('money-lettering'), f('money-foundation'), f('money-subtotal'), f('money-tax'), f('money-installation'), f('money-fees'), f('money-total'), f('money-paid'), f('money-balance') ];
 
     var subtotal = money[0].valueAsNumber + money[1].valueAsNumber + money[2].valueAsNumber + money[3].valueAsNumber + money[4].valueAsNumber;
 
@@ -20,47 +21,39 @@ function calc() {
 
     // Set the onchange attribute to call calc for each money cell that is editable.
     for (var i = 0; i < money.length; i++)
-        if(money[i].readOnly === false)
+        if (money[i].readOnly === false)
             money[i].onchange = calc;
 }
 
-var order = {
-    "details": {
-        "date": "5-23-2012", 
-        "by": "Kyle MacKay Rives", 
-        "at": "Benchmark", 
-        "notes": "Pick up June 20th.\nCall to come see proof when it is ready." 
+var file = {
+    'name': "hawk_victoria_m",
+    'set': function(data) { return "../data/" + data + ".json" },
+    'load': function(data) { $.getJSON(data, function(obj) { order = obj }) },
+    //'string': function() { var data = JSON.stringify(order); order.bits.stringy = data; },
+    'parsed': function() { var data = JSON.parse(order); order.bits.parsed = data; },
+    'get': function() {
+        orderFile('load', 'details');
+        orderFile('load', 'name');
+        //orderFile('load', 'materials');
+        //orderFile('load', 'design');
+        //orderFile('load', 'setting');
+        //orderFile('load', 'signature');
+        //orderFile('load', 'status');
     },
-    "name": {
-        "full": "Victoria M. Charging Hawk", 
-        "sort": "hawk_victoria_m",
-        "first": "Victoria", 
-        "middle": "M.", 
-        "last": "Charging Hawk", 
-        "prefix": "", 
-        "suffix": "" 
+    'set': function() {
+        // /file.string();
+        orderFile('save', 'details');
+        orderFile('save', 'name');
+        localStorage.setItem(order.name.sort, order.stringy);
     }
 }
 
-function nameMerge() {
-    var full   = order.name.full
-    var first  = order.name.first
-    var middle = order.name.middle
-    var last   = order.name.last
 
-    full = first + " " + middle + " " + last;
-    order.name.full = full
-}
 
 function init() {
+    file.load( file.set(file.name) )
     calc();
-
-    function loadOrder() {
-        f('#date-ordered').value = order.order.date
-        f('#info-rep').value = order.order.by
-    }
-
-    function material() {
-
-    }
+    //$.Callbacks().add( getOrder)
+    file.get();
+    //$.Callbacks().fire()
 }
