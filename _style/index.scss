@@ -11,6 +11,7 @@ body {
         border-collapse: collapse;
     }
     input[type="text"],
+    input:not([type]),
     input[type="number"],
     input[type="date"], 
     textarea,
@@ -22,7 +23,6 @@ body {
     textarea {
         margin: 0 0 -4px;
     }
-
 }
 
 header {

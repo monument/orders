@@ -1,0 +1,24 @@
+[submodule "assets/steal"]
+	path = assets/steal
+	url = https://github.com/jupiterjs/steal.git
+[submodule "assets/jquery"]
+	path = assets/jquery
+	url = https://github.com/jupiterjs/jquerymx.git
+[submodule "assets/documentjs"]
+	path = assets/documentjs
+	url = https://github.com/jupiterjs/documentjs.git
+[submodule "assets/funcunit"]
+	path = assets/funcunit
+	url = https://github.com/jupiterjs/funcunit.git
+[submodule "steal"]
+	path = steal
+	url = https://github.com/jupiterjs/steal.git
+[submodule "jquery"]
+	path = jquery
+	url = https://github.com/jupiterjs/jquerymx.git
+[submodule "documentjs"]
+	path = documentjs
+	url = https://github.com/jupiterjs/documentjs.git
+[submodule "funcunit"]
+	path = funcunit
+	url = https://github.com/jupiterjs/funcunit.git

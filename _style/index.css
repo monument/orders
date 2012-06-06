@@ -14,6 +14,7 @@ body {
   body table {
     border-collapse: collapse; }
   body input[type="text"],
+  body input:not([type]),
   body input[type="number"],
   body input[type="date"],
   body textarea,
