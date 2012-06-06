@@ -41,8 +41,8 @@ var file = {
 				f('order-date').value = order.details.date;
 				f('info-rep').value   = order.details.by;
 			},
-			'name'      : function () {
-				f('order-name').value = order.name.full;
+			'title'      : function () {
+				f('order-title').value = order.title.full;
 			},
 			'materials' : function () {
 				var rows = 3;
@@ -72,14 +72,14 @@ var file = {
 				order.details.date = f('order-date').value
 				order.details.by   = f('info-rep').value 
 			},
-			'name'      : function () {
-				var orderName = f('order-name');
+			'title'      : function () {
+				var orderName = f('order-title');
 				var localName = {
-					'first': order.name.first,
-					'middle': order.name.middle,
-					'last': order.name.last,
-					'full': order.name.full,
-					'sort': order.name.sort
+					'first': order.title.first,
+					'middle': order.title.middle,
+					'last': order.title.last,
+					'full': order.title.full,
+					'sort': order.title.sort
 				}
 				order.name.full = f('order-name').value
 			},
@@ -120,13 +120,13 @@ var file = {
 
 	'get'    : function () {
 		file.order.load.details();
-		file.order.load.name();
+		file.order.load.title();
 	},
 	'set'    : function () {
 		file.string();
 		file.order.set.details();
-		file.order.set.name();
-		localStorage.setItem(order.name.sort, order.stringy);
+		file.order.set.title();
+		localStorage.setItem(order.title.sort, order.stringy);
 	}
 }
 
