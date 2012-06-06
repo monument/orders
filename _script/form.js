@@ -1,7 +1,5 @@
 var order={}, file, qdata;
 
-steal('jquery', function(){})
-
 function f(element) { return document.getElementById(element); }
 
 function calc() {
