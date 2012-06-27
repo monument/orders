@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <order date="5-23-2012" by="Kyle MacKay Rives" at="Benchmark">
-	<name full="Victoria M. Charging Hawk" first="Victoria" second="M" last="Charging Hawk" suffix="" prefix="" />
+	<name 
+		full="Victoria M. Charging Hawk" 
+		first="Victoria" 
+		second="M" 
+		last="Charging Hawk" 
+		suffix="" 
+		prefix="" />
 	<notes content="Pick up June 20th. Call to come see proof when it is ready." />
 	<materials>
-		<granite color="gray">
-			<piece type="tablet" qty="1" length="24" width="6" height="16" finish="pol2" shape="serp" />
-			<piece type="base" qty="1" length="36" width="12" height="6" />
-			<piece type="vase" qty="2" length="4" width="4" height="9" finish="pol2" shape="square" />
-			<piece type="slant" qty="1" length="20" width="10" height="16" polish="face" />
-		</granite>
-		<foundation type="deep" depth="18" pad="granite" />
+		<material type="granite">
+			<piece type="tablet" color="gray" qty="1" length="24" width="6" height="16" notes="pol2, serp, single" />
+			<piece type="base" color="gray" qty="1" length="36" width="12" height="6" notes="" />
+			<piece type="vase" color="gray" qty="2" length="4" width="4" height="9" notes="pol2, square" />
+			<piece type="slant" color="gray" qty="1" length="20" width="10" height="16" notes="face" />
+		</material>
+		<foundation type="deep" length="18" width="25" height="3" pad="granite" notes="" />
 	</materials>
 	<design preview="./preview.svg" title="wild roses and oval panel">
 		<carving type="flat" />
@@ -18,7 +24,7 @@
 		<match />
 		<faces direction="east" onLeft="" checked="" />
 	</design>
-	<setting cemetery="false" pickup="true" />
+	<setting cemetery="" pickup="true" />
 	<signature src="signature.png">
 		<signee name="Roger Whipple" address="4811 S. Jackson Ave, Apt. 33" city="Tulsa" state="OK" zip="74107" phone="9188925544" />
 	</signature>

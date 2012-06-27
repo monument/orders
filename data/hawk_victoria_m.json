@@ -8,11 +8,7 @@
 	"title": {
 		"full": "Victoria M. Charging Hawk",
 		"sort": "hawk_victoria_m",
-		"first": "Victoria", 
-		"middle": "M.", 
-		"last": "Charging Hawk", 
-		"prefix": "", 
-		"suffix": "" 
+		"names": ["Victoria", "M.", "Charging Hawk"] 
 	},
 	"materials": {
 		"piece-1": {
