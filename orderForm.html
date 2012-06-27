@@ -10,74 +10,81 @@
 <header>
     <hgroup>
         <h1>Benchmark Monument</h1>
-        <p> 1735 E. 11th St. &mdash; Tulsa, OK 74104 <br/>
-            Ph. 918.582.8600 &mdash; Fx. 918.582.8601 <br/>
-            Email: info@benchmarkmonument.com <br/>
-            Web: www.benchmarkmonument.com </p>
+        <h2> 
+            1735 E. 11th St. &mdash; Tulsa, OK 74104 <br/>
+            918.582.8600 &mdash; info@benchmarkmonument.com
+        </h2>
     </hgroup>
     <div><img src="_img/benchmarklogo.png" alt="The Benchmark Monument Building" /></div>
 </header>
 
 <div id="order">
     <form id="details">
-            <label>Name On Order</label><input id="order-title" />
-            <label>Today's Date <input id="order-date" type="date" /></label>
+        <label>Name On Order</label><input id="order-title" />
+        <label>Today's Date <input id="order-date" type="date" /></label>
     </form>
 
     <form id="material">
         <table id="material-table">
             <thead>
                 <tr>
-                    <th class="qty"><label for="qty-piece-1">Qty</label></th>
-                    <th class="material"><label for="material-piece-1">Material</label></th>
-                    <th class="type"><label for="type-piece-1">Type</label></th>
-                    <th class="length"><label for="length-piece-1">Length</label></th>
-                    <th class="width"><label for="width-piece-1">Width</label></th>
-                    <th class="height"><label for="height-piece-1">Height</label></th>
-                    <th class="notes"><label for="notes-piece-1">Notes</label></th>
+                    <th class="qty">Qty             </th>
+                    <th class="type">Type           </th>
+                    <th class="material">Material   </th>
+                    <th class="finish">Finish       </th>
+                    <th class="length">Length       </th>
+                    <th class="width">Width         </th>
+                    <th class="height">Height       </th>
+                    <th class="notes">Notes         </th>
+                    <th class="cost">Cost           </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="qty"><input id="material[qty][piece-1]" type="number" /></td>
-                    <td class="material"><input id="material-piece-1" list="material-list" /></td>
-                    <td class="type"><input id="type-piece-1" list="type-list" /></td>
-                    <td class="length"><input id="length-piece-1" type="number" /></td>
-                    <td class="width"><input id="width-piece-1" type="number" /></td>
-                    <td class="height"><input id="height-piece-1" type="number" /></td>
-                    <td class="notes"><textarea id="notes-piece-1" rows="1"></textarea></td>
+                    <td class="qty">    <input      id="qty-piece-1"        type="number" />        </td>
+                    <td class="type">   <input      id="type-piece-1"       list="type-list" />     </td>
+                    <td class="material"><input     id="material-piece-1"   list="material-list" /> </td>
+                    <td class="finish"> <input      id="finish-piece-1"     list="finish-list" />   </td>
+                    <td class="length"> <input      id="length-piece-1"     type="number" />        </td>
+                    <td class="width">  <input      id="width-piece-1"      type="number" />        </td>
+                    <td class="height"> <input      id="height-piece-1"     type="number" />        </td>
+                    <td class="notes">  <textarea   id="notes-piece-1"      rows="1" ></textarea>   </td>
+                    <td class="cost">   <span       id="cost-piece-1"> </span>                      </td>
                 </tr>
                 <tr>
-                    <td class="qty"><input id="qty-piece-2" type="number" /></td>
-                    <td class="material"><input id="material-piece-2" list="material-list" /></td>
-                    <td class="type"><input id="type-piece-2" list="type-list" /></td>
-                    <td class="length"><input id="length-piece-2" type="number" /></td>
-                    <td class="width"><input id="width-piece-2" type="number" /></td>
-                    <td class="height"><input id="height-piece-2" type="number" /></td>
-                    <td class="notes"><textarea id="notes-piece-2" rows="1"></textarea></td>
+                    <td class="qty">    <input      id="qty-piece-2"        type="number" />        </td>
+                    <td class="type">   <input      id="type-piece-2"       list="type-list" />     </td>
+                    <td class="material"><input     id="material-piece-2"   list="material-list" /> </td>
+                    <td class="finish"> <input      id="finish-piece-2"     list="finish-list" />   </td>
+                    <td class="length"> <input      id="length-piece-2"     type="number" />        </td>
+                    <td class="width">  <input      id="width-piece-2"      type="number" />        </td>
+                    <td class="height"> <input      id="height-piece-2"     type="number" />        </td>
+                    <td class="notes">  <textarea   id="notes-piece-2"      rows="1" ></textarea>   </td>
+                    <td class="cost">   <span       id="cost-piece-2"> </span>                      </td>
                 </tr>
                 <tr>
-                    <td class="qty"><input id="qty-piece-3" type="number" /></td>
-                    <td class="material"><input id="material-piece-3" list="material-list" /></td>
-                    <td class="type"><input id="type-piece-3" list="type-list" /></td>
-                    <td class="length"><input id="length-piece-3" type="number" /></td>
-                    <td class="width"><input id="width-piece-3" type="number" /></td>
-                    <td class="height"><input id="height-piece-3" type="number" /></td>
-                    <td class="notes"><textarea id="notes-piece-3" rows="1"></textarea></td>
+                    <td class="qty">    <input      id="qty-piece-3"        type="number" />        </td>
+                    <td class="type">   <input      id="type-piece-3"       list="type-list" />     </td>
+                    <td class="material"><input     id="material-piece-3"   list="material-list" /> </td>
+                    <td class="finish"> <input      id="finish-piece-3"     list="finish-list" />   </td>
+                    <td class="length"> <input      id="length-piece-3"     type="number" />        </td>
+                    <td class="width">  <input      id="width-piece-3"      type="number" />        </td>
+                    <td class="height"> <input      id="height-piece-3"     type="number" />        </td>
+                    <td class="notes">  <textarea   id="notes-piece-3"      rows="1" ></textarea>   </td>
+                    <td class="cost">   <span       id="cost-piece-3"> </span>                      </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td class="qty"><input id="qty-foundation" type="number" value="1" /></td>
-                    <td class="material"><input id="material-foundation" list="foundation-list" /></td>
-                    <td class="type"><select id="type-foundation">
-                        <option value="pad">Pad Only</option>
-                        <option value="deep">Deep (18")</option>
-                    </select></td>
-                    <td class="length"><input id="length-foundation" type="number" /></td>
-                    <td class="width"><input id="width-foundation" type="number" /></td>
-                    <td class="height"><input id="height-foundation" type="number" /></td>
-                    <td class="notes"><textarea id="notes-foundation" rows="1"></textarea></td>
+                    <td class="qty">    <input      id="qty-foundation"     type="number" value="1" /></td>
+                    <td class="type">Foundation                                                     </td>
+                    <td class="material"><input     id="type-foundation"    list="foundation-type" /></td>
+                    <td class="finish"> <input      id="material-foundation" list="foundation-list" /></td>
+                    <td class="length"> <input      id="length-foundation"  type="number" />        </td>
+                    <td class="width">  <input      id="width-foundation"   type="number" />        </td>
+                    <td class="height"> <input      id="height-foundation"  type="number" />        </td>
+                    <td class="notes">  <textarea   id="notes-foundation"   rows="1" ></textarea>   </td>
+                    <td class="cost">   <span       id="cost-foundation"> </span>                   </td>
                 </tr>
             </tfoot>
         </table>
@@ -113,41 +120,28 @@
     </form>
 
     <form id="design">
-        <label>Carving
-            <label><input value="flat" name="design[carving]" type="radio" checked />Flat</label>
-            <label><input value="shape" name="design[carving]" type="radio" />Shape</label>
-            <label><input value="etching" name="design[carving]" type="radio" />Etching</label>
-        </label>
-        <label>Family Name on Back <input id="design-name" type="checkbox" /></label>
-        <label>Special Artwork <input id="design-artwork" type="checkbox" /></label>
-        <label>Match Rubbing <input id="design-match" type="checkbox" /></label>
-        <label>Lettering Faces
-            <select id="design-facing">
-                <option value="east">East</option>
-                <option value="west">West</option>
-                <option value="north">North</option>
-                <option value="south">South</option>
-            </select>
-        </label>
-        <label>Name On Left <input id="design-onleft" /></label>
-        <label>Name Positions Checked <input id="design-positions" type="checkbox" /></label>
-        <label>Design <input id="design-title" /></label>
-        <label>Additional Information <input id="design-info" /></label>
+        <label>Carving Type             <input id="design-carving"  list="carving-type"     /></label>
+        <label>Family Name on Back      <input id="design-name"     type="checkbox"         /></label>
+        <label>Special Artwork          <input id="design-artwork"  type="checkbox"         /></label>
+        <label>Match Rubbing            <input id="design-match"    type="checkbox"         /></label>
+        <label>Lettering Faces          <input id="design-facing"   list="design-facings"   /></label>
+        <label>Name On Left             <input id="design-onleft"                           /></label>
+        <label>Name Positions Checked   <input id="design-position" type="checkbox"         /></label>
+        <label>Design                   <input id="design-title"    list="common-designs"   /></label>
+        <label>Additional Information   <input id="design-info"                             /></label>
     </form>
 
     <form id="delivery">
-        <label>Memorial to be delivered to <input id="delivery-to" /></label>
-        <label>Cemetery in/near <input id="delivery-near" /></label>
-        <label>Name/Ph of Person who can show location <input id="delivery-contact" /></label>
+        <label>Memorial to be delivered to              <input id="delivery-to"         /></label>
+        <label>Cemetery in/near                         <input id="delivery-near"       /></label>
+        <label>Name/Ph of Person who can show location  <input id="delivery-contact"    /></label>
     </form>
 
     <form id="info">
         <div id="info-preview"></div>
         <textarea id="info-more"></textarea>
-        <p>
-            Lettering other than above will be done for a charge at the rate
-            prevailing at the time additional lettering is ordered.
-        </p>
+        <p> Lettering other than above will be done for a charge at the rate
+            prevailing at the time additional lettering is ordered.</p>
         <h2>Location in Cemetery</h2>
         <label>Section          <input id="info-cemetery-section" /></label>
         <label>Block            <input id="info-cemetery-block" /></label>
@@ -164,15 +158,6 @@
     </form>
 </div>
 
-<datalist id="type-list">
-    <option value="Tablet" />
-    <option value="Base" />
-    <option value="Vase" />
-    <option value="Slant" />
-    <option value="Bevel" />
-    <option value="Sub-Base" />
-</datalist>
-
 <datalist id="material-list">
     <option value="Bronze" />
     <option value="Gray" />
@@ -182,18 +167,52 @@
     <option value="Marble" />
     <option value="Green" />
 </datalist>
+<datalist id="type-list">
+    <option value="Tablet" />
+    <option value="Base" />
+    <option value="Vase" />
+    <option value="Bench" />
+    <option value="Slant" />
+    <option value="Bevel" />
+    <option value="Sub-base" />
+    <option value="Statuary" />
+    <option value="Landscape" />
+</datalist>
+<datalist id="finish-list">
+    <option value="Polish 2" />
+    <option value="Polish 3" />
+    <option value="Polish 5" />
+    <option value="All-Polish" />
+</datalist>
 
 <datalist id="foundation-list">
     <option value="Concrete Pad" />
     <option value="Granite Pad" />
 </datalist>
+<datalist id="foundation-types">
+    <option value="Pad Only" />
+    <option value="Deep (18&quot;)" />
+</datalist>
 
+<datalist id="carving-type">
+    <option value="Flat" />
+    <option value="Shape" />
+    <option value="Etching" />
+</datalist>
+<datalist id="design-facings">
+    <option value="East" />
+    <option value="West" />
+    <option value="North" />
+    <option value="South" />
+</datalist>
+
+<datalist id="common-designs">
+    <option value="Roses" />
+</datalist>
 
 <script src="_script/jquery.js"></script>
-<script src="_script/jquerypp.js"></script>
-<script src="_script/can.js"></script>
-<script src="_script/form-mvc.js"></script>
+<script src="_script/chosen/chosen.jquery.min.js"></script>
+<script src="_script/scripts.js"></script>
 <!-- <script src="_script/form.js"></script> -->
-
 </body>
 </html>

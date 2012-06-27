@@ -2,6 +2,15 @@ var order={}, file, qdata;
 
 function f(element) { return document.getElementById(element); }
 
+////
+function label(data) {return "<label>" + data + "</label>"}
+function input(id, type) {return "<input id=\"" + id + "\" type=\"" + type + "\" />"}
+function form(id, data) {return "<form id=\"details\">" + data + "</form>"}
+var details = form(details, label('Name On Order')+input('order-title', 'text'))
+
+
+////
+
 function calc() {
 	"use strict";
 	var money, subtotal, taxRate, tax, setting, fees, total, paid, balance;
