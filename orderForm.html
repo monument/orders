@@ -8,14 +8,18 @@
 <body>
 
 <header>
-    <hgroup>
-        <h1>Benchmark Monument</h1>
-        <h2> 
-            1735 E. 11th St. &mdash; Tulsa, OK 74104 <br/>
-            918.582.8600 &mdash; info@benchmarkmonument.com
-        </h2>
-    </hgroup>
-    <div><img src="_img/benchmarklogo.png" alt="The Benchmark Monument Building" /></div>
+    <h1 id="order-title" contenteditable>Richard Swayne "Blackhawk" Perkins, Jr.</h1>
+    <a href="#money" id="show-money"></a>
+    <nav id="categories">
+        <ul>
+            <li>Details</li>
+            <li>Materials</li>
+            <li>Design</li>
+            <li>Delivery</li>
+            <li>Info</li>
+            <li>Notes</li>
+        </ul>
+    </nav>
 </header>
 
 <div id="order">
@@ -29,8 +33,9 @@
             <thead>
                 <tr>
                     <th class="qty">Qty             </th>
-                    <th class="type">Type           </th>
+                    <th class="piece">Piece         </th>
                     <th class="material">Material   </th>
+                    <th class="kind">Kind           </th>
                     <th class="finish">Finish       </th>
                     <th class="length">Length       </th>
                     <th class="width">Width         </th>
@@ -41,56 +46,59 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="qty">    <input      id="qty-piece-1"        type="number" />        </td>
-                    <td class="type">   <input      id="type-piece-1"       list="type-list" />     </td>
-                    <td class="material"><input     id="material-piece-1"   list="material-list" /> </td>
-                    <td class="finish"> <input      id="finish-piece-1"     list="finish-list" />   </td>
-                    <td class="length"> <input      id="length-piece-1"     type="number" />        </td>
-                    <td class="width">  <input      id="width-piece-1"      type="number" />        </td>
-                    <td class="height"> <input      id="height-piece-1"     type="number" />        </td>
-                    <td class="notes">  <textarea   id="notes-piece-1"      rows="1" ></textarea>   </td>
-                    <td class="cost">   <span       id="cost-piece-1"> </span>                      </td>
+                    <td class="qty"><input      id="qty-piece-1"        type="number" />        </td>
+                    <td class="piece"><input    id="piece-piece-1"      list="piece-list" />    </td>
+                    <td class="material"><input id="material-piece-1"   list="material-list" /> </td>
+                    <td class="kind"><input     id="kind-piece-1"       list="kind-list" />     </td>
+                    <td class="finish"><input   id="finish-piece-1"     list="finish-list" />   </td>
+                    <td class="length"><input   id="length-piece-1"     type="number" />        </td>
+                    <td class="width"><input    id="width-piece-1"      type="number" />        </td>
+                    <td class="height"><input   id="height-piece-1"     type="number" />        </td>
+                    <td class="notes"><textarea id="notes-piece-1"      rows="1" ></textarea>   </td>
+                    <td class="cost"><span      id="cost-piece-1"> </span>                      </td>
                 </tr>
                 <tr>
-                    <td class="qty">    <input      id="qty-piece-2"        type="number" />        </td>
-                    <td class="type">   <input      id="type-piece-2"       list="type-list" />     </td>
-                    <td class="material"><input     id="material-piece-2"   list="material-list" /> </td>
-                    <td class="finish"> <input      id="finish-piece-2"     list="finish-list" />   </td>
-                    <td class="length"> <input      id="length-piece-2"     type="number" />        </td>
-                    <td class="width">  <input      id="width-piece-2"      type="number" />        </td>
-                    <td class="height"> <input      id="height-piece-2"     type="number" />        </td>
-                    <td class="notes">  <textarea   id="notes-piece-2"      rows="1" ></textarea>   </td>
-                    <td class="cost">   <span       id="cost-piece-2"> </span>                      </td>
+                    <td class="qty"><input      id="qty-piece-2"        type="number" />        </td>
+                    <td class="piece"><input    id="piece-piece-2"      list="piece-list" />    </td>
+                    <td class="material"><input id="material-piece-2"   list="material-list" /> </td>
+                    <td class="kind"><input     id="kind-piece-2"       list="kind-list" />     </td>
+                    <td class="finish"><input   id="finish-piece-2"     list="finish-list" />   </td>
+                    <td class="length"><input   id="length-piece-2"     type="number" />        </td>
+                    <td class="width"><input    id="width-piece-2"      type="number" />        </td>
+                    <td class="height"><input   id="height-piece-2"     type="number" />        </td>
+                    <td class="notes"><textarea id="notes-piece-2"      rows="1" ></textarea>   </td>
+                    <td class="cost"><span      id="cost-piece-2"> </span>                      </td>
                 </tr>
                 <tr>
-                    <td class="qty">    <input      id="qty-piece-3"        type="number" />        </td>
-                    <td class="type">   <input      id="type-piece-3"       list="type-list" />     </td>
-                    <td class="material"><input     id="material-piece-3"   list="material-list" /> </td>
-                    <td class="finish"> <input      id="finish-piece-3"     list="finish-list" />   </td>
-                    <td class="length"> <input      id="length-piece-3"     type="number" />        </td>
-                    <td class="width">  <input      id="width-piece-3"      type="number" />        </td>
-                    <td class="height"> <input      id="height-piece-3"     type="number" />        </td>
-                    <td class="notes">  <textarea   id="notes-piece-3"      rows="1" ></textarea>   </td>
-                    <td class="cost">   <span       id="cost-piece-3"> </span>                      </td>
+                    <td class="qty"><input      id="qty-piece-3"        type="number" />        </td>
+                    <td class="piece"><input    id="piece-piece-3"      list="piece-list" />    </td>
+                    <td class="material"><input id="material-piece-3"   list="material-list" /> </td>
+                    <td class="kind"><input     id="kind-piece-3"       list="kind-list" />     </td>
+                    <td class="finish"><input   id="finish-piece-3"     list="finish-list" />   </td>
+                    <td class="length"><input   id="length-piece-3"     type="number" />        </td>
+                    <td class="width"><input    id="width-piece-3"      type="number" />        </td>
+                    <td class="height"><input   id="height-piece-3"     type="number" />        </td>
+                    <td class="notes"><textarea id="notes-piece-3"      rows="1" ></textarea>   </td>
+                    <td class="cost"><span      id="cost-piece-3"> </span>                      </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td class="qty">    <input      id="qty-foundation"     type="number" value="1" /></td>
-                    <td class="type">Foundation                                                     </td>
-                    <td class="material"><input     id="type-foundation"    list="foundation-type" /></td>
-                    <td class="finish"> <input      id="material-foundation" list="foundation-list" /></td>
-                    <td class="length"> <input      id="length-foundation"  type="number" />        </td>
-                    <td class="width">  <input      id="width-foundation"   type="number" />        </td>
-                    <td class="height"> <input      id="height-foundation"  type="number" />        </td>
-                    <td class="notes">  <textarea   id="notes-foundation"   rows="1" ></textarea>   </td>
-                    <td class="cost">   <span       id="cost-foundation"> </span>                   </td>
+                    <td class="qty"><input      id="qty-foundation"     type="number" value="1" /></td>
+                    <td class="piece">Foundation                                                </td>
+                    <td class="material"><input id="material-foundation"list="foundation-material" /></td>
+                    <td class="finish"><input   id="finish-foundation"  list="foundation-list" /></td>
+                    <td class="length"><input   id="length-foundation"  type="number" />        </td>
+                    <td class="width"><input    id="width-foundation"   type="number" />        </td>
+                    <td class="height"><input   id="height-foundation"  type="number" />        </td>
+                    <td class="notes"><textarea id="notes-foundation"   rows="1" ></textarea>   </td>
+                    <td class="cost"><span      id="cost-foundation"> </span>                   </td>
                 </tr>
             </tfoot>
         </table>
     </form>
 
-    <form id="money">
+    <div id="money">
         <table>
             <tr><td><label for="money-monument">Monument</label></td>        
                 <td><input  id="money-monument" type="number" value="0" /></td></tr>
@@ -117,7 +125,7 @@
             <tr><td><label for="money-balanace">Balance Due</label></td>
                 <td><input  id="money-balance" type="number" readonly /></td></tr>
         </table>
-    </form>
+    </div>
 
     <form id="design">
         <label>Carving Type             <input id="design-carving"  list="carving-type"     /></label>
@@ -156,18 +164,12 @@
         <label>Zip              <input id="info-sig-zip" /></label>
         <label>Phone            <input id="info-sig-phone" type="tel" /></label>
     </form>
+
+    <div id="notes">
+    </div>
 </div>
 
-<datalist id="material-list">
-    <option value="Bronze" />
-    <option value="Gray" />
-    <option value="Morning Rose" />
-    <option value="Mahogany" />
-    <option value="Black" />
-    <option value="Marble" />
-    <option value="Green" />
-</datalist>
-<datalist id="type-list">
+<datalist id="piece-list">
     <option value="Tablet" />
     <option value="Base" />
     <option value="Vase" />
@@ -177,6 +179,19 @@
     <option value="Sub-base" />
     <option value="Statuary" />
     <option value="Landscape" />
+</datalist>
+<datalist id="material-list">
+    <option value="Bronze" />
+    <option value="Granite" />
+    <option value="Marble" />
+    <option value="Concrete" />
+</datalist>
+<datalist id="grnanite-kind-list">
+    <option value="Gray" />
+    <option value="Morning Rose" />
+    <option value="Mahogany" />
+    <option value="Black" />
+    <option value="Green" />
 </datalist>
 <datalist id="finish-list">
     <option value="Polish 2" />
