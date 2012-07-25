@@ -1,20 +1,18 @@
-var order={}, file, qdata;
+var order, file, qdata;
 
 function f(element) { return document.getElementById(element); }
 
 ////
-function label(data) {return "<label>" + data + "</label>"}
-function input(id, type) {return "<input id=\"" + id + "\" type=\"" + type + "\" />"}
-function form(id, data) {return "<form id=\"details\">" + data + "</form>"}
-var details = form(details, label('Name On Order')+input('order-title', 'text'))
-
+function label(data) {return "<label>" + data + "</label>";}
+function input(id, type) {return "<input id=\"" + id + "\" type=\"" + type + "\" />";}
+function form(id, data) {return "<form id=\"details\">" + data + "</form>";}
+var details = form(details, label('Name On Order')+input('order-title', 'text'));
 
 ////
-
 function calc() {
 	"use strict";
-	var money, subtotal, taxRate, tax, setting, fees, total, paid, balance;
-	money = [ f('money-monument'), f('money-marker'), f('money-vase'), f('money-lettering'), f('money-foundation'), f('money-subtotal'), f('money-tax'), f('money-installation'), f('money-fees'), f('money-total'), f('money-paid'), f('money-balance') ];
+	var subtotal, taxRate, tax, setting, fees, total, paid, balance;
+	var money = [ f('money-monument'), f('money-marker'), f('money-vase'), f('money-lettering'), f('money-foundation'), f('money-subtotal'), f('money-tax'), f('money-installation'), f('money-fees'), f('money-total'), f('money-paid'), f('money-balance') ];
 
 	subtotal = money[0].valueAsNumber + money[1].valueAsNumber + money[2].valueAsNumber + money[3].valueAsNumber + money[4].valueAsNumber;
 
@@ -40,7 +38,7 @@ var file = {
 	'name'   : "hawk_victoria_m",
 	'init'   : function () {
 		"use strict";
-		file.load( file.set(file.name) )
+		file.load( file.set(file.name) );
 		calc();
 		file.get();
 	},
@@ -59,13 +57,13 @@ var file = {
 				qdata.qty = [];
 				for (var i = 1; i <= rows; i++) {
 					//qdata.qty = qdata.qty.push('qty-piece-' + i);
-				};
-				f('material-piece')
-				f('type-piece')
-				f('length-piece')
-				f('width-piece')
-				f('height-piece')
-				f('notes-piece')
+				}
+				f('material-piece');
+				f('type-piece');
+				f('length-piece');
+				f('width-piece');
+				f('height-piece');
+				f('notes-piece');
 				//var foundation = order.materials.foundation
 
 				function getPiece(i) {}
@@ -78,8 +76,8 @@ var file = {
 		},
 		'set' : {
 			'details'   : function () {
-				order.details.date = f('order-date').value
-				order.details.by   = f('info-rep').value 
+				order.details.date = f('order-date').value;
+				order.details.by   = f('info-rep').value;
 			},
 			'title'      : function () {
 				var orderName = f('order-title');
@@ -89,31 +87,31 @@ var file = {
 					'last': order.title.last,
 					'full': order.title.full,
 					'sort': order.title.sort
-				}
-				order.name.full = f('order-name').value
+				};
+				order.name.full = f('order-name').value;
 			},
 			'materials' : function () {
-				f('qty-foundation')
-				f('material-foundation')
-				f('type-foundation')
-				f('length-foundation')
-				f('width-foundation')
-				f('height-foundation')
-				f('notes-foundation')
-				var foundation = order.materials.foundation
+				f('qty-foundation');
+				f('material-foundation');
+				f('type-foundation');
+				f('length-foundation');
+				f('width-foundation');
+				f('height-foundation');
+				f('notes-foundation');
+				var foundation = order.materials.foundation;
 
 				function setPiece(i) {}
 				function setFoundation() {
 					if (f('type-foundation').value === 'deep')
 						foundation.deep = true;
 					else if (f('type-foundation').value === 'pad')
-						foundation.deep = false
+						foundation.deep = false;
 
-					foundation.pad    = f('material-foundation').value
-					foundation.length = f('length-foundation').value
-					foundation.width  = f('width-foundation').value
-					foundation.height = f('height-foundation').value
-					foundation.notes  = f('notes-foundation').value
+					foundation.pad    = f('material-foundation').value;
+					foundation.length = f('length-foundation').value;
+					foundation.width  = f('width-foundation').value;
+					foundation.height = f('height-foundation').value;
+					foundation.notes  = f('notes-foundation').value;
 				}
 			},
 			'design'    : function () {},
@@ -122,10 +120,10 @@ var file = {
 			'status'    : function () {}
 		}
 	},
-	'save'   : function (data) { return "../data/" + data + ".json" },
-	'load'   : function (data) { $.getJSON(data, function(obj) { order = obj }) },
-	'parsed' : function () { $.parseJSON(order, function(obj) { order.bits.parsed = data; }) },
-	'string' : function () { data = JSON.stringify(order) },//; var string = data; order.bits.string = string; },
+	'save'   : function (data) { return "../data/" + data + ".json"; },
+	'load'   : function (data) { $.getJSON(data, function(obj) { order = obj; }); },
+	'parsed' : function () { $.parseJSON(order, function(obj) { order.bits.parsed = data; }); },
+	'string' : function () { data = JSON.stringify(order); },//; var string = data; order.bits.string = string; },
 
 	'get'    : function () {
 		file.order.load.details();
@@ -137,6 +135,6 @@ var file = {
 		file.order.set.title();
 		localStorage.setItem(order.title.sort, order.stringy);
 	}
-}
+};
 
 document.body.onload = file.init;

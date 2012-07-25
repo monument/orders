@@ -1,0 +1,82 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+html {
+  background: url("../img/background-absurdidad.png");
+}
+
+body {
+  width: 940px;
+  margin: 10px auto;
+  background: white;
+  font-family: Segoe UI;
+  font-size: 85%; 
+}
+
+table {
+  border-collapse: collapse; 
+}
+
+input:not([type]), input[type="number"], input[type="date"], textarea, select {
+  width: 100%;
+  padding: 1px 0px;
+  height: inherit; 
+}
+
+input[type="checkbox"], input[type="radio"] {
+  margin: 3px 3px 0px 5px;
+  vertical-align: baseline; 
+}
+
+textarea {
+  margin: 0 0 -1px; 
+}
+
+header hgroup, header div {
+  float: left;
+  text-align: center; }
+header hgroup { width: 540px; }
+header hgroup h2 {
+  font-weight: normal;
+  font-size: 100%;
+  line-height: inherit; 
+}
+header div {
+  width: 380px;
+  margin-bottom: 10px; 
+}
+header div img {
+  height: 76px; 
+}
+
+#material { padding: 6px 12px 10px; }
+#material .qty { width: 50px; }
+#material .piece { width: 125px; }
+#material .material { width: 125px; }
+#material .kind { width: 125px; }
+#material .finish { width: 125px; }
+#material .length { width: 70px; }
+#material .width { width: 70px; }
+#material .height { width: 70px; }
+#material .notes { width: 100%; }
+#material .cost { width: 50px; }
+#material input { vetical-align: top; }
+#material td { height: 30px; }
+#material th {
+  text-transform: uppercase;
+  font-size: 90%; 
+}
+
+#material input, #material textarea, #material span {display: table-cell;}
+
+#money {
+  width: 270px; }
+#money td {
+  width: 50%; }
+
+#design {
+  -webkit-column-count: 2; }
+  #design label {
+    display: block; }
+  #design label > label {
+    display: inline; }
