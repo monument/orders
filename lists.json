@@ -1,0 +1,11 @@
+{
+	"piece-list":        ["Tablet", "Base", "Vase", "Bench", "Slant", "Bevel", "Sub-base", "Statuary", "Landscape"],
+	"material-list":     ["Bronze", "Granite", "Marble", "Concrete"],
+	"granite-kind-list": ["Gray", "Morning Rose", "Mahogany", "Black", "Green"],
+	"finish-list":       ["Polish 2", "Polish 3", "Polish 5", "All-Polish"],
+	"foundation-list":   ["Concrete Pad", "Granite Pad"],
+	"foundation-types":  ["Pad Only", "Deep (18 inches)"],
+	"carving-type":      ["Flat", "Shape", "Etching"],
+	"design-facings":    ["East", "West", "North", "South"],
+	"common-designs":    ["Roses"]
+}
