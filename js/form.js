@@ -1,46 +1,51 @@
-var order, file, qdata;
+var order, money;
+function f(element) { return document.getElementById(element); } // Wrapper for document.getElementById
 
-function f(element) { return document.getElementById(element); }
-
-////
-function label(data) {return "<label>" + data + "</label>";}
-function input(id, type) {return "<input id=\"" + id + "\" type=\"" + type + "\" />";}
-function form(id, data) {return "<form id=\"details\">" + data + "</form>";}
-var details = form(details, label('Name On Order')+input('order-title', 'text'));
-
-////
-function calc() {
+function calculateMoney() {
 	"use strict";
-	var subtotal, taxRate, tax, setting, fees, total, paid, balance;
-	var money = [ f('money-monument'), f('money-marker'), f('money-vase'), f('money-lettering'), f('money-foundation'), f('money-subtotal'), f('money-tax'), f('money-installation'), f('money-fees'), f('money-total'), f('money-paid'), f('money-balance') ];
 
-	subtotal = money[0].valueAsNumber + money[1].valueAsNumber + money[2].valueAsNumber + money[3].valueAsNumber + money[4].valueAsNumber;
+	money = {
+		"monument":   f("monumentCost").valueAsNumber,
+		"marker":     f("markerCost").valueAsNumber,
+		"vase":       f("vaseCost").valueAsNumber,
+		"lettering":  f("letteringCost").valueAsNumber,
+		"foundation": f("foundationCost").valueAsNumber,
+		"subtotal":   f("subtotal").valueAsNumber,
+		"tax":        f("tax").valueAsNumber,
+		"setting":    f("settingCost").valueAsNumber,
+		"fees":       f("fees").valueAsNumber,
+		"total":      f("totalCost").valueAsNumber,
+		"paid":       f("amountPaid").valueAsNumber,
+		"due":        f("balanceDue").valueAsNumber,
+		"v": {
+			"subtotal":   f("subtotal").value,
+			"tax":        f("tax").value,
+			"total":      f("totalCost").value,
+			"due":        f("balanceDue").value
+		}
+	};
 
-	taxRate = 0.08517;            // The local tax rate.
-	tax     = subtotal * taxRate;   // The amount of tax.
-	setting = money[7].valueAsNumber; // The setting fees.
-	fees    = money[8].valueAsNumber;   // Any other fees.
-	total   = tax + subtotal + setting + fees;  // Add these together...
-	paid    = money[10].valueAsNumber;          // ...mix in the amount paid...
-	balance = total - paid;                     // ...and return the balance.
+	function subtotal(){ return money.monument + money.marker + money.vase + money.lettering + money.foundation; }
+	function tax()     { return subtotal() * 0.08517; }
+	function fees()    { return money.fees; }
+	function setting() { return money.setting; }
+	function total()   { return subtotal() + tax() + setting() + fees(); }
+	function paid()    { return money.paid; }
+	function balance() { return total() - paid(); }
 
-	money[5].value  = subtotal;
-	money[6].value  = tax;
-	money[9].value  = total;
-	money[11].value = balance;
-
-	// Set the onchange attribute to call calc for each money cell that is editable.
-	for (var i = 0; i < money.length; i++)
-		if( money[i].readOnly === false ) money[i].onchange = calc;
+	money.v.subtotal = subtotal();
+	money.v.tax      = tax();
+	money.v.total    = total();
+	money.v.balance  = balance();
 }
 
 var file = {
-	'name'   : "hawk_victoria_m",
+	'name'   : "",
 	'init'   : function () {
 		"use strict";
-		file.load( file.set(file.name) );
-		calc();
-		file.get();
+		//file.load( file.set(file.name) );
+		calculateMoney();
+		//file.get();
 	},
 	'order'  : {
 		'get' : {
@@ -53,7 +58,7 @@ var file = {
 			},
 			'materials' : function () {
 				var rows = 3;
-				qdata = {};
+				var qdata = {};
 				qdata.qty = [];
 				for (var i = 1; i <= rows; i++) {
 					//qdata.qty = qdata.qty.push('qty-piece-' + i);
