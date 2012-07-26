@@ -8,7 +8,10 @@
 <body>
 
 <header>
-    <h1 id="order-title" contenteditable>Richard Swayne "Blackhawk" Perkins, Jr.</h1>
+    <hgroup>
+        <h1 id="order-title" contenteditable>Richard Swayne "Blackhawk" Perkins, Jr.</h1>
+        <input id="order-date" type="date" />
+    </hgroup>
     <a href="#money" id="show-money"></a>
     <nav id="categories">
         <ul>
@@ -23,68 +26,40 @@
 </header>
 
 <div id="order">
-    <form id="details">
-        <label>Name On Order</label><input id="order-title" />
-        <label>Today's Date <input id="order-date" type="date" /></label>
-    </form>
-
     <form id="material">
         <table>
-            <tbody>
+            <thead>
                 <tr>
-                    <th class="qty">Qty</th>
-                    <th class="piece">Piece</th>
-                    <th class="material">Material</th>
-                    <th class="kind">Kind</th>
-                    <th class="finish">Finish</th>
-                    <th class="length">Length</th>
-                    <th class="width">Width</th>
-                    <th class="height">Height</th>
-                    <th class="notes">Notes</th>
-                    <th class="cost">$$$</th>
+                    <th>Qty</th>
+                    <th>Piece</th>
+                    <th>Material</th>
+                    <th>Kind</th>
+                    <th>Finish</th>
+                    <th>Length</th>
+                    <th>Width</th>
+                    <th>Height</th>
+                    <th>Notes</th>
+                    <th></th>
                 </tr>
-                <tr id="piece1">
-                    <td><input class="qty" type="number" /></td>
-                    <td><input class="piece" list="piece-list" /></td>
-                    <td><input class="material" list="material-list" /></td>
-                    <td><input class="kind" list="kind-list" /></td>
-                    <td><input class="finish" list="finish-list" /></td>
-                    <td><input class="length" type="number" /></td>
-                    <td><input class="width" type="number" /></td>
-                    <td><input class="height" type="number" /></td>
-                    <td><textarea class="notes" rows="1" ></textarea></td>
-                    <td><span class="cost"></span></td>
-                </tr>
-                <tr id="piece2">
-                    <td><input class="qty" type="number" /></td>
-                    <td><input class="piece" list="piece-list" /></td>
-                    <td><input class="material" list="material-list" /></td>
-                    <td><input class="kind" list="kind-list" /></td>
-                    <td><input class="finish" list="finish-list" /></td>
-                    <td><input class="length" type="number" /></td>
-                    <td><input class="width" type="number" /></td>
-                    <td><input class="height" type="number" /></td>
-                    <td><textarea class="notes" rows="1" ></textarea></td>
-                    <td><span class="cost"></span></td>
-                </tr>
-                <tr id="piece3">
-                    <td><input class="qty" type="number" /></td>
-                    <td><input class="piece" list="piece-list" /></td>
-                    <td><input class="material" list="material-list" /></td>
-                    <td><input class="kind" list="kind-list" /></td>
-                    <td><input class="finish" list="finish-list" /></td>
-                    <td><input class="length" type="number" /></td>
-                    <td><input class="width" type="number" /></td>
-                    <td><input class="height" type="number" /></td>
-                    <td><textarea class="notes" rows="1" ></textarea></td>
-                    <td><span class="cost"></span></td>
+            </thead>
+            <tbody data-bind="foreach:pieces">
+                <tr> <!-- id="piece1" -->
+                    <td><input class="qty" data-bind="value: qty" type="number" /></td>
+                    <td><input class="part" data-bind="value: part" list="part-list" /></td>
+                    <td><input class="material" data-bind="value: material" list="material-list" /></td>
+                    <td><input class="kind" data-bind="value: kind" list="kind-list" /></td>
+                    <td><input class="finish" data-bind="value: finish" list="finish-list" /></td>
+                    <td><input class="length" data-bind="value: length" type="number" /></td>
+                    <td><input class="width" data-bind="value: width" type="number" /></td>
+                    <td><input class="height" data-bind="value: height" type="number" /></td>
+                    <td><textarea class="notes" data-bind="value: notes" rows="1"></textarea></td>
+                    <td><button class="delete action" data-bind="click: $root.delPiece">Remove</button></td>
                 </tr>
             </tbody>
-            <tfoot>
-
+            <!-- <tfoot>
                 <tr id="foundation">
                     <td><input class="qty" type="number" value="1" /></td>
-                    <td><span class="piece">Foundation</span></td>
+                    <td><span class="part">Foundation</span></td>
                     <td><input class="material" list="foundation-material" /></td>
                     <td colspan="2"><input class="kind" list="foundation-list" /></td>
                     <td><input class="length" type="number" /></td>
@@ -93,73 +68,74 @@
                     <td><textarea class="notes" rows="1" ></textarea></td>
                     <td><span class="cost"></span></td>
                 </tr>
-            </tfoot>
+            </tfoot> -->
+        </table>
+        <button data-bind="click: addPiece">Add a piece</button>
+    </form>
+
+    <form id="money">
+        <table>
+            <tr>
+                <td><label for="monumentCost">Monument</label></td>
+                <td><input id="monumentCost" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="markerCost">Marker</label></td>
+                <td><input id="markerCost" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="vaseCost">Vase(s)</label></td>
+                <td><input id="vaseCost" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="letteringCost">Extra Lettering</label></td>
+                <td><input id="letteringCost" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="foundationCost">Foundation</label></td>
+                <td><input id="foundationCost" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="subtotal">Subtotal</label></td>
+                <td><input id="subtotal" type="number" readonly /></td>
+            </tr>
+            <tr>
+                <td><label for="tax">Sales Tax</label></td>
+                <td><input id="tax" type="number" readonly /></td>
+            </tr>
+            <tr>
+                <td><label for="settingCost">Install/Delivery</label></td>
+                <td><input id="settingCost" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="fees">Applicable Fees</label></td>
+                <td><input id="fees" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="totalCost">Total Price</label></td>
+                <td><input id="totalCost" type="number" readonly /></td>
+            </tr>
+            <tr>
+                <td><label for="amountPaid">Paid</label></td>
+                <td><input id="amountPaid" type="number" value="0" /></td>
+            </tr>
+            <tr>
+                <td><label for="balanceDue">Balance Due</label></td>
+                <td><input id="balanceDue" type="number" readonly /></td>
+            </tr>
         </table>
     </form>
 
-    <div id="money">
-        <table>
-            <tr>
-                <td><label for="money-monument">Monument</label></td>
-                <td><input id="money-monument" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-marker">Marker</label></td>
-                <td><input id="money-marker" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-vase">Vase(s)</label></td>
-                <td><input id="money-vase" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-lettering">Extra Lettering</label></td>
-                <td><input id="money-lettering" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-foundation">Foundation</label></td>
-                <td><input id="money-foundation" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-subtotal">Sub-total</label></td>
-                <td><input id="money-subtotal" type="number" readonly /></td>
-            </tr>
-            <tr>
-                <td><label for="money-tax">Sales Tax</label></td>
-                <td><input id="money-tax" type="number" readonly /></td>
-            </tr>
-            <tr>
-                <td><label for="money-installation">Install/Delivery</label></td>
-                <td><input id="money-installation" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-fees">Applicable Fees</label></td>
-                <td><input id="money-fees" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-total">Total Price</label></td>
-                <td><input id="money-total" type="number" readonly /></td>
-            </tr>
-            <tr>
-                <td><label for="money-paid">Paid</label></td>
-                <td><input id="money-paid" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="money-balanace">Balance Due</label></td>
-                <td><input id="money-balance" type="number" readonly /></td>
-            </tr>
-        </table>
-    </div>
-
     <form id="design">
-        <label>Carving Type             <input id="design-carving"  list="carving-type"     /></label>
-        <label>Family Name on Back      <input id="design-name"     type="checkbox"         /></label>
-        <label>Special Artwork          <input id="design-artwork"  type="checkbox"         /></label>
-        <label>Match Rubbing            <input id="design-match"    type="checkbox"         /></label>
-        <label>Lettering Faces          <input id="design-facing"   list="design-facings"   /></label>
-        <label>Name On Left             <input id="design-onleft"                           /></label>
-        <label>Name Positions Checked   <input id="design-position" type="checkbox"         /></label>
-        <label>Design                   <input id="design-title"    list="common-designs"   /></label>
-        <label>Additional Information   <input id="design-info"                             /></label>
+        <label>Carving Type           <input id="design-carving"  list="carving-type"   /></label>
+        <label>Family Name on Back    <input id="design-name"     type="checkbox"       /></label>
+        <label>Special Artwork        <input id="design-artwork"  type="checkbox"       /></label>
+        <label>Match Rubbing          <input id="design-match"    type="checkbox"       /></label>
+        <label>Lettering Faces        <input id="design-facing"   list="design-facings" /></label>
+        <label>Name On Left           <input id="design-onleft"                         /></label>
+        <label>Name Positions Checked <input id="design-position" type="checkbox"       /></label>
+        <label>Design                 <input id="design-title"    list="common-designs" /></label>
+        <label>Additional Information <input id="design-info"                           /></label>
     </form>
 
     <form id="delivery">
@@ -171,6 +147,7 @@
     <form id="info">
         <div id="info-preview"></div>
         <textarea id="info-more"></textarea>
+
         <p>Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
         <h2>Location in Cemetery</h2>
         <label>Section        <input id="info-cemetery-section" /></label>
@@ -187,10 +164,10 @@
         <label>Phone          <input id="info-sig-phone" type="tel" /></label>
     </form>
 
-    <div id="notes"></div>
+    <form id="notes"></form>
 </div>
 
-<datalist id="piece-list">
+<datalist id="part-list">
     <option value="Tablet" />
     <option value="Base" />
     <option value="Vase" />
@@ -246,7 +223,10 @@
     <option value="Roses" />
 </datalist>
 
-<script src="js/jquery.js"></script>
+<script src="js/jquery.js" async></script>
+<script src="js/knockout-2.1.0.js"></script>
+<script src="js/form-knockout.js"></script>
+<script src="js/knockout.mapping.latest.js"></script>
 <script src="js/form.js"></script>
 </body>
 </html>
