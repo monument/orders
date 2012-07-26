@@ -1,24 +1,22 @@
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+/* Eradicate the webkit spinner button */
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
-html {
-  background: url("../img/background-absurdidad.png");
-}
+/*                   */
+/*    Base Styles    */
+/*                   */
 
 body {
-  width: 940px;
+  width: 70%;
   margin: 10px auto;
   background: white;
   font-family: Segoe UI;
   font-size: 85%; 
 }
 
-table {
-  border-collapse: collapse; 
-}
+table { border-collapse: collapse; }
 
 input:not([type]), input[type="number"], input[type="date"], textarea, select {
-  width: 100%;
+  width: inherit;
   padding: 1px 0px;
   height: inherit; 
 }
@@ -28,30 +26,48 @@ input[type="checkbox"], input[type="radio"] {
   vertical-align: baseline; 
 }
 
-textarea {
-  margin: 0 0 -1px; 
+
+/*                   */
+/*      Header       */
+/*                   */
+
+header hgroup {
+  margin: .5em 0;
+  min-height: 3em
+}
+header h1 {
+  float: left;
+  margin: 0 0 .5em;
+}
+header input {
+  float: right;
+  margin-top: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+}
+header nav {
+  clear: both;
+  display: none;
 }
 
-header hgroup, header div {
-  float: left;
-  text-align: center; }
-header hgroup { width: 540px; }
-header hgroup h2 {
-  font-weight: normal;
-  font-size: 100%;
-  line-height: inherit; 
-}
-header div {
-  width: 380px;
-  margin-bottom: 10px; 
-}
-header div img {
-  height: 76px; 
+table > input:not([type]), 
+table > input[type="number"], 
+table > input[type="date"], 
+table > textarea, 
+table > select {
+  width: 100%;
+  padding: 1px 0px;
+  height: inherit; 
 }
 
 #material { padding: 6px 12px 10px; }
-#material .qty { width: 50px; }
-#material .piece { width: 125px; }
+#material td { height: 30px; }
+#material th {
+  text-transform: uppercase;
+  font-size: 90%; 
+}
+#material .qty { width: 50px; text-align: center; }
+#material .part { width: 125px; }
 #material .material { width: 125px; }
 #material .kind { width: 125px; }
 #material .finish { width: 125px; }
@@ -59,24 +75,28 @@ header div img {
 #material .width { width: 70px; }
 #material .height { width: 70px; }
 #material .notes { width: 100%; }
-#material .cost { width: 50px; }
-#material input { vetical-align: top; }
-#material td { height: 30px; }
-#material th {
-  text-transform: uppercase;
-  font-size: 90%; 
-}
+#material .cost { width: 50px; display: none;}
 
-#material input, #material textarea, #material span {display: table-cell;}
 
 #money {
-  width: 270px; }
-#money td {
-  width: 50%; }
-
+  width: 15%; 
+  position: absolute;
+  top: 6em;
+  right: 15%;
+  background: white;
+  border: solid 1px #444;
+  box-shadow: 0 0 #444;
+  display: none;
+}
+#money td { width: 50%; }
+#money td input {width: 95%}
 #design {
-  -webkit-column-count: 2; }
-  #design label {
-    display: block; }
-  #design label > label {
-    display: inline; }
+  -webkit-column-count: 2; 
+  -moz-column-count: 2;
+}
+#design label {
+  display: block; 
+}
+#design label > label {
+  display: inline; 
+}
