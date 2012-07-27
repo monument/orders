@@ -125,7 +125,7 @@ var file = {
 			'status'    : function () {}
 		}
 	},
-	'save'   : function (data) { return "../data/" + data + ".json"; },
+	'save'   : function () { return "orders.json"; },
 	'load'   : function (data) { $.getJSON(data, function(obj) { order = obj; }); },
 	'parsed' : function () { $.parseJSON(order, function(obj) { order.bits.parsed = data; }); },
 	'string' : function () { data = JSON.stringify(order); },//; var string = data; order.bits.string = string; },
