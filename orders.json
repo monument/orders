@@ -1,5 +1,6 @@
 {
 	"hawk_victoria_m": {
+		"status": "Completed",
 		"details": {
 			"date": "5-23-2012", 
 			"by": "Kyle MacKay Rives", 
@@ -139,6 +140,7 @@
 		}
 	},
 	"smith_edward_allen": {
+		"status": "Ready to Set",
 		"details": {
 			"date": "4-02-2012", 
 			"by": "Mike Rives, Sr.", 
