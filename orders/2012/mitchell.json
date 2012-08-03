@@ -1,0 +1,109 @@
+{
+	"overall": "Drawing-In-Process",
+	"details": {
+		"date": "07062012", 
+		"by": "Opal Rives", 
+		"at": "Admiral", 
+		"notes": "Waiting on wedding date",
+		"title": {
+			"full": "Mitchell",
+			"sort": "mitchell",
+			"names": ["Mitchell"] 
+		}
+	},
+	"materials": {
+		"1": {
+			"part": "slant", 
+			"material": "granite", 
+			"kind": "China Gray", 
+			"finish": "Polish 2",
+			"quantity": 1, 
+			"length": 36, 
+			"width": 10, 
+			"height": 16, 
+			"notes": "Polish Face" ,
+			"cost": 490
+		},
+		"foundation": {
+			"deep": false, 
+			"pad": "concrete", 
+			"length": 48,
+			"width": 24,
+			"height": null,
+			"notes": "",
+			"cost": 200
+		}
+	},
+	"design": {
+		"preview": "mitchell.svg",
+		"title": "Rose and Dove in each upper corner",
+		"carving": "flat", 
+		"artwork": "",
+		"family-name": false,
+		"match": false,
+		"face": {
+			"direction": "west", 
+			"on-left": "Delia",
+			"verified": false
+		}
+	},
+	"setting": {
+		"cemetery": {
+			"name": "Talala", 
+			"in-near": "Talala, OK",
+			"contact": {
+				"name": "",
+				"phone": ""
+			},
+			"location": {
+				"section": "",
+				"block": "",
+				"lot": "",
+				"spaces": ""
+			}
+		},
+		"fee": 300
+	},
+	"signature": {
+		"image": "mitchell.png",
+		"name": "Beck Ellison",
+		"address": {
+			"street": "5420 E. 34th St. N",
+			"city": "Tulsa", 
+			"state": "OK", 
+			"zip": 74115, 
+			"phone": 9186397742 
+		}
+	},
+	"status": {
+		"written": "07062012",
+		"special": "ASAP",
+		"drawing": {
+			"completed": null,
+			"out": null,
+			"approved": null,
+			"production": null
+		},
+		"bronze": null,
+		"vases": null,
+		"stone": {
+			"ordered": "in-stock",
+			"acknowledged": null,
+			"received": null,
+			"production": null,
+			"office": null,
+			"contacted": null,
+			"approved": null,
+			"by": "LMR"
+		},
+		"setting": {
+			"paid": null,
+			"installed": null 
+		},
+		"notified": {
+			"date": null,
+			"via": "",
+			"by": ""
+		}
+	}
+}
