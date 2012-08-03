@@ -1,0 +1,38 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <title>Mitchell</title>
+ <g>
+  <title>Stone</title>
+  <path d="m72,92c170,-93 316,-85 477,0" stroke-width="5" stroke="#000000" fill="none"/> <!-- top -->
+  <line y2="430" x2="71" y1="90" x1="71" stroke-width="5" stroke="#000000" fill="none"/> <!-- left side -->
+  <line y2="430" x2="550" y1="90" x1="550" stroke-width="5" stroke="#000000" fill="none"/> <!-- right side -->
+  <line y2="427" x2="550" y1="427" x1="71" stroke-width="5" stroke="#000000" fill="none"/> <!-- bottom -->
+ </g>
+ <g>
+  <title>Family Name</title>
+  <text font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="36" y="122" x="314" stroke-width="0" stroke="#000000" fill="#000000">Mitchell</text>
+  <circle r="25" cy="345" cx="290" stroke-width="5" stroke="#000000" fill="none"/>
+  <circle r="25" cy="345" cx="314" stroke-width="5" stroke="#000000" fill="none"/>
+  <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="167" x="313" stroke-width="0" stroke="#000000" fill="#000000">In Loving Memory</text>
+  <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="14" y="391" x="302" stroke-width="0" stroke="#000000" fill="#000000">Married XXX</text>
+ </g>
+ <g>
+  <title>Delia</title>
+  <rect height="95" width="200" y="195" x="100" stroke-width="5" stroke="#000000" fill="none"/>
+  <g>
+   <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="225" x="200" stroke-width="0" stroke="#000000" fill="#000000">Delia Ruth (Allen)</text>
+   <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="250" x="200" stroke-width="0" stroke="#000000" fill="#000000">Apr. 30, 1925</text>
+   <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="275" x="200" stroke-width="0" stroke="#000000" fill="#000000">Dec. 21, 2010</text>
+  </g>
+ </g>
+ <g>
+  <title>Richard</title>
+  <rect height="95" width="200" y="195" x="325" stroke-width="5" stroke="#000000" fill="none"/>
+  <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="18" y="315" x="420" stroke-width="0" stroke="#000000" fill="#000000">US Army WWII</text>
+  <g>
+   <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="225" x="420" stroke-width="0" stroke="#000000" fill="#000000">Richard Hester</text>
+   <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="250" x="420" stroke-width="0" stroke="#000000" fill="#000000">Sept. 27, 1922</text>
+   <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="275" x="420" stroke-width="0" stroke="#000000" fill="#000000">May 7, 1976</text>
+  </g>
+ </g>
+</svg>
