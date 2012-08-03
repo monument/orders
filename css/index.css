@@ -62,20 +62,17 @@ table > select {
 
 #material { padding: 6px 12px 10px; }
 #material td { height: 30px; }
-#material th {
-  text-transform: uppercase;
-  font-size: 90%; 
-}
-#material .qty { width: 50px; text-align: center; }
-#material .part { width: 125px; }
+#material th { text-transform: uppercase; font-size: 90%; }
+#material .qty      { width: 50px; text-align: center; }
+#material .part     { width: 100px; }
 #material .material { width: 125px; }
-#material .kind { width: 125px; }
-#material .finish { width: 125px; }
-#material .length { width: 70px; }
-#material .width { width: 70px; }
-#material .height { width: 70px; }
-#material .notes { width: 100%; }
-#material .cost { width: 50px; display: none;}
+#material .kind     { width: 125px; }
+#material .finish   { width: 125px; }
+#material .length   { width: 70px; }
+#material .width    { width: 70px; }
+#material .height   { width: 70px; }
+#material .notes    { width: 70px; }
+#material .cost     { width: 50px; display: none; }
 
 
 #money {
@@ -99,4 +96,11 @@ table > select {
 }
 #design label > label {
   display: inline; 
+}
+
+
+/* Info */
+#info-preview img {
+  width: 320px;
+  height: 240px;
 }

@@ -9,7 +9,7 @@
 
 <header>
     <hgroup>
-        <h1 id="order-title" contenteditable>Richard Swayne "Blackhawk" Perkins, Jr.</h1>
+        <h1 id="order-title" contenteditable>Name On Order</h1>
         <input id="order-date" type="date" />
     </hgroup>
     <a href="#money" id="show-money"></a>
@@ -127,15 +127,30 @@
     </form>
 
     <form id="design">
-        <label>Carving Type           <input id="design-carving"  list="carving-type"   /></label>
-        <label>Family Name on Back    <input id="design-name"     type="checkbox"       /></label>
-        <label>Special Artwork        <input id="design-artwork"  type="checkbox"       /></label>
-        <label>Match Rubbing          <input id="design-match"    type="checkbox"       /></label>
-        <label>Lettering Faces        <input id="design-facing"   list="design-facings" /></label>
-        <label>Name On Left           <input id="design-onleft"                         /></label>
-        <label>Name Positions Checked <input id="design-position" type="checkbox"       /></label>
-        <label>Design                 <input id="design-title"    list="common-designs" /></label>
-        <label>Additional Information <input id="design-info"                           /></label>
+        <label>Carving Type           
+            <select id="design-carving">
+                <option value="none">None</option>
+                <option value="flat">Flat</option>
+                <option value="shape">Shape</option>
+                <option value="etching">Etching</option>
+            </select>
+        </label>
+        <label>Family Name on Back    <input id="design-name" type="checkbox" /></label>
+        <label>Special Artwork        <input id="design-artwork" type="checkbox" /></label>
+        <label>Match Rubbing          <input id="design-match" type="checkbox" /></label>
+        <label>Lettering Faces        
+            <select id="design-facing">
+                <option value="unknown">Unknown</option>
+                <option value="north">North</option>
+                <option value="south">South</option>
+                <option value="east">East</option>
+                <option value="west">West</option>
+            </select>
+        </label>
+        <label>Name On Left           <input id="design-onleft" /></label>
+        <label>Name Positions Checked <input id="design-position" type="checkbox" /></label>
+        <label>Design                 <input id="design-title" list="common-designs" /></label>
+        <label>Additional Information <input id="design-info" /></label>
     </form>
 
     <form id="delivery">
@@ -145,23 +160,36 @@
     </form>
 
     <form id="info">
-        <div id="info-preview"></div>
-        <textarea id="info-more"></textarea>
+        <div id="preview">
+            <ul class="nav nav-tabs">
+                <li><a href="#preview-front" data-toggle="tab">Front</a></li>
+                <li><a href="#preview-back" data-toggle="tab">Back</a></li>
+            </ul>
+            <img id="preview-front" src="orders/2012/mitchell-front.svg" />
+            <img id="preview-back" src="orders/2012/mitchell-back.svg" />
+            <textarea id="info-more"></textarea>
+        </div>
 
         <p>Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
-        <h2>Location in Cemetery</h2>
-        <label>Section        <input id="info-cemetery-section" /></label>
-        <label>Block          <input id="info-cemetery-block" /></label>
-        <label>Lot            <input id="info-cemetery-lot" /></label>
-        <label>Space(s)       <input id="info-cemetery-space" /></label>
-        <label>Representative <input id="info-rep" /></label>
-        <label>Signature      <input id="info-sig-signature" /></label>
-        <label>Name           <input id="info-sig-name" /></label>
-        <label>Address        <input id="info-sig-address" /></label>
-        <label>City           <input id="info-sig-city" /></label>
-        <label>State          <input id="info-sig-state" /></label>
-        <label>Zip            <input id="info-sig-zip" /></label>
-        <label>Phone          <input id="info-sig-phone" type="tel" /></label>
+
+        <div id="location">
+            <h2>Location in Cemetery</h2>
+            <label>Section        <input id="info-cemetery-section" /></label>
+            <label>Block          <input id="info-cemetery-block" /></label>
+            <label>Lot            <input id="info-cemetery-lot" /></label>
+            <label>Space(s)       <input id="info-cemetery-space" /></label>
+            <label>Representative <input id="info-rep" /></label>
+        </div>
+        <div id="signature">
+            <h2></h2>
+            <label>Signature      <input id="info-sig-signature" /></label>
+            <label>Name           <input id="info-sig-name" /></label>
+            <label>Address        <input id="info-sig-address" /></label>
+            <label>City           <input id="info-sig-city" /></label>
+            <label>State          <input id="info-sig-state" /></label>
+            <label>Zip            <input id="info-sig-zip" /></label>
+            <label>Phone          <input id="info-sig-phone" type="tel" /></label>
+        </div>
     </form>
 
     <form id="notes"></form>
@@ -226,7 +254,8 @@
 <script src="js/jquery.js" async></script>
 <script src="js/knockout-2.1.0.js"></script>
 <script src="js/form-knockout.js"></script>
-<script src="js/knockout.mapping.latest.js"></script>
+<script src="js/bootstrap-tab.js"></script>
+<!-- <script src="js/knockout.mapping.latest.js"></script> -->
 <script src="js/form.js"></script>
 </body>
 </html>
