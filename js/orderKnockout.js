@@ -16,16 +16,6 @@ function Piece(qty, part, material, kind, finish, length, width, height, notes, 
 // Overall viewmodel for this screen, along with initial state
 function MaterialViewModel() {
     var self = this;
-  
-    self.partList = ["Tablet", "Base", "Vase", "Bench", "Slant", "Bevel", "Sub-base", "Statuary", "Landscape"];
-    self.materialList = ["Bronze", "Granite", "Marble", "Concrete"];
-    self.graniteKind = ["Gray", "Morning Rose", "Mahogany", "Black", "Green"],
-    self.finishList = ["Polish 2", "Polish 3", "Polish 5", "All-Polish"];
-    self.foundationList = ["Concrete Pad", "Granite Pad"];
-    self.foundationTypes = ["Pad Only", "Deep (18 inches)"];
-    self.carvingType = ["Flat", "Shape", "Etching"];
-    self.designFacings = ["East", "West", "North", "South"];
-    self.commonDesigns = ["Roses"];
 
     // Editable data
     self.pieces = ko.observableArray([
