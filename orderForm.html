@@ -15,277 +15,231 @@
         <nav id="categories">
             <ul>
                 <li class="active"><a href="#overview">Overview</a></li>
-                <li>Materials</li>
-                <li>Design</li>
-                <li>Delivery</li>
-                <li>Status</li>
-                <li>Notes</li>
+                <li><a href="#status">Status</a></li>
             </ul>
         </nav>
     </hgroup>
     <aside>
-        <input type="date" id="order-date" />
-        <span id="amount">305.68</span>
-        <input list="order-status" id="order-status" />
+        <input type="date" id="order-date" value="10/20/2011" />
+        <span id="amount" class="amount">305.68</span>
+        <input list="order-status" id="order-status" value="Drawing In Process" />
     </aside>
 </header>
 
 <div id="order">
     <div id="overview">
-        <div class="block" id="order-progress">
-            <progress>50</progress>
-            <span class="order-status">Drawing In Process</span>
-        </div>
-        <div class="block" id="order-delivery">
-            <p>
-                <span class="deliver-to">Will be picked up</span>
-                on
-                <time>June 20th</time>.
-            </p>
-            <iframe class="map"></iframe>
-        </div>
-        <div class="codemirror markdown" id="notes"></div>
-    </div>
-    <form id="material">
-        <table>
-            <thead>
-                <tr>
+        <div class="main">
+            <div id="order-progress" style="margin-bottom: 25px">
+                <meter value="20" max="100">20%</meter>
+                <span rel="tooltip" title="first tooltip" class="order-status">Drawing In Process</span>
+            </div>
+            <table id="material" class="striped table">
+                <thead><tr>
                     <th>Qty</th>
                     <th>Piece</th>
                     <th>Material</th>
                     <th>Kind</th>
-                    <th>Finish</th>
-                    <th>Length</th>
-                    <th>Width</th>
-                    <th>Height</th>
+                    <th colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
                     <th>Notes</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody data-bind="foreach:pieces">
-                <tr> <!-- id="piece1" -->
-                    <td><input class="qty" data-bind="value: qty" type="number" /></td>
-                    <td><input class="part" data-bind="value: part" list="part-list" /></td>
+                    <th>Cost</th>
+                    <th><button data-bind="click: addPiece">+</button></th>
+                </tr></thead>
+                <tbody data-bind="foreach:pieces"><tr>
+                    <td><input class="qty"      data-bind="value: qty" type="number" /></td>
+                    <td><input class="part"     data-bind="value: part" list="part-list" /></td>
                     <td><input class="material" data-bind="value: material" list="material-list" /></td>
-                    <td><input class="kind" data-bind="value: kind" list="kind-list" /></td>
-                    <td><input class="finish" data-bind="value: finish" list="finish-list" /></td>
-                    <td><input class="length" data-bind="value: length" type="number" /></td>
-                    <td><input class="width" data-bind="value: width" type="number" /></td>
-                    <td><input class="height" data-bind="value: height" type="number" /></td>
-                    <td><textarea class="notes" data-bind="value: notes" rows="1"></textarea></td>
-                    <td><button class="delete action" data-bind="click: $root.delPiece">Remove</button></td>
-                </tr>
-            </tbody>
-            <!-- <tfoot>
-                <tr id="foundation">
-                    <td><input class="qty" type="number" value="1" /></td>
-                    <td><span class="part">Foundation</span></td>
-                    <td><input class="material" list="foundation-material" /></td>
-                    <td colspan="2"><input class="kind" list="foundation-list" /></td>
-                    <td><input class="length" type="number" /></td>
-                    <td><input class="width"  type="number" /></td>
-                    <td><input class="height" type="number" /></td>
-                    <td><textarea class="notes" rows="1" ></textarea></td>
-                    <td><span class="cost"></span></td>
-                </tr>
-            </tfoot> -->
-        </table>
-        <button data-bind="click: addPiece">Add a piece</button>
-    </form>
-
-    <form id="money">
-        <table>
-            <tr>
-                <td><label for="monumentCost">Monument</label></td>
-                <td><input id="monumentCost" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="markerCost">Marker</label></td>
-                <td><input id="markerCost" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="vaseCost">Vase(s)</label></td>
-                <td><input id="vaseCost" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="letteringCost">Extra Lettering</label></td>
-                <td><input id="letteringCost" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="foundationCost">Foundation</label></td>
-                <td><input id="foundationCost" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="subtotal">Subtotal</label></td>
-                <td><input id="subtotal" type="number" readonly /></td>
-            </tr>
-            <tr>
-                <td><label for="tax">Sales Tax</label></td>
-                <td><input id="tax" type="number" readonly /></td>
-            </tr>
-            <tr>
-                <td><label for="settingCost">Install/Delivery</label></td>
-                <td><input id="settingCost" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="fees">Applicable Fees</label></td>
-                <td><input id="fees" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="totalCost">Total Price</label></td>
-                <td><input id="totalCost" type="number" readonly /></td>
-            </tr>
-            <tr>
-                <td><label for="amountPaid">Paid</label></td>
-                <td><input id="amountPaid" type="number" value="0" /></td>
-            </tr>
-            <tr>
-                <td><label for="balanceDue">Balance Due</label></td>
-                <td><input id="balanceDue" type="number" readonly /></td>
-            </tr>
-        </table>
-    </form>
-
-    <form id="design">
-        <label>Carving Type           
-            <select id="design-carving">
-                <option value="none">None</option>
-                <option value="flat">Flat</option>
-                <option value="shape">Shape</option>
-                <option value="etching">Etching</option>
-            </select>
-        </label>
-        <label>Family Name on Back    <input id="design-name" type="checkbox" /></label>
-        <label>Special Artwork        <input id="design-artwork" type="checkbox" /></label>
-        <label>Match Rubbing          <input id="design-match" type="checkbox" /></label>
-        <label>Lettering Faces        
-            <select id="design-facing">
-                <option value="unknown">Unknown</option>
-                <option value="north">North</option>
-                <option value="south">South</option>
-                <option value="east">East</option>
-                <option value="west">West</option>
-            </select>
-        </label>
-        <label>Name On Left           <input id="design-onleft" /></label>
-        <label>Name Positions Checked <input id="design-position" type="checkbox" /></label>
-        <label>Design                 <input id="design-title" list="common-designs" /></label>
-        <label>Additional Information <input id="design-info" /></label>
-    </form>
-
-    <form id="delivery">
-        <label>Memorial to be delivered to <input id="delivery-to" /></label>
-        <label>Cemetery in/near <input id="delivery-near" /></label>
-        <label>Name/Ph of Person who can show location <input id="delivery-contact" /></label>
-    </form>
-
-    <form id="info">
-        <div id="preview">
-            <ul class="nav nav-tabs">
-                <li><a href="#preview-front" data-toggle="tab">Front</a></li>
-                <li><a href="#preview-back" data-toggle="tab">Back</a></li>
-            </ul>
-            <img id="preview-front" src="orders/2012/mitchell-front.svg" />
-            <img id="preview-back" src="orders/2012/mitchell-back.svg" />
-            <textarea id="info-more"></textarea>
+                    <td><input class="kind"     data-bind="value: kind" list="kind-list" /></td>
+                    <td><input class="length"   data-bind="value: length" type="number" /></td>
+                    <td><input class="width"    data-bind="value: width" type="number" /></td>
+                    <td><input class="height"   data-bind="value: height" type="number" /></td>
+                    <td><input class="notes"    data-bind="value: notes" /></textarea></td>
+                    <td><input class="cost"     data-bind="value: cost" /></td>
+                    <td><button class="delete action" data-bind="click: $root.delPiece">&ndash;</button></td>
+                </tr></tbody>
+            </table>
+            <div class="block" id="delivery">
+                <p>
+                    <span class="deliver-to">Will be picked up</span>
+                    on
+                    <time>June 20th</time>.
+                </p>
+                <iframe class="map"></iframe>
+                <label>Memorial to be delivered to <input id="delivery-to" /></label>
+                <label>Cemetery in/near <input id="delivery-near" /></label>
+                <label>Name/Ph of Person who can show location <input id="delivery-contact" /></label>
+                
+                <h2>Location in Cemetery</h2>
+                <div class="box">
+                    <label>Section        <input id="info-cemetery-section" /></label>
+                    <label>Block          <input id="info-cemetery-block" /></label>
+                    <label>Lot            <input id="info-cemetery-lot" /></label>
+                    <label>Space(s)       <input id="info-cemetery-space" /></label>
+                </div>
+            </div>
+            <div class="block" id="design">
+                <div class="details">
+                    <label>Carving Type           
+                        <select id="design-carving">
+                            <option value="none">None</option>
+                            <option value="flat">Flat</option>
+                            <option value="shape">Shape</option>
+                            <option value="etching">Etching</option>
+                        </select>
+                    </label>
+                    <label>Family Name on Back <input id="design-name" type="checkbox" /></label>
+                    <label>Special Artwork     <input id="design-artwork" type="checkbox" /></label>
+                    <label>Match Rubbing       <input id="design-match" type="checkbox" /></label>
+                    <label>Lettering Faces        
+                        <select id="design-facing">
+                            <option value="unknown">Unknown</option>
+                            <option value="north">North</option>
+                            <option value="south">South</option>
+                            <option value="east">East</option>
+                            <option value="west">West</option>
+                        </select>
+                    </label>
+                    <label>Name On Left           <input id="design-onleft" /></label>
+                    <label>Name Positions Checked <input id="design-position" type="checkbox" /></label>
+                    <label>Design                 <input id="design-title" list="common-designs" /></label>
+                    <label>Additional Information <input id="design-info" /></label>
+                </div>
+                <div class="preview front"><img width="" /></div>
+                <div class="preview back"><img width="" /></div>
+                <p class="print">Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
+            </div>
+            <footer>
+                <div class="signature"><img /></div>
+                <div class="contact">
+                    <table>
+                        <tr>
+                            <td colspan="2"><label>Name: <input id="customer-name" /></label></td>
+                            <td><label>Rep: <input list="representatives" value="KMR" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" rowspan="2"><label>Street: <input type="address" value="4811 S. Jackson Ave"/></label></td>
+                            <td><label>Ph. <input id="customer-phone" type="tel" /></label></td>
+                        </tr>
+                        <tr>
+                            <td>Ext. <input type="tel" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>City: <input id="customer-city"  list="cities" /></label></td>
+                            <td><label>State: <input id="customer-state" list="states" /></label></td>
+                            <td><label>Zip: <input id="customer-zip" /></label></td>
+                        </tr>
+                    </table>    
+                </div>
+            </footer>
         </div>
+        <aside class="sidebar">
+            <div id="money">
+                <table class="table">
+                    <caption>Cost</caption>
+                    <tr class="part"><td><input list="part-list" placeholder="Monument" /></td><td><input id="partCost" type="number" value="0" /></td></tr>
+                    <tr class="foundation"><td><input list="part-list" value="Foundation" /></td><td><input id="foundationCost" type="number" value="0" /></td></tr>
+                    <tr class="subtotal"><td><input readonly value="Subtotal" /></td><td><input id="subtotal" type="number" readonly /></td></tr>
+                    <tr class="sales tax"><td><input readonly value="Sales Tax" /></td><td><input id="tax" type="number" readonly /></td></tr>
+                    <tr class="delivery"><td><input readonly value="Delivery" /></td><td><input id="settingCost" type="number" value="0" /></td></tr>
+                    <tr class="fees"><td><input readonly value="Applicable Fees" /></td><td><input id="fees" type="number" value="0" /></td></tr>
+                    <tr class="total"><td><input readonly value="Total Price" /></td><td><input id="totalCost" type="number" readonly /></td></tr>
+                </table>
+                <table class="table">
+                    <caption>Payments</caption>
+                    <tr>
+                        <td><input value="Paid" /></td><td><input class="amountPaid" type="number" value="0" /></td>
+                    </tr>
+                </table>
+                <p>Balance Due: <span class="amount">305.68</span></p>
+            </div>
+            <div class="block notepad"><!-- <textarea id="notes"></textarea> --></div>
+        </aside>
+        
+    </div>
 
-        <p>Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
 
-        <div id="location">
-            <h2>Location in Cemetery</h2>
-            <label>Section        <input id="info-cemetery-section" /></label>
-            <label>Block          <input id="info-cemetery-block" /></label>
-            <label>Lot            <input id="info-cemetery-lot" /></label>
-            <label>Space(s)       <input id="info-cemetery-space" /></label>
-            <label>Representative <input id="info-rep" /></label>
-        </div>
-        <div id="signature">
-            <h2></h2>
-            <label>Signature      <input id="info-sig-signature" /></label>
-            <label>Name           <input id="info-sig-name" /></label>
-            <label>Address        <input id="info-sig-address" /></label>
-            <label>City           <input id="info-sig-city" /></label>
-            <label>State          <input id="info-sig-state" /></label>
-            <label>Zip            <input id="info-sig-zip" /></label>
-            <label>Phone          <input id="info-sig-phone" type="tel" /></label>
-        </div>
-    </form>
+
+    <div id="status">
+    </div>
 </div>
 
-<datalist id="part-list">
-    <option value="Tablet" />
-    <option value="Base" />
-    <option value="Vase" />
-    <option value="Bench" />
-    <option value="Slant" />
-    <option value="Bevel" />
-    <option value="Sub-base" />
-    <option value="Statuary" />
-    <option value="Landscape" />
-</datalist>
-<datalist id="material-list">
-    <option value="Bronze" />
-    <option value="Granite" />
-    <option value="Marble" />
-    <option value="Concrete" />
-</datalist>
-<datalist id="kind-list">
-    <option value="Gray" />
-    <option value="Morning Rose" />
-    <option value="Mahogany" />
-    <option value="Black" />
-    <option value="Green" />
-</datalist>
-<datalist id="finish-list">
-    <option value="Polish 2" />
-    <option value="Polish 3" />
-    <option value="Polish 5" />
-    <option value="All-Polish" />
-</datalist>
+<div class="lists">
+    <datalist id="part-list">
+        <option value="Tablet" />
+        <option value="Base" />
+        <option value="Vase" />
+        <option value="Bench" />
+        <option value="Slant" />
+        <option value="Bevel" />
+        <option value="Sub-base" />
+        <option value="Statuary" />
+        <option value="Landscape" />
+        <option value="Foundation" />
+    </datalist>
+    <datalist id="material-list">
+        <option value="Bronze" />
+        <option value="Granite" />
+        <option value="Marble" />
+        <option value="Concrete" />
+    </datalist>
+    <datalist id="kind-list">
+        <option value="Gray" />
+        <option value="Morning Rose" />
+        <option value="Mahogany" />
+        <option value="Black" />
+        <option value="Green" />
+    </datalist>
+    <datalist id="finish-list">
+        <option value="Polish 2" />
+        <option value="Polish 3" />
+        <option value="Polish 5" />
+        <option value="All-Polish" />
+    </datalist>
 
-<datalist id="foundation-list">
-    <option value="Concrete Pad" />
-    <option value="Granite Pad" />
-</datalist>
-<datalist id="foundation-types">
-    <option value="Pad Only" />
-    <option value="Deep (18 inches)" />
-</datalist>
+    <datalist id="foundation-list">
+        <option value="Concrete Pad" />
+        <option value="Granite Pad" />
+    </datalist>
+    <datalist id="foundation-types">
+        <option value="Pad Only" />
+        <option value="Deep (18 inches)" />
+    </datalist>
 
-<datalist id="carving-type">
-    <option value="Flat" />
-    <option value="Shape" />
-    <option value="Etching" />
-</datalist>
-<datalist id="design-facings">
-    <option value="East" />
-    <option value="West" />
-    <option value="North" />
-    <option value="South" />
-</datalist>
+    <datalist id="carving-type">
+        <option value="Flat" />
+        <option value="Shape" />
+        <option value="Etching" />
+    </datalist>
+    <datalist id="design-facings">
+        <option value="East" />
+        <option value="West" />
+        <option value="North" />
+        <option value="South" />
+    </datalist>
 
-<datalist id="common-designs">
-    <option value="Roses" />
-</datalist>
+    <datalist id="common-designs">
+        <option value="Roses" />
+    </datalist>
 
-<datalist id="order-status">
-    <option value="Quote" />
-    <option value="Layaway" />
-    <option value="Drawing in Process" />
-    <option value="Design Approval Pending" />
-    <option value="On Order" />
-    <option value="Engraving @BMC" />
-    <option value="Engraving @Sasakwa" />
-    <option value="Final Customer Approval" />
-    <option value="To Be Set" />
-</datalist>
+    <datalist id="order-status">
+        <option value="Quote" />
+        <option value="Layaway" />
+        <option value="Drawing in Process" />
+        <option value="Design Approval Pending" />
+        <option value="On Order" />
+        <option value="Engraving @BMC" />
+        <option value="Engraving @Sasakwa" />
+        <option value="Final Customer Approval" />
+        <option value="To Be Set" />
+    </datalist>
+</div>
 
 <script src="js/jquery.js" async></script>
 <script src="js/knockout-2.1.0.js"></script>
-<!-- <script src="js/bootstrap-tab.js"></script> -->
 <script src="js/orderForm.js"></script>
 <script src="js/order.js"></script>
 <script src="js/orderKnockout.js"></script>
+<script src="codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+<script src="codemirror/mode/markdown/markdown.js"></script>
 </body>
 </html>

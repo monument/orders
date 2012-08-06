@@ -2,46 +2,71 @@
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
 
-/*                   */
+
 /*    Base Styles    */
-/*                   */
 
 body {
-    width: 70%;
+    width: 8in;
     margin: 10px auto;
     background: white;
-    font-family: Segoe UI;
+    font-family: Segoe UI, Helvetica Neue, Cantarell, Ubuntu, sans-serif;
     font-size: 85%; 
 }
 
-table { border-collapse: collapse; }
-
-input:not([type]), input[type="number"], input[type="date"], textarea, select {
-    width: inherit;
-    padding: 1px 0;
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0px; }
+tr { 
+    height: 24px; 
+}
+td { 
+    padding: 0; 
+}
+table > input:not([type]), 
+table > input[type="number"], 
+table > input[type="date"], 
+table > textarea, 
+table > select {
+    width: 100%;
+    padding: 1px 0px;
     height: inherit; 
 }
 
+/* Add preferred styling to text inputs */
+input:not([type]), input[type="number"], input[type="date"], textarea, select {
+    width: inherit;
+    padding: 1px;
+    height: inherit; 
+}
+
+/* Fix the alignment of radio buttons and checkboxes */
 input[type="checkbox"], input[type="radio"] {
     margin: 3px 3px 0 5px;
     vertical-align: baseline; 
 }
 
+.amount::before {
+    content: "$";
+}
+aside { 
+    -webkit-flex: 1;
+    margin-left: 10px;
+}
 
-/*                   */
+
 /*      Header       */
-/*                   */
 
 header {
-    display: -webkit-box;
-    -webkit-box-align: center;
+    display: -webkit-flex;
+    display: -moz-flex;
+    -webkit-justify-content: center;
 }
 header hgroup {
-    -webkit-box-flex: 2;
+    -webkit-flex: 3;
     border-right: solid 1px #444;
 }
 #order-title h1 {
-    font-family: "Segoe UI Semibold";
+    font-family: "Segoe UI Semibold", "Segoe UI", sans-serif;
     margin: 0 0 0 5px;
     display: inline;
 }
@@ -54,79 +79,129 @@ header hgroup {
     content: "";
     cursor: pointer;
 }
-aside { 
-    width: 200px;
-    margin-left: 10px
-}
+
 #amount { 
     float: right; 
     margin-top: 3px; 
     cursor: default; 
 }
-#amount::before { content: "$" }
-#order-date { width: 125px }
-#amount, #order-date {display: inline-block;}
+#order-date { 
+    width: 125px;
+}
+#amount, #order-date {
+    display: inline-block;
+}
 #order-status {
     display: block;
 }
 header nav {
-    -webkit-box-flex: 1;
+    -webkit-flex: 1;
 }
 header nav ul {
     padding: 0 0 0 20px;
 }
-
 header nav ul li {
     display: inline;
     text-transform: lowercase;
 }
-
 header nav ul li.active {
-    font-family: "Segoe UI Semibold";
+    font-family: "Segoe UI Semibold", "Segoe UI", sans-serif;
+}
+.main {
+    -webkit-flex: 3;
 }
 
-/*      Other        */
 
-#material, #money, #design, #delivery, #info {display: none}
+/* Overview */
 
-table > input:not([type]), 
-table > input[type="number"], 
-table > input[type="date"], 
-table > textarea, 
-table > select {
-    width: 100%;
-    padding: 1px 0px;
-    height: inherit; 
+.block {
+    min-height: 50px;
+    border-bottom: dashed 1px #444;
 }
-
-#material { padding: 6px 12px 10px; }
-#material td { height: 30px; }
-#material th { text-transform: uppercase; font-size: 90%; }
-#material .qty      { width: 50px; text-align: center; }
-#material .part     { width: 100px; }
-#material .material { width: 125px; }
-#material .kind     { width: 125px; }
-#material .finish   { width: 125px; }
-#material .length   { width: 70px; }
-#material .width    { width: 70px; }
-#material .height   { width: 70px; }
-#material .notes    { width: 70px; }
-#material .cost     { width: 50px; display: none; }
-
-
-#money {
-    width: 15%; 
-    position: absolute;
-    top: 6em;
-    right: 15%;
-    background: white;
-    border: solid 1px #444;
-    box-shadow: 0 0 #444;
+iframe { 
     display: none;
 }
-#money td { width: 50%; }
-#money td input {width: 95%}
-#design {
+.CodeMirror-scroll {
+    height: auto; 
+    overflow: visible;
+}
+.notepad {
+    background: lightyellow;
+}
+#overview {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    border: 1px solid #444;
+    border-radius: .5em;
+    padding: 10px
+}
+.sidebar {
+    box-shadow: 0 0 5px #444;
+}
+
+/* Table styles */
+.table td:not(:last-child), .table th:not(:last-child) {
+    border-right: solid 1px #444;
+}
+.table tr, .table thead tr:first-child {
+    border-bottom: solid 1px #444;
+}
+.table tr:last-child {
+    border-bottom: none;
+}
+.table input {
+    padding: 1px 2px;
+    margin: 0;
+    border: none;
+    height: 100%
+}
+
+/* Material table */
+#material th { 
+    /*font-variant: small-caps; */
+    font-family: Calibri;
+    font-size: 95%;
+    padding: 0;
+    color: #111;
+}
+#material .qty { 
+    width: 26px;
+    text-align: center; 
+}
+#material .part { 
+    width: 50px;
+}
+#material .material { 
+    width: 60px;
+}
+#material .kind { 
+    width: 90px;
+}
+#material .length, #material .width, #material .height {
+    width: 40px;
+}
+#material .notes {}
+#material .cost {  
+    width: 40px;
+    text-align: center;
+}
+
+/* Money chart */
+#money td:nth-child(odd) { 
+    width: 70%;
+    border-right: solid 1px #444;
+}
+#money td:nth-child(even) {
+    width: 30%;
+}
+#money input {
+    margin: 0;
+    border: none;
+    width: 100%
+}
+
+/* Design */
+/*#design {
     -webkit-column-count: 2; 
     -moz-column-count: 2;
 }
@@ -135,7 +210,7 @@ table > select {
 }
 #design label > label {
     display: inline; 
-}
+}*/
 
 
 /* Info */
