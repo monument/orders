@@ -27,6 +27,64 @@ input[type="checkbox"], input[type="radio"] {
     vertical-align: baseline; 
 }
 
+
+/*                   */
+/*      Header       */
+/*                   */
+
+header {
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+header hgroup {
+    -webkit-box-flex: 2;
+    border-right: solid 1px #444;
+}
+#order-title h1 {
+    font-family: "Segoe UI Semibold";
+    margin: 0 0 0 5px;
+    display: inline;
+}
+#order-title::before {
+    font-family: Segoe UI Symbol; 
+    font-size: 2em;
+    content: ""; 
+}
+#order-title:hover::before {
+    content: "";
+    cursor: pointer;
+}
+aside { 
+    width: 200px;
+    margin-left: 10px
+}
+#amount { 
+    float: right; 
+    margin-top: 3px; 
+    cursor: default; 
+}
+#amount::before { content: "$" }
+#order-date { width: 125px }
+#amount, #order-date {display: inline-block;}
+#order-status {
+    display: block;
+}
+header nav {
+    -webkit-box-flex: 1;
+}
+header nav ul {
+    padding: 0 0 0 20px;
+}
+
+header nav ul li {
+    display: inline;
+    text-transform: lowercase;
+}
+
+header nav ul li.active {
+    font-family: "Segoe UI Semibold";
+}
+
 /*      Other        */
 
 #material, #money, #design, #delivery, #info {display: none}

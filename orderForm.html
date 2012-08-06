@@ -9,23 +9,43 @@
 
 <header>
     <hgroup>
-        <h1 id="order-title" contenteditable>Name On Order</h1>
-        <input id="order-date" type="date" />
+        <div id="order-title">
+            <h1 contenteditable>Victoria M. Charging Hawk</h1>
+        </div>
+        <nav id="categories">
+            <ul>
+                <li class="active"><a href="#overview">Overview</a></li>
+                <li>Materials</li>
+                <li>Design</li>
+                <li>Delivery</li>
+                <li>Status</li>
+                <li>Notes</li>
+            </ul>
+        </nav>
     </hgroup>
-    <a href="#money" id="show-money"></a>
-    <nav id="categories">
-        <ul>
-            <li>Details</li>
-            <li>Materials</li>
-            <li>Design</li>
-            <li>Delivery</li>
-            <li>Info</li>
-            <li>Notes</li>
-        </ul>
-    </nav>
+    <aside>
+        <input type="date" id="order-date" />
+        <span id="amount">305.68</span>
+        <input list="order-status" id="order-status" />
+    </aside>
 </header>
 
 <div id="order">
+    <div id="overview">
+        <div class="block" id="order-progress">
+            <progress>50</progress>
+            <span class="order-status">Drawing In Process</span>
+        </div>
+        <div class="block" id="order-delivery">
+            <p>
+                <span class="deliver-to">Will be picked up</span>
+                on
+                <time>June 20th</time>.
+            </p>
+            <iframe class="map"></iframe>
+        </div>
+        <div class="codemirror markdown" id="notes"></div>
+    </div>
     <form id="material">
         <table>
             <thead>
@@ -191,8 +211,6 @@
             <label>Phone          <input id="info-sig-phone" type="tel" /></label>
         </div>
     </form>
-
-    <form id="notes"></form>
 </div>
 
 <datalist id="part-list">
@@ -249,6 +267,18 @@
 
 <datalist id="common-designs">
     <option value="Roses" />
+</datalist>
+
+<datalist id="order-status">
+    <option value="Quote" />
+    <option value="Layaway" />
+    <option value="Drawing in Process" />
+    <option value="Design Approval Pending" />
+    <option value="On Order" />
+    <option value="Engraving @BMC" />
+    <option value="Engraving @Sasakwa" />
+    <option value="Final Customer Approval" />
+    <option value="To Be Set" />
 </datalist>
 
 <script src="js/jquery.js" async></script>
