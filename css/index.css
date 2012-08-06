@@ -1,63 +1,44 @@
 /* Eradicate the webkit spinner button */
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+* { box-sizing: border-box; -moz-box-sizing: border-box; }
 
 /*                   */
 /*    Base Styles    */
 /*                   */
 
 body {
-  width: 70%;
-  margin: 10px auto;
-  background: white;
-  font-family: Segoe UI;
-  font-size: 85%; 
+    width: 70%;
+    margin: 10px auto;
+    background: white;
+    font-family: Segoe UI;
+    font-size: 85%; 
 }
 
 table { border-collapse: collapse; }
 
 input:not([type]), input[type="number"], input[type="date"], textarea, select {
-  width: inherit;
-  padding: 1px 0px;
-  height: inherit; 
+    width: inherit;
+    padding: 1px 0;
+    height: inherit; 
 }
 
 input[type="checkbox"], input[type="radio"] {
-  margin: 3px 3px 0px 5px;
-  vertical-align: baseline; 
+    margin: 3px 3px 0 5px;
+    vertical-align: baseline; 
 }
 
+/*      Other        */
 
-/*                   */
-/*      Header       */
-/*                   */
-
-header hgroup {
-  margin: .5em 0;
-  min-height: 3em
-}
-header h1 {
-  float: left;
-  margin: 0 0 .5em;
-}
-header input {
-  float: right;
-  margin-top: 1em;
-  height: 2em;
-  margin-bottom: 1em;
-}
-header nav {
-  clear: both;
-  display: none;
-}
+#material, #money, #design, #delivery, #info {display: none}
 
 table > input:not([type]), 
 table > input[type="number"], 
 table > input[type="date"], 
 table > textarea, 
 table > select {
-  width: 100%;
-  padding: 1px 0px;
-  height: inherit; 
+    width: 100%;
+    padding: 1px 0px;
+    height: inherit; 
 }
 
 #material { padding: 6px 12px 10px; }
@@ -76,31 +57,31 @@ table > select {
 
 
 #money {
-  width: 15%; 
-  position: absolute;
-  top: 6em;
-  right: 15%;
-  background: white;
-  border: solid 1px #444;
-  box-shadow: 0 0 #444;
-  display: none;
+    width: 15%; 
+    position: absolute;
+    top: 6em;
+    right: 15%;
+    background: white;
+    border: solid 1px #444;
+    box-shadow: 0 0 #444;
+    display: none;
 }
 #money td { width: 50%; }
 #money td input {width: 95%}
 #design {
-  -webkit-column-count: 2; 
-  -moz-column-count: 2;
+    -webkit-column-count: 2; 
+    -moz-column-count: 2;
 }
 #design label {
-  display: block; 
+    display: block; 
 }
 #design label > label {
-  display: inline; 
+    display: inline; 
 }
 
 
 /* Info */
 #info-preview img {
-  width: 320px;
-  height: 240px;
+    width: 320px;
+    height: 240px;
 }
