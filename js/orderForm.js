@@ -52,7 +52,6 @@ document.body.onload = function () {
     // put orders into localstorage/indexedDB
     // pick order from list
     // begin calculating money
-    // var myCodeMirror = CodeMirror.fromTextArea(notes, {mode:  "markdown"});
 }
 
 var lists = {

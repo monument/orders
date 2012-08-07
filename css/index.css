@@ -1,56 +1,50 @@
 /* Eradicate the webkit spinner button */
-input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+/* Use box-sizing: border-box; */
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
 
 
 /*    Base Styles    */
 
 body {
-    width: 8in;
     margin: 10px auto;
-    background: white;
-    font-family: Segoe UI, Helvetica Neue, Cantarell, Ubuntu, sans-serif;
-    font-size: 85%; 
+    font-family: "Helvetica Neue", Helvetica, Calibri, "Cantarell", "Ubuntu", sans-serif;
+    color: #333;
 }
 
-table { 
-    border-collapse: collapse; 
-    border-spacing: 0px; }
-tr { 
-    height: 24px; 
-}
-td { 
-    padding: 0; 
-}
-table > input:not([type]), 
-table > input[type="number"], 
-table > input[type="date"], 
-table > textarea, 
-table > select {
-    width: 100%;
-    padding: 1px 0px;
+table { border-collapse: collapse; border-spacing: 0px; }
+tr { height: 24px; }
+td { padding: 0; }
+input[type="checkbox"], input[type="radio"] { margin: 3px 3px 0 5px; vertical-align: baseline; }
+.amount::before { content: "$"; }
+input { 
+    width: inherit; 
+    padding: 1px; 
     height: inherit; 
+    font-family: inherit; 
+    background: transparent;
+    border: solid 1px #ddd;
 }
-
-/* Add preferred styling to text inputs */
-input:not([type]), input[type="number"], input[type="date"], textarea, select {
-    width: inherit;
-    padding: 1px;
-    height: inherit; 
+label input {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    -webkit-transition: .5s;
 }
-
-/* Fix the alignment of radio buttons and checkboxes */
-input[type="checkbox"], input[type="radio"] {
-    margin: 3px 3px 0 5px;
-    vertical-align: baseline; 
-}
-
-.amount::before {
-    content: "$";
+label input:focus {
+    outline: 0;
+    background: lightyellow;
+    border-bottom-color: goldenrod;
 }
 aside { 
     -webkit-flex: 1;
-    margin-left: 10px;
+    margin-left: 5px;
+}
+
+@media screen and (min-width: 8in) {
+    body {
+        width: 8in;
+        font-size: 85%; 
+    }
 }
 
 
@@ -59,27 +53,28 @@ aside {
 header {
     display: -webkit-flex;
     display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    -webkit-flex-direction: row;
     -webkit-justify-content: center;
 }
 header hgroup {
     -webkit-flex: 3;
-    border-right: solid 1px #444;
 }
 #order-title h1 {
     font-family: "Segoe UI Semibold", "Segoe UI", sans-serif;
     margin: 0 0 0 5px;
     display: inline;
 }
-#order-title::before {
-    font-family: Segoe UI Symbol; 
+/*#order-title::before {
+    font-family: "Segoe UI Symbol"; 
     font-size: 2em;
     content: ""; 
-}
-#order-title:hover::before {
+}*/
+/*#order-title:hover::before {
     content: "";
     cursor: pointer;
-}
-
+}*/
 #amount { 
     float: right; 
     margin-top: 3px; 
@@ -92,7 +87,7 @@ header hgroup {
     display: inline-block;
 }
 #order-status {
-    display: block;
+    width: 100%;
 }
 header nav {
     -webkit-flex: 1;
@@ -109,6 +104,19 @@ header nav ul li.active {
 }
 .main {
     -webkit-flex: 3;
+    padding-right: 5px
+}
+#pages li {
+    padding: 0px 5px;
+}
+#pages li.active {
+    border: solid 1px #ddd;
+    border-radius: 2px 2px 0 0;
+    background: -webkit-linear-gradient(270deg, #eee, #eee);
+}
+#pages a {
+    color: inherit;
+    text-decoration: none
 }
 
 
@@ -116,35 +124,42 @@ header nav ul li.active {
 
 .block {
     min-height: 50px;
-    border-bottom: dashed 1px #444;
+    border-bottom: dashed 1px #ddd;
 }
 iframe { 
     display: none;
 }
-.CodeMirror-scroll {
-    height: auto; 
-    overflow: visible;
-}
 .notepad {
     background: lightyellow;
+    border: solid 1px #ddd;
+    /*box-shadow: 0 0 1px #333;*/
 }
 #overview {
     display: -webkit-flex;
     -webkit-flex-direction: row;
-    border: 1px solid #444;
+    border: 1px solid #ddd;
     border-radius: .5em;
     padding: 10px
 }
-.sidebar {
-    box-shadow: 0 0 5px #444;
+#delivery label {
+    display: inline-block;
 }
 
 /* Table styles */
+.table th, .table caption { 
+    /*font-variant: small-caps; */
+    font-family: Calibri;
+    font-size: 95%;
+    font-weight: bold;
+    padding: 0;
+    color: #111;
+    cursor: default;
+}
 .table td:not(:last-child), .table th:not(:last-child) {
-    border-right: solid 1px #444;
+    border-right: solid 1px #ddd;
 }
 .table tr, .table thead tr:first-child {
-    border-bottom: solid 1px #444;
+    border-bottom: solid 1px #ddd;
 }
 .table tr:last-child {
     border-bottom: none;
@@ -152,69 +167,51 @@ iframe {
 .table input {
     padding: 1px 2px;
     margin: 0;
+    width: 100%;
     border: none;
     height: 100%
 }
 
 /* Material table */
-#material th { 
-    /*font-variant: small-caps; */
-    font-family: Calibri;
-    font-size: 95%;
-    padding: 0;
-    color: #111;
-}
-#material .qty { 
-    width: 26px;
-    text-align: center; 
-}
-#material .part { 
-    width: 50px;
-}
-#material .material { 
-    width: 60px;
-}
-#material .kind { 
-    width: 90px;
-}
-#material .length, #material .width, #material .height {
-    width: 40px;
-}
-#material .notes {}
-#material .cost {  
-    width: 40px;
+#material thead tr { height: 15px; }
+#material .qty:not(input)      {width: 5%;}
+#material .part:not(input)     {width: 15%;}
+#material .material:not(input) {width: 11%;}
+#material .kind:not(input)     {width: 17%;}
+#material .length:not(input), #material .width:not(input), #material .height:not(input) {width: 7.5%;}
+#material .notes:not(input)    {width: 20%;}
+#material .cost:not(input)     {width: 7%;}
+#material .action              {width: 25px;
     text-align: center;
+    font-weight: normal;
+}
+#material .qty  { text-align: center; }
+#material .cost { text-align: center; }
+#material button {
+    padding: 0 6px;
+    margin: 0 auto;
+    width: 23px;
+    display: block;
 }
 
 /* Money chart */
 #money td:nth-child(odd) { 
     width: 70%;
-    border-right: solid 1px #444;
+    border-right: solid 1px #ddd;
 }
 #money td:nth-child(even) {
     width: 30%;
 }
+#money td:nth-child(even)::before {}
 #money input {
     margin: 0;
     border: none;
-    width: 100%
+    width: 100%;
+    padding: 1px 4px;
 }
-
-/* Design */
-/*#design {
-    -webkit-column-count: 2; 
-    -moz-column-count: 2;
+#costs .cost:last-child {
+    border-bottom: solid 1px #ddd;
 }
-#design label {
-    display: block; 
-}
-#design label > label {
-    display: inline; 
-}*/
-
-
-/* Info */
-#info-preview img {
-    width: 320px;
-    height: 240px;
+.table a {
+    cursor: pointer;
 }

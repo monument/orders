@@ -6,7 +6,6 @@
 
 var order = {
     init: function (name, date, status) {
-        // details
         this.name = name;
         this.details.title.sort = this.name;
         this.details.date = date;

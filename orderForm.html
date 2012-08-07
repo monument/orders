@@ -12,10 +12,10 @@
         <div id="order-title">
             <h1 contenteditable>Victoria M. Charging Hawk</h1>
         </div>
-        <nav id="categories">
+        <nav id="pages">
             <ul>
-                <li class="active"><a href="#overview">Overview</a></li>
-                <li><a href="#status">Status</a></li>
+                <a href="#"><li class="active">Overview</li></a>
+                <a href="#status"><li>Status</li></a>
             </ul>
         </nav>
     </hgroup>
@@ -36,37 +36,36 @@
             <table id="material" class="striped table">
                 <thead><tr>
                     <th>Qty</th>
-                    <th>Piece</th>
+                    <th>Piece <a data-bind="click: addPiece">(+)</a></th>
                     <th>Material</th>
                     <th>Kind</th>
                     <th colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
                     <th>Notes</th>
                     <th>Cost</th>
-                    <th><button data-bind="click: addPiece">+</button></th>
+                    <th class="action"><a data-bind="click: addPiece">[+]</a></th>
                 </tr></thead>
                 <tbody data-bind="foreach:pieces"><tr>
-                    <td><input class="qty"      data-bind="value: qty" type="number" /></td>
-                    <td><input class="part"     data-bind="value: part" list="part-list" /></td>
-                    <td><input class="material" data-bind="value: material" list="material-list" /></td>
-                    <td><input class="kind"     data-bind="value: kind" list="kind-list" /></td>
-                    <td><input class="length"   data-bind="value: length" type="number" /></td>
-                    <td><input class="width"    data-bind="value: width" type="number" /></td>
-                    <td><input class="height"   data-bind="value: height" type="number" /></td>
-                    <td><input class="notes"    data-bind="value: notes" /></textarea></td>
-                    <td><input class="cost"     data-bind="value: cost" /></td>
-                    <td><button class="delete action" data-bind="click: $root.delPiece">&ndash;</button></td>
+                    <td class="qty"><input class="qty"      data-bind="value: qty" type="number" /></td>
+                    <td class="part"><input class="part"    data-bind="value: part" list="part-list" /></td>
+                    <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
+                    <td class="kind"><input class="kind"     data-bind="value: kind" list="kind-list" /></td>
+                    <td class="length"><input class="length" data-bind="value: length" type="number" /></td>
+                    <td class="width"><input class="width"   data-bind="value: width" type="number" /></td>
+                    <td class="height"><input class="height" data-bind="value: height" type="number" /></td>
+                    <td class="notes"><input class="notes"   data-bind="value: notes" /></td>
+                    <td class="cost"><input class="cost"     data-bind="value: cost" /></td>
+                    <td class="action"><a data-bind="click: $root.delPiece">&ndash;</a></td>
                 </tr></tbody>
             </table>
             <div class="block" id="delivery">
                 <p>
-                    <span class="deliver-to">Will be picked up</span>
-                    on
-                    <time>June 20th</time>.
+                    <span class="deliver-to">Will be picked up</span> on <time>June 20th</time>.
                 </p>
-                <iframe class="map"></iframe>
-                <label>Memorial to be delivered to <input id="delivery-to" /></label>
-                <label>Cemetery in/near <input id="delivery-near" /></label>
-                <label>Name/Ph of Person who can show location <input id="delivery-contact" /></label>
+                <p>
+                    <label>Memorial to be delivered to: <input id="delivery-to" /></label>
+                    <label>Cemetery in/near: <input id="delivery-near" /></label>
+                    <label>Name/Ph of Person who can show location in cemetery: <input id="delivery-contact" /></label>
+                </p>
                 
                 <h2>Location in Cemetery</h2>
                 <div class="box">
@@ -113,14 +112,14 @@
                     <table>
                         <tr>
                             <td colspan="2"><label>Name: <input id="customer-name" /></label></td>
-                            <td><label>Rep: <input list="representatives" value="KMR" /></td>
+                            <td><label>Rep: <input list="representatives" value="KMR" /></label></td>
                         </tr>
                         <tr>
                             <td colspan="2" rowspan="2"><label>Street: <input type="address" value="4811 S. Jackson Ave"/></label></td>
-                            <td><label>Ph. <input id="customer-phone" type="tel" /></label></td>
+                            <td><label>Ph. <input id="customer-phone" type="tel" placeholder="(918) 582-8600" /></label></td>
                         </tr>
                         <tr>
-                            <td>Ext. <input type="tel" /></td>
+                            <td><label>Ext. <input type="tel" placeholder="x120"/></label></td>
                         </tr>
                         <tr>
                             <td><label>City: <input id="customer-city"  list="cities" /></label></td>
@@ -133,30 +132,54 @@
         </div>
         <aside class="sidebar">
             <div id="money">
-                <table class="table">
-                    <caption>Cost</caption>
-                    <tr class="part"><td><input list="part-list" placeholder="Monument" /></td><td><input id="partCost" type="number" value="0" /></td></tr>
-                    <tr class="foundation"><td><input list="part-list" value="Foundation" /></td><td><input id="foundationCost" type="number" value="0" /></td></tr>
-                    <tr class="subtotal"><td><input readonly value="Subtotal" /></td><td><input id="subtotal" type="number" readonly /></td></tr>
-                    <tr class="sales tax"><td><input readonly value="Sales Tax" /></td><td><input id="tax" type="number" readonly /></td></tr>
-                    <tr class="delivery"><td><input readonly value="Delivery" /></td><td><input id="settingCost" type="number" value="0" /></td></tr>
-                    <tr class="fees"><td><input readonly value="Applicable Fees" /></td><td><input id="fees" type="number" value="0" /></td></tr>
-                    <tr class="total"><td><input readonly value="Total Price" /></td><td><input id="totalCost" type="number" readonly /></td></tr>
+                <table class="table" id="costs">
+                    <caption>Cost <a data-bind="click: $root.addCost">(+)</a></caption>
+                    <tbody data-bind="foreach:costs">
+                        <tr class="cost">
+                            <td><input list="part-list" placeholder="Part" data-bind="value: part" /></td>
+                            <td><input id="partCost" type="number" value="0" data-bind="value: amount" /></td>
+                            <td><a data-bind="click: $root.delCost">-</a></td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr class="subtotal">
+                            <td><input readonly value="Subtotal" /></td>
+                            <td><input id="subtotal" type="number" readonly /></td>
+                        </tr>
+                        <tr class="sales tax">
+                            <td><input readonly value="Sales Tax" /></td>
+                            <td><input id="tax" type="number" readonly /></td>
+                        </tr>
+                        <tr class="delivery">
+                            <td><input value="Delivery" /></td>
+                            <td><input id="settingCost" type="number" value="0" /></td>
+                        </tr>
+                        <tr class="fees">
+                            <td><input value="Applicable Fees" /></td>
+                            <td><input id="fees" type="number" value="0" /></td>
+                        </tr>
+                        <tr class="total">
+                            <td><input readonly value="Total Price" /></td>
+                            <td><input id="totalCost" type="number" readonly /></td>
+                        </tr>
+                    </tbody>
                 </table>
-                <table class="table">
-                    <caption>Payments</caption>
-                    <tr>
-                        <td><input value="Paid" /></td><td><input class="amountPaid" type="number" value="0" /></td>
-                    </tr>
+                <table class="table" id="payments">
+                    <caption>Payments <a data-bind="click: $root.addPayment">(+)</a></caption>
+                    <tbody data-bind="foreach:payments">
+                        <tr>
+                            <td><input placeholder="MM/DD/YYYY" data-bind="value: date" /></td>
+                            <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
+                            <td><a data-bind="click: $root.delPayment">-</a></td> 
+                        </tr>
+                    </tbody>
                 </table>
                 <p>Balance Due: <span class="amount">305.68</span></p>
             </div>
-            <div class="block notepad"><!-- <textarea id="notes"></textarea> --></div>
+            <textarea class="notepad block" id="notes"></textarea>
         </aside>
         
     </div>
-
-
 
     <div id="status">
     </div>
@@ -231,6 +254,9 @@
         <option value="Final Customer Approval" />
         <option value="To Be Set" />
     </datalist>
+    <datalist id="states">
+        <option value="Oklahoma" />
+    </datalist>
 </div>
 
 <script src="js/jquery.js" async></script>
@@ -238,8 +264,5 @@
 <script src="js/orderForm.js"></script>
 <script src="js/order.js"></script>
 <script src="js/orderKnockout.js"></script>
-<script src="codemirror/lib/codemirror.js"></script>
-<link rel="stylesheet" href="codemirror/lib/codemirror.css">
-<script src="codemirror/mode/markdown/markdown.js"></script>
 </body>
 </html>
