@@ -57,6 +57,7 @@ header {
     display: -o-flex;
     -webkit-flex-direction: row;
     -webkit-justify-content: center;
+    margin-bottom: 11px;
 }
 header hgroup {
     -webkit-flex: 3;
@@ -91,6 +92,7 @@ header hgroup {
 }
 header nav {
     -webkit-flex: 1;
+    margin-top: -10px;
 }
 header nav ul {
     padding: 0 0 0 20px;
@@ -107,11 +109,12 @@ header nav ul li.active {
     padding-right: 5px
 }
 #pages li {
-    padding: 0px 5px;
+    margin-top: -5px;
+    padding: 0px 5px 3px;
 }
 #pages li.active {
     border: solid 1px #ddd;
-    border-radius: 2px 2px 0 0;
+    border-radius: 2em;
     background: -webkit-linear-gradient(270deg, #eee, #eee);
 }
 #pages a {
@@ -148,22 +151,25 @@ iframe {
 /* Table styles */
 .table th, .table caption { 
     /*font-variant: small-caps; */
+    text-transform: uppercase;
     font-family: Calibri;
     font-size: 95%;
-    font-weight: bold;
+    font-weight: normal;
     padding: 0;
     color: #111;
     cursor: default;
+    font-style: italic;
 }
+.table { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; }
 .table td:not(:last-child), .table th:not(:last-child) {
     border-right: solid 1px #ddd;
 }
-.table tr, .table thead tr:first-child {
+.table tr:not(:last-child), .table thead tr:first-child {
     border-bottom: solid 1px #ddd;
 }
-.table tr:last-child {
-    border-bottom: none;
-}
+/*.table tr:last-child {*/
+    /*border-bottom: none;*/
+/*}*/
 .table input {
     padding: 1px 2px;
     margin: 0;
@@ -184,6 +190,7 @@ iframe {
 #material .action              {width: 25px;
     text-align: center;
     font-weight: normal;
+    font-style: normal;
 }
 #material .qty  { text-align: center; }
 #material .cost { text-align: center; }
@@ -197,12 +204,15 @@ iframe {
 /* Money chart */
 #money td:nth-child(odd) { 
     width: 70%;
-    border-right: solid 1px #ddd;
 }
 #money td:nth-child(even) {
+    border-left: solid 1px #ddd;
+    border-right: solid 1px #ddd;
     width: 30%;
 }
-#money td:nth-child(even)::before {}
+#money td:nth-child(3) {
+    border-right: none;
+}
 #money input {
     margin: 0;
     border: none;
@@ -214,4 +224,9 @@ iframe {
 }
 .table a {
     cursor: pointer;
+}
+
+.delete:hover {
+    background: red;
+    color: white;
 }

@@ -42,7 +42,7 @@
                     <th colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
                     <th>Notes</th>
                     <th>Cost</th>
-                    <th class="action"><a data-bind="click: addPiece">[+]</a></th>
+                    <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
                 </tr></thead>
                 <tbody data-bind="foreach:pieces"><tr>
                     <td class="qty"><input class="qty"      data-bind="value: qty" type="number" /></td>
@@ -54,40 +54,26 @@
                     <td class="height"><input class="height" data-bind="value: height" type="number" /></td>
                     <td class="notes"><input class="notes"   data-bind="value: notes" /></td>
                     <td class="cost"><input class="cost"     data-bind="value: cost" /></td>
-                    <td class="action"><a data-bind="click: $root.delPiece">&ndash;</a></td>
+                    <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
                 </tr></tbody>
             </table>
             <div class="block" id="delivery">
+                <h2>Delivery By</h2><input type="date" id="delivery-date" />
+                <label>Person who can find grave: <input id="delivery-contact" /></label>
                 <p>
-                    <span class="deliver-to">Will be picked up</span> on <time>June 20th</time>.
+                    <label>Cemetery: <input id="delivery-to" /></label>
+                    <label>Near: <input id="delivery-near" /></label>
                 </p>
                 <p>
-                    <label>Memorial to be delivered to: <input id="delivery-to" /></label>
-                    <label>Cemetery in/near: <input id="delivery-near" /></label>
-                    <label>Name/Ph of Person who can show location in cemetery: <input id="delivery-contact" /></label>
-                </p>
-                
-                <h2>Location in Cemetery</h2>
-                <div class="box">
                     <label>Section        <input id="info-cemetery-section" /></label>
                     <label>Block          <input id="info-cemetery-block" /></label>
                     <label>Lot            <input id="info-cemetery-lot" /></label>
                     <label>Space(s)       <input id="info-cemetery-space" /></label>
-                </div>
+                </p>
             </div>
             <div class="block" id="design">
+                <h2>Design</h2><input id="design-name" />
                 <div class="details">
-                    <label>Carving Type           
-                        <select id="design-carving">
-                            <option value="none">None</option>
-                            <option value="flat">Flat</option>
-                            <option value="shape">Shape</option>
-                            <option value="etching">Etching</option>
-                        </select>
-                    </label>
-                    <label>Family Name on Back <input id="design-name" type="checkbox" /></label>
-                    <label>Special Artwork     <input id="design-artwork" type="checkbox" /></label>
-                    <label>Match Rubbing       <input id="design-match" type="checkbox" /></label>
                     <label>Lettering Faces        
                         <select id="design-facing">
                             <option value="unknown">Unknown</option>
@@ -97,10 +83,19 @@
                             <option value="west">West</option>
                         </select>
                     </label>
-                    <label>Name On Left           <input id="design-onleft" /></label>
-                    <label>Name Positions Checked <input id="design-position" type="checkbox" /></label>
-                    <label>Design                 <input id="design-title" list="common-designs" /></label>
-                    <label>Additional Information <input id="design-info" /></label>
+                    <label><input id="design-onleft" /> On Left</label>
+                    <label>Positions Verified <input id="design-position" type="checkbox" /></label>
+                    <label>Carving Type           
+                        <select id="design-carving">
+                            <option value="none">None</option>
+                            <option value="flat">Flat</option>
+                            <option value="shape">Shape</option>
+                            <option value="etching">Etching</option>
+                        </select>
+                    </label>
+                    <label>Name on Back <input id="design-name" type="checkbox" /></label>
+                    <label>Special Artwork <input id="design-artwork" type="checkbox" /></label>
+                    <label>Match Rubbing   <input id="design-match" type="checkbox" /></label>
                 </div>
                 <div class="preview front"><img width="" /></div>
                 <div class="preview back"><img width="" /></div>
@@ -111,20 +106,18 @@
                 <div class="contact">
                     <table>
                         <tr>
-                            <td colspan="2"><label>Name: <input id="customer-name" /></label></td>
-                            <td><label>Rep: <input list="representatives" value="KMR" /></label></td>
+                            <td><label>Street: <input id="customer-streer" type="address" placeholder="1735 E. 11th St."/></label></td>
+                            <td><label>City: <input id="customer-city"  list="cities" placeholder="Tulsa" /></label></td>
+                            <td><label>State: <input id="customer-state" list="states" placeholder="OK" /></label></td>
+                            <td><label>Zip: <input id="customer-zip" placeholder="74104" /></label></td>
                         </tr>
                         <tr>
-                            <td colspan="2" rowspan="2"><label>Street: <input type="address" value="4811 S. Jackson Ave"/></label></td>
-                            <td><label>Ph. <input id="customer-phone" type="tel" placeholder="(918) 582-8600" /></label></td>
+                            <td><label>Email: <input id="customer-email" type="email" placeholder="info@benchmarkmonument.com" ></label></td>
+                            <td colspan="3"><label>Ph. <input id="customer-phone" type="tel" placeholder="(918) 582-8600" /></label></td>
                         </tr>
                         <tr>
-                            <td><label>Ext. <input type="tel" placeholder="x120"/></label></td>
-                        </tr>
-                        <tr>
-                            <td><label>City: <input id="customer-city"  list="cities" /></label></td>
-                            <td><label>State: <input id="customer-state" list="states" /></label></td>
-                            <td><label>Zip: <input id="customer-zip" /></label></td>
+                            <td><label>Name: <input placeholder="D. Mike Rives"/></label></td>
+                            <td colspan="3"><label>Rep: <input list="representatives" value="KMR" /></label></td>
                         </tr>
                     </table>    
                 </div>
@@ -138,29 +131,34 @@
                         <tr class="cost">
                             <td><input list="part-list" placeholder="Part" data-bind="value: part" /></td>
                             <td><input id="partCost" type="number" value="0" data-bind="value: amount" /></td>
-                            <td><a data-bind="click: $root.delCost">-</a></td>
+                            <td class="action delete"><a data-bind="click: $root.delCost">&nbsp;-&nbsp;</a></td>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr class="subtotal">
                             <td><input readonly value="Subtotal" /></td>
                             <td><input id="subtotal" type="number" readonly /></td>
+                            <td></td>
                         </tr>
                         <tr class="sales tax">
                             <td><input readonly value="Sales Tax" /></td>
                             <td><input id="tax" type="number" readonly /></td>
+                            <td></td>
                         </tr>
                         <tr class="delivery">
                             <td><input value="Delivery" /></td>
                             <td><input id="settingCost" type="number" value="0" /></td>
+                            <td></td>
                         </tr>
                         <tr class="fees">
                             <td><input value="Applicable Fees" /></td>
                             <td><input id="fees" type="number" value="0" /></td>
+                            <td></td>
                         </tr>
                         <tr class="total">
                             <td><input readonly value="Total Price" /></td>
                             <td><input id="totalCost" type="number" readonly /></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -170,7 +168,7 @@
                         <tr>
                             <td><input placeholder="MM/DD/YYYY" data-bind="value: date" /></td>
                             <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
-                            <td><a data-bind="click: $root.delPayment">-</a></td> 
+                            <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
                         </tr>
                     </tbody>
                 </table>
