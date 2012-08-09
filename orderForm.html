@@ -103,24 +103,22 @@
             </div>
             <footer>
                 <div class="signature"><img /></div>
-                <div class="contact">
-                    <table>
-                        <tr>
-                            <td><label>Street: <input id="customer-streer" type="address" placeholder="1735 E. 11th St."/></label></td>
-                            <td><label>City: <input id="customer-city"  list="cities" placeholder="Tulsa" /></label></td>
-                            <td><label>State: <input id="customer-state" list="states" placeholder="OK" /></label></td>
-                            <td><label>Zip: <input id="customer-zip" placeholder="74104" /></label></td>
-                        </tr>
-                        <tr>
-                            <td><label>Email: <input id="customer-email" type="email" placeholder="info@benchmarkmonument.com" ></label></td>
-                            <td colspan="3"><label>Ph. <input id="customer-phone" type="tel" placeholder="(918) 582-8600" /></label></td>
-                        </tr>
-                        <tr>
-                            <td><label>Name: <input placeholder="D. Mike Rives"/></label></td>
-                            <td colspan="3"><label>Rep: <input list="representatives" value="KMR" /></label></td>
-                        </tr>
-                    </table>    
-                </div>
+                <div id="contact">
+                    <div>
+                        <span class="span3"><label>Name: </label><input id="customer-name" placeholder="D. Mike Rives" /></span>
+                        <span class="span3"><label>Street: </label><input id="customer-street" type="address" placeholder="1735 E. 11th St."/></span>
+                    </div>
+                    <div>
+                        <span class="span3"><label>Email: </label><input id="customer-email" type="email" placeholder="info@benchmarkmonument.com" /></span>
+                        <span class="span2"><label>City: </label><input id="customer-city"  placeholder="Tulsa" /></span>
+                    </div>
+                    <div>
+                        <span class="span3"><label>Phone: </label><input id="customer-phone" type="tel" placeholder="(918) 582-8600" /></span>
+                        <span class="span3"><label>Rep: </label><input id="customer-rep" list="representatives" placeholder="DMR" /></span>
+                        <span class="span2"><label>State: </label><input id="customer-state" list="states" placeholder="OK" /></span>
+                        <span class="span2"><label>Zip: </label><input id="customer-zip" placeholder="74104" /></span>
+                    </div>
+                </table> 
             </footer>
         </div>
         <aside class="sidebar">

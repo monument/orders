@@ -167,9 +167,9 @@ iframe {
 .table tr:not(:last-child), .table thead tr:first-child {
     border-bottom: solid 1px #ddd;
 }
-/*.table tr:last-child {*/
-    /*border-bottom: none;*/
-/*}*/
+.table a {
+    cursor: pointer;
+}
 .table input {
     padding: 1px 2px;
     margin: 0;
@@ -202,31 +202,49 @@ iframe {
 }
 
 /* Money chart */
-#money td:nth-child(odd) { 
-    width: 70%;
-}
+#money td:nth-child(odd) { width: 70%; }
 #money td:nth-child(even) {
     border-left: solid 1px #ddd;
     border-right: solid 1px #ddd;
     width: 30%;
 }
-#money td:nth-child(3) {
-    border-right: none;
-}
+#money td:nth-child(3) { border-right: none; }
+#costs .cost:last-child { border-bottom: solid 1px #ddd; }
 #money input {
     margin: 0;
     border: none;
     width: 100%;
     padding: 1px 4px;
 }
-#costs .cost:last-child {
-    border-bottom: solid 1px #ddd;
-}
-.table a {
-    cursor: pointer;
-}
-
 .delete:hover {
     background: red;
     color: white;
+}
+
+
+
+/* .contact - Customer Contact Form */
+#contact input {
+    width: -webkit-calc(100% - 5em);
+    border: none;
+    border-bottom: 1px solid #ddd;
+    -webkit-transition: .5s;
+}
+#contact label {
+    display: inline-block;
+    width: 4em;
+}
+#contact div {
+    display: -webkit-flex;
+}
+#contact .span1 { -webkit-flex: 1; }
+#contact .span2 { -webkit-flex: 2; }
+#contact .span3 { -webkit-flex: 3; }
+#contact .span4 { -webkit-flex: 4; }
+#contact .span5 { -webkit-flex: 5; }
+#contact .span6 { -webkit-flex: 6; }
+#contact input:focus {
+    outline: 0;
+    background: lightyellow;
+    border-bottom-color: goldenrod;
 }
