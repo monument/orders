@@ -10,7 +10,7 @@
 
 <header class="app">
 	<nav>
-		<h1></h1>
+		<h1>benchmark orders</h1>
 	</nav>
 </header>
 
@@ -18,14 +18,14 @@
 	<nav class="filter toolbar"></nav>
 	<div class="sidebar"></div>
 	<div class="content">
-		<div class="order">
-			<h1>Victoria M. Charging Hawk</h1>
+		<div class="order" data-bind="foreach:order">
+			<h1 data-bind="text: name">Victoria M. Charging Hawk</h1>
 			<span class="money">
-				<span class="total">Order Total: $900</span>
-				<span class="balance">Balance: $150</span>
+				<span class="total" data-bind="text:paid"></span>
+				<span class="balance" data-bind="text:balance"></span>
 			</span>
-			<span class="deliver">Deliver To: Crown Hill</span>
-			<span class="status">Drawing In-Process</span>
+			<span class="deliver">Deliver To: <span data-bind="text: goto">Crown Hill</span></span>
+			<span class="status" data-bind="text: orderStatus">Drawing In-Process</span>
 		</div>
 	</div>
 </section>

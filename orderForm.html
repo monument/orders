@@ -1,184 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
     <title>Benchmark Order Form</title>
     <meta charset="utf-8" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/print.css" />
 </head>
 <body>
 
 <header>
-    <hgroup>
-        <div id="order-title">
-            <h1 contenteditable>Victoria M. Charging Hawk</h1>
-        </div>
-        <nav id="pages">
-            <ul>
-                <a href="#"><li class="active">Overview</li></a>
-                <a href="#status"><li>Status</li></a>
-            </ul>
-        </nav>
-    </hgroup>
-    <aside>
-        <input type="date" id="order-date" value="10/20/2011" />
-        <span id="amount" class="amount">305.68</span>
-        <input list="order-status" id="order-status" value="Drawing In Process" />
-    </aside>
+<img src="./img/bmcheader.png" width="100%" />
 </header>
 
 <div id="order">
-    <div id="overview">
-        <div class="main">
-            <div id="order-progress" style="margin-bottom: 25px">
-                <meter value="20" max="100">20%</meter>
-                <span rel="tooltip" title="first tooltip" class="order-status">Drawing In Process</span>
-            </div>
-            <table id="material" class="striped table">
-                <thead><tr>
-                    <th>Qty</th>
-                    <th>Piece <a data-bind="click: addPiece">(+)</a></th>
-                    <th>Material</th>
-                    <th>Kind</th>
-                    <th colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
-                    <th>Notes</th>
-                    <th>Cost</th>
-                    <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
-                </tr></thead>
-                <tbody data-bind="foreach:pieces"><tr>
-                    <td class="qty"><input class="qty"      data-bind="value: qty" type="number" /></td>
-                    <td class="part"><input class="part"    data-bind="value: part" list="part-list" /></td>
-                    <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
-                    <td class="kind"><input class="kind"     data-bind="value: kind" list="kind-list" /></td>
-                    <td class="length"><input class="length" data-bind="value: length" type="number" /></td>
-                    <td class="width"><input class="width"   data-bind="value: width" type="number" /></td>
-                    <td class="height"><input class="height" data-bind="value: height" type="number" /></td>
-                    <td class="notes"><input class="notes"   data-bind="value: notes" /></td>
-                    <td class="cost"><input class="cost"     data-bind="value: cost" /></td>
-                    <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
-                </tr></tbody>
-            </table>
-            <div class="block" id="delivery">
-                <h2>Delivery By</h2><input type="date" id="delivery-date" />
-                <label>Person who can find grave: <input id="delivery-contact" /></label>
-                <p>
-                    <label>Cemetery: <input id="delivery-to" /></label>
-                    <label>Near: <input id="delivery-near" /></label>
-                </p>
-                <p>
-                    <label>Section        <input id="info-cemetery-section" /></label>
-                    <label>Block          <input id="info-cemetery-block" /></label>
-                    <label>Lot            <input id="info-cemetery-lot" /></label>
-                    <label>Space(s)       <input id="info-cemetery-space" /></label>
-                </p>
-            </div>
-            <div class="block" id="design">
-                <h2>Design</h2><input id="design-name" />
-                <div class="details">
-                    <label>Lettering Faces        
-                        <select id="design-facing">
-                            <option value="unknown">Unknown</option>
-                            <option value="north">North</option>
-                            <option value="south">South</option>
-                            <option value="east">East</option>
-                            <option value="west">West</option>
-                        </select>
-                    </label>
-                    <label><input id="design-onleft" /> On Left</label>
-                    <label>Positions Verified <input id="design-position" type="checkbox" /></label>
-                    <label>Carving Type           
-                        <select id="design-carving">
-                            <option value="none">None</option>
-                            <option value="flat">Flat</option>
-                            <option value="shape">Shape</option>
-                            <option value="etching">Etching</option>
-                        </select>
-                    </label>
-                    <label>Name on Back <input id="design-name" type="checkbox" /></label>
-                    <label>Special Artwork <input id="design-artwork" type="checkbox" /></label>
-                    <label>Match Rubbing   <input id="design-match" type="checkbox" /></label>
-                </div>
-                <div class="preview front"><img width="" /></div>
-                <div class="preview back"><img width="" /></div>
-                <p class="print">Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
-            </div>
-            <footer>
-                <div class="signature"><img /></div>
-                <div id="contact">
-                    <div>
-                        <span class="span3"><label>Name: </label><input id="customer-name" placeholder="D. Mike Rives" /></span>
-                        <span class="span3"><label>Street: </label><input id="customer-street" type="address" placeholder="1735 E. 11th St."/></span>
-                    </div>
-                    <div>
-                        <span class="span3"><label>Email: </label><input id="customer-email" type="email" placeholder="info@benchmarkmonument.com" /></span>
-                        <span class="span2"><label>City: </label><input id="customer-city"  placeholder="Tulsa" /></span>
-                    </div>
-                    <div>
-                        <span class="span3"><label>Phone: </label><input id="customer-phone" type="tel" placeholder="(918) 582-8600" /></span>
-                        <span class="span3"><label>Rep: </label><input id="customer-rep" list="representatives" placeholder="DMR" /></span>
-                        <span class="span2"><label>State: </label><input id="customer-state" list="states" placeholder="OK" /></span>
-                        <span class="span2"><label>Zip: </label><input id="customer-zip" placeholder="74104" /></span>
-                    </div>
-                </table> 
-            </footer>
+    <div class="main">
+        <div id="title">
+            <h1 contenteditable data-bind="text: order.title"></h1>
         </div>
-        <aside class="sidebar">
-            <div id="money">
-                <table class="table" id="costs">
-                    <caption>Cost <a data-bind="click: $root.addCost">(+)</a></caption>
-                    <tbody data-bind="foreach:costs">
-                        <tr class="cost">
-                            <td><input list="part-list" placeholder="Part" data-bind="value: part" /></td>
-                            <td><input id="partCost" type="number" value="0" data-bind="value: amount" /></td>
-                            <td class="action delete"><a data-bind="click: $root.delCost">&nbsp;-&nbsp;</a></td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr class="subtotal">
-                            <td><input readonly value="Subtotal" /></td>
-                            <td><input id="subtotal" type="number" readonly /></td>
-                            <td></td>
-                        </tr>
-                        <tr class="sales tax">
-                            <td><input readonly value="Sales Tax" /></td>
-                            <td><input id="tax" type="number" readonly /></td>
-                            <td></td>
-                        </tr>
-                        <tr class="delivery">
-                            <td><input value="Delivery" /></td>
-                            <td><input id="settingCost" type="number" value="0" /></td>
-                            <td></td>
-                        </tr>
-                        <tr class="fees">
-                            <td><input value="Applicable Fees" /></td>
-                            <td><input id="fees" type="number" value="0" /></td>
-                            <td></td>
-                        </tr>
-                        <tr class="total">
-                            <td><input readonly value="Total Price" /></td>
-                            <td><input id="totalCost" type="number" readonly /></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table" id="payments">
-                    <caption>Payments <a data-bind="click: $root.addPayment">(+)</a></caption>
-                    <tbody data-bind="foreach:payments">
-                        <tr>
-                            <td><input placeholder="MM/DD/YYYY" data-bind="value: date" /></td>
-                            <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
-                            <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Balance Due: <span class="amount">305.68</span></p>
+        <table id="material" class="striped table">
+            <caption>Materials <a data-bind="click: $root.addPiece">(+)</a></caption>
+            <thead><tr>
+                <th class="qty">Qty</th>
+                <th class="part">Piece <a data-bind="click: addPiece">(+)</a></th>
+                <th class="material">Material</th>
+                <th class="kind">Kind</th>
+                <th colspan="3" class="dim">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
+                <th class="notes">Notes</th>
+                <th class="cost">Cost</th>
+                <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
+            </tr></thead>
+            <tbody data-bind="foreach:pieces"><tr>
+                <td class="qty"><input class="qty" data-bind="value: qty" type="number" /></td>
+                <td class="part"><input class="part" data-bind="value: part" list="part-list" /></td>
+                <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
+                <td class="kind"><input class="kind" data-bind="value: kind" list="kind-list" /></td>
+                <td class="dim length"><input class="length" data-bind="value: length" type="number" /></td>
+                <td class="dim width"><input class="width" data-bind="value: width" type="number" /></td>
+                <td class="dim height"><input class="height" data-bind="value: height" type="number" /></td>
+                <td class="notes"><input class="notes" data-bind="value: notes" /></td>
+                <td class="cost"><input class="cost" data-bind="value: amount" type="number" /></td>
+                <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
+            </tr></tbody>
+        </table>
+        <div class="details">
+            <div id="delivery">
+                <span><label>Deliver By</label><input data-bind="value: deliver.by"/></span>
+                <span><label>Cemetery</label><input data-bind="value: deliver.to"/></span>
+                <span><label>In/Near</label><input data-bind="value: deliver.near"/></span>
+                <div class="cem-contact">
+                    <label>Person we can contact to find grave</label>
+                    <input placeholder="Name" data-bind="value: deliver.contact.name"><input placeholder="Phone" data-bind="value: deliver.contact.phone">
+                </div>
+                <div class="cem-location">
+                    <label>Location in cemetery</label>
+                    <input placeholder="Space(s)" data-bind="value: deliver.spaces"><input placeholder="Lot" data-bind="value: deliver.lot">
+                    <input placeholder="Block" data-bind="value: deliver.block"><input placeholder="Section" data-bind="value: deliver.section">
+                </div>
             </div>
-            <textarea class="notepad block" id="notes"></textarea>
-        </aside>
-        
+            <div id="design">
+                <span><input placeholder="Design Name"></span>
+                <span>
+                    <label>Lettering Faces</label>
+                    <select>
+                        <option>Unknown</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                    </select>
+                </span>
+                <span>
+                    <label>Positions Verified</label>
+                    <input type="checkbox" />
+                </span>
+                <span>
+                    <label>Name on Left</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Carving Type</label>
+                    <select>
+                        <option value="flat">Flat</option>
+                        <option value="none">None</option>
+                        <option value="shape">Shape</option>
+                        <option value="etching">Etching</option>
+                    </select>
+                </span>
+                <span>
+                    <label>Name on Back</label>
+                    <input type="checkbox" />
+                </span>
+                <span>
+                    <label>Special Artwork</label>
+                    <input type="checkbox" />
+                </span>
+                <span>
+                    <label>Match Rubbing</label>
+                    <input type="checkbox" />
+                </span>
+            </div>
+        </div>
+        <div class="preview">
+            <img />
+            <p class="print">Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
+        </div>
+        <footer>
+            <input />
+        </footer>
     </div>
+    <aside class="sidebar">
+        <div>
+            <input id="order-date" value="10/20/2011" data-bind="value: order.date" />
+            <span id="amount" class="amount" data-bind="text: balance"></span>
+            <select list="orderStatus" id="order-status" data-bind="option: order.status, value: order.status">
+                <datalist id="orderStatus">
+                    <option value="Quote">Quote</option>
+                    <option value="Layaway">Layaway</option>
+                    <option value="Drawing In-Process">Drawing In-Process</option>
+                    <option value="Design Approval Pending">Design Approval Pending</option>
+                    <option value="On Order">On Order</option>
+                    <option value="Engraving @BMC">Engraving @BMC</option>
+                    <option value="Engraving @Sasakwa">Engraving @Sasakwa</option>
+                    <option value="Final Customer Approval">Final Customer Approval</option>
+                    <option value="To Be Set">To Be Set</option>
+                </datalist>
+            </select>
+        </div>
+        <table class="table money" id="costs">
+            <caption>Costs <a data-bind="click: $root.addCost">(+)</a></caption>
+            <tbody data-bind="foreach:costs">
+                <tr class="cost">
+                    <td><input list="part-list" placeholder="Part" data-bind="value: part" /></td>
+                    <td><input type="number" value="0" data-bind="value: amount" /></td>
+                    <td class="action delete"><a data-bind="click: $root.delCost">&nbsp;-&nbsp;</a></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr class="subtotal">
+                    <td><input readonly value="Subtotal" /></td>
+                    <td><input type="number" readonly data-bind="value: subtotal" /></td>
+                    <td></td>
+                </tr>
+                <tr class="tax">
+                    <td><input readonly value="Sales Tax" /></td>
+                    <td><input type="number" readonly data-bind="value: tax" /></td>
+                    <td></td>
+                </tr>
+                <tr class="delivery">
+                    <td><input readonly value="Delivery" /></td>
+                    <td><input type="number" value="0" data-bind="value: delivery" /></td>
+                    <td></td>
+                </tr>
+                <tr class="fees">
+                    <td><input readonly value="Applicable Fees" /></td>
+                    <td><input type="number" value="0" data-bind="value: fees" /></td>
+                    <td></td>
+                </tr>
+                <tr class="total">
+                    <td><input readonly value="Total Price" /></td>
+                    <td><input type="number" readonly data-bind="value: total" /></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table money" id="payments">
+            <caption>Payments <a data-bind="click: $root.addPayment">(+)</a></caption>
+            <tbody data-bind="foreach:payments">
+                <tr>
+                    <td><input placeholder="MM/DD/YYYY" required data-bind="value: date" /></td>
+                    <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
+                    <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input readonly value="Amount Paid" /></td>
+                    <td><input readonly class="amountPaid" type="number" data-bind="value: paid" /></td>
+                    <td></td> 
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Balance Due: <span class="amount" data-bind="text: balance"></span></td>
+                </tr>
+            </tfoot>
+        </table>
+        <textarea id="note" data-bind="text: note"></textarea>
+        <table id="contact" class="table">
+            <caption>Contact</caption>
+            <tbody>
+                <tr><td colspan="3"><input placeholder="Name" data-bind="value: sale.name" /></td></tr>
+                <tr><td colspan="3"><input placeholder="Phone" type="tel" data-bind="value: sale.phone" /></td></tr>
+                <tr><td colspan="3"><input placeholder="Email" type="email" data-bind="value: sale.email" /></td></tr>
+                <tr><td colspan="3"><input placeholder="Street" type="address" data-bind="value: sale.street" /></td></tr>
+                <tr>
+                    <td style="width: 50%"><input placeholder="City" data-bind="value: sale.city" /></td>
+                    <td><input placeholder="State" data-bind="value: sale.state" /></td>
+                    <td><input placeholder="Zip" data-bind="value: sale.zip" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
+                    <td><input placeholder="At" list="locations" data-bind="value: sale.soldAt" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </aside>
+</div>
 
-    <div id="status">
-    </div>
+<div id="status">
 </div>
 
 <div class="lists">
@@ -205,60 +235,22 @@
         <option value="Morning Rose" />
         <option value="Mahogany" />
         <option value="Black" />
-        <option value="Green" />
-    </datalist>
-    <datalist id="finish-list">
-        <option value="Polish 2" />
-        <option value="Polish 3" />
-        <option value="Polish 5" />
-        <option value="All-Polish" />
+        <option value="Valley Green" />
+        <option value="Pad">Foundation</option>
+        <option value="Deep">Foundation</option>
     </datalist>
 
-    <datalist id="foundation-list">
-        <option value="Concrete Pad" />
-        <option value="Granite Pad" />
-    </datalist>
-    <datalist id="foundation-types">
-        <option value="Pad Only" />
-        <option value="Deep (18 inches)" />
-    </datalist>
-
-    <datalist id="carving-type">
-        <option value="Flat" />
-        <option value="Shape" />
-        <option value="Etching" />
-    </datalist>
-    <datalist id="design-facings">
-        <option value="East" />
-        <option value="West" />
-        <option value="North" />
-        <option value="South" />
-    </datalist>
-
-    <datalist id="common-designs">
-        <option value="Roses" />
-    </datalist>
-
-    <datalist id="order-status">
-        <option value="Quote" />
-        <option value="Layaway" />
-        <option value="Drawing in Process" />
-        <option value="Design Approval Pending" />
-        <option value="On Order" />
-        <option value="Engraving @BMC" />
-        <option value="Engraving @Sasakwa" />
-        <option value="Final Customer Approval" />
-        <option value="To Be Set" />
-    </datalist>
-    <datalist id="states">
-        <option value="Oklahoma" />
+    <datalist id="reps">
+        <option value="Kyle MacKay Rives">KMR</option>
+        <option value="Mike Rives, Jr.">LMR</option>
+        <option value="D. Mike Rives, Sr.">DMR</option>
+        <option value="Opal Rives">OLHR</option>
     </datalist>
 </div>
 
-<script src="js/jquery.js" async></script>
+<!-- <script src="js/jquery.js" async></script> -->
 <script src="js/knockout-2.1.0.js"></script>
-<script src="js/orderForm.js"></script>
+<!-- <script src="js/knockout.mapping.js"></script> -->
 <script src="js/order.js"></script>
-<script src="js/orderKnockout.js"></script>
 </body>
 </html>
