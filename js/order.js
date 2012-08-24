@@ -139,7 +139,7 @@ ko.applyBindings(new OrderViewModel(), document.body)
 ///////////////////////////////////
 
 navigator.registerProtocolHandler("bmorder",
-                                  "https://orders.benchmarkmonument.com/?order=%s",
+                                  "http://orders.benchmarkmonument.com/?order=%s",
                                   "Order");
 
 ///////////////////////////////////
