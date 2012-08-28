@@ -45,7 +45,6 @@
         </table>
         <div class="details">
             <div id="delivery">
-                <span><label>Deliver By</label><input data-bind="value: deliver.by"/></span>
                 <span><label>Cemetery</label><input data-bind="value: deliver.to"/></span>
                 <span><label>In/Near</label><input data-bind="value: deliver.near"/></span>
                 <div class="cem-contact">
@@ -62,17 +61,14 @@
                 <span><input placeholder="Design Name"></span>
                 <span>
                     <label>Lettering Faces</label>
-                    <select>
-                        <option>Unknown</option>
-                        <option>North</option>
-                        <option>South</option>
-                        <option>East</option>
-                        <option>West</option>
-                    </select>
-                </span>
-                <span>
-                    <label>Positions Verified</label>
-                    <input type="checkbox" />
+                    <input list="dirs">
+                    <datalist id="dirs">
+                        <option value="Unknown"></option>
+                        <option value="North"></option>
+                        <option value="South"></option>
+                        <option value="East"></option>
+                        <option value="West"></option>
+                    </datalist>
                 </span>
                 <span>
                     <label>Name on Left</label>
@@ -80,29 +76,36 @@
                 </span>
                 <span>
                     <label>Carving Type</label>
-                    <select>
-                        <option value="flat">Flat</option>
-                        <option value="none">None</option>
-                        <option value="shape">Shape</option>
-                        <option value="etching">Etching</option>
-                    </select>
+                    <input list="carving" value="Flat">
+                    <datalist id="carving">
+                        <option value="Flat"></option>
+                        <option value="None"></option>
+                        <option value="Shape"></option>
+                        <option value="Etching"></option>
+                    </datalist>
                 </span>
-                <span>
-                    <label>Name on Back</label>
-                    <input type="checkbox" />
-                </span>
-                <span>
-                    <label>Special Artwork</label>
-                    <input type="checkbox" />
-                </span>
-                <span>
-                    <label>Match Rubbing</label>
-                    <input type="checkbox" />
-                </span>
+                <div>
+                    <span>
+                        <label>Names Verified</label>
+                        <input type="checkbox" />
+                    </span>
+                    <span>
+                        <label>Name on Back</label>
+                        <input type="checkbox" />
+                    </span>
+                    <span>
+                        <label>Special Artwork</label>
+                        <input type="checkbox" />
+                    </span>
+                    <span>
+                        <label>Match Rubbing</label>
+                        <input type="checkbox" />
+                    </span>
+                </div>
             </div>
         </div>
         <div class="preview">
-            <img />
+            <textarea></textarea>
             <p class="print">Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
         </div>
         <footer>
@@ -116,6 +119,7 @@
             <select list="orderStatus" id="order-status" data-bind="option: order.status, value: order.status">
                 <datalist id="orderStatus">
                     <option value="Quote">Quote</option>
+                    <option value="Down Payment Pending">Down Payment Pending</option>
                     <option value="Layaway">Layaway</option>
                     <option value="Drawing In-Process">Drawing In-Process</option>
                     <option value="Design Approval Pending">Design Approval Pending</option>
@@ -249,8 +253,9 @@
 </div>
 
 <!-- <script src="js/jquery.js" async></script> -->
+<script src="https://js.simperium.com/v0.1/"></script>
 <script src="js/knockout-2.1.0.js"></script>
-<!-- <script src="js/knockout.mapping.js"></script> -->
+<script src="js/knockout.mapping.js"></script>
 <script src="js/order.js"></script>
 </body>
 </html>

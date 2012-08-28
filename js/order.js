@@ -48,14 +48,13 @@ function OrderViewModel() {
     ])
 
     self.payments = ko.observableArray([
-        new Payment("08/01/2012", 500)
-      , new Payment("08/07/2012", 300)
+        
     ])
 
 
     // Computed data
     function round(n) { return Math.round(n * 100) / 100 }
-    function parse(o) { return parseInt(o, 10) }
+    function parse(o) { return parseFloat(o) }
 
     self.subtotal = ko.computed(function () {
         var subtotal = 0, i;
@@ -66,7 +65,7 @@ function OrderViewModel() {
         return subtotal;
     })
 
-    self.tax   = ko.computed(function ()    { return round(self.subtotal() * 0.08157) })
+    self.tax   = ko.computed(function ()    { return round(self.subtotal() * 0.08517) })
     self.delivery = ko.observable(0)
     self.fees  = ko.observable(0)
     self.total = ko.computed(function ()    { return self.subtotal() + self.tax() + parse(self.delivery()) + parse(self.fees()) })
@@ -114,21 +113,21 @@ function OrderViewModel() {
     }
 
     self.sale = {
-        name: "D. Mike Rives"
-      , phone: "(918) 578-1234"
-      , email: "example@gmail.com"
-      , street: "1735 E. 11th St."
-      , city: "Tulsa"
-      , state: "OK"
-      , zip: 74104
-      , soldBy: "Kyle MacKay Rives"
-      , soldAt: "BMC"
+        name: ""
+      , phone: ""
+      , email: ""
+      , street: ""
+      , city: ""
+      , state: ""
+      , zip: ""
+      , soldBy: ""
+      , soldAt: ""
     }
 
     self.order = {
-        title: ko.observable("Victoria M. Charging-Hawk")
-      , date: ko.observable("08/08/2012")
-      , status: ko.observable("Quote")
+        title: ko.observable("Title")
+      , date: ko.observable("")
+      , status: ko.observable("")
     }
     // self.a = ko.observable(ko.utils.stringifyJSON(OrderViewModel))
 }
@@ -138,11 +137,42 @@ ko.applyBindings(new OrderViewModel(), document.body)
 
 ///////////////////////////////////
 
-navigator.registerProtocolHandler("bmorder",
-                                  "http://orders.benchmarkmonument.com/?order=%s",
-                                  "Order");
+// navigator.registerProtocolHandler("bmorder", "http://orders.benchmarkmonument.com/?order=%s", "Order")
 
 ///////////////////////////////////
+// Simperium
+var Simperium, SIMPERIUM_APP_ID = 'hydraulics-regrets-423', SIMPERIUM_API_KEY = 'b5eb438b0d8e4bcba39bbaf57b38f220';
+var url = "https://auth.simperium.com/1/" + SIMPERIUM_APP_ID + "/authorize/";
+$.ajax({
+    url: url,
+    type: "POST",
+    contentType: "application/json",
+    dataType: "json",
+    data: JSON.stringify({"username": "benchmark", "password": "mulligan"}),
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader("X-Simperium-API-Key", SIMPERIUM_API_KEY);
+    },
+    success: function (data) {
+        console.log("succesfully logged in");
+        console.log("access token: " + data.access_token);
+    },
+    error: function () {
+        console.log("authentication failure");
+    }
+});
+var simperium = new Simperium('', { token : 'SIMPERIUM_ACCESS_TOKEN'});
+var bucket = simperium.bucket('orders');
+bucket.on('notify', function (id, data) {
+    console.log("object " + id + " was updated!");
+    console.log("new data is:");
+    console.log(data);
+});
+bucket.on('local', function (id) {
+    console.log("request for local state for object " + id + " received");
+    return {"some": "json"};
+});
+bucket.start();
+
 ///////////////////////////////////
 
 ///////////////////////////////////

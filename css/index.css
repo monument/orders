@@ -157,8 +157,8 @@ header img {
 #material .part:not(input)     {width: 15%;}
 #material .material:not(input) {width: 11%;}
 #material .kind:not(input)     {width: 17%;}
-#material .length:not(input), #material .width:not(input), #material .height:not(input) {width: 7.5%;}
-#material .notes:not(input)    {width: 20%;}
+#material .length:not(input), #material .width:not(input), #material .height:not(input) {width: 6%;}
+#material .notes:not(input)    {width: 25%;}
 #material .cost:not(input)     {width: 7%;}
 #material .action              {width: 25px;
     text-align: center;
@@ -173,6 +173,16 @@ header img {
  */
 #notes, #contact, #costs, #payments {
     -webkit-flex: 1;
+}
+#contact {
+    background: white;
+    position: fixed;
+    bottom: 0px;
+    width: 190px;
+}
+#contact caption {
+    background: -webkit-linear-gradient(hsla(0, 100%, 100%, 0.2), hsla(0, 100%, 100%, 0.8));
+    background: linear-gradient(hsla(0, 100%, 100%, 0.2), hsla(0, 100%, 100%, 0.8));
 }
 .money td:nth-child(odd) { width: 70%; }
 .money td:nth-child(even) {
@@ -209,7 +219,14 @@ header img {
     display: -webkit-flex;
     -webkit-flex-direction: column;
 }
+#design div {
+    -webkit-columns: 2;
+}
+#design div label {
+    -webkit-flex: 2;
+}
 .details span {
+    margin-top: 1px;
     -webkit-flex: 1;
     display: -webkit-inline-flex;
     width: 100%;
@@ -244,13 +261,16 @@ header img {
 
 .preview {
     -webkit-flex: 1;
-/*    min-height: 240px;
-    border-radius: 1em;
-    box-shadow: 0 0 5px 0px #444;
-    margin-top: 2em;
-    background: -webkit-linear-gradient(top, rgba(122,188,255,.5) 0%, rgba(96,171,248,.5) 44%, rgba(64,150,238,.5) 100%);
-    background:   linear-gradient(to bottom, rgba(122,188,255,.5) 0%, rgba(96,171,248,.5) 44%, rgba(64,150,238,.5) 100%);
-*/}
+    margin-top: 20px;
+}
+.preview textarea {
+    border: none;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 303px;
+    box-shadow: 0 0 1px hsl(0, 0%, 27%);
+}
 
 footer {
     width: 100%;
@@ -269,11 +289,13 @@ footer input {
         margin-right: 1em;
     }
     .print {
+        position: fixed;
         display: block;
         text-align: center;
+        bottom: 0;
     }
     #title {
-        -webkit-transform: rotate(90deg) translate3d(300px, -5.1in, 0);
+        -webkit-transform: rotate(90deg) translate3d(105px, -5.1in, 0);
     }
     .main {
         margin-top: -35px;
