@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# v1.01 - 2012-08-24 (3:09 pm)
-http://orders.benchmarkmonument.com/index.html
-http://orders.benchmarkmonument.com/img/bmcheader.png
-http://orders.benchmarkmonument.com/js/jquery.js
-http://orders.benchmarkmonument.com/js/knockout.mapping.js
-http://orders.benchmarkmonument.com/js/knockout-2.1.0.js
-http://orders.benchmarkmonument.com/js/order.js
-http://orders.benchmarkmonument.com/css/index.css
-http://orders.benchmarkmonument.com/css/print.css
-http://orders.benchmarkmonument.com/orders/orders.json
+# v1.02 - 2013-01-11 (10:05 am)
+index.html
+img/bmcheader.png
+js/jquery.js
+js/knockout.mapping.js
+js/knockout-2.1.0.js
+js/order.js
+css/index.css
+css/print.css
+orders/orders.json

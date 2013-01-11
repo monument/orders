@@ -1,5 +1,8 @@
 /* Eradicate the webkit spinner button */
-/* input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; } */
+input[readonly]::-webkit-inner-spin-button, input::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
 /* Use box-sizing: border-box; */
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
 
@@ -11,41 +14,48 @@ body {
     font-size: 11px; 
     width: 8in;
 }
-table { border-collapse: collapse; border-spacing: 0px; }
-tr { height: 2.25em; }
-td { padding: 0; }
-.amount::before { content: "$"; }
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+}
+tr { 
+    height: 2.25em; 
+}
+td { 
+    padding: 0; 
+}
+.amount::before { 
+    content: "$"; 
+}
 input, select {
     font-family: inherit; 
     color: inherit;
     font-size: inherit;
-    -webkit-transition: .5s; transition: .5s;
+    -webkit-transition: .5s; 
+    transition: .5s;
 }
 input { 
     width: inherit; 
-    padding: 1px; 
+    padding: 1px;
     height: inherit; 
     border: solid 1px #ddd;
 }
-label:after {content: ": "}
-label input:focus {
-    outline: 0;
-    background: lightyellow;
-    border-bottom-color: goldenrod;
-}
 input:hover {
-    background: lightyellow;
+    background: hsla(120, 100, 50, 1);
 }
 
 
 /*      Orders       */
 
 .sidebar { 
-    display: -webkit-flex; display: flex;
-    -webkit-flex-direction: column; flex-direction: column;
+    display: -webkit-flex; 
+    display: flex;
+    -webkit-flex-direction: column; 
+    flex-direction: column;
 
     min-width: 190px;
-    -webkit-flex: 1; flex: 1;
+    -webkit-flex: 1; 
+    flex: 1;
     margin-left: .5em;
 }
 #title {
@@ -69,9 +79,12 @@ input:hover {
     border: solid 1px #ddd;
 }
 .main {
-    display: -webkit-flex; display: flex;
-    -webkit-flex-direction: column; flex-direction: column;
-    -webkit-flex: 3; flex: 3;
+    display: -webkit-flex; 
+    display: flex;
+    -webkit-flex-direction: column; 
+    flex-direction: column;
+    -webkit-flex: 3; 
+    flex: 3;
 
     padding-right: .5em;
 }
@@ -86,13 +99,17 @@ input:hover {
     font-family: inherit;
     width: 100%;
     padding: 2px;
-    -webkit-transition: none; transition: none;
-    -webkit-flex: 1; flex: 1;
+    -webkit-transition: none; 
+    transition: none;
+    -webkit-flex: 1; 
+    flex: 1;
 }
 
 #order {
-    display: -webkit-flex; display: flex;
-    -webkit-flex-direction: row; flex-direction: row;
+    display: -webkit-flex; 
+    display: flex;
+    -webkit-flex-direction: row; 
+    flex-direction: row;
     
     padding: .5em;
     height: 8in;
@@ -138,9 +155,8 @@ header img {
     height: 100%;
 }
 .table input:focus {
-    outline: 0;
+    outline: rgb(91, 157, 217) auto 5px;
     background: lightyellow;
-    border-color: goldenrod;
 }
 .table tfoot tr {
     border-bottom: hidden;
@@ -184,6 +200,9 @@ header img {
     width: 100%;
     padding: 1px 4px;
 }
+.money label {
+    padding: 1px 4px;
+}
 .delete:hover {
     background: red;
     color: white;
@@ -200,6 +219,8 @@ header img {
     -webkit-flex-direction: row; flex-direction: row;
     margin-top: 1.5em;
 }
+.details label:after {content: ": "}
+#design {margin-top:2px;}
 #design, #delivery {
     -webkit-flex: 1; flex: 1;
     display: -webkit-flex; display: flex;
@@ -225,7 +246,7 @@ header img {
     -webkit-flex: 1; flex: 1;
 }
 .details [class*="contact"]  { -webkit-flex: 1; flex:1; }
-.details [class*="location"] { -webkit-flex: 1; flex:1;}
+.details [class*="location"] { -webkit-flex: 1; flex:1; }
 .details [class^="cem"] label {
     margin-top: .5em;
     display: block;
@@ -239,14 +260,8 @@ header img {
 .details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
 
 .preview {
-    -webkit-flex: 1; flex: 1;
-/*    min-height: 240px;
-    border-radius: 1em;
-    box-shadow: 0 0 5px 0px #444;
-    margin-top: 2em;
-    background: -webkit-linear-gradient(top, rgba(122,188,255,.5) 0%, rgba(96,171,248,.5) 44%, rgba(64,150,238,.5) 100%);
-    background:   linear-gradient(to bottom, rgba(122,188,255,.5) 0%, rgba(96,171,248,.5) 44%, rgba(64,150,238,.5) 100%);
-*/
+    -webkit-flex: 1; 
+    flex: 1;
 }
 
 footer {
@@ -259,9 +274,11 @@ footer input {
     height: 100%;
 }
 
-
 @media print {
-
+    ::-webkit-inner-spin-button, input::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0;
+    }
     #order {
         margin-right: 1em;
     }
@@ -287,5 +304,3 @@ footer input {
         width: 7in;
     }
 }
-
-::-webkit-spinbutton {color: red;}
