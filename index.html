@@ -3,15 +3,12 @@
 <head>
     <title>Benchmark Order Form</title>
     <meta charset="utf-8" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/print.css" />
 </head>
 <body>
 
-<header>
-<img src="./img/bmcheader.png" width="100%" />
-</header>
+<header><img src="./img/bmcheader.png" width="100%"></header>
 
 <div id="order">
     <div class="main">
@@ -25,12 +22,13 @@
                 <th class="part">Piece <a data-bind="click: addPiece">(+)</a></th>
                 <th class="material">Material</th>
                 <th class="kind">Kind</th>
-                <th colspan="3" class="dim">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
+                <th class="dim" colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
                 <th class="notes">Notes</th>
                 <th class="cost">Cost</th>
                 <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
             </tr></thead>
-            <tbody data-bind="foreach:pieces"><tr>
+            <tbody data-bind="foreach:pieces">
+              <tr>
                 <td class="qty"><input class="qty" data-bind="value: qty" type="number" /></td>
                 <td class="part"><input class="part" data-bind="value: part" list="part-list" /></td>
                 <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
@@ -41,14 +39,16 @@
                 <td class="notes"><input class="notes" data-bind="value: notes" /></td>
                 <td class="cost"><input class="cost" data-bind="value: amount" type="number" /></td>
                 <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
-            </tr></tbody>
+              </tr>
+            </tbody>
         </table>
         <div class="details">
             <div id="delivery">
+                <span><label>Deliver By</label><input data-bind="value: deliver.by" type="date"/></span>
                 <span><label>Cemetery</label><input data-bind="value: deliver.to"/></span>
                 <span><label>In/Near</label><input data-bind="value: deliver.near"/></span>
                 <div class="cem-contact">
-                    <label>Person we can contact to find grave</label>
+                    <label>Name of contact to find grave</label>
                     <input placeholder="Name" data-bind="value: deliver.contact.name"><input placeholder="Phone" data-bind="value: deliver.contact.phone">
                 </div>
                 <div class="cem-location">
@@ -61,14 +61,17 @@
                 <span><input placeholder="Design Name"></span>
                 <span>
                     <label>Lettering Faces</label>
-                    <input list="dirs">
-                    <datalist id="dirs">
-                        <option value="Unknown"></option>
-                        <option value="North"></option>
-                        <option value="South"></option>
-                        <option value="East"></option>
-                        <option value="West"></option>
-                    </datalist>
+                    <select>
+                        <option>Unknown</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                    </select>
+                </span>
+                <span>
+                    <label>Positions Verified</label>
+                    <input type="checkbox" />
                 </span>
                 <span>
                     <label>Name on Left</label>
@@ -76,36 +79,29 @@
                 </span>
                 <span>
                     <label>Carving Type</label>
-                    <input list="carving" value="Flat">
-                    <datalist id="carving">
-                        <option value="Flat"></option>
-                        <option value="None"></option>
-                        <option value="Shape"></option>
-                        <option value="Etching"></option>
-                    </datalist>
+                    <select>
+                        <option value="flat">Flat</option>
+                        <option value="none">None</option>
+                        <option value="shape">Shape</option>
+                        <option value="etching">Etching</option>
+                    </select>
                 </span>
-                <div>
-                    <span>
-                        <label>Names Verified</label>
-                        <input type="checkbox" />
-                    </span>
-                    <span>
-                        <label>Name on Back</label>
-                        <input type="checkbox" />
-                    </span>
-                    <span>
-                        <label>Special Artwork</label>
-                        <input type="checkbox" />
-                    </span>
-                    <span>
-                        <label>Match Rubbing</label>
-                        <input type="checkbox" />
-                    </span>
-                </div>
+                <span>
+                    <label for="name-on-back">Name on Back</label>
+                    <input id="name-on-back" type="checkbox" />
+                </span>
+                <span>
+                    <label for="special-artwork">Special Artwork</label>
+                    <input id="special-artwork" type="checkbox" />
+                </span>
+                <span>
+                    <label for="match-rubbing">Match Rubbing</label>
+                    <input id="match-rubbing" type="checkbox" />
+                </span>
             </div>
         </div>
         <div class="preview">
-            <textarea></textarea>
+            <img />
             <p class="print">Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
         </div>
         <footer>
@@ -114,12 +110,11 @@
     </div>
     <aside class="sidebar">
         <div>
-            <input id="order-date" value="10/20/2011" data-bind="value: order.date" />
+            <input id="order-date" type="date"     data-bind="value: order.date" />
             <span id="amount" class="amount" data-bind="text: balance"></span>
             <select list="orderStatus" id="order-status" data-bind="option: order.status, value: order.status">
                 <datalist id="orderStatus">
                     <option value="Quote">Quote</option>
-                    <option value="Down Payment Pending">Down Payment Pending</option>
                     <option value="Layaway">Layaway</option>
                     <option value="Drawing In-Process">Drawing In-Process</option>
                     <option value="Design Approval Pending">Design Approval Pending</option>
@@ -172,7 +167,7 @@
             <caption>Payments <a data-bind="click: $root.addPayment">(+)</a></caption>
             <tbody data-bind="foreach:payments">
                 <tr>
-                    <td><input placeholder="MM/DD/YYYY" required data-bind="value: date" /></td>
+                    <td><input placeholder="MM/DD/YYYY" type="date" required data-bind="value: date" /></td>
                     <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
                     <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
                 </tr>
@@ -204,8 +199,7 @@
                     <td><input placeholder="Zip" data-bind="value: sale.zip" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
-                    <td><input placeholder="At" list="locations" data-bind="value: sale.soldAt" /></td>
+                    <td colspan="23"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
                 </tr>
             </tbody>
         </table>
@@ -252,10 +246,10 @@
     </datalist>
 </div>
 
-<!-- <script src="js/jquery.js" async></script> -->
-<script src="https://js.simperium.com/v0.1/"></script>
+
+<script src="js/jquery.js" async></script>
 <script src="js/knockout-2.1.0.js"></script>
-<script src="js/knockout.mapping.js"></script>
 <script src="js/order.js"></script>
+<!--<script src="js/knockout.mapping.js"></script>-->
 </body>
 </html>
