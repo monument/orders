@@ -1,8 +1,6 @@
 "use strict";
 var ko;
 
-var l = "";
-
 // Class to represent a row in the pieces list
 function Piece(qty, part, material, kind, length, width, height, notes, amount) {
     var self = this;
@@ -223,10 +221,6 @@ function OrderViewModel() {
 }
 
 ko.applyBindings(new OrderViewModel(), document.body)
-
-///////////////////////////////////
-
-$('#today')[0].onclick = (function () {document.write("hey")})
 
 ///////////////////////////////////
 

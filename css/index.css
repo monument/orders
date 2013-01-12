@@ -1,10 +1,12 @@
 /* Eradicate the webkit spinner button */
-input[readonly]::-webkit-inner-spin-button, input::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
+input[readonly]::-webkit-inner-spin-button, input[readonly]::-webkit-outer-spin-button, 
+input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-outer-spin-button { 
+    appearance: none; 
     margin: 0; 
 }
-/* Use box-sizing: border-box; */
-* { box-sizing: border-box; -moz-box-sizing: border-box; }
+* { 
+    box-sizing: border-box;
+}
 
 /*    Global */
 body {
@@ -31,7 +33,6 @@ input, select {
     font-family: inherit; 
     color: inherit;
     font-size: inherit;
-    -webkit-transition: .5s; 
     transition: .5s;
 }
 input { 
@@ -48,13 +49,10 @@ input:hover {
 /*      Orders       */
 
 .sidebar { 
-    display: -webkit-flex; 
     display: flex;
-    -webkit-flex-direction: column; 
     flex-direction: column;
 
     min-width: 190px;
-    -webkit-flex: 1; 
     flex: 1;
     margin-left: .5em;
 }
@@ -79,11 +77,8 @@ input:hover {
     border: solid 1px #ddd;
 }
 .main {
-    display: -webkit-flex; 
     display: flex;
-    -webkit-flex-direction: column; 
     flex-direction: column;
-    -webkit-flex: 3; 
     flex: 3;
 
     padding-right: .5em;
@@ -99,16 +94,12 @@ input:hover {
     font-family: inherit;
     width: 100%;
     padding: 2px;
-    -webkit-transition: none; 
     transition: none;
-    -webkit-flex: 1; 
     flex: 1;
 }
 
 #order {
-    display: -webkit-flex; 
     display: flex;
-    -webkit-flex-direction: row; 
     flex-direction: row;
     
     padding: .5em;
@@ -116,7 +107,7 @@ input:hover {
 }
 
 header img {
-    margin-top: -4em;
+    margin-top: 1em;
 }
 
 
@@ -163,8 +154,7 @@ header img {
 }
 
 /* #material
- * Material table 
- */
+ Material table */
 #material thead tr { height: 50%; }
 #material .qty:not(input)      {width: 5%;}
 #material .part:not(input)     {width: 15%;}
@@ -181,10 +171,9 @@ header img {
 #material .dim input, #material .action  { text-align: center; }
 
 /* .money, #costs, and #payments
- * Money chart 
- */
+ Money chart */
 #notes, #contact, #costs, #payments {
-    -webkit-flex: 1; flex: 1;
+    flex: 1;
 }
 .money td:nth-child(odd) { width: 70%; }
 .money td:nth-child(even) {
@@ -208,45 +197,49 @@ header img {
     color: white;
 }
 
-
-
 /* #design
- * What does the customer want?
- */
+ What does the customer want? */
 
 .details {
-    display: -webkit-flex; display: flex;
-    -webkit-flex-direction: row; flex-direction: row;
+    display: flex;
+    flex-direction: row;
     margin-top: 1.5em;
 }
-.details label:after {content: ": "}
-#design {margin-top:2px;}
+.details label:after {
+    content: ": ";
+}
+#design {
+    margin-top:2px;
+}
 #design, #delivery {
-    -webkit-flex: 1; flex: 1;
-    display: -webkit-flex; display: flex;
-    -webkit-flex-direction: column; flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 .details span {
-    -webkit-flex: 1; flex: 1;
-    display: -webkit-inline-flex; display: inline-flex;
+    flex: 1;
+    display: inline-flex;
     width: 100%;
     height: 22px;
-    -webkit-align-items: center; align-items: center;
+    align-items: center;
 }
-#design:nth-child(1), #delivery:nth-child(1) { /*Replace with `matches` when supported*/
+#design:nth-child(1), #delivery:nth-child(1) {
     padding-right: 1em;
 }
 .details input, .details select {
-    -webkit-flex: 1; flex: 1;
+    flex: 1;
 }
-.details input:not([type="checkbox"]), .details select {height: 22px;}
+.details input:not([type="checkbox"]), .details select {
+    height: 22px;
+}
 .details label {
     padding: 2px 0 4px;
     height: 16px;
-    -webkit-flex: 1; flex: 1;
+    flex: 1;
 }
-.details [class*="contact"]  { -webkit-flex: 1; flex:1; }
-.details [class*="location"] { -webkit-flex: 1; flex:1; }
+.cem-contact, .cem-location {
+    flex:1;
+}
 .details [class^="cem"] label {
     margin-top: .5em;
     display: block;
@@ -255,12 +248,11 @@ header img {
     margin: 0;
     width: 50%;
 }
-.details [class*="contact"] input:nth-child(odd) {margin-left: -1px; width: 50%;}
+.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 50%;}
 .details [class*="location"] input {margin-top: -1px;}
 .details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
 
 .preview {
-    -webkit-flex: 1; 
     flex: 1;
 }
 
@@ -275,8 +267,8 @@ footer input {
 }
 
 @media print {
-    ::-webkit-inner-spin-button, input::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
+    ::-webkit-inner-spin-button, ::-webkit-outer-spin-button { 
+        appearance: none; 
         margin: 0;
     }
     #order {
@@ -287,13 +279,14 @@ footer input {
         text-align: center;
     }
     #title {
-        -webkit-transform: rotate(90deg) translate3d(300px, -5.1in, 0);
         transform: rotate(90deg) translate3d(300px, -5.1in, 0);
     }
     .main {
         margin-top: -35px;
     }
-    .action {display: none;}
+    .action {
+        display: none;
+    }
     .money td:nth-child(even) {
         border-right: hidden;
     }
