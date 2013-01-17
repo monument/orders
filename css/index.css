@@ -33,7 +33,6 @@ input, select {
     font-family: inherit; 
     color: inherit;
     font-size: inherit;
-    transition: .5s;
 }
 input { 
     width: inherit; 
