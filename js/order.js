@@ -1,8 +1,6 @@
 "use strict";
 var ko;
 
-var l = "";
-
 // Class to represent a row in the pieces list
 function Piece(qty, part, material, kind, length, width, height, notes, amount) {
     var self = this;
@@ -30,7 +28,7 @@ function Payment(date, amount) {
 }
 
 // Overall viewmodel for this screen, along with initial state
-function OrderViewModel() {
+function OrderViewModel_State() {
     var self = this;
 
     // Editable data
@@ -48,13 +46,14 @@ function OrderViewModel() {
     ])
 
     self.payments = ko.observableArray([
-        
+        new Payment("08/01/2012", 500)
+      , new Payment("08/07/2012", 300)
     ])
 
 
     // Computed data
     function round(n) { return Math.round(n * 100) / 100 }
-    function parse(o) { return parseFloat(o) }
+    function parse(o) { return parseInt(o, 10) }
 
     self.subtotal = ko.computed(function () {
         var subtotal = 0, i;
@@ -65,7 +64,7 @@ function OrderViewModel() {
         return subtotal;
     })
 
-    self.tax   = ko.computed(function ()    { return round(self.subtotal() * 0.08517) })
+    self.tax   = ko.computed(function ()    { return round(self.subtotal() * 0.08157) })
     self.delivery = ko.observable(0)
     self.fees  = ko.observable(0)
     self.total = ko.computed(function ()    { return self.subtotal() + self.tax() + parse(self.delivery()) + parse(self.fees()) })
@@ -113,6 +112,95 @@ function OrderViewModel() {
     }
 
     self.sale = {
+        name: "D. Mike Rives"
+      , phone: "(918) 578-1234"
+      , email: "example@gmail.com"
+      , street: "1735 E. 11th St."
+      , city: "Tulsa"
+      , state: "OK"
+      , zip: 74104
+      , soldBy: "Kyle MacKay Rives"
+      , soldAt: "BMC"
+    }
+
+    self.order = {
+        title: ko.observable("Victoria M. Charging-Hawk")
+      , date: ko.observable("08/08/2012")
+      , status: ko.observable("Quote")
+    }
+    // self.a = ko.observable(ko.utils.stringifyJSON(OrderViewModel))
+}
+
+function OrderViewModel() {
+    var self = this;
+
+    // Editable data
+    self.pieces = ko.observableArray([new Piece(1, "", "", "", "", "", "", "", 0)])
+    self.costs = ko.observableArray([new Cost("", 0)])
+    self.payments = ko.observableArray([new Payment("", 0)])
+
+
+    // Computed data
+    function round(n) { return Math.round(n * 100) / 100 }
+    function parse(o) { return parseInt(o, 10) }
+
+    self.subtotal = ko.computed(function () {
+        var subtotal = 0, i;
+        for (i = 0; i < self.costs().length; i++)
+            subtotal += parse(self.costs()[i].amount())
+        for (i = 0; i < self.pieces().length; i++)
+            subtotal += parse(self.pieces()[i].amount()) * parse(self.pieces()[i].qty())
+        return subtotal;
+    })
+
+    self.tax   = ko.computed(function ()    { return round(self.subtotal() * 0.08157) })
+    self.delivery = ko.observable(0)
+    self.fees  = ko.observable(0)
+    self.total = ko.computed(function ()    { return self.subtotal() + self.tax() + parse(self.delivery()) + parse(self.fees()) })
+
+    self.paid = ko.computed(function () {
+        var paid = 0;
+        for (var i = 0; i < self.payments().length; i++)
+            paid += parseInt(self.payments()[i].amount(), 10);
+        return paid;
+    })
+
+    self.balance = ko.computed(function () {
+        return round(self.total() - self.paid());
+    })
+   
+
+    // Operations
+    self.addPiece = function ()      { self.pieces.push(new Piece(1, "", "", "", "", "", "", "", 0)) }
+    self.delPiece = function (piece) { self.pieces.remove(piece) }
+    self.addCost = function  ()      { self.costs.push(new Cost("", 0)) }
+    self.delCost = function  (cost)  { self.costs.remove(cost) }
+    self.addPayment = function ()        { self.payments.push(new Payment("", 0)) }
+    self.delPayment = function (payment) { self.payments.remove(payment) }
+    
+
+    // Editable data
+    self.note = ko.observable("")
+    
+    self.deliver = {
+        by: ko.observable()
+      , to: ko.observable()
+      , near: ko.observable()
+      , spaces: ko.observable()
+      , lot: ko.observable()
+      , block: ko.observable()
+      , section: ko.observable()
+      , contact: {
+            name: ko.observable()
+          , phone: ko.observable()
+        }
+    }
+
+    self.design = {
+        title: ko.observable("")
+    }
+
+    self.sale = {
         name: ""
       , phone: ""
       , email: ""
@@ -122,58 +210,22 @@ function OrderViewModel() {
       , zip: ""
       , soldBy: ""
       , soldAt: ""
+      , signature: ""
     }
 
     self.order = {
-        title: ko.observable("Title")
-      , date: ko.observable("")
-      , status: ko.observable("")
+        title: ko.observable("Order Title")
+      , date: ko.observable(new Date())
+      , status: ko.observable("Quote")
     }
     // self.a = ko.observable(ko.utils.stringifyJSON(OrderViewModel))
 }
-
 
 ko.applyBindings(new OrderViewModel(), document.body)
 
 ///////////////////////////////////
 
-// navigator.registerProtocolHandler("bmorder", "http://orders.benchmarkmonument.com/?order=%s", "Order")
-
-///////////////////////////////////
-// Simperium
-var Simperium, SIMPERIUM_APP_ID = 'hydraulics-regrets-423', SIMPERIUM_API_KEY = 'b5eb438b0d8e4bcba39bbaf57b38f220';
-var url = "https://auth.simperium.com/1/" + SIMPERIUM_APP_ID + "/authorize/";
-$.ajax({
-    url: url,
-    type: "POST",
-    contentType: "application/json",
-    dataType: "json",
-    data: JSON.stringify({"username": "benchmark", "password": "mulligan"}),
-    beforeSend: function (xhr) {
-        xhr.setRequestHeader("X-Simperium-API-Key", SIMPERIUM_API_KEY);
-    },
-    success: function (data) {
-        console.log("succesfully logged in");
-        console.log("access token: " + data.access_token);
-    },
-    error: function () {
-        console.log("authentication failure");
-    }
-});
-var simperium = new Simperium('', { token : 'SIMPERIUM_ACCESS_TOKEN'});
-var bucket = simperium.bucket('orders');
-bucket.on('notify', function (id, data) {
-    console.log("object " + id + " was updated!");
-    console.log("new data is:");
-    console.log(data);
-});
-bucket.on('local', function (id) {
-    console.log("request for local state for object " + id + " received");
-    return {"some": "json"};
-});
-bucket.start();
-
-///////////////////////////////////
+// navigator.registerProtocolHandler("bmorder", "http://orders.benchmarkmonument.com/?order=%s", "Order");
 
 ///////////////////////////////////
 
