@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" manifest="orderform.appcache">
+<!--<html lang="en" dir="ltr" manifest="orderform.appcache">-->
+<html lang="en" dir="ltr">
 <head>
     <title>Benchmark Order Form</title>
     <meta charset="utf-8" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/print.css" />
 </head>
 <body>
 
-<header>
-<img src="./img/bmcheader.png" width="100%" />
-</header>
+<header><img src="./img/bmcheader.png" width="100%"></header>
 
 <div id="order">
     <div class="main">
@@ -20,35 +17,40 @@
         </div>
         <table id="material" class="striped table">
             <caption>Materials <a data-bind="click: $root.addPiece">(+)</a></caption>
-            <thead><tr>
-                <th class="qty">Qty</th>
-                <th class="part">Piece <a data-bind="click: addPiece">(+)</a></th>
-                <th class="material">Material</th>
-                <th class="kind">Kind</th>
-                <th colspan="3" class="dim">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
-                <th class="notes">Notes</th>
-                <th class="cost">Cost</th>
-                <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
-            </tr></thead>
-            <tbody data-bind="foreach:pieces"><tr>
-                <td class="qty"><input class="qty" data-bind="value: qty" type="number" /></td>
-                <td class="part"><input class="part" data-bind="value: part" list="part-list" /></td>
-                <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
-                <td class="kind"><input class="kind" data-bind="value: kind" list="kind-list" /></td>
-                <td class="dim length"><input class="length" data-bind="value: length" type="number" /></td>
-                <td class="dim width"><input class="width" data-bind="value: width" type="number" /></td>
-                <td class="dim height"><input class="height" data-bind="value: height" type="number" /></td>
-                <td class="notes"><input class="notes" data-bind="value: notes" /></td>
-                <td class="cost"><input class="cost" data-bind="value: amount" type="number" /></td>
-                <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
-            </tr></tbody>
+            <thead>
+                <tr>
+                    <th class="qty">Qty</th>
+                    <th class="part">Piece <a data-bind="click: addPiece">(+)</a></th>
+                    <th class="material">Material</th>
+                    <th class="kind">Description</th>
+                    <th class="dim" colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
+                    <th class="notes">Notes</th>
+                    <th class="cost">Cost</th>
+                    <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:pieces">
+                <tr>
+                    <td class="qty"><input class="qty" data-bind="value: qty" type="number" /></td>
+                    <td class="part"><input class="part" data-bind="value: part" list="part-list" /></td>
+                    <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
+                    <td class="kind"><input class="kind" data-bind="value: kind" list="kind-list" /></td>
+                    <td class="dim length"><input class="length" data-bind="value: length" /></td>
+                    <td class="dim width"><input class="width" data-bind="value: width" /></td>
+                    <td class="dim height"><input class="height" data-bind="value: height" /></td>
+                    <td class="notes"><input class="notes" data-bind="value: notes" /></td>
+                    <td class="cost"><input class="cost" data-bind="value: amount" type="number" /></td>
+                    <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
+                </tr>
+            </tbody>
         </table>
         <div class="details">
             <div id="delivery">
-                <span><label>Cemetery</label><input data-bind="value: deliver.to"/></span>
-                <span><label>In/Near</label><input data-bind="value: deliver.near"/></span>
+                <span><label for="deliver-by">Deliver By</label><input id="deliver-by" data-bind="value: deliver.by" type="date"/></span>
+                <span><label for="deliver-to">Cemetery</label><input id="deliver-to" data-bind="value: deliver.to"/></span>
+                <span><label for="in-near">In/Near</label><input id="in-near" data-bind="value: deliver.near"/></span>
                 <div class="cem-contact">
-                    <label>Person we can contact to find grave</label>
+                    <label>Name of contact to find grave</label>
                     <input placeholder="Name" data-bind="value: deliver.contact.name"><input placeholder="Phone" data-bind="value: deliver.contact.phone">
                 </div>
                 <div class="cem-location">
@@ -60,53 +62,52 @@
             <div id="design">
                 <span><input placeholder="Design Name"></span>
                 <span>
-                    <label>Lettering Faces</label>
-                    <input list="dirs">
-                    <datalist id="dirs">
-                        <option value="Unknown"></option>
-                        <option value="North"></option>
-                        <option value="South"></option>
-                        <option value="East"></option>
-                        <option value="West"></option>
-                    </datalist>
+                    <label for="lettering-dir">Lettering Faces</label>
+                    <select id="lettering-dir">
+                        <option>Unknown</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                    </select>
                 </span>
                 <span>
-                    <label>Name on Left</label>
-                    <input type="text" />
+                    <label for="positions-verified">Positions Verified</label>
+                    <input id="positions-verified" type="checkbox" />
                 </span>
                 <span>
-                    <label>Carving Type</label>
-                    <input list="carving" value="Flat">
-                    <datalist id="carving">
-                        <option value="Flat"></option>
-                        <option value="None"></option>
-                        <option value="Shape"></option>
-                        <option value="Etching"></option>
-                    </datalist>
+                    <label for="name-on-left">Name on Left</label>
+                    <input id="name-on-left" type="text" />
                 </span>
-                <div>
-                    <span>
-                        <label>Names Verified</label>
-                        <input type="checkbox" />
-                    </span>
-                    <span>
-                        <label>Name on Back</label>
-                        <input type="checkbox" />
-                    </span>
-                    <span>
-                        <label>Special Artwork</label>
-                        <input type="checkbox" />
-                    </span>
-                    <span>
-                        <label>Match Rubbing</label>
-                        <input type="checkbox" />
-                    </span>
-                </div>
+                <span>
+                    <label for="carving-type">Carving Type</label>
+                    <select id="carving-type">
+                        <option value="flat">Flat</option>
+                        <option value="none">None</option>
+                        <option value="shape">Shape</option>
+                        <option value="etching">Etching</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="name-on-back">Name on Back</label>
+                    <input id="name-on-back" type="checkbox" />
+                </span>
+                <span>
+                    <label for="special-artwork">Special Artwork</label>
+                    <input id="special-artwork" type="checkbox" />
+                </span>
+                <span>
+                    <label for="match-rubbing">Match Rubbing</label>
+                    <input id="match-rubbing" type="checkbox" />
+                </span>
             </div>
         </div>
         <div class="preview">
-            <textarea></textarea>
-            <p class="print">Lettering other than above will be done for a charge at the rate prevailing at the time additional lettering is ordered.</p>
+            <img />
+            <p class="print">
+                Lettering other than above will be done for a charge at the rate 
+                prevailing at the time additional lettering is ordered.
+            </p>
         </div>
         <footer>
             <input />
@@ -114,12 +115,11 @@
     </div>
     <aside class="sidebar">
         <div>
-            <input id="order-date" value="10/20/2011" data-bind="value: order.date" />
+            <input id="order-date" type="date" data-bind="value: order.date" />
             <span id="amount" class="amount" data-bind="text: balance"></span>
             <select list="orderStatus" id="order-status" data-bind="option: order.status, value: order.status">
                 <datalist id="orderStatus">
                     <option value="Quote">Quote</option>
-                    <option value="Down Payment Pending">Down Payment Pending</option>
                     <option value="Layaway">Layaway</option>
                     <option value="Drawing In-Process">Drawing In-Process</option>
                     <option value="Design Approval Pending">Design Approval Pending</option>
@@ -142,28 +142,28 @@
             </tbody>
             <tbody>
                 <tr class="subtotal">
-                    <td><input readonly value="Subtotal" /></td>
-                    <td><input type="number" readonly data-bind="value: subtotal" /></td>
+                    <td><label for="subtotal">Subtotal</label></td>
+                    <td><input id="subtotal" type="number" readonly data-bind="value: subtotal" /></td>
                     <td></td>
                 </tr>
                 <tr class="tax">
-                    <td><input readonly value="Sales Tax" /></td>
-                    <td><input type="number" readonly data-bind="value: tax" /></td>
+                    <td><label for="sales-tax">Sales Tax</label></td>
+                    <td><input id="sales-tax" type="number" readonly data-bind="value: tax" /></td>
                     <td></td>
                 </tr>
                 <tr class="delivery">
-                    <td><input readonly value="Delivery" /></td>
-                    <td><input type="number" value="0" data-bind="value: delivery" /></td>
+                    <td><label for="delivery-fee">Delivery</label></td>
+                    <td><input id="delivery-fee" type="number" data-bind="value: delivery" /></td>
                     <td></td>
                 </tr>
                 <tr class="fees">
-                    <td><input readonly value="Applicable Fees" /></td>
-                    <td><input type="number" value="0" data-bind="value: fees" /></td>
+                    <td><label for="other-fees">Applicable Fees</label></td>
+                    <td><input id="other-fees" type="number" data-bind="value: fees" /></td>
                     <td></td>
                 </tr>
                 <tr class="total">
-                    <td><input readonly value="Total Price" /></td>
-                    <td><input type="number" readonly data-bind="value: total" /></td>
+                    <td><label for="total-price">Total Price</label></td>
+                    <td><input id="total-price" type="number" readonly data-bind="value: total" /></td>
                     <td></td>
                 </tr>
             </tbody>
@@ -172,21 +172,21 @@
             <caption>Payments <a data-bind="click: $root.addPayment">(+)</a></caption>
             <tbody data-bind="foreach:payments">
                 <tr>
-                    <td><input placeholder="MM/DD/YYYY" required data-bind="value: date" /></td>
+                    <td><input placeholder="MM/DD/YYYY" type="date" required data-bind="value: date" /></td>
                     <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
                     <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
                 </tr>
             </tbody>
-            <tbody>
-                <tr>
-                    <td><input readonly value="Amount Paid" /></td>
-                    <td><input readonly class="amountPaid" type="number" data-bind="value: paid" /></td>
-                    <td></td> 
-                </tr>
-            </tbody>
             <tfoot>
                 <tr>
-                    <td>Balance Due: <span class="amount" data-bind="text: balance"></span></td>
+                    <td><label for="amount-paid">Amount Paid</label></td>
+                    <td><input id="amount-paid" readonly class="amountPaid" type="number" data-bind="value: paid" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label for="balance-due">Balance Due</label></td>
+                    <td><input id="balance-due" readonly class="amount" type="number" data-bind="value: balance" /></td>
+                    <td></td>
                 </tr>
             </tfoot>
         </table>
@@ -204,11 +204,12 @@
                     <td><input placeholder="Zip" data-bind="value: sale.zip" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
-                    <td><input placeholder="At" list="locations" data-bind="value: sale.soldAt" /></td>
+                    <td colspan="3"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
                 </tr>
             </tbody>
         </table>
+        <input id="signature" readonly data-bind="value: sale.signature" />
+        <label for="signature" style="margin: 2px 0 0 3px">Signature</label>
     </aside>
 </div>
 
@@ -252,10 +253,11 @@
     </datalist>
 </div>
 
-<!-- <script src="js/jquery.js" async></script> -->
-<script src="https://js.simperium.com/v0.1/"></script>
+
+<script src="js/jquery.js" async></script>
+<script src="js/prefixfree.min.js" async></script>
 <script src="js/knockout-2.1.0.js"></script>
-<script src="js/knockout.mapping.js"></script>
 <script src="js/order.js"></script>
+<!--<script src="js/knockout.mapping.js"></script>-->
 </body>
 </html>
