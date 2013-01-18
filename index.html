@@ -22,7 +22,7 @@
                     <th class="qty">Qty</th>
                     <th class="part">Piece <a data-bind="click: addPiece">(+)</a></th>
                     <th class="material">Material</th>
-                    <th class="kind">Kind</th>
+                    <th class="kind">Description</th>
                     <th class="dim" colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
                     <th class="notes">Notes</th>
                     <th class="cost">Cost</th>
@@ -177,16 +177,16 @@
                     <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
                 </tr>
             </tbody>
-            <tbody>
+            <tfoot>
                 <tr>
                     <td><label for="amount-paid">Amount Paid</label></td>
                     <td><input id="amount-paid" readonly class="amountPaid" type="number" data-bind="value: paid" /></td>
                     <td></td>
                 </tr>
-            </tbody>
-            <tfoot>
                 <tr>
-                    <td>Balance Due: <span class="amount" data-bind="text: balance"></span></td>
+                    <td><label for="balance-due">Balance Due</label></td>
+                    <td><input id="balance-due" readonly class="amount" type="number" data-bind="value: balance" /></td>
+                    <td></td>
                 </tr>
             </tfoot>
         </table>
@@ -204,10 +204,12 @@
                     <td><input placeholder="Zip" data-bind="value: sale.zip" /></td>
                 </tr>
                 <tr>
-                    <td colspan="23"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
+                    <td colspan="3"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
                 </tr>
             </tbody>
         </table>
+        <input id="signature" readonly data-bind="value: sale.signature" />
+        <label for="signature" style="margin: 2px 0 0 3px">Signature</label>
     </aside>
 </div>
 

@@ -210,6 +210,7 @@ function OrderViewModel() {
       , zip: ""
       , soldBy: ""
       , soldAt: ""
+      , signature: ""
     }
 
     self.order = {

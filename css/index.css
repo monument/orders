@@ -88,6 +88,7 @@ input:hover {
 
 #note {
     background: lightyellow;
+    margin-top: 7px;
     border: solid 1px #ddd;
     min-height: 8em;
     font-family: inherit;
@@ -95,6 +96,12 @@ input:hover {
     padding: 2px;
     transition: none;
     flex: 1;
+}
+
+#signature {
+    margin-top: 25px;
+    border: none;
+    border-bottom: dotted 1px #444;
 }
 
 #order {
@@ -148,7 +155,7 @@ header img {
     outline: rgb(91, 157, 217) auto 5px;
     background: lightyellow;
 }
-.table tfoot tr {
+.table tfoot tr:last-child {
     border-bottom: hidden;
 }
 
@@ -208,7 +215,13 @@ header img {
     content: ": ";
 }
 #design {
-    margin-top:2px;
+    margin-top: 2px;
+}
+#design input:not([type="checkbox"]) {
+    margin-left: 2px;
+}
+#design input[type="checkbox"] {
+    margin-left: 0;
 }
 #design, #delivery {
     flex: 1;
