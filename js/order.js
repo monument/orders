@@ -218,7 +218,7 @@ function OrderViewModel() {
       , date: ko.observable(new Date())
       , status: ko.observable("Quote")
     }
-    // self.a = ko.observable(ko.utils.stringifyJSON(OrderViewModel))
+    // self.allData = ko.observable(ko.toJSON(OrderViewModel))
 }
 
 ko.applyBindings(new OrderViewModel(), document.body)

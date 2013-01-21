@@ -277,6 +277,11 @@ footer input {
     border: 0;
     height: 100%;
 }
+.print-big {
+    font-weight: bold;
+    font-size: 110%;
+    text-transform: uppercase;
+}
 
 @media print {
     ::-webkit-inner-spin-button, ::-webkit-outer-spin-button { 
