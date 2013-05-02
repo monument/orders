@@ -185,7 +185,7 @@ header img {
 		font-weight: normal;
 		font-style: normal;
 	}
-	.qty, #material .cost, .dim input, #material .action  { text-align: center; }
+	.qty, .cost, .dim input, .action  { text-align: center; }
 }
 
 /* .money, #costs, and #payments
@@ -305,6 +305,11 @@ footer input {
 }
 
 @media print {
+	.print-big {
+	    font-weight: bold;
+	    font-size: 110%;
+	    text-transform: uppercase;
+	}
 	::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
 		appearance: none;
 		margin: 0;
