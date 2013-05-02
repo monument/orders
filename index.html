@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<header><img src="./img/bmcheader.png" width="100%"></header>
+<header id="bmlogo"><img src="./img/bmcheader.png"></header>
 
 <div id="order">
     <div class="main">
@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="preview">
-            <img />
+            <!--<img />-->
             <p class="print">
                 Lettering other than above will be done for a charge at the rate 
                 prevailing at the time additional lettering is ordered.
@@ -197,7 +197,7 @@
                 <tr><td colspan="3"><input placeholder="Name" data-bind="value: sale.name" /></td></tr>
                 <tr><td colspan="3"><input placeholder="Phone" type="tel" data-bind="value: sale.phone" /></td></tr>
                 <tr><td colspan="3"><input placeholder="Email" type="email" data-bind="value: sale.email" /></td></tr>
-                <tr><td colspan="3"><input placeholder="Street" type="address" data-bind="value: sale.street" /></td></tr>
+                <tr><td colspan="3"><input placeholder="Street" type="text" data-bind="value: sale.street" /></td></tr>
                 <tr>
                     <td style="width: 50%"><input placeholder="City" data-bind="value: sale.city" /></td>
                     <td><input placeholder="State" data-bind="value: sale.state" /></td>
@@ -255,7 +255,7 @@
 
 
 <script src="js/jquery.js" async></script>
-<script src="js/prefixfree.min.js" async></script>
+<!--<script src="js/prefixfree.min.js" async></script>-->
 <script src="js/knockout-2.1.0.js"></script>
 <script src="js/order.js"></script>
 <!--<script src="js/knockout.mapping.js"></script>-->
