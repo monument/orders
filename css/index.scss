@@ -1,9 +1,3 @@
-/* Eradicate the webkit spinner button */
-input[readonly]::-webkit-inner-spin-button, input[readonly]::-webkit-outer-spin-button,
-input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-outer-spin-button {
-	appearance: none;
-	margin: 0;
-}
 * { box-sizing: border-box; }
 
 /*    Global */
