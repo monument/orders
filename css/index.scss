@@ -77,7 +77,6 @@ input:hover {
 
 #order-status {
 	width: 100%;
-	border: solid 1px #ddd;
 }
 .main {
 	display: -webkit-flex;
@@ -248,12 +247,13 @@ header img {
 	flex-direction: column;
 }
 .details span {
-	//-webkit-flex: 1;
+	// -webkit-flex: 1;
 	display: -webkit-flex;
-	flex: 1;
+	// flex: 1;
 	display: inline-flex;
 	width: 100%;
 	height: 22px;
+	margin: 5px 0;
 	align-items: center;
 	-webkit-align-items: center;
 }
@@ -283,9 +283,9 @@ header img {
 }
 .details [class^="cem"] input {
 	margin: 0;
-	width: 50%;
+	width: 48%;
 }
-.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 50%;}
+.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 49%;}
 .details [class*="location"] input {margin-top: -1px;}
 .details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
 
