@@ -156,7 +156,7 @@ function OrderViewModel() {
     self.tax   = ko.computed(function ()    { return round(self.subtotal() * 0.08517) })
     self.delivery = ko.observable(0)
     self.fees  = ko.observable(0)
-    self.total = ko.computed(function ()    { return self.subtotal() + self.tax() + parse(self.delivery()) + parse(self.fees()) })
+    self.total = ko.computed(function ()    { return round(self.subtotal() + self.tax() + parse(self.delivery()) + parse(self.fees())) })
 
     self.paid = ko.computed(function () {
         var paid = 0;
