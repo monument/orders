@@ -292,6 +292,10 @@ header img {
 	flex: 1;
 }
 
+.preview p[contenteditable] {
+	min-height: 300px;
+}
+
 footer {
 	width: 100%;
 	border-bottom: dashed 1px gray;
