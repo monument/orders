@@ -37,8 +37,11 @@ input {
 input:hover {
   background-color: lightyellow; }
 
+#bmlogo {
+  text-align: center; }
+
 #bmlogo img {
-  width: 100%; }
+  width: 700px; }
 
 /*      Orders       */
 .sidebar {
