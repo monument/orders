@@ -248,9 +248,6 @@ header img {
   -webkit-flex: 1;
   flex: 1; }
 
-.details input:not([type="checkbox"]), .details select {
-  height: 22px; }
-
 .details label {
   padding: 2px 0 4px;
   height: 16px;
@@ -267,11 +264,12 @@ header img {
 
 .details [class^="cem"] input {
   margin: 0;
-  width: 48%; }
+  width: 50%;
+  height: 22px; }
 
 .details [class*="contact"] input:nth-child(odd) {
   margin-left: -1px;
-  width: 49%; }
+  width: 50%; }
 
 .details [class*="location"] input {
   margin-top: -1px; }

@@ -254,16 +254,16 @@ header img {
 	align-items: center;
 	-webkit-align-items: center;
 }
+
 #design:nth-child(1), #delivery:nth-child(1) {
 	padding-right: 1em;
 }
+
 .details input, .details select {
 	-webkit-flex: 1;
 	flex: 1;
 }
-.details input:not([type="checkbox"]), .details select {
-	height: 22px;
-}
+
 .details label {
 	padding: 2px 0 4px;
 	height: 16px;
@@ -280,9 +280,10 @@ header img {
 }
 .details [class^="cem"] input {
 	margin: 0;
-	width: 48%;
+	width: 50%;
+	height: 22px;
 }
-.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 49%;}
+.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 50%;}
 .details [class*="location"] input {margin-top: -1px;}
 .details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
 
