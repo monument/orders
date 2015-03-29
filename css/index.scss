@@ -1,12 +1,13 @@
-* { -moz-box-sizing: border-box; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit }
 
 /*    Global */
 body {
 	margin: .5em auto;
-	font-family: "Helvetica Neue", 'Helvetica', 'Calibri', "Cantarell", "Ubuntu", sans-serif;
+	font-family: Helvetica Neue, Helvetica, Calibri, Cantarell, Ubuntu, sans-serif;
 	color: #333;
 	font-size: 11px;
 	width: 8in;
+	box-sizing: border-box;
 }
 table {
 	border-collapse: collapse;
@@ -36,51 +37,45 @@ input:hover {
 	background-color: lightyellow;
 }
 
-#bmlogo {
+.bmlogo {
 	text-align: center;
 }
-#bmlogo img {
+.bmlogo img {
 	width: 700px;
 }
 
 /*      Orders       */
 
 .sidebar {
-	display: -webkit-flex;
 	display: flex;
-	-webkit-flex-direction: column;
 	flex-direction: column;
 
-	min-width: 190px;
-	-webkit-flex: 1;
-	flex: 1;
 	margin-left: .5em;
+	min-width: 190px;
+	flex: 1;
 }
-#title {
+.title {
 	font-family: 'Calibri', 'Cantarell', 'Ubuntu', 'Lucida Grande', sans-serif;
 }
-#amount {
+.amount {
 	padding: 2px 0;
 	height: 16px;
 	cursor: default;
 	text-align: right;
 	display: block;
 }
-#order-date {
+.order-date {
 	width: 115px;
 	height: 20px;
 	float: left;
 }
 
-#order-status {
+.order-status {
 	width: 100%;
 }
 .main {
-	display: -webkit-flex;
 	display: flex;
-	-webkit-flex-direction: column;
 	flex-direction: column;
-	-webkit-flex: 3;
 	flex: 3;
 
 	padding-right: .5em;
@@ -89,7 +84,7 @@ input:hover {
 	display: none;
 }
 
-#note {
+.note {
 	background: lightyellow;
 	margin-top: 7px;
 	border: solid 1px #ddd;
@@ -98,20 +93,17 @@ input:hover {
 	width: 100%;
 	padding: 2px;
 	transition: none;
-	-webkit-flex: 1;
 	flex: 1;
 }
 
-#signature {
+.signature {
 	margin-top: 25px;
 	border: none;
 	border-bottom: dotted 1px #444;
 }
 
-#order {
-	display: -webkit-flex;
+.order {
 	display: flex;
-	-webkit-flex-direction: row;
 	flex-direction: row;
 
 	padding: .5em;
@@ -168,7 +160,7 @@ header img {
 
 /* #material
  Material table */
-#material {
+.material {
 	thead tr { height: 50%; }
 	.qty:not(input)      { width: 5%; }
 	.part:not(input)     { width: 15%; }
@@ -186,8 +178,7 @@ header img {
 
 /* .money, #costs, and #payments
  Money chart */
-#notes, #contact, #costs, #payments {
-	-webkit-flex: 1;
+.notes, .contact, .costs, .payments {
 	flex: 1;
 }
 .money td:nth-child(odd) { width: 70%; }
@@ -197,7 +188,7 @@ header img {
 	width: 30%;
 }
 .money td:nth-child(3) { border-right: none; }
-#costs .cost:last-child { border-bottom: solid 1px #ddd; }
+.costs .cost:last-child { border-bottom: solid 1px #ddd; }
 .money input {
 	margin: 0;
 	border: none;
@@ -216,8 +207,6 @@ header img {
  What does the customer want? */
 
 .details {
-	display: -webkit-flex;
-	-webkit-flex-direction: row;
 	display: flex;
 	flex-direction: row;
 
@@ -226,36 +215,29 @@ header img {
 .details label:after {
 	content: ": ";
 }
-#design {
+.design {
 	margin-top: 2px;
 }
-#design input:not([type="checkbox"]) {
+.design input:not([type="checkbox"]) {
 	margin-left: 2px;
 }
-#design input[type="checkbox"] {
+.design input[type="checkbox"] {
 	margin-left: 0;
 }
-#design, #delivery {
-	-webkit-flex: 1;
-	display: -webkit-flex;
-	-webkit-flex-direction: column;
+.design, .delivery {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 }
 .details span {
-	// -webkit-flex: 1;
-	display: -webkit-flex;
-	// flex: 1;
 	display: inline-flex;
+	align-items: center;
 	width: 100%;
 	height: 22px;
 	margin: 5px 0;
-	align-items: center;
-	-webkit-align-items: center;
 }
 
-#design:nth-child(1), #delivery:nth-child(1) {
+.design:nth-child(1), .delivery:nth-child(1) {
 	padding-right: 1em;
 }
 
@@ -267,11 +249,9 @@ header img {
 .details label {
 	padding: 2px 0 4px;
 	height: 16px;
-	-webkit-flex: 1;
 	flex: 1;
 }
 .cem-contact, .cem-location {
-	-webkit-flex:1;
 	flex: 1;
 }
 .details [class^="cem"] label {
@@ -288,7 +268,6 @@ header img {
 .details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
 
 .preview {
-	-webkit-flex: 1;
 	flex: 1;
 }
 
@@ -316,14 +295,14 @@ footer input {
 		appearance: none;
 		margin: 0;
 	}
-	#order {
+	.order {
 		margin-right: 1em;
 	}
 	.print {
 		display: block;
 		text-align: center;
 	}
-	#title {
+	.title {
 		transform: rotate(90deg) translate3d(300px, -5.1in, 0);
 	}
 	.main {

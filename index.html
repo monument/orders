@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<!--<html lang="en" dir="ltr" manifest="orderform.appcache">-->
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en-US" dir="ltr">
 <head>
+    <meta charset="utf-8">
     <title>Benchmark Order Form</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
@@ -104,10 +103,10 @@
         </div>
         <div class="preview">
             <p contenteditable>
-                
+
             </p>
             <p class="print">
-                Lettering other than above will be done for a charge at the rate 
+                Lettering other than above will be done for a charge at the rate
                 prevailing at the time additional lettering is ordered.
             </p>
         </div>
@@ -145,28 +144,28 @@
             <tbody>
                 <tr class="subtotal">
                     <td><label for="subtotal">Subtotal</label></td>
-                    <td><input id="subtotal" type="number" readonly data-bind="value: subtotal" /></td>
-                    <td></td>
+                    <td colspan=2><input id="subtotal" type="number" readonly data-bind="value: subtotal" /></td>
+                    <!-- <td></td> -->
                 </tr>
                 <tr class="tax">
                     <td><label for="sales-tax">Sales Tax</label></td>
-                    <td><input id="sales-tax" type="number" readonly data-bind="value: tax" /></td>
-                    <td></td>
+                    <td colspan=2><input id="sales-tax" type="number" readonly data-bind="value: tax" /></td>
+                    <!-- <td></td> -->
                 </tr>
                 <tr class="delivery">
                     <td><label for="delivery-fee">Delivery</label></td>
-                    <td><input id="delivery-fee" type="number" data-bind="value: delivery" /></td>
-                    <td></td>
+                    <td colspan=2><input id="delivery-fee" type="number" data-bind="value: delivery" /></td>
+                    <!-- <td></td> -->
                 </tr>
                 <tr class="fees">
                     <td><label for="other-fees">Applicable Fees</label></td>
-                    <td><input id="other-fees" type="number" data-bind="value: fees" /></td>
-                    <td></td>
+                    <td colspan=2><input id="other-fees" type="number" data-bind="value: fees" /></td>
+                    <!-- <td></td> -->
                 </tr>
                 <tr class="total">
                     <td><label class="print-big" for="total-price">Total Price</label></td>
-                    <td><input id="total-price" type="number" readonly data-bind="value: total" /></td>
-                    <td></td>
+                    <td colspan=2><input id="total-price" type="number" readonly data-bind="value: total" /></td>
+                    <!-- <td></td> -->
                 </tr>
             </tbody>
         </table>
@@ -176,7 +175,7 @@
                 <tr>
                     <td><input placeholder="MM/DD/YYYY" type="date" required data-bind="value: date" /></td>
                     <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
-                    <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td> 
+                    <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td>
                 </tr>
             </tbody>
             <tfoot>
@@ -256,9 +255,7 @@
 </div>
 
 
-<!-- <script src="js/jquery.js" async></script> -->
 <script src="js/knockout-2.2.1.js"></script>
 <script src="js/order.js"></script>
-<!--<script src="js/knockout.mapping.js"></script>-->
 </body>
 </html>
