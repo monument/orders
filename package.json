@@ -24,20 +24,20 @@
   "license": "MIT",
   "homepage": "http://orders.benchmarkmonument.com/",
   "dependencies": {
-    "flummox": "^3.2.1",
-    "immutable": "^3.7.0",
+    "flummox": "^3.3.0",
+    "immutable": "^3.7.1",
     "lodash": "^3.6.0",
     "react": "^0.13.1"
   },
   "devDependencies": {
+    "autoprefixer": "^5.1.0",
     "babel-core": "^4.7.16",
     "babelify": "^5.0.4",
-    "autoprefixer": "^5.1.0",
-    "browser-sync": "^2.4.0",
+    "browser-sync": "^2.5.2",
     "browserify": "^9.0.3",
-    "eslint": "^0.17.1",
+    "eslint": "^0.18.0",
     "mocha": "^2.2.1",
-    "node-sass": "^2.0.1",
+    "node-sass": "^2.1.1",
     "nodemon": "^1.3.7"
   }
 }
