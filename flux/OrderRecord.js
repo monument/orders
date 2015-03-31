@@ -1,16 +1,17 @@
 import Immutable from 'immutable'
+import {v4 as uuid} from 'node-uuid'
 
-let Cost = Immutable.Record({
+const Cost = Immutable.Record({
 	part: '',
 	amount: 0,
 })
 
-let Payment = Immutable.Record({
+const Payment = Immutable.Record({
 	date: '',
 	amount: 0,
 })
 
-let Piece = Immutable.Record({
+const Piece = Immutable.Record({
 	qty: 0,
 	part: '',
 	type: '',
@@ -22,7 +23,7 @@ let Piece = Immutable.Record({
 	amount: 0,
 })
 
-let Design = Immutable.Record({
+const Design = Immutable.Record({
 	designName: '',
 	letteringDirection: 'north',
 	positionsVerified: true,
@@ -33,7 +34,7 @@ let Design = Immutable.Record({
 	matchRubbing: false,
 })
 
-let Sale = Immutable.Record({
+const Sale = Immutable.Record({
 	name: '',
 	phone: '',
 	email: '',
@@ -45,12 +46,7 @@ let Sale = Immutable.Record({
 	soldAt: '',
 })
 
-let Contact = Immutable.Record({
-	name: '',
-	phone: '',
-})
-
-let Delivery = Immutable.Record({
+const Delivery = Immutable.Record({
     by: '',
 	to: '',
 	near: '',
@@ -58,10 +54,14 @@ let Delivery = Immutable.Record({
 	lot: '',
 	block: '',
 	section: '',
-	contact: new Contact(),
+	contact: Immutable.Map({
+		name: '',
+		phone: '',
+	}),
 })
 
-let OrderRecord = Immutable.Record({
+const OrderRecord = Immutable.Record({
+	id: '',
 	status: 'layaway',
 	date: '',
 	title: '',
@@ -78,8 +78,22 @@ let OrderRecord = Immutable.Record({
 	pieces: Immutable.List(),
 })
 
-export {
-	Cost, Payment, Piece,
-	Design, Sale, Delivery, Contact,
-	OrderRecord}
-export default OrderRecord
+class Order extends OrderRecord {
+	constructor(data) {
+		super(data)
+		return this.withMutations(order => {
+			order = order.set('id', order.id || uuid())
+
+			order = order.set('design', new Design(order.design))
+			order = order.set('sale', new Sale(order.sale))
+			order = order.set('deliver', new Delivery(order.deliver))
+
+			order = order.set('costs', order.costs.map(item => new Cost(item)))
+			order = order.set('payments', order.payments.map(item => new Payment(item)))
+			order = order.set('pieces', order.pieces.map(item => new Piece(item)))
+		})
+	}
+}
+
+export {Cost, Payment, Piece, Order, Delivery, Design, Sale}
+export default Order

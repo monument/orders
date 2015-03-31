@@ -1,12 +1,14 @@
 import {Actions} from 'flummox'
 import Immutable from 'immutable'
-import Order from './OrderRecord'
 
 export default class OrderActions extends Actions {
-	createOrder(orderInfo) {
-		let ImmutableOrder = Immutable.fromJS(orderInfo)
-		let order = new Order(orderInfo)
-		order = order.mergeDeep(ImmutableOrder)
+	createOrder(order) {
+		console.log('OrderActions.createOrder')
 		return order
+	}
+
+	updateOrderSale(orderId, key, value) {
+		console.log('OrderActions.updateOrderSale')
+		return {orderId, key, value}
 	}
 }
