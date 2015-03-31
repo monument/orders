@@ -13,7 +13,7 @@
     "css-watch": "nodemon --watch css/ --ext scss --exec 'npm run css'",
     "build": "npm run js & npm run css & wait",
     "watch": "npm run js-watch & npm run css-watch & wait",
-    "start": "npm run watch & browser-sync start --no-open --server --files='dist/*.css, dist/*.js, *.html' & wait"
+    "start": "npm run watch & browser-sync start --port=4000 --no-open --server --files='dist/*.css, dist/*.js, *.html' & wait"
   },
   "repository": "https://github.com/monument/orders",
   "keywords": [
