@@ -91,6 +91,8 @@ class Order extends OrderRecord {
 			order = order.set('costs', order.costs.map(item => new Cost(item)))
 			order = order.set('payments', order.payments.map(item => new Payment(item)))
 			order = order.set('pieces', order.pieces.map(item => new Piece(item)))
+
+			return order
 		})
 	}
 }
