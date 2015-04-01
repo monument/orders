@@ -43,7 +43,7 @@ export default class OrderForm extends Component {
 					orderId={order.id}
 					pieces={order.pieces}
 					addPiece={actions.addPiece}
-					delPiece={actions.delPiece} />
+					removePiece={actions.removePiece} />
 				<DetailsTable
 					delivery={order.deliver}
 					design={order.design} />

@@ -5,7 +5,7 @@ import Immutable from 'immutable'
 export default class PiecesTable extends Component {
 	static propTypes = {
 		addPiece: PropTypes.func.isRequired,
-		// delPiece: PropTypes.func.isRequired,
+		removePiece: PropTypes.func.isRequired,
 		pieces: PropTypes.instanceOf(Immutable.List).isRequired,
 	}
 
@@ -36,7 +36,7 @@ export default class PiecesTable extends Component {
 						<td className="dim height"><input className="height" defaultValue={piece.height} /></td>
 						<td className="notes"><input className="notes" defaultValue={piece.notes} /></td>
 						<td className="cost"><input className="cost" defaultValue={piece.amount} type="number" /></td>
-						<td className="action delete"><button onClick={this.props.delPiece}>–</button></td>
+						<td className="action delete"><button onClick={() => this.props.removePiece(this.props.orderId, index)}>–</button></td>
 					</tr>
 				).toArray()}
 			</tbody>
