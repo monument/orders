@@ -14,6 +14,7 @@ const Payment = Immutable.Record({
 const Piece = Immutable.Record({
 	qty: 0,
 	part: '',
+	material: '',
 	type: '',
 	kind: '',
 	length: 0,
