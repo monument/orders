@@ -93,6 +93,13 @@ class Order extends OrderRecord {
 			order = order.set('payments', order.payments.map(item => new Payment(item)))
 			order = order.set('pieces', order.pieces.map(item => new Piece(item)))
 
+			if (order.costs.size === 0)
+				order = order.set('costs', Immutable.List.of(new Cost()))
+			if (order.payments.size === 0)
+				order = order.set('payments', Immutable.List.of(new Payment()))
+			if (order.pieces.size === 0)
+				order = order.set('pieces', Immutable.List.of(new Piece()))
+
 			return order
 		})
 	}
