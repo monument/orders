@@ -40,6 +40,7 @@ export default class OrderForm extends Component {
 			<div className="main">
 				<OrderTitle title={order.title} />
 				<PiecesTable
+					orderId={order.id}
 					pieces={order.pieces}
 					addPiece={actions.addPiece}
 					delPiece={actions.delPiece} />
