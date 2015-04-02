@@ -150,8 +150,8 @@ header img {
 		height: 100%;
 	}
 	input:focus {
-		outline: rgb(91, 157, 217) auto 5px;
-		background: lightyellow;
+		outline: hsl(208, 62%, 60%) auto 5px;
+		background-color: hsl(60, 100%, 93%);
 	}
 	tfoot tr:last-child {
 		border-bottom: hidden;
@@ -199,7 +199,7 @@ header img {
 	padding: 1px 4px;
 }
 .delete:hover {
-	background: red;
+	background: hsl(0, 100%, 50%);
 	color: white;
 }
 
@@ -277,7 +277,7 @@ header img {
 
 footer {
 	width: 100%;
-	border-bottom: dashed 1px gray;
+	border-bottom: dashed 1px #808080;
 	display: none;
 }
 footer input {
