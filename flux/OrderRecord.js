@@ -17,9 +17,9 @@ const Piece = Immutable.Record({
 	material: '',
 	type: '',
 	kind: '',
-	length: 0,
-	width: 0,
-	height: 0,
+	length: '',
+	width: '',
+	height: '',
 	notes: '',
 	amount: 0,
 })
