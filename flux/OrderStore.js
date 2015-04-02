@@ -2,6 +2,7 @@ import {Store} from 'flummox'
 import Immutable from 'immutable'
 import Order from './OrderRecord'
 import {Piece, Cost, Payment} from './OrderRecord'
+import contains from 'lodash/collection/contains'
 
 export default class OrderStore extends Store {
 	constructor(flux) {
@@ -13,6 +14,9 @@ export default class OrderStore extends Store {
 		this.register(orderActionIds.createOrder, this.onCreateOrder)
 		this.register(orderActionIds.updateOrderSale, this.onUpdateOrderSale)
 		this.register(orderActionIds.updateFee, this.onUpdateFee)
+		this.register(orderActionIds.updateDesign, this.onUpdateDesign)
+		this.register(orderActionIds.updateDeliver, this.onUpdateDeliver)
+		this.register(orderActionIds.updateItem, this.onUpdateItem)
 
 		this.register(orderActionIds.addPiece, this.onAddPiece)
 		this.register(orderActionIds.removePiece, this.onRemovePiece)
@@ -60,10 +64,21 @@ export default class OrderStore extends Store {
 	}
 
 	onUpdateFee({orderId, fee, value}) {
-		if (!['delivery', 'fees'].contains(fee)) {
+		if (!contains(['delivery', 'fees'], fee)) {
 			return
 		}
-		this._updateKey({orderId, key: 'fee', value})
+		this._updateKey({orderId, key: fee, value})
+	}
+
+	onUpdateDesign({orderId, key, newValue}) {
+		this._updateKeyIn({orderId, parent: 'design', key, value: newValue})
+	}
+	onUpdateDeliver({orderId, key, newValue}) {
+		this._updateKeyIn({orderId, parent: 'deliver', key, value: newValue})
+	}
+
+	onUpdateItem({orderId, item, newValue}) {
+		this._updateKey({orderId, key: item, value: newValue})
 	}
 
 	// Pieces

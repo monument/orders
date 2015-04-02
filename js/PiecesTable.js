@@ -5,15 +5,17 @@ import {partial} from 'lodash'
 
 export default class PiecesTable extends Component {
 	static propTypes = {
-		addPiece: PropTypes.func.isRequired,
-		removePiece: PropTypes.func.isRequired,
-		updatePiece: PropTypes.func.isRequired,
+		actions: PropTypes.shape({
+			addPiece: PropTypes.func.isRequired,
+			removePiece: PropTypes.func.isRequired,
+			updatePiece: PropTypes.func.isRequired,
+		}).isRequired,
 		orderId: PropTypes.string.isRequired,
 		pieces: PropTypes.instanceOf(Immutable.List).isRequired,
 	}
 
 	render() {
-		const {addPiece, removePiece, updatePiece} = this.props
+		const {addPiece, removePiece, updatePiece} = this.props.actions
 		const {orderId} = this.props
 		return <table className="material striped table">
 			<caption>Materials <button onClick={() => addPiece(orderId)}>+</button></caption>

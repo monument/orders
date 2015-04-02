@@ -38,50 +38,39 @@ export default class OrderForm extends Component {
 
 		return <div className="order">
 			<div className="main">
-				<OrderTitle title={order.title} />
-				<PiecesTable
-					orderId={order.id}
-					pieces={order.pieces}
-					addPiece={actions.addPiece}
-					updatePiece={actions.updatePiece}
-					removePiece={actions.removePiece} />
-				<DetailsTable
+				<OrderTitle orderId={order.id} actions={actions}
+					title={order.title} />
+				<PiecesTable orderId={order.id} actions={actions}
+					pieces={order.pieces} />
+				<DetailsTable orderId={order.id} actions={actions}
 					delivery={order.deliver}
 					design={order.design} />
 
-				<Preview content={order.preview} />
+				<Preview content={order.preview} orderId={order.id} actions={actions} />
 				<footer><input /></footer>
 			</div>
 
 			<aside className="sidebar">
-				<OrderInfoBlock
+				<OrderInfoBlock orderId={order.id} actions={actions}
 					date={order.date}
 					balance={balance}
 					status={order.status} />
-				<CostsTable
+				<CostsTable orderId={order.id} actions={actions}
 					subtotal={subtotal}
 					tax={tax}
 					deliveryCharge={order.delivery}
 					applicableFees={order.fees}
 					total={total}
-					costs={order.costs}
-					orderId={order.id}
-					addCost={actions.addCost}
-					updateCost={actions.updateCost}
-					updateFee={actions.updateFee}
-					removeCost={actions.removeCost} />
-				<PaymentsTable
+					costs={order.costs} />
+				<PaymentsTable orderId={order.id} actions={actions}
 					payments={order.payments}
 					balance={balance}
-					paid={paid}
-					orderId={order.id}
-					addPayment={actions.addPayment}
-					updatePayment={actions.updatePayment}
-					removePayment={actions.removePayment} />
+					paid={paid} />
 
-				<NoteBox note={order.note} onChange={(ev) => actions.updateNote(ev.target.value)} />
-				<ContactTable sale={order.sale} orderId={order.id} actions={actions} />
-				<Signature scribble={order.sale.get('signature')} />
+				<NoteBox note={order.note} onChange={(ev) => actions.updateItem(order.id, 'note', ev.target.value)} />
+				<ContactTable orderId={order.id} actions={actions}
+					sale={order.sale} />
+				<Signature scribble={order.sale.signature} />
 			</aside>
 		</div>
 	}

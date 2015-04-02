@@ -5,10 +5,12 @@ import round from './round'
 
 export default class CostsTable extends Component {
 	static propTypes = {
-		addCost: PropTypes.func.isRequired,
-		removeCost: PropTypes.func.isRequired,
-		updateCost: PropTypes.func.isRequired,
-		updateFee: PropTypes.func.isRequired,
+		actions: PropTypes.shape({
+			addCost: PropTypes.func.isRequired,
+			removeCost: PropTypes.func.isRequired,
+			updateCost: PropTypes.func.isRequired,
+			updateFee: PropTypes.func.isRequired,
+		}).isRequired,
 		orderId: PropTypes.string.isRequired,
 		subtotal: PropTypes.number.isRequired,
 		tax: PropTypes.number.isRequired,
@@ -19,19 +21,15 @@ export default class CostsTable extends Component {
 	}
 
 	render() {
-		const {addCost, removeCost, updateCost, updateFee} = this.props
+		const {addCost, removeCost, updateCost, updateFee} = this.props.actions
 		const {orderId} = this.props
 		return <table className="table money" id="costs">
 			<caption>Costs <button onClick={() => addCost(orderId)}>+</button></caption>
 			<tbody>
 				{this.props.costs.map(({part, amount}, index) =>
 					<tr className="cost" key={index}>
-						<td>
-							<input list="part-list" placeholder="Part" value={part} onChange={(ev) => updateCost(orderId, index, {part: ev.target.value})} />
-						</td>
-						<td>
-							<input type="number" value={amount} onChange={(ev) => updateCost(orderId, index, {amount: parseFloat(ev.target.value)})} />
-						</td>
+						<td><input list="part-list" placeholder="Part" value={part} onChange={(ev) => updateCost(orderId, index, {part: ev.target.value})} /></td>
+						<td><input type="number" value={amount} onChange={(ev) => updateCost(orderId, index, {amount: parseFloat(ev.target.value)})} /></td>
 						<td className="action delete"><button onClick={() => removeCost(orderId, index)}>&nbsp;-&nbsp;</button></td>
 					</tr>
 				).toArray()}

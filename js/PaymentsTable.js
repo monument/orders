@@ -4,16 +4,18 @@ import Immutable from 'immutable'
 
 export default class PaymentsTable extends Component {
 	static propTypes = {
-		addPayment: PropTypes.func.isRequired,
-		removePayment: PropTypes.func.isRequired,
-		updatePayment: PropTypes.func.isRequired,
+		actions: PropTypes.shape({
+			addPayment: PropTypes.func.isRequired,
+			removePayment: PropTypes.func.isRequired,
+			updatePayment: PropTypes.func.isRequired,
+		}).isRequired,
 		payments: PropTypes.instanceOf(Immutable.List).isRequired,
 		paid: PropTypes.number.isRequired,
 		balance: PropTypes.number.isRequired,
 	}
 
 	render() {
-		const {addPayment, removePayment, updatePayment} = this.props
+		const {addPayment, removePayment, updatePayment} = this.props.actions
 		const {orderId} = this.props
 		return <table className="table money" id="payments">
 			<caption>Payments <button onClick={() => addPayment(orderId)}>+</button></caption>
