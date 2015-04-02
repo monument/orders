@@ -3,219 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Benchmark Order Form</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="dist/app.css">
 </head>
 <body>
 
-<header id="bmlogo"><img src="./img/bmcheader.png"></header>
-
-<div id="order">
-    <div class="main">
-        <div id="title">
-            <h1 contenteditable data-bind="text: order.title"></h1>
-        </div>
-        <table id="material" class="striped table">
-            <caption>Materials <a data-bind="click: $root.addPiece">(+)</a></caption>
-            <thead>
-                <tr>
-                    <th class="qty">Qty</th>
-                    <th class="part">Piece <a data-bind="click: addPiece">(+)</a></th>
-                    <th class="material">Material</th>
-                    <th class="kind">Description</th>
-                    <th class="dim" colspan="3">Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
-                    <th class="notes">Notes</th>
-                    <th class="cost">Cost</th>
-                    <th class="action add"><a data-bind="click: addPiece">[+]</a></th>
-                </tr>
-            </thead>
-            <tbody data-bind="foreach:pieces">
-                <tr>
-                    <td class="qty"><input class="qty" data-bind="value: qty" type="number" /></td>
-                    <td class="part"><input class="part" data-bind="value: part" list="part-list" /></td>
-                    <td class="material"><input class="material" data-bind="value: material" list="material-list" /></td>
-                    <td class="kind"><input class="kind" data-bind="value: kind" list="kind-list" /></td>
-                    <td class="dim length"><input class="length" data-bind="value: length" /></td>
-                    <td class="dim width"><input class="width" data-bind="value: width" /></td>
-                    <td class="dim height"><input class="height" data-bind="value: height" /></td>
-                    <td class="notes"><input class="notes" data-bind="value: notes" /></td>
-                    <td class="cost"><input class="cost" data-bind="value: amount" type="number" /></td>
-                    <td class="action delete"><a data-bind="click: $root.delPiece">&ndash;</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="details">
-            <div id="delivery">
-                <span><label for="deliver-by">Deliver By</label><input id="deliver-by" data-bind="value: deliver.by" type="date"/></span>
-                <span><label for="deliver-to">Cemetery</label><input id="deliver-to" data-bind="value: deliver.to"/></span>
-                <span><label for="in-near">In/Near</label><input id="in-near" data-bind="value: deliver.near"/></span>
-                <div class="cem-contact">
-                    <label>Name of contact to find grave</label>
-                    <input placeholder="Name" data-bind="value: deliver.contact.name"><input placeholder="Phone" data-bind="value: deliver.contact.phone">
-                </div>
-                <div class="cem-location">
-                    <label>Location in cemetery</label>
-                    <input placeholder="Space(s)" data-bind="value: deliver.spaces"><input placeholder="Lot" data-bind="value: deliver.lot">
-                    <input placeholder="Block" data-bind="value: deliver.block"><input placeholder="Section" data-bind="value: deliver.section">
-                </div>
-            </div>
-            <div id="design">
-                <span><input placeholder="Design Name"></span>
-                <span>
-                    <label for="lettering-dir">Lettering Faces</label>
-                    <select id="lettering-dir">
-                        <option>Unknown</option>
-                        <option>North</option>
-                        <option>South</option>
-                        <option>East</option>
-                        <option>West</option>
-                    </select>
-                </span>
-                <span>
-                    <label for="positions-verified">Positions Verified</label>
-                    <input id="positions-verified" type="checkbox" />
-                </span>
-                <span>
-                    <label for="name-on-left">Name on Left</label>
-                    <input id="name-on-left" type="text" />
-                </span>
-                <span>
-                    <label for="carving-type">Carving Type</label>
-                    <select id="carving-type">
-                        <option value="flat">Flat</option>
-                        <option value="none">None</option>
-                        <option value="shape">Shape</option>
-                        <option value="etching">Etching</option>
-                    </select>
-                </span>
-                <span>
-                    <label for="name-on-back">Name on Back</label>
-                    <input id="name-on-back" type="checkbox" />
-                </span>
-                <span>
-                    <label for="special-artwork">Special Artwork</label>
-                    <input id="special-artwork" type="checkbox" />
-                </span>
-                <span>
-                    <label for="match-rubbing">Match Rubbing</label>
-                    <input id="match-rubbing" type="checkbox" />
-                </span>
-            </div>
-        </div>
-        <div class="preview">
-            <p contenteditable>
-
-            </p>
-            <p class="print">
-                Lettering other than above will be done for a charge at the rate
-                prevailing at the time additional lettering is ordered.
-            </p>
-        </div>
-        <footer>
-            <input />
-        </footer>
-    </div>
-    <aside class="sidebar">
-        <div>
-            <input id="order-date" type="date" data-bind="value: order.date" />
-            <span id="amount" class="amount" data-bind="text: balance"></span>
-            <select list="orderStatus" id="order-status" data-bind="option: order.status, value: order.status">
-                <datalist id="orderStatus">
-                    <option value="Quote">Quote</option>
-                    <option value="Layaway">Layaway</option>
-                    <option value="Drawing In-Process">Drawing In-Process</option>
-                    <option value="Design Approval Pending">Design Approval Pending</option>
-                    <option value="On Order">On Order</option>
-                    <option value="Engraving @BMC">Engraving @BMC</option>
-                    <option value="Engraving @Sasakwa">Engraving @Sasakwa</option>
-                    <option value="Final Customer Approval">Final Customer Approval</option>
-                    <option value="To Be Set">To Be Set</option>
-                </datalist>
-            </select>
-        </div>
-        <table class="table money" id="costs">
-            <caption>Costs <a data-bind="click: $root.addCost">(+)</a></caption>
-            <tbody data-bind="foreach:costs">
-                <tr class="cost">
-                    <td><input list="part-list" placeholder="Part" data-bind="value: part" /></td>
-                    <td><input type="number" value="0" data-bind="value: amount" /></td>
-                    <td class="action delete"><a data-bind="click: $root.delCost">&nbsp;-&nbsp;</a></td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr class="subtotal">
-                    <td><label for="subtotal">Subtotal</label></td>
-                    <td colspan=2><input id="subtotal" type="number" readonly data-bind="value: subtotal" /></td>
-                    <!-- <td></td> -->
-                </tr>
-                <tr class="tax">
-                    <td><label for="sales-tax">Sales Tax</label></td>
-                    <td colspan=2><input id="sales-tax" type="number" readonly data-bind="value: tax" /></td>
-                    <!-- <td></td> -->
-                </tr>
-                <tr class="delivery">
-                    <td><label for="delivery-fee">Delivery</label></td>
-                    <td colspan=2><input id="delivery-fee" type="number" data-bind="value: delivery" /></td>
-                    <!-- <td></td> -->
-                </tr>
-                <tr class="fees">
-                    <td><label for="other-fees">Applicable Fees</label></td>
-                    <td colspan=2><input id="other-fees" type="number" data-bind="value: fees" /></td>
-                    <!-- <td></td> -->
-                </tr>
-                <tr class="total">
-                    <td><label class="print-big" for="total-price">Total Price</label></td>
-                    <td colspan=2><input id="total-price" type="number" readonly data-bind="value: total" /></td>
-                    <!-- <td></td> -->
-                </tr>
-            </tbody>
-        </table>
-        <table class="table money" id="payments">
-            <caption>Payments <a data-bind="click: $root.addPayment">(+)</a></caption>
-            <tbody data-bind="foreach:payments">
-                <tr>
-                    <td><input placeholder="MM/DD/YYYY" type="date" required data-bind="value: date" /></td>
-                    <td><input class="amountPaid" type="number" value="0" data-bind="value: amount" /></td>
-                    <td class="action delete"><a data-bind="click: $root.delPayment">&nbsp;-&nbsp;</a></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td><label for="amount-paid">Amount Paid</label></td>
-                    <td><input id="amount-paid" readonly class="amountPaid" type="number" data-bind="value: paid" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><label class="print-big" for="balance-due">Balance Due</label></td>
-                    <td><input id="balance-due" readonly class="amount" type="number" data-bind="value: balance" /></td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
-        <textarea id="note" data-bind="text: note"></textarea>
-        <table id="contact" class="table">
-            <caption>Contact</caption>
-            <tbody>
-                <tr><td colspan="3"><input placeholder="Name" data-bind="value: sale.name" /></td></tr>
-                <tr><td colspan="3"><input placeholder="Phone" type="tel" data-bind="value: sale.phone" /></td></tr>
-                <tr><td colspan="3"><input placeholder="Email" type="email" data-bind="value: sale.email" /></td></tr>
-                <tr><td colspan="3"><input placeholder="Street" type="text" data-bind="value: sale.street" /></td></tr>
-                <tr>
-                    <td style="width: 50%"><input placeholder="City" data-bind="value: sale.city" /></td>
-                    <td><input placeholder="State" data-bind="value: sale.state" /></td>
-                    <td><input placeholder="Zip" data-bind="value: sale.zip" /></td>
-                </tr>
-                <tr>
-                    <td colspan="3"><input placeholder="Sold By" list="reps" data-bind="value: sale.soldBy" /></td>
-                </tr>
-            </tbody>
-        </table>
-        <input id="signature" readonly data-bind="value: sale.signature" />
-        <label for="signature" style="margin: 2px 0 0 3px">Signature</label>
-    </aside>
-</div>
-
-<div id="status">
-</div>
+<div class="app"></div>
 
 <div class="lists">
     <datalist id="part-list">
@@ -230,12 +22,14 @@
         <option value="Landscape" />
         <option value="Foundation" />
     </datalist>
+
     <datalist id="material-list">
         <option value="Bronze" />
         <option value="Granite" />
         <option value="Marble" />
         <option value="Concrete" />
     </datalist>
+
     <datalist id="kind-list">
         <option value="Gray" />
         <option value="Morning Rose" />
@@ -254,8 +48,6 @@
     </datalist>
 </div>
 
-
-<script src="js/knockout-2.2.1.js"></script>
-<script src="js/order.js"></script>
+<script src="dist/app.js"></script>
 </body>
 </html>
