@@ -42,30 +42,38 @@ export default class OrderStore extends Store {
 		this.setState({orders: this.state.orders.set(order.id, order)})
 	}
 
-	onUpdateOrderSale({orderId, key, value}) {
+	_updateKey({orderId, key, value}) {
 		let order = this.state.orders.get(orderId)
-		const newSale = order.sale.set(key, value)
-		order = order.set('sale', newSale)
+		order = order.set(key, value)
 		this.setState({orders: this.state.orders.set(orderId, order)})
+	}
+
+	_updateKeyIn({orderId, parent, key, value}) {
+		let order = this.state.orders.get(orderId)
+		let destination = order.get(parent).set(key, value)
+		order = order.set(parent, destination)
+		this.setState({orders: this.state.orders.set(orderId, order)})
+	}
+
+	onUpdateOrderSale({orderId, key, value}) {
+		this._updateKeyIn({orderId, parent: 'sale', key, value})
 	}
 
 	onUpdateFee({orderId, fee, value}) {
 		if (!['delivery', 'fees'].contains(fee)) {
 			return
 		}
-		let order = this.state.orders.get(orderId)
-		order = order.set(fee, value)
-		this.setState({orders: this.state.orders.set(orderId, order)})
+		this._updateKey({orderId, key: 'fee', value})
 	}
 
 	// Pieces
-	onAddItem(orderId, ItemConstructor, key) {
+	_addItem(orderId, ItemConstructor, key) {
 		let order = this.state.orders.get(orderId)
 		const item = new ItemConstructor()
 		order = order.set(key, order.get(key).push(item))
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
-	onRemoveItem(orderId, index, key, ItemConstructor) {
+	_removeItem(orderId, index, key, ItemConstructor) {
 		let order = this.state.orders.get(orderId)
 		let things = order.get(key).delete(index)
 		if (!things.size)
@@ -73,7 +81,7 @@ export default class OrderStore extends Store {
 		order = order.set(key, things)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
-	onUpdateItem(orderId, key, index, newInfo, ItemConstructor) {
+	_updateItem(orderId, key, index, newInfo, ItemConstructor) {
 		let order = this.state.orders.get(orderId)
 		const item = order.get(key).get(index)
 		const merged = item.merge(newInfo)
@@ -85,34 +93,34 @@ export default class OrderStore extends Store {
 
 
 	onAddPiece({orderId}) {
-		this.onAddItem(orderId, Piece, 'pieces')
+		this._addItem(orderId, Piece, 'pieces')
 	}
 	onRemovePiece({orderId, pieceIndex}) {
-		this.onRemoveItem(orderId, pieceIndex, 'pieces', Piece)
+		this._removeItem(orderId, pieceIndex, 'pieces', Piece)
 	}
 	onUpdatePiece({orderId, pieceIndex, info}) {
-		this.onUpdateItem(orderId, 'pieces', pieceIndex, info, Piece)
+		this._updateItem(orderId, 'pieces', pieceIndex, info, Piece)
 	}
 
 	// Costs
 	onAddCost({orderId}) {
-		this.onAddItem(orderId, Cost, 'costs')
+		this._addItem(orderId, Cost, 'costs')
 	}
 	onRemoveCost({orderId, costIndex}) {
-		this.onRemoveItem(orderId, costIndex, 'costs', Cost)
+		this._removeItem(orderId, costIndex, 'costs', Cost)
 	}
 	onUpdateCost({orderId, costIndex, info}) {
-		this.onUpdateItem(orderId, 'costs', costIndex, info, Cost)
+		this._updateItem(orderId, 'costs', costIndex, info, Cost)
 	}
 
 	// Payments
 	onAddPayment({orderId}) {
-		this.onAddItem(orderId, Payment, 'payments')
+		this._addItem(orderId, Payment, 'payments')
 	}
 	onRemovePayment({orderId, paymentIndex}) {
-		this.onRemoveItem(orderId, paymentIndex, 'payments', Payment)
+		this._removeItem(orderId, paymentIndex, 'payments', Payment)
 	}
 	onUpdatePayment({orderId, paymentIndex, info}) {
-		this.onUpdateItem(orderId, 'payments', paymentIndex, info, Payment)
+		this._updateItem(orderId, 'payments', paymentIndex, info, Payment)
 	}
 }
