@@ -3,7 +3,7 @@
 /*    Global */
 body {
 	margin: .5em auto;
-	font-family: Helvetica Neue, Helvetica, Calibri, Cantarell, Ubuntu, sans-serif;
+	font-family: Verdana, sans-serif;
 	color: #333;
 	font-size: 11px;
 	width: 8in;
@@ -18,6 +18,10 @@ tr {
 }
 td {
 	padding: 0;
+}
+button {
+	padding-bottom: 5px;
+	align-items: center;
 }
 .amount::before {
 	content: "$";
@@ -128,7 +132,7 @@ header img {
 		padding: 0;
 		color: #111;
 		cursor: default;
-		font-style: italic;
+		// font-style: italic;
 	}
 	td:not(:last-child), th:not(:last-child) {
 		border-right: solid 1px #ddd;
