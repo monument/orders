@@ -65,9 +65,11 @@ export default class OrderStore extends Store {
 		order = order.set(key, order.get(key).push(item))
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
-	onRemoveItem(orderId, index, key) {
+	onRemoveItem(orderId, index, key, ItemConstructor) {
 		let order = this.state.orders.get(orderId)
-		const things = order.get(key).delete(index)
+		let things = order.get(key).delete(index)
+		if (!things.size)
+			things = things.push(new ItemConstructor())
 		order = order.set(key, things)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
@@ -86,7 +88,7 @@ export default class OrderStore extends Store {
 		this.onAddItem(orderId, Piece, 'pieces')
 	}
 	onRemovePiece({orderId, pieceIndex}) {
-		this.onRemoveItem(orderId, pieceIndex, 'pieces')
+		this.onRemoveItem(orderId, pieceIndex, 'pieces', Piece)
 	}
 	onUpdatePiece({orderId, pieceIndex, info}) {
 		this.onUpdateItem(orderId, 'pieces', pieceIndex, info, Piece)
@@ -97,7 +99,7 @@ export default class OrderStore extends Store {
 		this.onAddItem(orderId, Cost, 'costs')
 	}
 	onRemoveCost({orderId, costIndex}) {
-		this.onRemoveItem(orderId, costIndex, 'costs')
+		this.onRemoveItem(orderId, costIndex, 'costs', Cost)
 	}
 	onUpdateCost({orderId, costIndex, info}) {
 		this.onUpdateItem(orderId, 'costs', costIndex, info, Cost)
@@ -108,7 +110,7 @@ export default class OrderStore extends Store {
 		this.onAddItem(orderId, Payment, 'payments')
 	}
 	onRemovePayment({orderId, paymentIndex}) {
-		this.onRemoveItem(orderId, paymentIndex, 'payments')
+		this.onRemoveItem(orderId, paymentIndex, 'payments', Payment)
 	}
 	onUpdatePayment({orderId, paymentIndex, info}) {
 		this.onUpdateItem(orderId, 'payments', paymentIndex, info, Payment)
