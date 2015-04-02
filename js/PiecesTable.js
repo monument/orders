@@ -46,19 +46,19 @@ export default class PiecesTable extends Component {
 							<input value={piece.kind} list="kind-list" onChange={(ev) => editPiece({kind: ev.target.value})} />
 						</td>
 						<td className="dim length">
-							<input value={piece.length} onChange={(ev) => editPiece({length: parseInt(ev.target.value)})} />
+							<input value={piece.length} onChange={(ev) => editPiece({length: ev.target.value})} />
 						</td>
 						<td className="dim width">
-							<input value={piece.width} onChange={(ev) => editPiece({width: parseInt(ev.target.value)})} />
+							<input value={piece.width} onChange={(ev) => editPiece({width: ev.target.value})} />
 						</td>
 						<td className="dim height">
-							<input value={piece.height} onChange={(ev) => editPiece({height: parseInt(ev.target.value)})} />
+							<input value={piece.height} onChange={(ev) => editPiece({height: ev.target.value})} />
 						</td>
 						<td className="notes">
 							<input value={piece.notes} onChange={(ev) => editPiece({notes: ev.target.value})} />
 						</td>
 						<td className="cost">
-							<input value={piece.amount} type="number" onChange={(ev) => editPiece({amount: parseInt(ev.target.value)})} />
+							<input value={piece.amount} type="number" onChange={(ev) => editPiece({amount: parseFloat(ev.target.value)})} />
 						</td>
 						<td className="action delete">
 							<button onClick={() => removePiece(orderId, index)}>–</button>
