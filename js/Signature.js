@@ -1,15 +1,29 @@
 import React from 'react'
-let {PropTypes, Component} = React
+let {PropTypes, createClass: ReactClass} = React
 
-export default class Signature extends Component {
-	static propTypes = {
-		scribble: PropTypes.string,
-	}
+//export default class Signature extends Component {
+//	static propTypes = {
+//		scribble: PropTypes.string,
+//	}
+//
+//	render() {
+//		return <div>
+//			<input id="signature" readOnly value={this.props.scribble} />
+//			<label htmlFor="signature" style={{margin: '2px 0 0 3px'}}>Signature</label>
+//		</div>
+//	}
+//}
 
-	render() {
-		return <div>
-			<input id="signature" readOnly defaultValue={this.props.scribble} />
-			<label htmlFor="signature" style={{margin: '2px 0 0 3px'}}>Signature</label>
-		</div>
-	}
+let Signature = {}
+Signature.propTypes = {
+	scribble: PropTypes.string,
 }
+Signature.render = function() {
+	return <div>
+		<input id="signature" readOnly value={this.props.scribble}/>
+		<label htmlFor="signature" style={{margin: '2px 0 0 3px'}}>Signature</label>
+	</div>
+}
+
+const SignatureComponent = ReactClass(Signature)
+export default SignatureComponent

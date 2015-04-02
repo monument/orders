@@ -3,22 +3,44 @@ import Immutable from 'immutable'
 
 export default class OrderActions extends Actions {
 	createOrder(order) {
-		console.log('OrderActions.createOrder')
 		return order
 	}
 
 	addPiece(orderId) {
-		console.log('OrderActions.addPiece')
 		return {orderId}
 	}
-
 	removePiece(orderId, pieceIndex) {
-		console.log('OrderActions.removePiece')
 		return {orderId, pieceIndex}
+	}
+	updatePiece(orderId, pieceIndex, info) {
+		console.log('OrderActions.updatePiece')
+		return {orderId, pieceIndex, info}
+	}
+
+	addCost(orderId) {
+		return {orderId}
+	}
+	removeCost(orderId, costIndex) {
+		return {orderId, costIndex}
+	}
+	updateCost(orderId, costIndex, info) {
+		return {orderId, costIndex, info}
+	}
+
+	addPayment(orderId) {
+		return {orderId}
+	}
+	removePayment(orderId, paymentIndex) {
+		return {orderId, paymentIndex}
+	}
+	updatePayment(orderId, paymentIndex, info) {
+		return {orderId, paymentIndex, info}
 	}
 
 	updateOrderSale(orderId, key, value) {
-		console.log('OrderActions.updateOrderSale')
 		return {orderId, key, value}
+	}
+	updateFee(orderId, fee, value) {
+		return {orderId, fee, value}
 	}
 }

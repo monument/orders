@@ -31,7 +31,7 @@ export default class OrderForm extends Component {
 		const costs = order.costs.map(c => c.amount).reduce(sum, 0)
 		const pieces = order.pieces.map(piece => piece.amount * piece.qty)
 		const subtotal = costs + pieces.reduce(sum, 0)
-		const tax = subtotal * 0.08157
+		const tax = round(subtotal * 0.08157)
 		const total = subtotal + tax + order.delivery + order.fees
 		const paid = order.payments.map(p => p.amount).reduce(sum, 0)
 		const balance = round(total - paid)
@@ -43,6 +43,7 @@ export default class OrderForm extends Component {
 					orderId={order.id}
 					pieces={order.pieces}
 					addPiece={actions.addPiece}
+					updatePiece={actions.updatePiece}
 					removePiece={actions.removePiece} />
 				<DetailsTable
 					delivery={order.deliver}
@@ -64,8 +65,11 @@ export default class OrderForm extends Component {
 					applicableFees={order.fees}
 					total={total}
 					costs={order.costs}
+					orderId={order.id}
 					addCost={actions.addCost}
-					delCost={actions.delCost} />
+					updateCost={actions.updateCost}
+					updateFee={actions.updateFee}
+					removeCost={actions.removeCost} />
 				<PaymentsTable
 					payments={order.payments}
 					balance={balance}
