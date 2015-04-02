@@ -1,5 +1,4 @@
 import {Actions} from 'flummox'
-import Immutable from 'immutable'
 
 export default class OrderActions extends Actions {
 	createOrder(order) {
@@ -13,7 +12,6 @@ export default class OrderActions extends Actions {
 		return {orderId, pieceIndex}
 	}
 	updatePiece(orderId, pieceIndex, info) {
-		console.log('OrderActions.updatePiece')
 		return {orderId, pieceIndex, info}
 	}
 
