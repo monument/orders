@@ -24,7 +24,7 @@
   "license": "MIT",
   "homepage": "http://orders.benchmarkmonument.com/",
   "dependencies": {
-    "flummox": "^3.3.0",
+    "flummox": "^3.5.0",
     "immutable": "^3.7.1",
     "lodash": "^3.6.0",
     "react": "^0.13.1"
@@ -34,7 +34,7 @@
     "babel-core": "^4.7.16",
     "babelify": "^5.0.4",
     "browser-sync": "^2.5.2",
-    "browserify": "^9.0.3",
+    "browserify": "^9.0.4",
     "eslint": "^0.18.0",
     "mocha": "^2.2.1",
     "node-sass": "^2.1.1",
