@@ -1,8 +1,5 @@
 import React from 'react'
 
-import orderActions from './flux/orderActions'
-import orderStore from './flux/orderStore'
-
 import App from './js/app'
 import OrderFlux from './flux/OrderFlux'
 
