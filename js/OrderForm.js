@@ -74,10 +74,12 @@ export default class OrderForm extends Component {
 					payments={order.payments}
 					balance={balance}
 					paid={paid}
+					orderId={order.id}
 					addPayment={actions.addPayment}
-					delPayment={actions.delPayment} />
+					updatePayment={actions.updatePayment}
+					removePayment={actions.removePayment} />
 
-				<NoteBox note={order.note} onChange={actions.updateNote} />
+				<NoteBox note={order.note} onChange={(ev) => actions.updateNote(ev.target.value)} />
 				<ContactTable sale={order.sale} orderId={order.id} actions={actions} />
 				<Signature scribble={order.sale.get('signature')} />
 			</aside>

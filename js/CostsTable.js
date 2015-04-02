@@ -30,7 +30,7 @@ export default class CostsTable extends Component {
 							<input list="part-list" placeholder="Part" value={part} onChange={(ev) => updateCost(orderId, index, {part: ev.target.value})} />
 						</td>
 						<td>
-							<input type="number" value={amount} onChange={(ev) => updateCost(orderId, index, {amount: parseInt(ev.target.value)})} />
+							<input type="number" value={amount} onChange={(ev) => updateCost(orderId, index, {amount: parseFloat(ev.target.value)})} />
 						</td>
 						<td className="action delete"><button onClick={() => removeCost(orderId, index)}>&nbsp;-&nbsp;</button></td>
 					</tr>
