@@ -1,0 +1,26 @@
+/* .money, #costs, and #payments
+ Money chart */
+.notes, .contact, .costs, .payments {
+	flex: 1;
+}
+.money td:nth-child(odd) { width: 70%; }
+.money td:nth-child(even) {
+	border-left: solid 1px #ddd;
+	border-right: solid 1px #ddd;
+	width: 30%;
+}
+.money td:nth-child(3) { border-right: none; }
+.costs .cost:last-child { border-bottom: solid 1px #ddd; }
+.money input {
+	margin: 0;
+	border: none;
+	width: 100%;
+	padding: 1px 4px;
+}
+.money label {
+	padding: 1px 4px;
+}
+.delete:hover {
+	background: hsl(0, 100%, 50%);
+	color: white;
+}

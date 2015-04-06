@@ -1,0 +1,70 @@
+.amount {
+	padding: 2px 0;
+	height: 16px;
+	cursor: default;
+	text-align: right;
+	display: block;
+}
+.order-date {
+	width: 115px;
+	height: 20px;
+	float: left;
+}
+
+.order-status {
+	width: 100%;
+}
+.main {
+	display: flex;
+	flex-direction: column;
+	flex: 3;
+
+	padding-right: .5em;
+}
+.print {
+	display: none;
+}
+
+.note {
+	background: lightyellow;
+	margin-top: 7px;
+	border: solid 1px #ddd;
+	min-height: 8em;
+	font-family: inherit;
+	width: 100%;
+	padding: 2px;
+	transition: none;
+	flex: 1;
+}
+
+.signature {
+	margin-top: 25px;
+	border: none;
+	border-bottom: dotted 1px #444;
+}
+
+.order {
+	display: flex;
+	flex-direction: row;
+
+	padding: .5em;
+	height: 8in;
+}
+
+.preview {
+	flex: 1;
+}
+
+.preview p[contenteditable] {
+	min-height: 300px;
+}
+
+footer {
+	width: 100%;
+	border-bottom: dashed 1px #808080;
+	display: none;
+}
+footer input {
+	border: 0;
+	height: 100%;
+}

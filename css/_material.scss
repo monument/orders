@@ -1,0 +1,17 @@
+/* #material
+ Material table */
+.material {
+	thead tr { height: 50%; }
+	.qty:not(input)      { width: 5%; }
+	.part:not(input)     { width: 15%; }
+	.material:not(input) { width: 11%; }
+	.kind:not(input)     { width: 17%; }
+	.dim:not(input)      { width: 7%; }
+	.notes:not(input)    { width: 20%; }
+	.cost:not(input)     { width: 7%; }
+	.action              { width: 1.25em;
+		font-weight: normal;
+		font-style: normal;
+	}
+	.qty, .cost, .dim input, .action  { text-align: center; }
+}

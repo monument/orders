@@ -1,0 +1,45 @@
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+	margin: .5em auto;
+	font-family: Verdana, sans-serif;
+	color: #333;
+	font-size: 11px;
+	width: 8in;
+	box-sizing: border-box;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+tr {
+	height: 2.25em;
+}
+td {
+	padding: 0;
+}
+button {
+	padding-bottom: 5px;
+	align-items: center;
+}
+.amount::before {
+	content: "$";
+}
+input, select {
+	font-family: inherit;
+	color: inherit;
+	font-size: inherit;
+}
+input {
+	width: inherit;
+	padding: 1px;
+	height: inherit;
+	border: solid 1px #ddd;
+}
+input:hover {
+	background-color: lightyellow;
+}
+
+input::-webkit-datetime-edit {
+	color: gray;
+}

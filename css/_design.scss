@@ -1,0 +1,21 @@
+.design {
+	margin-top: 2px;
+}
+.design input:not([type="checkbox"]) {
+	margin-left: 2px;
+}
+.design input[type="checkbox"] {
+	margin-left: 0;
+}
+.details [class^="cem"] label {
+	margin-top: .5em;
+	display: block;
+}
+.details [class^="cem"] input {
+	margin: 0;
+	width: 50%;
+	height: 22px;
+}
+.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 50%;}
+.details [class*="location"] input {margin-top: -1px;}
+.details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
