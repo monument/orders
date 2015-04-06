@@ -16,15 +16,12 @@ export default class OrderStore extends Store {
 
 		this.register(orderActionIds.addPiece, this.onAddPiece)
 		this.register(orderActionIds.removePiece, this.onRemovePiece)
-		this.register(orderActionIds.updatePiece, this.onUpdatePiece)
 
 		this.register(orderActionIds.addCost, this.onAddCost)
 		this.register(orderActionIds.removeCost, this.onRemoveCost)
-		this.register(orderActionIds.updateCost, this.onUpdateCost)
 
 		this.register(orderActionIds.addPayment, this.onAddPayment)
 		this.register(orderActionIds.removePayment, this.onRemovePayment)
-		this.register(orderActionIds.updatePayment, this.onUpdatePayment)
 
 		// prepare state
 		this.state = {
@@ -65,12 +62,6 @@ export default class OrderStore extends Store {
 		order = order.set(key, things)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
-	_updateItem({orderId, key, index, newInfo, archetype}) {
-		console.log('_updateItem')
-		let order = this.state.orders.get(orderId)
-		order = order.mergeDeepIn([key, index], newInfo)
-		this.setState({orders: this.state.orders.set(orderId, order)})
-	}
 
 
 	onAddPiece({orderId}) {
@@ -80,10 +71,6 @@ export default class OrderStore extends Store {
 	onRemovePiece({orderId, pieceIndex}) {
 		console.log('onRemovePiece')
 		this._removeItem({orderId, index: pieceIndex, key: 'pieces', archetype: Piece})
-	}
-	onUpdatePiece({orderId, pieceIndex, info}) {
-		console.log('onUpdatePiece')
-		this._updateItem({orderId, key: 'pieces', index: pieceIndex, newInfo: info, archetype: Piece})
 	}
 
 	// Costs
@@ -95,10 +82,6 @@ export default class OrderStore extends Store {
 		console.log('onRemoveCost')
 		this._removeItem({orderId, index: costIndex, key: 'costs', archetype: Cost})
 	}
-	onUpdateCost({orderId, costIndex, info}) {
-		console.log('onUpdateCost')
-		this._updateItem({orderId, key: 'costs', index: costIndex, newInfo: info, archetype: Cost})
-	}
 
 	// Payments
 	onAddPayment({orderId}) {
@@ -108,9 +91,5 @@ export default class OrderStore extends Store {
 	onRemovePayment({orderId, paymentIndex}) {
 		console.log('onRemovePayment')
 		this._removeItem({orderId, index: paymentIndex, key: 'payments', archetype: Payment})
-	}
-	onUpdatePayment({orderId, paymentIndex, info}) {
-		console.log('onUpdatePayment')
-		this._updateItem({orderId, key: 'payments', index: paymentIndex, newInfo: info, archetype: Payment})
 	}
 }

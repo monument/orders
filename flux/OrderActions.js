@@ -4,15 +4,15 @@ export default class OrderActions extends Actions {
 	createOrder(order) {
 		return order
 	}
+	updatePath(path, ev) {
+		return {path, ev}
+	}
 
 	addPiece(orderId) {
 		return {orderId}
 	}
 	removePiece(orderId, pieceIndex) {
 		return {orderId, pieceIndex}
-	}
-	updatePiece(orderId, pieceIndex, info) {
-		return {orderId, pieceIndex, info}
 	}
 
 	addCost(orderId) {
@@ -21,21 +21,11 @@ export default class OrderActions extends Actions {
 	removeCost(orderId, costIndex) {
 		return {orderId, costIndex}
 	}
-	updateCost(orderId, costIndex, info) {
-		return {orderId, costIndex, info}
-	}
 
 	addPayment(orderId) {
 		return {orderId}
 	}
 	removePayment(orderId, paymentIndex) {
 		return {orderId, paymentIndex}
-	}
-	updatePayment(orderId, paymentIndex, info) {
-		return {orderId, paymentIndex, info}
-	}
-
-	updatePath(path, ev) {
-		return {path, ev}
 	}
 }
