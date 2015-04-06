@@ -53,7 +53,7 @@ const OrderRecord = Immutable.Map({
 		street: '',
 		city: '',
 		state: '',
-		zip: 0,
+		zip: '',
 		soldBy: '',
 		soldAt: '',
 	}),
