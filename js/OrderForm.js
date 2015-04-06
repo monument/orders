@@ -37,7 +37,8 @@ export default class OrderForm extends Component {
 			.reduce(sum, 0)
 
 		const subtotal = costs + pieces
-		const tax = round10(subtotal * 0.08157, -2)
+		// const tax = round10(subtotal * 0.08157, -2)
+		const tax = subtotal * 0.08157
 		const deliveryFee = parseFloat(order.get('deliveryFee'))
 		const otherFees = parseFloat(order.get('fees'))
 		const total = subtotal + tax + deliveryFee + otherFees
@@ -47,7 +48,8 @@ export default class OrderForm extends Component {
 			.map(parseFloat)
 			.reduce(sum, 0)
 
-		const balance = round10(total - paid, -2)
+		// const balance = round10(total - paid, -2)
+		const balance = total - paid
 
 		const id = order.get('id')
 
