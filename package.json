@@ -1,0 +1,43 @@
+{
+  "name": "orders",
+  "private": true,
+  "version": "2.0.0-beta.4",
+  "description": "A digital order sheet for Benchmark Monument",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "prebuild": "mkdir -p dist",
+    "js": "browserify -t [babelify --experimental --playground] --debug -e index.js -o dist/app.js",
+    "js-watch": "watchify -v -t [babelify --experimental --playground] --debug -e ./index.js -o dist/app.js",
+    "css": "node-sass css/index.scss dist/app.css --source-map dist/app.css.map && autoprefixer dist/app.css",
+    "css-watch": "nodemon --watch css/ --ext scss --exec 'npm run css'",
+    "build": "npm run js & npm run css & wait",
+    "watch": "npm run js-watch & npm run css-watch & wait",
+    "start": "npm run watch & browser-sync start --port=4000 --no-open --server --files='dist/*.css, dist/*.js, *.html' & wait"
+  },
+  "repository": "https://github.com/monument/orders",
+  "keywords": [
+    "benchmarkmonument",
+    "orders"
+  ],
+  "author": "Hawken MacKay Rives",
+  "license": "MIT",
+  "homepage": "http://orders.benchmarkmonument.com/",
+  "dependencies": {
+    "flummox": "^3.5.0",
+    "immutable": "^3.7.1",
+    "lodash": "^3.6.0",
+    "react": "^0.13.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^5.1.0",
+    "babel-core": "^4.7.16",
+    "babelify": "^5.0.4",
+    "browser-sync": "^2.5.2",
+    "browserify": "^9.0.4",
+    "eslint": "^0.18.0",
+    "mocha": "^2.2.1",
+    "node-sass": "^2.1.1",
+    "nodemon": "^1.3.7"
+  }
+}

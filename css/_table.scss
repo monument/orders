@@ -1,0 +1,45 @@
+/* Table styles */
+.table {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+
+	th, caption {
+		text-transform: uppercase;
+		font-family: Calibri, Cantarell, Ubuntu, Helvetica, sans-serif;
+		font-size: 95%;
+		font-weight: normal;
+		padding: 0;
+		color: #111;
+		cursor: default;
+		// font-style: italic;
+	}
+	td + td,
+	th + th {
+		border-left: solid 1px #ddd;
+	}
+	tr,
+	thead tr:first-child {
+		border-bottom: solid 1px #ddd;
+	}
+	&:not(:first-child) {
+		margin-top:1em;
+	}
+	a {
+		cursor: pointer;
+	}
+	input,
+	output {
+		padding: 1px 4px;
+		margin: 0;
+		border: none;
+		height: 100%;
+		width: 100%;
+	}
+	input:focus {
+		outline: hsl(208, 62%, 60%) auto 5px;
+		background-color: hsl(60, 100%, 93%);
+	}
+	tfoot tr:last-child {
+		border-bottom: hidden;
+	}
+}

@@ -1,0 +1,26 @@
+/* .money, #costs, and #payments
+ Money chart */
+.notes, .contact, .costs, .payments {
+	flex: 1;
+}
+.money td:nth-child(0) {
+	width: 40%;
+}
+.money td:nth-child(1) {
+	width: 60%;
+}
+
+.money td:last-child {
+	border-right: none;
+}
+.costs .cost:last-child {
+	border-bottom: solid 1px #ddd;
+}
+.money input, .money output {
+	margin: 0;
+	border: none;
+	padding: 1px 4px;
+}
+.money label {
+	padding: 1px 4px;
+}

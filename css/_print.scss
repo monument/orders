@@ -1,0 +1,39 @@
+@media print {
+	.print-big {
+	    font-weight: bold;
+	    font-size: 110%;
+	    text-transform: uppercase;
+	}
+	::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+		appearance: none;
+		margin: 0;
+	}
+	.order {
+		margin-right: 1em;
+	}
+	.print {
+		display: block;
+		text-align: center;
+	}
+	.title {
+		transform: rotate(90deg) translate3d(280px, -5.2in, 0);
+		input {
+			border: 0;
+		}
+	}
+	.main {
+		margin-top: -35px;
+	}
+	.action {
+		display: none;
+	}
+	.money td:nth-child(even) {
+		border-right: hidden;
+	}
+
+	footer {
+		position: fixed;
+		bottom: 0;
+		width: 7in;
+	}
+}
