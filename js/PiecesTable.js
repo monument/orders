@@ -39,6 +39,7 @@ export default class PiecesTable extends Component {
 						<td className="qty">
 							<input
 								type="number"
+								min="1"
 								value={piece.get('qty')}
 								onChange={updateIn([orderId, 'pieces', index, 'qty'])} />
 						</td>
@@ -83,6 +84,7 @@ export default class PiecesTable extends Component {
 						<td className="cost">
 							<input
 								type="number"
+								min="0"
 								value={piece.get('amount')}
 								onChange={updateIn([orderId, 'pieces', index, 'amount'])} />
 						</td>
