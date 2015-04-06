@@ -1,7 +1,6 @@
 import React from 'react'
 let {PropTypes, Component} = React
 import Immutable from 'immutable'
-import round from './round'
 import curry from 'lodash/function/curry'
 
 export default class CostsTable extends Component {
