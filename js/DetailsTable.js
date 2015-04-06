@@ -19,33 +19,31 @@ export default class DetailsTable extends Component {
 		const {orderId} = this.props
 		const updateIn = curry(updatePath, 2)
 
-		return <div>
-			<div className="details">
-				<div className="delivery">
-					<span>
-						<label htmlFor="deliver-by">Deliver By</label>
-						<input id="deliver-by" value={delivery.get('by')} type="date" onChange={updateIn([orderId, 'delivery', 'by'])} />
-					</span>
-					<span>
-						<label htmlFor="deliver-to">Cemetery</label>
-						<input id="deliver-to" value={delivery.get('to')} onChange={updateIn([orderId, 'delivery', 'to'])} />
-					</span>
-					<span>
-						<label htmlFor="in-near">In/Near</label>
-						<input id="in-near" value={delivery.get('near')} onChange={updateIn([orderId, 'delivery', 'near'])} />
-					</span>
-					<div className="cem-contact">
-						<label>Name of contact to find grave</label>
-						<input placeholder="Name" value={delivery.getIn(['contact', 'name'])} onChange={updateIn([orderId, 'delivery', 'contact', 'name'])} />
-						<input placeholder="Phone" value={delivery.getIn(['contact', 'phone'])} onChange={updateIn([orderId, 'delivery', 'contact', 'phone'])} />
-					</div>
-					<div className="cem-location">
-						<label>Location in cemetery</label>
-						<input placeholder="Space(s)" value={delivery.get('spaces')} onChange={updateIn([orderId, 'delivery', 'spaces'])} />
-						<input placeholder="Lot" value={delivery.get('lot')} onChange={updateIn([orderId, 'delivery', 'lot'])} />
-						<input placeholder="Block" value={delivery.get('block')} onChange={updateIn([orderId, 'delivery', 'block'])} />
-						<input placeholder="Section" value={delivery.get('section')} onChange={updateIn([orderId, 'delivery', 'section'])} />
-					</div>
+		return <div className="details">
+			<div className="delivery">
+				<span>
+					<label htmlFor="deliver-by">Deliver By</label>
+					<input id="deliver-by" value={delivery.get('by')} type="date" onChange={updateIn([orderId, 'delivery', 'by'])} />
+				</span>
+				<span>
+					<label htmlFor="deliver-to">Cemetery</label>
+					<input id="deliver-to" value={delivery.get('to')} onChange={updateIn([orderId, 'delivery', 'to'])} />
+				</span>
+				<span>
+					<label htmlFor="in-near">In/Near</label>
+					<input id="in-near" value={delivery.get('near')} onChange={updateIn([orderId, 'delivery', 'near'])} />
+				</span>
+				<div className="cem-contact">
+					<label>Name of contact to find grave</label>
+					<input placeholder="Name" value={delivery.getIn(['contact', 'name'])} onChange={updateIn([orderId, 'delivery', 'contact', 'name'])} />
+					<input placeholder="Phone" value={delivery.getIn(['contact', 'phone'])} onChange={updateIn([orderId, 'delivery', 'contact', 'phone'])} />
+				</div>
+				<div className="cem-location">
+					<label>Location in cemetery</label>
+					<input placeholder="Space(s)" value={delivery.get('spaces')} onChange={updateIn([orderId, 'delivery', 'spaces'])} />
+					<input placeholder="Lot" value={delivery.get('lot')} onChange={updateIn([orderId, 'delivery', 'lot'])} />
+					<input placeholder="Block" value={delivery.get('block')} onChange={updateIn([orderId, 'delivery', 'block'])} />
+					<input placeholder="Section" value={delivery.get('section')} onChange={updateIn([orderId, 'delivery', 'section'])} />
 				</div>
 			</div>
 			<div className="design">
