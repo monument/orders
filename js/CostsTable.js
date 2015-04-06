@@ -15,7 +15,7 @@ export default class CostsTable extends Component {
 		subtotal: PropTypes.number.isRequired,
 		tax: PropTypes.number.isRequired,
 		deliveryFee: PropTypes.string.isRequired,
-		applicableFees: PropTypes.string.isRequired,
+		fees: PropTypes.string.isRequired,
 		total: PropTypes.number.isRequired,
 		costs: PropTypes.instanceOf(Immutable.List).isRequired,
 	}

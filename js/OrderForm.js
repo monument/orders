@@ -80,8 +80,8 @@ export default class OrderForm extends Component {
 					subtotal={subtotal}
 					tax={tax}
 					deliveryFee={order.get('deliveryFee')}
-					applicableFees={order.get('fees')}
 					total={round10(total, -2)}
+					fees={order.get('fees')}
 					costs={order.get('costs')} />
 				<PaymentsTable
 					orderId={id}
