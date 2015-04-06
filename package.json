@@ -28,6 +28,7 @@
   "license": "MIT",
   "homepage": "http://orders.benchmarkmonument.com/",
   "dependencies": {
+    "Squire": "neilj/squire",
     "flummox": "^3.5.0",
     "immutable": "^3.7.1",
     "lodash": "^3.6.0",
