@@ -1,5 +1,6 @@
 import React from 'react'
 let {PropTypes, Component} = React
+import curry from 'lodash/function/curry'
 
 export default class OrderInfoBlock extends Component {
 	static propTypes = {
@@ -16,22 +17,29 @@ export default class OrderInfoBlock extends Component {
 			'final-customer-approval',
 			'to-be-set',
 		]).isRequired,
+		actions: PropTypes.shape({
+			updatePath: PropTypes.func.isRequired,
+		}).isRequired,
+		orderId: PropTypes.string.isRequired,
 	}
 
 	render() {
+		const {orderId} = this.props
+		const {updatePath} = this.props.actions
+		const updateIn = curry(updatePath, 2)
 		return <div className='order-info'>
-			<input className='order-date' placeholder='mm/dd/yyyy' type='date' defaultValue={this.props.date} />
+			<input className='order-date' placeholder='mm/dd/yyyy' type='date' value={this.props.date} onChange={updateIn([orderId, 'date'])} />
 			<output className='amount'>{this.props.balance}</output>
-			<select className='order-status' defaultValue={this.props.status}>
-				<option defaultValue='quote'>Quote</option>
-				<option defaultValue='layaway'>Layaway</option>
-				<option defaultValue='drawing-in-process'>Drawing In-Process</option>
-				<option defaultValue='design-approval-pending'>Design Approval Pending</option>
-				<option defaultValue='on-order'>On Order</option>
-				<option defaultValue='engraving-bmc'>Engraving @BMC</option>
-				<option defaultValue='engraving-sasakwa'>Engraving @Sasakwa</option>
-				<option defaultValue='final-customer-approval'>Final Customer Approval</option>
-				<option defaultValue='to-be-set'>To Be Set</option>
+			<select className='order-status' value={this.props.status} onChange={updateIn([orderId, 'status'])}>
+				<option value='quote'>Quote</option>
+				<option value='layaway'>Layaway</option>
+				<option value='drawing-in-process'>Drawing In-Process</option>
+				<option value='design-approval-pending'>Design Approval Pending</option>
+				<option value='on-order'>On Order</option>
+				<option value='engraving-bmc'>Engraving @BMC</option>
+				<option value='engraving-sasakwa'>Engraving @Sasakwa</option>
+				<option value='final-customer-approval'>Final Customer Approval</option>
+				<option value='to-be-set'>To Be Set</option>
 			</select>
 		</div>
 	}

@@ -36,34 +36,59 @@ export default class PiecesTable extends Component {
 					let editPiece = partial(updatePiece, orderId, index)
 					return <tr key={index}>
 						<td className="qty">
-							<input value={piece.qty} type="number" onChange={(ev) => editPiece({qty: parseInt(ev.target.value)})} />
+							<input
+								type="number"
+								value={piece.get('qty')}
+								onChange={(ev) => editPiece({qty: parseInt(ev.target.value)})} />
 						</td>
 						<td className="part">
-							<input value={piece.part} list="part-list" onChange={(ev) => editPiece({part: ev.target.value})} />
+							<input
+								list="part-list"
+								value={piece.get('part')}
+								onChange={(ev) => editPiece({part: ev.target.value})} />
 						</td>
 						<td className="material">
-							<input value={piece.material} list="material-list" onChange={(ev) => editPiece({material: ev.target.value})} />
+							<input
+								list="material-list"
+								value={piece.get('material')}
+								onChange={(ev) => editPiece({material: ev.target.value})} />
 						</td>
 						<td className="kind">
-							<input value={piece.kind} list="kind-list" onChange={(ev) => editPiece({kind: ev.target.value})} />
+							<input
+								list="kind-list"
+								value={piece.get('kind')}
+								onChange={(ev) => editPiece({kind: ev.target.value})} />
 						</td>
 						<td className="dim length">
-							<input value={piece.length} onChange={(ev) => editPiece({length: ev.target.value})} />
+							<input
+								value={piece.get('length')}
+								onChange={(ev) => editPiece({length: ev.target.value})} />
 						</td>
 						<td className="dim width">
-							<input value={piece.width} onChange={(ev) => editPiece({width: ev.target.value})} />
+							<input
+								value={piece.get('width')}
+								onChange={(ev) => editPiece({width: ev.target.value})} />
 						</td>
 						<td className="dim height">
-							<input value={piece.height} onChange={(ev) => editPiece({height: ev.target.value})} />
+							<input
+								value={piece.get('height')}
+								onChange={(ev) => editPiece({height: ev.target.value})} />
 						</td>
 						<td className="notes">
-							<input value={piece.notes} onChange={(ev) => editPiece({notes: ev.target.value})} />
+							<input
+								value={piece.get('notes')}
+								onChange={(ev) => editPiece({notes: ev.target.value})} />
 						</td>
 						<td className="cost">
-							<input value={piece.amount} type="number" onChange={(ev) => editPiece({amount: parseFloat(ev.target.value)})} />
+							<input
+								type="number"
+								value={piece.get('amount')}
+								onChange={(ev) => editPiece({amount: ev.target.value})} />
 						</td>
 						<td className="action delete">
-							<button onClick={() => removePiece(orderId, index)}>–</button>
+							<button onClick={() => removePiece(orderId, index)}>
+								–
+							</button>
 						</td>
 					</tr>
 				}).toArray()}

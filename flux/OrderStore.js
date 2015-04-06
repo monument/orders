@@ -12,11 +12,7 @@ export default class OrderStore extends Store {
 		// bind actions to methods
 		const orderActionIds = flux.getActionIds('orders')
 		this.register(orderActionIds.createOrder, this.onCreateOrder)
-		this.register(orderActionIds.updateOrderSale, this.onUpdateOrderSale)
-		this.register(orderActionIds.updateFee, this.onUpdateFee)
-		this.register(orderActionIds.updateDesign, this.onUpdateDesign)
-		this.register(orderActionIds.updateDeliver, this.onUpdateDeliver)
-		this.register(orderActionIds.updateItem, this.onUpdateItem)
+		this.register(orderActionIds.updatePath, this.onUpdatePath)
 
 		this.register(orderActionIds.addPiece, this.onAddPiece)
 		this.register(orderActionIds.removePiece, this.onRemovePiece)
@@ -40,102 +36,81 @@ export default class OrderStore extends Store {
 	// Methods
 
 	onCreateOrder(orderInfo) {
-		const ImmutableOrder = Immutable.fromJS(orderInfo)
-		let order = new Order(orderInfo)
-		order = order.mergeDeep(ImmutableOrder)
-		this.setState({orders: this.state.orders.set(order.id, order)})
+		console.log('onCreateOrder')
+		const order = Order(orderInfo)
+		this.setState({orders: this.state.orders.set(order.get('id'), order)})
 	}
 
-	_updateKey({orderId, key, value}) {
-		let order = this.state.orders.get(orderId)
-		order = order.set(key, value)
-		this.setState({orders: this.state.orders.set(orderId, order)})
+	onUpdatePath({path, ev}) {
+		console.log('onUpdatePath')
+		const newValue = ev.target.value
+		this.setState({orders: this.state.orders.setIn(path, newValue)})
 	}
 
-	_updateKeyIn({orderId, parent, key, value}) {
-		let order = this.state.orders.get(orderId)
-		let destination = order.get(parent).set(key, value)
-		order = order.set(parent, destination)
-		this.setState({orders: this.state.orders.set(orderId, order)})
-	}
-
-	onUpdateOrderSale({orderId, key, value}) {
-		this._updateKeyIn({orderId, parent: 'sale', key, value})
-	}
-
-	onUpdateFee({orderId, fee, value}) {
-		if (!contains(['delivery', 'fees'], fee)) {
-			return
-		}
-		this._updateKey({orderId, key: fee, value})
-	}
-
-	onUpdateDesign({orderId, key, newValue}) {
-		this._updateKeyIn({orderId, parent: 'design', key, value: newValue})
-	}
-	onUpdateDeliver({orderId, key, newValue}) {
-		this._updateKeyIn({orderId, parent: 'deliver', key, value: newValue})
-	}
-
-	onUpdateItem({orderId, item, newValue}) {
-		this._updateKey({orderId, key: item, value: newValue})
-	}
 
 	// Pieces
-	_addItem(orderId, ItemConstructor, key) {
+	_addItem({orderId, archetype, key}) {
+		console.log('_addItem')
 		let order = this.state.orders.get(orderId)
-		const item = new ItemConstructor()
-		order = order.set(key, order.get(key).push(item))
+		console.log(this.state.orders.toJS())
+		order = order.set(key, order.get(key).push(archetype))
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
-	_removeItem(orderId, index, key, ItemConstructor) {
+	_removeItem({orderId, index, key, archetype}) {
+		console.log('_removeItem')
 		let order = this.state.orders.get(orderId)
 		let things = order.get(key).delete(index)
 		if (!things.size)
-			things = things.push(new ItemConstructor())
+			things = things.push(archetype)
 		order = order.set(key, things)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
-	_updateItem(orderId, key, index, newInfo, ItemConstructor) {
+	_updateItem({orderId, key, index, newInfo, archetype}) {
+		console.log('_updateItem')
 		let order = this.state.orders.get(orderId)
-		const item = order.get(key).get(index)
-		const merged = item.merge(newInfo)
-		const newItem = new ItemConstructor(merged)
-		const items = order.get(key).splice(index, 1, newItem)
-		order = order.set(key, items)
+		order = order.mergeDeepIn([key, index], newInfo)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
 
 
 	onAddPiece({orderId}) {
-		this._addItem(orderId, Piece, 'pieces')
+		console.log('onAddPiece')
+		this._addItem({orderId, archetype: Piece, key: 'pieces'})
 	}
 	onRemovePiece({orderId, pieceIndex}) {
-		this._removeItem(orderId, pieceIndex, 'pieces', Piece)
+		console.log('onRemovePiece')
+		this._removeItem({orderId, index: pieceIndex, key: 'pieces', archetype: Piece})
 	}
 	onUpdatePiece({orderId, pieceIndex, info}) {
-		this._updateItem(orderId, 'pieces', pieceIndex, info, Piece)
+		console.log('onUpdatePiece')
+		this._updateItem({orderId, key: 'pieces', index: pieceIndex, newInfo: info, archetype: Piece})
 	}
 
 	// Costs
 	onAddCost({orderId}) {
-		this._addItem(orderId, Cost, 'costs')
+		console.log('onAddCost')
+		this._addItem({orderId, archetype: Cost, key: 'costs'})
 	}
 	onRemoveCost({orderId, costIndex}) {
-		this._removeItem(orderId, costIndex, 'costs', Cost)
+		console.log('onRemoveCost')
+		this._removeItem({orderId, index: costIndex, key: 'costs', archetype: Cost})
 	}
 	onUpdateCost({orderId, costIndex, info}) {
-		this._updateItem(orderId, 'costs', costIndex, info, Cost)
+		console.log('onUpdateCost')
+		this._updateItem({orderId, key: 'costs', index: costIndex, newInfo: info, archetype: Cost})
 	}
 
 	// Payments
 	onAddPayment({orderId}) {
-		this._addItem(orderId, Payment, 'payments')
+		console.log('onAddPayment')
+		this._addItem({orderId, archetype: Payment, key: 'payments'})
 	}
 	onRemovePayment({orderId, paymentIndex}) {
-		this._removeItem(orderId, paymentIndex, 'payments', Payment)
+		console.log('onRemovePayment')
+		this._removeItem({orderId, index: paymentIndex, key: 'payments', archetype: Payment})
 	}
 	onUpdatePayment({orderId, paymentIndex, info}) {
-		this._updateItem(orderId, 'payments', paymentIndex, info, Payment)
+		console.log('onUpdatePayment')
+		this._updateItem({orderId, key: 'payments', index: paymentIndex, newInfo: info, archetype: Payment})
 	}
 }

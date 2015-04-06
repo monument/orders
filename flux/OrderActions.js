@@ -35,19 +35,7 @@ export default class OrderActions extends Actions {
 		return {orderId, paymentIndex, info}
 	}
 
-	updateOrderSale(orderId, key, value) {
-		return {orderId, key, value}
-	}
-	updateFee(orderId, fee, value) {
-		return {orderId, fee, value}
-	}
-	updateDesign(orderId, key, newValue) {
-		return {orderId, key, newValue}
-	}
-	updateDeliver(orderId, key, newValue) {
-		return {orderId, key, newValue}
-	}
-	updateItem(orderId, item, newValue) {
-		return {orderId, item, newValue}
+	updatePath(path, ev) {
+		return {path, ev}
 	}
 }

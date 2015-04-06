@@ -1,17 +1,17 @@
 import Immutable from 'immutable'
 import {v4 as uuid} from 'node-uuid'
 
-const Cost = Immutable.Record({
+const Cost = Immutable.Map({
 	part: '',
-	amount: 0,
+	amount: '0',
 })
 
-const Payment = Immutable.Record({
+const Payment = Immutable.Map({
 	date: '',
-	amount: 0,
+	amount: '0',
 })
 
-const Piece = Immutable.Record({
+const Piece = Immutable.Map({
 	qty: 1,
 	part: '',
 	material: '',
@@ -21,89 +21,75 @@ const Piece = Immutable.Record({
 	width: '',
 	height: '',
 	notes: '',
-	amount: 0,
+	amount: '0',
 })
 
-const Design = Immutable.Record({
-	designName: '',
-	letteringDirection: 'north',
-	positionsVerified: true,
-	nameOnLeft: '',
-	carvingType: 'flat',
-	nameOnBack: false,
-	specialArtwork: true,
-	matchRubbing: false,
-})
-
-const Sale = Immutable.Record({
-	name: '',
-	phone: '',
-	email: '',
-	street: '',
-	city: '',
-	state: '',
-	zip: 0,
-	soldBy: '',
-	soldAt: '',
-})
-
-const Delivery = Immutable.Record({
-    by: '',
-	to: '',
-	near: '',
-	spaces: '',
-	lot: '',
-	block: '',
-	section: '',
-	contact: Immutable.Map({
-		name: '',
-		phone: '',
-	}),
-})
-
-const OrderRecord = Immutable.Record({
+const OrderRecord = Immutable.Map({
 	id: '',
-	status: 'layaway',
+	status: 'quote',
 	date: '',
 	title: '',
 	note: '',
 	costs: Immutable.List(),
 	payments: Immutable.List(),
 	preview: '',
-	lettering: 0,
-	delivery: 0,
-	fees: 0,
-	design: new Design(),
-	sale: new Sale(),
-	deliver: new Delivery(),
+	lettering: '0',
+	deliveryFee: '0',
+	fees: '0',
+	design: Immutable.Map({
+		designName: '',
+		letteringDirection: 'north',
+		positionsVerified: true,
+		nameOnLeft: '',
+		carvingType: 'flat',
+		nameOnBack: false,
+		specialArtwork: true,
+		matchRubbing: false,
+	}),
+	sale: Immutable.Map({
+		name: '',
+		phone: '',
+		email: '',
+		street: '',
+		city: '',
+		state: '',
+		zip: 0,
+		soldBy: '',
+		soldAt: '',
+	}),
+	delivery: Immutable.Map({
+	    by: '',
+		to: '',
+		near: '',
+		spaces: '',
+		lot: '',
+		block: '',
+		section: '',
+		contact: Immutable.Map({
+			name: '',
+			phone: '',
+		}),
+	}),
 	pieces: Immutable.List(),
 })
 
-class Order extends OrderRecord {
-	constructor(data) {
-		super(data)
-		return this.withMutations(order => {
-			order = order.set('id', order.id || uuid())
+function Order(data) {
+	const oldOrder = Immutable.fromJS(data)
+	let order = OrderRecord.withMutations((o) => {
+		o = o.set('id', o.get('id') || uuid())
+		o = o.merge(oldOrder)
 
-			order = order.set('design', new Design(order.design))
-			order = order.set('sale', new Sale(order.sale))
-			order = order.set('deliver', new Delivery(order.deliver))
+		if (!o.get('costs').size)
+			o = o.set('costs', Immutable.List.of(Cost))
+		if (!o.get('payments').size)
+			o = o.set('payments', Immutable.List.of(Payment))
+		if (!o.get('pieces').size)
+			o = o.set('pieces', Immutable.List.of(Piece))
 
-			order = order.set('costs', order.costs.map(item => new Cost(item)))
-			order = order.set('payments', order.payments.map(item => new Payment(item)))
-			order = order.set('pieces', order.pieces.map(item => new Piece(item)))
-
-			if (order.costs.size === 0)
-				order = order.set('costs', Immutable.List.of(new Cost()))
-			if (order.payments.size === 0)
-				order = order.set('payments', Immutable.List.of(new Payment()))
-			if (order.pieces.size === 0)
-				order = order.set('pieces', Immutable.List.of(new Piece()))
-
-			return order
-		})
-	}
+		return o
+	})
+	return order
 }
 
-export {Cost, Payment, Piece, Order, Delivery, Design, Sale}
 export default Order
+export {Order, Cost, Payment, Piece}

@@ -16,11 +16,11 @@ import Signature from './Signature'
 
 import sum from './sum'
 import round from './round'
-
+import {round10} from './round10'
 
 export default class OrderForm extends Component {
 	static propTypes = {
-		order: PropTypes.instanceOf(Order),
+		order: PropTypes.instanceOf(Immutable.Map),
 		actions: PropTypes.object.isRequired,
 	}
 
@@ -28,49 +28,61 @@ export default class OrderForm extends Component {
 		const {order, actions} = this.props
 		console.log(this.props)
 
-		const costs = order.costs.map(c => c.amount).reduce(sum, 0)
-		const pieces = order.pieces.map(piece => piece.amount * piece.qty)
-		const subtotal = costs + pieces.reduce(sum, 0)
-		const tax = round(subtotal * 0.08157)
-		const total = subtotal + tax + order.delivery + order.fees
-		const paid = order.payments.map(p => p.amount).reduce(sum, 0)
-		const balance = round(total - paid)
+		const costs = order.get('costs').map(c => c.get('amount')).map(parseFloat).reduce(sum, 0)
+		const pieces = order.get('pieces').map(piece => parseFloat(piece.get('amount')) * piece.get('qty')).reduce(sum, 0)
+
+		const subtotal = costs + pieces
+		const tax = round10(subtotal * 0.08157, -2)
+		const deliveryFee = parseFloat(order.get('deliveryFee'))
+		const otherFees = parseFloat(order.get('fees'))
+		const total = subtotal + tax + deliveryFee + otherFees
+
+		const paid = order.get('payments').map(p => p.get('amount')).map(parseFloat).reduce(sum, 0)
+		const balance = round10(total - paid, -2)
+
+		const id = order.get('id')
 
 		return <div className="order">
 			<div className="main">
-				<OrderTitle orderId={order.id} actions={actions}
-					title={order.title} />
-				<PiecesTable orderId={order.id} actions={actions}
-					pieces={order.pieces} />
-				<DetailsTable orderId={order.id} actions={actions}
-					delivery={order.deliver}
-					design={order.design} />
+				<OrderTitle orderId={id} actions={actions}
+					title={order.get('title')} />
+				<PiecesTable orderId={id} actions={actions}
+					pieces={order.get('pieces')} />
+				<DetailsTable orderId={id} actions={actions}
+					delivery={order.get('delivery')}
+					design={order.get('design')} />
 
-				<Preview content={order.preview} orderId={order.id} actions={actions} />
+				<Preview content={order.get('preview')} orderId={id} actions={actions} />
 				<footer><input /></footer>
 			</div>
 
 			<aside className="sidebar">
-				<OrderInfoBlock orderId={order.id} actions={actions}
-					date={order.date}
+				<OrderInfoBlock
+					orderId={id}
+					actions={actions}
+					date={order.get('date')}
 					balance={balance}
-					status={order.status} />
-				<CostsTable orderId={order.id} actions={actions}
+					status={order.get('status')} />
+				<CostsTable
+					orderId={id}
+					actions={actions}
 					subtotal={subtotal}
 					tax={tax}
-					deliveryCharge={order.delivery}
-					applicableFees={order.fees}
-					total={total}
-					costs={order.costs} />
-				<PaymentsTable orderId={order.id} actions={actions}
-					payments={order.payments}
+					deliveryFee={order.get('deliveryFee')}
+					applicableFees={order.get('fees')}
+					total={round10(total, -2)}
+					costs={order.get('costs')} />
+				<PaymentsTable
+					orderId={id}
+					actions={actions}
+					payments={order.get('payments')}
 					balance={balance}
 					paid={paid} />
 
-				<NoteBox note={order.note} onChange={(ev) => actions.updateItem(order.id, 'note', ev.target.value)} />
-				<ContactTable orderId={order.id} actions={actions}
-					sale={order.sale} />
-				<Signature scribble={order.sale.signature} />
+				<NoteBox note={order.get('note')} onChange={(ev) => actions.updatePath([id, 'note'], ev)} />
+				<ContactTable orderId={id} actions={actions}
+					sale={order.get('sale')} />
+				<Signature scribble={order.get('sale').get('signature')} />
 			</aside>
 		</div>
 	}

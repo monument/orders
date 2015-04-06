@@ -1,40 +1,76 @@
 import React from 'react'
 let {PropTypes, Component} = React
 import Immutable from 'immutable'
-import {Sale} from '../flux/OrderRecord'
+import curry from 'lodash/function/curry'
 
 export default class ContactTable extends Component {
 	static propTypes = {
-		sale: PropTypes.instanceOf(Sale).isRequired,
+		sale: PropTypes.instanceOf(Immutable.Map).isRequired,
 		orderId: PropTypes.string.isRequired,
 		actions: PropTypes.object.isRequired,
 	}
 
 	render() {
-		let {sale, orderId, actions} = this.props
+		const {sale, orderId, actions} = this.props
+		const updateIn = curry(actions.updatePath, 2)
 		// console.log(actions)
 		return <table id="contact" className="table">
 			<caption>Contact</caption>
 			<tbody>
 				<tr><td colSpan={3}>
-					<input placeholder="Name" value={sale.get('name')} onChange={ev => actions.updateOrderSale(orderId, 'name', ev.target.value)} />
+					<input
+						placeholder="Name"
+						value={sale.get('name')}
+						onChange={updateIn([orderId, 'sale', 'name'])} />
 				</td></tr>
 				<tr><td colSpan={3}>
-					<input placeholder="Phone" type="tel" value={sale.get('phone')} onChange={ev => actions.updateOrderSale(orderId, 'phone', ev.target.value)} />
+					<input
+						type="tel"
+						placeholder="Phone"
+						value={sale.get('phone')}
+						onChange={updateIn([orderId, 'sale', 'phone'])} />
 				</td></tr>
 				<tr><td colSpan={3}>
-					<input placeholder="Email" type="email" value={sale.get('email')} onChange={ev => actions.updateOrderSale(orderId, 'email', ev.target.value)} />
+					<input
+						type="email"
+						placeholder="Email"
+						value={sale.get('email')}
+						onChange={updateIn([orderId, 'sale', 'email'])} />
 				</td></tr>
 				<tr><td colSpan={3}>
-					<input placeholder="Street" type="text" value={sale.get('street')} onChange={ev => actions.updateOrderSale(orderId, 'street', ev.target.value)} />
+					<input
+						placeholder="Street"
+						value={sale.get('street')}
+						onChange={updateIn([orderId, 'sale', 'street'])} />
 				</td></tr>
 				<tr>
-					<td style={{width: '50%'}}><input placeholder="City" value={sale.get('city')} onChange={ev => actions.updateOrderSale(orderId, 'city', ev.target.value)} /></td>
-					<td><input placeholder="State" value={sale.get('state')} onChange={ev => actions.updateOrderSale(orderId, 'state', ev.target.value)} /></td>
-					<td><input placeholder="Zip" value={sale.get('zip')} onChange={ev => actions.updateOrderSale(orderId, 'zip', ev.target.value)} /></td>
+					<td style={{width: '50%'}}>
+						<input
+							placeholder="City"
+							value={sale.get('city')}
+							onChange={updateIn([orderId, 'sale', 'city'])} />
+					</td>
+					<td>
+						<input
+							placeholder="State"
+							value={sale.get('state')}
+							onChange={updateIn([orderId, 'sale', 'state'])} />
+					</td>
+					<td>
+						<input
+							placeholder="Zip"
+							value={sale.get('zip')}
+							onChange={updateIn([orderId, 'sale', 'zip'])} />
+					</td>
 				</tr>
 				<tr>
-					<td colSpan={3}><input placeholder="Sold By" list="reps" value={sale.get('soldBy')} onChange={ev => actions.updateOrderSale(orderId, 'soldBy', ev.target.value)} /></td>
+					<td colSpan={3}>
+						<input
+							list="reps"
+							placeholder="Sold By"
+							value={sale.get('soldBy')}
+							onChange={updateIn([orderId, 'sale', 'soldBy'])} />
+					</td>
 				</tr>
 			</tbody>
 		</table>
