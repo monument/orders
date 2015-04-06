@@ -29,6 +29,16 @@ export default class OrderStore extends Store {
 		}
 	}
 
+	static serialize(state) {
+		// console.log('called serialize', JSON.stringify(state))
+		return JSON.stringify(state)
+	}
+
+	static deserialize(state) {
+		const hydrated = JSON.parse(state)
+		return {orders: Immutable.fromJS(hydrated.orders)}
+	}
+
 
 	// Methods
 
