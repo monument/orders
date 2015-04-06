@@ -15,7 +15,6 @@ import NoteBox from './NoteBox'
 import Signature from './Signature'
 
 import sum from './sum'
-import round from './round'
 import {round10} from './round10'
 
 export default class OrderForm extends Component {

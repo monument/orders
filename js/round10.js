@@ -1,3 +1,5 @@
+// From MDN
+
 /**
  * Decimal adjustment of a number.
  *
