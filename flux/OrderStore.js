@@ -33,13 +33,11 @@ export default class OrderStore extends Store {
 	// Methods
 
 	onCreateOrder(orderInfo) {
-		console.log('onCreateOrder')
 		const order = Order(orderInfo)
 		this.setState({orders: this.state.orders.set(order.get('id'), order)})
 	}
 
 	onUpdatePath({path, ev}) {
-		console.log('onUpdatePath')
 		const newValue = ev.target.value
 		this.setState({orders: this.state.orders.setIn(path, newValue)})
 	}
@@ -47,14 +45,11 @@ export default class OrderStore extends Store {
 
 	// Pieces
 	_addItem({orderId, archetype, key}) {
-		console.log('_addItem')
 		let order = this.state.orders.get(orderId)
-		console.log(this.state.orders.toJS())
 		order = order.set(key, order.get(key).push(archetype))
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
 	_removeItem({orderId, index, key, archetype}) {
-		console.log('_removeItem')
 		let order = this.state.orders.get(orderId)
 		let things = order.get(key).delete(index)
 		if (!things.size)
@@ -65,31 +60,25 @@ export default class OrderStore extends Store {
 
 
 	onAddPiece({orderId}) {
-		console.log('onAddPiece')
 		this._addItem({orderId, archetype: Piece, key: 'pieces'})
 	}
 	onRemovePiece({orderId, pieceIndex}) {
-		console.log('onRemovePiece')
 		this._removeItem({orderId, index: pieceIndex, key: 'pieces', archetype: Piece})
 	}
 
 	// Costs
 	onAddCost({orderId}) {
-		console.log('onAddCost')
 		this._addItem({orderId, archetype: Cost, key: 'costs'})
 	}
 	onRemoveCost({orderId, costIndex}) {
-		console.log('onRemoveCost')
 		this._removeItem({orderId, index: costIndex, key: 'costs', archetype: Cost})
 	}
 
 	// Payments
 	onAddPayment({orderId}) {
-		console.log('onAddPayment')
 		this._addItem({orderId, archetype: Payment, key: 'payments'})
 	}
 	onRemovePayment({orderId, paymentIndex}) {
-		console.log('onRemovePayment')
 		this._removeItem({orderId, index: paymentIndex, key: 'payments', archetype: Payment})
 	}
 }
