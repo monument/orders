@@ -8,6 +8,6 @@ export default class NoteBox extends Component {
 	}
 
 	render() {
-		return <textarea className="note" value={this.props.note} onChange={this.props.onChange} />
+		return <textarea placeholder="Notes" className="note" value={this.props.note} onChange={this.props.onChange} />
 	}
 }
