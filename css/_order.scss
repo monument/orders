@@ -5,6 +5,9 @@
 	text-align: right;
 	display: block;
 }
+.amount::before {
+	// content: "$";
+}
 .order-date {
 	width: 115px;
 	height: 20px;
@@ -55,8 +58,9 @@
 	flex: 1;
 }
 
-.preview p[contenteditable] {
-	min-height: 300px;
+.preview textarea {
+	min-height: 200px;
+	width: 100%;
 }
 
 footer {

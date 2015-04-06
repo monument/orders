@@ -16,6 +16,6 @@
 	width: 50%;
 	height: 22px;
 }
-.details [class*="contact"]  input:nth-child(odd) {margin-left: -1px; width: 50%;}
-.details [class*="location"] input {margin-top: -1px;}
-.details [class*="location"] input:nth-child(odd) {margin-left: -1px;}
+.details .cem-contact  input:nth-child(odd) {margin-left: -1px; width: 50%;}
+.details .cem-location input {margin-top: -1px;}
+.details .cem-location input:nth-child(odd) {margin-left: -1px;}

@@ -22,9 +22,6 @@ button {
 	padding-bottom: 5px;
 	align-items: center;
 }
-.amount::before {
-	content: "$";
-}
 input, select {
 	font-family: inherit;
 	color: inherit;
@@ -42,4 +39,9 @@ input:hover {
 
 input::-webkit-datetime-edit {
 	color: gray;
+}
+
+input[type='date']::-webkit-clear-button,
+input[type='date']::-webkit-inner-spin-button {
+	display: none;
 }
