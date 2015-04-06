@@ -44,6 +44,10 @@ input[type='date']::-webkit-inner-spin-button {
 input.currency {
 	text-align: right;
 }
+input[type='number']:not(:hover)::-webkit-inner-spin-button {
+	display: none;
+}
+
 input.currency::-webkit-inner-spin-button {
 	display: none;
 }
