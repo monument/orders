@@ -18,8 +18,8 @@ export default class OrderTitle extends Component {
 
 		return <div className="title">
 			<h1>
-				Name on Order:
 				<input
+					placeholder='Name on order'
 					value={this.props.title}
 					onChange={updateIn([orderId, 'title'])} />
 			</h1>
