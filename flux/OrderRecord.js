@@ -78,7 +78,6 @@ function Order(data) {
 	let order = OrderRecord.withMutations((o) => {
 		o = o.set('id', o.get('id') || uuid())
 		const today = new Date()
-		console.log(today)
 		const f = new Intl.NumberFormat('en-US', {style: 'decimal', minimumIntegerDigits: 2, useGrouping: false}).format
 		o = o.set('date', o.get('date') || `${f(today.getFullYear())}-${f(today.getMonth() + 1)}-${f(today.getDate())}`)
 		o = o.merge(oldOrder)
