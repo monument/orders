@@ -1,6 +1,7 @@
 import React from 'react'
 let {PropTypes, Component} = React
 import curry from 'lodash/function/curry'
+import currency from './currency'
 
 export default class OrderInfoBlock extends Component {
 	static propTypes = {
@@ -30,7 +31,7 @@ export default class OrderInfoBlock extends Component {
 
 		return <div className='order-info'>
 			<input className='order-date' placeholder='mm/dd/yyyy' type='date' value={this.props.date} onChange={updateIn([orderId, 'date'])} />
-			<output className='amount'>{this.props.balance}</output>
+			<output className='amount'>{currency(this.props.balance)}</output>
 			<select className='order-status' value={this.props.status} onChange={updateIn([orderId, 'status'])}>
 				<option value='quote'>Quote</option>
 				<option value='layaway'>Layaway</option>

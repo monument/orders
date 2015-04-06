@@ -2,6 +2,7 @@ import React from 'react'
 let {PropTypes, Component} = React
 import Immutable from 'immutable'
 import curry from 'lodash/function/curry'
+import currency from './currency'
 
 export default class PaymentsTable extends Component {
 	static propTypes = {
@@ -51,12 +52,12 @@ export default class PaymentsTable extends Component {
 			<tfoot>
 				<tr>
 					<td><label htmlFor="amount-paid">Amount Paid</label></td>
-					<td><output id="amount-paid">{this.props.paid}</output></td>
+					<td><output id="amount-paid" className="amount">{currency(this.props.paid)}</output></td>
 					<td />
 				</tr>
 				<tr>
 					<td><label className="print-big" htmlFor="balance-due">Balance Due</label></td>
-					<td><output id="balance-due">{this.props.balance}</output></td>
+					<td><output id="balance-due" className="amount">{currency(this.props.balance)}</output></td>
 					<td />
 				</tr>
 			</tfoot>
