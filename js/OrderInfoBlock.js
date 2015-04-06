@@ -27,6 +27,7 @@ export default class OrderInfoBlock extends Component {
 		const {orderId} = this.props
 		const {updatePath} = this.props.actions
 		const updateIn = curry(updatePath, 2)
+
 		return <div className='order-info'>
 			<input className='order-date' placeholder='mm/dd/yyyy' type='date' value={this.props.date} onChange={updateIn([orderId, 'date'])} />
 			<output className='amount'>{this.props.balance}</output>

@@ -19,6 +19,7 @@ export default class PaymentsTable extends Component {
 		const {addPayment, removePayment, updatePath} = this.props.actions
 		const updateIn = curry(updatePath, 2)
 		const {orderId} = this.props
+
 		return <table className="table money" id="payments">
 			<caption>Payments <button onClick={() => addPayment(orderId)}>+</button></caption>
 			<tbody>

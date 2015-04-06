@@ -15,6 +15,7 @@ export default class OrderTitle extends Component {
 		const {updatePath} = this.props.actions
 		const updateIn = curry(updatePath, 2)
 		const {orderId} = this.props
+
 		return <div className="title">
 			<h1>
 				Name on Order:
