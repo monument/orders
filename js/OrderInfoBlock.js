@@ -43,6 +43,10 @@ export default class OrderInfoBlock extends Component {
 				<option value='final-customer-approval'>Final Customer Approval</option>
 				<option value='to-be-set'>To Be Set</option>
 			</select>
+			<div className="control-buttons">
+				<button onClick={(ev) => this.props.actions.clearOrder(orderId)}>Clear Form</button>
+			</div>
 		</div>
 	}
 }
+// <button onClick={this.props.actions.sendToTrello}>Submit</button>

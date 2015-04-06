@@ -5,6 +5,12 @@ export default class OrderActions extends Actions {
 		console.log('createOrder')
 		return order
 	}
+	clearOrder(orderId) {
+		return {orderId}
+	}
+	sendOrderToTrello(orderId) {
+		return {orderId}
+	}
 	updatePath(path, ev) {
 		return {path, ev}
 	}

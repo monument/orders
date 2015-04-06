@@ -12,6 +12,9 @@ export default class OrderStore extends Store {
 		// bind actions to methods
 		const orderActionIds = flux.getActionIds('orders')
 		this.register(orderActionIds.createOrder, this.onCreateOrder)
+		this.register(orderActionIds.clearOrder, this.onClearOrder)
+		this.register(orderActionIds.sendOrderToTrello, this.onSendOrderToTrello)
+
 		this.register(orderActionIds.updatePath, this.onUpdatePath)
 
 		this.register(orderActionIds.addPiece, this.onAddPiece)
@@ -47,6 +50,20 @@ export default class OrderStore extends Store {
 		this.setState({orders: this.state.orders.set(order.get('id'), order)})
 	}
 
+	onClearOrder({orderId}) {
+		let orders = this.state.orders.delete(orderId)
+		// console.log(orders)
+		if (!orders.size) {
+			const order = Order()
+			orders = orders.set(order.get('id'), order)
+		}
+		this.setState({orders})
+	}
+
+	onSendOrderToTrello({orderId}) {
+		console.log('sending order to trello...')
+	}
+
 	onUpdatePath({path, ev}) {
 		const newValue = ev.target.value
 		this.setState({orders: this.state.orders.setIn(path, newValue)})
@@ -55,7 +72,6 @@ export default class OrderStore extends Store {
 
 	// Pieces
 	_addItem({orderId, archetype, key}) {
-		console.log(archetype)
 		let order = this.state.orders.get(orderId)
 		order = order.set(key, order.get(key).push(archetype()))
 		this.setState({orders: this.state.orders.set(orderId, order)})
