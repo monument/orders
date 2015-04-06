@@ -16,7 +16,7 @@ export default class OrderTitle extends Component {
 		const updateIn = curry(updatePath, 2)
 		const {orderId} = this.props
 
-		return <div className="title">
+		return <div className='title'>
 			<h1>
 				<input
 					placeholder='Name on order'

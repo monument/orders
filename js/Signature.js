@@ -8,8 +8,8 @@ let {PropTypes, createClass: ReactClass} = React
 //
 //	render() {
 //		return <div>
-//			<input id="signature" readOnly value={this.props.scribble} />
-//			<label htmlFor="signature" style={{margin: '2px 0 0 3px'}}>Signature</label>
+//			<input id='signature' readOnly value={this.props.scribble} />
+//			<label htmlFor='signature' style={{margin: '2px 0 0 3px'}}>Signature</label>
 //		</div>
 //	}
 //}
@@ -20,7 +20,7 @@ Signature.propTypes = {
 }
 Signature.render = function() {
 	return <label>
-		<input className="signature" readOnly value={this.props.scribble}/>
+		<input className='signature' readOnly value={this.props.scribble}/>
 		<span>Signature</span>
 	</label>
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import OrderForm from './OrderForm'
-// import sampleOrder from './example-order.json'
 import FluxComponent from 'flummox/component'
 
 export default class App extends React.Component {

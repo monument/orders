@@ -15,7 +15,6 @@ import NoteBox from './NoteBox'
 import Signature from './Signature'
 
 import sum from './sum'
-import {round10} from './round10'
 
 export default class OrderForm extends Component {
 	static propTypes = {
@@ -25,7 +24,7 @@ export default class OrderForm extends Component {
 
 	render() {
 		const {order, actions} = this.props
-		console.log(this.props)
+		// console.log(this.props)
 
 		const costs = order.get('costs')
 			.map(c => c.get('amount'))
@@ -37,7 +36,6 @@ export default class OrderForm extends Component {
 			.reduce(sum, 0)
 
 		const subtotal = costs + pieces
-		// const tax = round10(subtotal * 0.08157, -2)
 		const tax = subtotal * 0.08157
 		const deliveryFee = parseFloat(order.get('deliveryFee'))
 		const otherFees = parseFloat(order.get('fees'))
@@ -48,13 +46,12 @@ export default class OrderForm extends Component {
 			.map(parseFloat)
 			.reduce(sum, 0)
 
-		// const balance = round10(total - paid, -2)
 		const balance = total - paid
 
 		const id = order.get('id')
 
-		return <div className="order">
-			<div className="main">
+		return <div className='order'>
+			<div className='main'>
 				<OrderTitle orderId={id} actions={actions}
 					title={order.get('title')} />
 				<PiecesTable orderId={id} actions={actions}
@@ -67,7 +64,7 @@ export default class OrderForm extends Component {
 				<footer><input /></footer>
 			</div>
 
-			<aside className="sidebar">
+			<aside className='sidebar'>
 				<OrderInfoBlock
 					orderId={id}
 					actions={actions}
