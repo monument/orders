@@ -12,7 +12,7 @@ const Payment = Immutable.Map({
 })
 
 const Piece = Immutable.Map({
-	qty: 1,
+	qty: '1',
 	part: '',
 	material: '',
 	type: '',
@@ -21,7 +21,7 @@ const Piece = Immutable.Map({
 	width: '',
 	height: '',
 	notes: '',
-	amount: '0',
+	amount: '100',
 })
 
 const OrderRecord = Immutable.Map({

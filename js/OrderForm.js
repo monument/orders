@@ -27,8 +27,14 @@ export default class OrderForm extends Component {
 		const {order, actions} = this.props
 		console.log(this.props)
 
-		const costs = order.get('costs').map(c => c.get('amount')).map(parseFloat).reduce(sum, 0)
-		const pieces = order.get('pieces').map(piece => parseFloat(piece.get('amount')) * piece.get('qty')).reduce(sum, 0)
+		const costs = order.get('costs')
+			.map(c => c.get('amount'))
+			.map(parseFloat)
+			.reduce(sum, 0)
+
+		const pieces = order.get('pieces')
+			.map(piece => parseFloat(piece.get('amount')) * parseInt(piece.get('qty')))
+			.reduce(sum, 0)
 
 		const subtotal = costs + pieces
 		const tax = round10(subtotal * 0.08157, -2)
@@ -36,7 +42,11 @@ export default class OrderForm extends Component {
 		const otherFees = parseFloat(order.get('fees'))
 		const total = subtotal + tax + deliveryFee + otherFees
 
-		const paid = order.get('payments').map(p => p.get('amount')).map(parseFloat).reduce(sum, 0)
+		const paid = order.get('payments')
+			.map(p => p.get('amount'))
+			.map(parseFloat)
+			.reduce(sum, 0)
+
 		const balance = round10(total - paid, -2)
 
 		const id = order.get('id')
