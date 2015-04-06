@@ -3,11 +3,15 @@
 .notes, .contact, .costs, .payments {
 	flex: 1;
 }
-.money td:nth-child(0) {
+.money .what {
 	width: 40%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-.money td:nth-child(1) {
+.money .amount {
 	width: 60%;
+	white-space: nowrap;
 }
 
 .money td:last-child {
@@ -16,11 +20,14 @@
 .costs .cost:last-child {
 	border-bottom: solid 1px #ddd;
 }
-.money input, .money output {
+.money input,
+.money output {
 	margin: 0;
 	border: none;
-	padding: 1px 4px;
+	display: block;
 }
+.money input,
+.money output,
 .money label {
 	padding: 1px 4px;
 }

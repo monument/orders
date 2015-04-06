@@ -79,7 +79,8 @@ export default class OrderForm extends Component {
 					deliveryFee={order.get('deliveryFee')}
 					fees={order.get('fees')}
 					total={total}
-					costs={order.get('costs')} />
+					costs={order.get('costs')}
+					pieces={order.get('pieces')} />
 				<PaymentsTable
 					orderId={id}
 					actions={actions}
