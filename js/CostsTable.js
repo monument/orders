@@ -30,14 +30,14 @@ export default class CostsTable extends Component {
 			<tbody>
 				{this.props.costs.map((cost, index) =>
 					<tr className='cost' key={index}>
-						<td className='what'>
+						<td>
 							<input
 								list='part-list'
 								placeholder='Part'
 								value={cost.get('part')}
 								onChange={updateIn([orderId, 'costs', index, 'part'])} />
 						</td>
-						<td className='amount'>
+						<td>
 							<input
 								className='currency'
 								type='number'
@@ -55,73 +55,37 @@ export default class CostsTable extends Component {
 			<tbody>
 				{this.props.pieces.map((piece, index) =>
 					<tr className='piece' key={index}>
-						<td className='what'>
+						<td>
 							<output>
 								{piece.get('kind')} {piece.get('material')} {piece.get('part')}
 							</output>
 						</td>
-						<td colSpan='2' className='amount'>
-							<output className='currency'>{piece.get('qty')} × {currency(piece.get('amount'))}</output>
+						<td colSpan='2'>
+							<output className='currency amount'>{piece.get('qty')} × {currency(piece.get('amount'))}</output>
 						</td>
 					</tr>
 				).toArray()}
 			</tbody>
 			<tbody>
 				<tr>
-					<td className='what'>
-						<label htmlFor='subtotal'>Subtotal</label>
-					</td>
-					<td colSpan='2' className='amount'>
-						<output id='subtotal' className='amount'>
-							{currency(this.props.subtotal)}
-						</output>
-					</td>
+					<td><label htmlFor='subtotal'>Subtotal</label></td>
+					<td colSpan='2'><output id='subtotal' className='amount'>{currency(this.props.subtotal)}</output></td>
 				</tr>
 				<tr>
-					<td className='what'>
-						<label htmlFor='sales-tax'>Sales Tax</label>
-					</td>
-					<td colSpan='2' className='amount'>
-						<output id='sales-tax' className='amount'>
-							{currency(this.props.tax)}
-						</output>
-					</td>
+					<td><label htmlFor='sales-tax'>Sales Tax</label></td>
+					<td colSpan='2'><output id='sales-tax' className='amount'>{currency(this.props.tax)}</output></td>
 				</tr>
 				<tr>
-					<td className='what'>
-						<label htmlFor='delivery-fee'>Delivery</label>
-					</td>
-					<td colSpan='2' className='amount'>
-						<input
-							id='delivery-fee'
-							className='currency'
-							type='number'
-							value={this.props.deliveryFee}
-							onChange={updateIn([orderId, 'deliveryFee'])} />
-					</td>
+					<td><label htmlFor='delivery-fee'>Delivery</label></td>
+					<td colSpan='2'><input id='delivery-fee' className='currency' type='number' value={this.props.deliveryFee} onChange={updateIn([orderId, 'deliveryFee'])} /></td>
 				</tr>
 				<tr>
-					<td className='what'>
-						<label htmlFor='other-fees'>Applicable Fees</label>
-					</td>
-					<td colSpan='2' className='amount'>
-						<input
-							id='other-fees'
-							className='currency'
-							type='number'
-							value={this.props.fees}
-							onChange={updateIn([orderId, 'fees'])} />
-					</td>
+					<td><label htmlFor='other-fees'>Applicable Fees</label></td>
+					<td colSpan='2'><input id='other-fees' className='currency' type='number' value={this.props.fees} onChange={updateIn([orderId, 'fees'])} /></td>
 				</tr>
 				<tr>
-					<td className='what'>
-						<label className='print-big' htmlFor='total-price'>Total Price</label>
-					</td>
-					<td colSpan='2' className='amount'>
-						<output id='total-price' className='amount'>
-							{currency(this.props.total)}
-						</output>
-					</td>
+					<td><label className='print-big' htmlFor='total-price'>Total Price</label></td>
+					<td colSpan='2'><output id='total-price' className='amount'>{currency(this.props.total)}</output></td>
 				</tr>
 			</tbody>
 		</table>

@@ -1,17 +1,16 @@
 /* .money, #costs, and #payments
  Money chart */
-.notes, .contact, .costs, .payments {
-	flex: 1;
-}
-.money .what {
+.money td:nth-child(1) {
 	width: 40%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	output, label {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100px;
+	}
 }
-.money .amount {
+.money td:nth-child(2) {
 	width: 60%;
-	white-space: nowrap;
 }
 
 .money td:last-child {
@@ -24,10 +23,13 @@
 .money output {
 	margin: 0;
 	border: none;
-	display: block;
 }
 .money input,
 .money output,
 .money label {
 	padding: 1px 4px;
+}
+.money output,
+.money label {
+	display: block;
 }
