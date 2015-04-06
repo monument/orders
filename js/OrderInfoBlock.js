@@ -7,17 +7,7 @@ export default class OrderInfoBlock extends Component {
 	static propTypes = {
 		date: PropTypes.string.isRequired,
 		balance: PropTypes.number.isRequired,
-		status: PropTypes.oneOf([
-			'quote',
-			'layaway',
-			'drawing-in-process',
-			'design-approval-pending',
-			'on-order',
-			'engraving-bmc',
-			'engraving-sasakwa',
-			'final-customer-approval',
-			'to-be-set',
-		]).isRequired,
+		status: PropTypes.string.isRequired,
 		actions: PropTypes.shape({
 			updatePath: PropTypes.func.isRequired,
 		}).isRequired,
