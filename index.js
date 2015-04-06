@@ -4,20 +4,19 @@ import App from './js/app'
 import OrderFlux from './flux/OrderFlux'
 
 import throttle from 'lodash/function/throttle'
+import debounce from 'lodash/function/debounce'
 
 let Flux = new OrderFlux()
 
 const oldData = localStorage.getItem('fluxxor-state')
 if (oldData)
 	Flux.deserialize(oldData)
-else
+
+if (!Flux.getStore('orders').state.orders || !Flux.getStore('orders').state.orders.size)
 	Flux.getActions('orders').createOrder({})
 
-function saveState() {
-	localStorage.setItem('fluxxor-state', Flux.serialize())
-}
-
-Flux.getStore('orders').addListener('change', throttle(saveState, 500))
+let saveState = () => localStorage.setItem('fluxxor-state', Flux.serialize())
+Flux.getStore('orders').addListener('change', debounce(saveState, 1000))
 
 ///
 React.render(<App flux={Flux} />, document.querySelector('.app'))
