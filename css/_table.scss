@@ -13,10 +13,12 @@
 		cursor: default;
 		// font-style: italic;
 	}
-	td:not(:last-child), th:not(:last-child) {
-		border-right: solid 1px #ddd;
+	td + td,
+	th + th {
+		border-left: solid 1px #ddd;
 	}
-	tr, thead tr:first-child {
+	tr,
+	thead tr:first-child {
 		border-bottom: solid 1px #ddd;
 	}
 	&:not(:first-child) {
@@ -25,12 +27,13 @@
 	a {
 		cursor: pointer;
 	}
-	input, output {
-		padding: .1em .2em;
+	input,
+	output {
+		padding: 1px 4px;
 		margin: 0;
-		width: 100%;
 		border: none;
 		height: 100%;
+		width: 100%;
 	}
 	input:focus {
 		outline: hsl(208, 62%, 60%) auto 5px;

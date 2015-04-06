@@ -38,13 +38,14 @@ export default class CostsTable extends Component {
 						</td>
 						<td>
 							<input
+								className='currency'
 								type="number"
 								value={cost.get('amount')}
 								onChange={updateIn([orderId, 'costs', index, 'amount'])} />
 						</td>
 						<td className="action delete">
 							<button onClick={() => removeCost(orderId, index)}>
-								-
+								–
 							</button>
 						</td>
 					</tr>
@@ -53,28 +54,23 @@ export default class CostsTable extends Component {
 			<tbody>
 				<tr>
 					<td><label htmlFor="subtotal">Subtotal</label></td>
-					<td><output id="subtotal" className="amount">{currency(this.props.subtotal)}</output></td>
-					<td />
+					<td colSpan="2"><output id="subtotal" className="amount">{currency(this.props.subtotal)}</output></td>
 				</tr>
 				<tr>
 					<td><label htmlFor="sales-tax">Sales Tax</label></td>
-					<td><output id="sales-tax" className="amount">{currency(this.props.tax)}</output></td>
-					<td />
+					<td colSpan="2"><output id="sales-tax" className="amount">{currency(this.props.tax)}</output></td>
 				</tr>
 				<tr>
 					<td><label htmlFor="delivery-fee">Delivery</label></td>
-					<td><input id="delivery-fee" type="number" value={this.props.deliveryFee} onChange={updateIn([orderId, 'deliveryFee'])} /></td>
-					<td />
+					<td colSpan="2"><input id="delivery-fee" className='currency' type="number" value={this.props.deliveryFee} onChange={updateIn([orderId, 'deliveryFee'])} /></td>
 				</tr>
 				<tr>
 					<td><label htmlFor="other-fees">Applicable Fees</label></td>
-					<td><input id="other-fees" type="number" value={this.props.fees} onChange={updateIn([orderId, 'fees'])} /></td>
-					<td />
+					<td colSpan="2"><input id="other-fees" className='currency' type="number" value={this.props.fees} onChange={updateIn([orderId, 'fees'])} /></td>
 				</tr>
 				<tr>
 					<td><label className="print-big" htmlFor="total-price">Total Price</label></td>
-					<td><output id="total-price" className="amount">{currency(this.props.total)}</output></td>
-					<td />
+					<td colSpan="2"><output id="total-price" className="amount">{currency(this.props.total)}</output></td>
 				</tr>
 			</tbody>
 		</table>

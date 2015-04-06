@@ -55,15 +55,16 @@ export default class OrderStore extends Store {
 
 	// Pieces
 	_addItem({orderId, archetype, key}) {
+		console.log(archetype)
 		let order = this.state.orders.get(orderId)
-		order = order.set(key, order.get(key).push(archetype))
+		order = order.set(key, order.get(key).push(archetype()))
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}
 	_removeItem({orderId, index, key, archetype}) {
 		let order = this.state.orders.get(orderId)
 		let things = order.get(key).delete(index)
 		if (!things.size)
-			things = things.push(archetype)
+			things = things.push(archetype())
 		order = order.set(key, things)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}

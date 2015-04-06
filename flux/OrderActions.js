@@ -2,6 +2,7 @@ import {Actions} from 'flummox'
 
 export default class OrderActions extends Actions {
 	createOrder(order) {
+		console.log('createOrder')
 		return order
 	}
 	updatePath(path, ev) {

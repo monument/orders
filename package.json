@@ -9,7 +9,7 @@
     "prebuild": "mkdir -p dist",
     "js": "browserify -t [babelify --experimental --playground] --debug -e index.js -o dist/app.js",
     "js-watch": "watchify -v -t [babelify --experimental --playground] --debug -e ./index.js -o dist/app.js",
-    "css": "node-sass css/index.scss dist/app.css && autoprefixer dist/app.css",
+    "css": "node-sass css/index.scss dist/app.css --source-map dist/app.css.map && autoprefixer dist/app.css",
     "css-watch": "nodemon --watch css/ --ext scss --exec 'npm run css'",
     "build": "npm run js & npm run css & wait",
     "watch": "npm run js-watch & npm run css-watch & wait",

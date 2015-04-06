@@ -6,15 +6,12 @@ import OrderFlux from './flux/OrderFlux'
 import throttle from 'lodash/function/throttle'
 
 let Flux = new OrderFlux()
-window.f = Flux
 
 const oldData = localStorage.getItem('fluxxor-state')
-if (oldData) {
+if (oldData)
 	Flux.deserialize(oldData)
-}
-else {
+else
 	Flux.getActions('orders').createOrder({})
-}
 
 function saveState() {
 	localStorage.setItem('fluxxor-state', Flux.serialize())
@@ -22,4 +19,6 @@ function saveState() {
 
 Flux.getStore('orders').addListener('change', throttle(saveState, 500))
 
+///
 React.render(<App flux={Flux} />, document.querySelector('.app'))
+///

@@ -37,11 +37,20 @@ input:hover {
 	background-color: lightyellow;
 }
 
-input::-webkit-datetime-edit {
-	color: gray;
-}
-
 input[type='date']::-webkit-clear-button,
 input[type='date']::-webkit-inner-spin-button {
 	display: none;
+}
+input.currency {
+	text-align: right;
+}
+input.currency::-webkit-inner-spin-button {
+	display: none;
+}
+input[list]:not(:hover)::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
+button {
+	cursor: pointer;
 }

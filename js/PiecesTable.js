@@ -27,7 +27,7 @@ export default class PiecesTable extends Component {
 					<th className="part">Piece</th>
 					<th className="material">Material</th>
 					<th className="kind">Description</th>
-					<th className="dim" colSpan={3}>Dimensions <abbr title="Length / Width / Height">(L/W/H)</abbr></th>
+					<th className="dim" colSpan={3}>Dimensions</th>
 					<th className="notes">Notes</th>
 					<th className="cost">Cost</th>
 					<th className="action add"><button onClick={() => addPiece(orderId)}>+</button></th>
@@ -63,16 +63,19 @@ export default class PiecesTable extends Component {
 						</td>
 						<td className="dim length">
 							<input
+								placeholder="L"
 								value={piece.get('length')}
 								onChange={updateIn([orderId, 'pieces', index, 'length'])} />
 						</td>
 						<td className="dim width">
 							<input
+								placeholder="W"
 								value={piece.get('width')}
 								onChange={updateIn([orderId, 'pieces', index, 'width'])} />
 						</td>
 						<td className="dim height">
 							<input
+								placeholder="H"
 								value={piece.get('height')}
 								onChange={updateIn([orderId, 'pieces', index, 'height'])} />
 						</td>
@@ -83,6 +86,7 @@ export default class PiecesTable extends Component {
 						</td>
 						<td className="cost">
 							<input
+								className='currency'
 								type="number"
 								min="0"
 								value={piece.get('amount')}

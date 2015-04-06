@@ -1,17 +1,34 @@
 import Immutable from 'immutable'
 import {v4 as uuid} from 'node-uuid'
 
-const Cost = Immutable.Map({
+const dateFormat = new Intl.NumberFormat('en-US', {style: 'decimal', minimumIntegerDigits: 2, useGrouping: false}).format
+
+const CostRecord = Immutable.Map({
 	part: '',
 	amount: '0',
 })
 
-const Payment = Immutable.Map({
+function Cost(data={}) {
+	const basic = Immutable.fromJS(data)
+	return CostRecord.merge(basic)
+}
+
+const PaymentRecord = Immutable.Map({
 	date: '',
 	amount: '0',
 })
 
-const Piece = Immutable.Map({
+function Payment(data={}) {
+	const basic = Immutable.fromJS(data)
+	return PaymentRecord.withMutations((p) => {
+		p = p.merge(basic)
+		const today = new Date()
+		p = p.set('date', p.get('date') || `${dateFormat(today.getFullYear())}-${dateFormat(today.getMonth() + 1)}-${dateFormat(today.getDate())}`)
+		return p
+	})
+}
+
+const PieceRecord = Immutable.Map({
 	qty: '1',
 	part: '',
 	material: '',
@@ -23,6 +40,11 @@ const Piece = Immutable.Map({
 	notes: '',
 	amount: '100',
 })
+
+function Piece(data={}) {
+	const basic = Immutable.fromJS(data)
+	return PieceRecord.merge(basic)
+}
 
 const OrderRecord = Immutable.Map({
 	id: '',
@@ -73,21 +95,20 @@ const OrderRecord = Immutable.Map({
 	pieces: Immutable.List(),
 })
 
-function Order(data) {
+function Order(data={}) {
 	const oldOrder = Immutable.fromJS(data)
 	let order = OrderRecord.withMutations((o) => {
 		o = o.set('id', o.get('id') || uuid())
 		const today = new Date()
-		const f = new Intl.NumberFormat('en-US', {style: 'decimal', minimumIntegerDigits: 2, useGrouping: false}).format
-		o = o.set('date', o.get('date') || `${f(today.getFullYear())}-${f(today.getMonth() + 1)}-${f(today.getDate())}`)
+		o = o.set('date', o.get('date') || `${dateFormat(today.getFullYear())}-${dateFormat(today.getMonth() + 1)}-${dateFormat(today.getDate())}`)
 		o = o.merge(oldOrder)
 
 		if (!o.get('costs').size)
-			o = o.set('costs', Immutable.List.of(Cost))
+			o = o.set('costs', Immutable.List.of(Cost()))
 		if (!o.get('payments').size)
-			o = o.set('payments', Immutable.List.of(Payment))
+			o = o.set('payments', Immutable.List.of(Payment()))
 		if (!o.get('pieces').size)
-			o = o.set('pieces', Immutable.List.of(Piece))
+			o = o.set('pieces', Immutable.List.of(Piece()))
 
 		return o
 	})

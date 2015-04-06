@@ -1,0 +1,13 @@
+td.action button {
+	border: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0 7px;
+}
+.delete button {
+	background: transparent;
+}
+.delete button:hover {
+	background: hsl(0, 100%, 50%);
+	color: white;
+}
