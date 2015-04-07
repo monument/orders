@@ -1,3 +1,5 @@
+import intl from 'intl'
+
 import React from 'react'
 
 import App from './js/app'

@@ -30,6 +30,7 @@
   "dependencies": {
     "flummox": "^3.5.0",
     "immutable": "^3.7.1",
+    "intl": "^0.1.4",
     "lodash": "^3.6.0",
     "react": "^0.13.1",
     "react-quill-editor": "^0.3.6"
