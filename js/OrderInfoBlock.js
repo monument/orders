@@ -35,8 +35,9 @@ export default class OrderInfoBlock extends Component {
 			</select>
 			<div className='control-buttons'>
 				<button onClick={(ev) => this.props.actions.clearOrder(orderId)}>Clear Form</button>
+				<button onClick={(ev) => window.print()}>Print</button>
 			</div>
 		</div>
 	}
 }
-// <button onClick={this.props.actions.sendToTrello}>Submit</button>
+// <button onClick={this.props.actions.sendToTrello}>Save</button>
