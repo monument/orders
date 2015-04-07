@@ -28,11 +28,11 @@
   "license": "MIT",
   "homepage": "http://orders.benchmarkmonument.com/",
   "dependencies": {
-    "Squire": "neilj/squire",
     "flummox": "^3.5.0",
     "immutable": "^3.7.1",
     "lodash": "^3.6.0",
-    "react": "^0.13.1"
+    "react": "^0.13.1",
+    "react-quill-editor": "^0.3.6"
   },
   "devDependencies": {
     "autoprefixer": "^5.1.0",
