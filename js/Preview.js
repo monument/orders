@@ -12,8 +12,8 @@ const toolbar = [
 	]},
 
 	{ label: 'Alignment', type: 'align', items: [
-		{ label: 'Center',  value: 'center' },
 		{ label: 'Left',    value: 'left' },
+		{ label: 'Center',  value: 'center' },
 		{ label: 'Right',   value: 'right' },
 		{ label: 'Justify', value: 'justify' },
 	]},
