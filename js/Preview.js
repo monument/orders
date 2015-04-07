@@ -1,6 +1,28 @@
 import React from 'react'
 let {PropTypes, Component} = React
 import {curry} from 'lodash'
+import Quill from 'react-quill-editor'
+
+const toolbar = [
+	{ label: 'Size', type: 'size', items: [
+		{ label: 'Normal',  value: '1.0em' },
+		{ label: 'Smaller', value: '0.8em' },
+		{ label: 'Larger',  value: '1.4em' },
+		{ label: 'Huge',    value: '2em' },
+	]},
+
+	{ label: 'Alignment', type: 'align', items: [
+		{ label: 'Center',  value: 'center' },
+		{ label: 'Left',    value: 'left' },
+		{ label: 'Right',   value: 'right' },
+		{ label: 'Justify', value: 'justify' },
+	]},
+
+	{ label: 'Text', type: 'group', items: [
+		{ label: 'Bold',          type: 'bold' },
+		{ label: 'Italic',        type: 'italic' },
+	]},
+]
 
 export default class Preview extends Component {
 	static propTypes = {
@@ -16,7 +38,10 @@ export default class Preview extends Component {
 		const updateIn = curry(updatePath, 2)
 		const {orderId} = this.props
 		return (<div className='preview'>
-			<textarea value={this.props.content} onChange={updateIn([orderId, 'preview'])} />
+			<Quill
+				value={this.props.content || ''}
+				onChange={updateIn([orderId, 'preview'])}
+				toolbar={toolbar} />
 			<p className='print'>
 				Lettering other than above will be done for a charge at the rate
 				prevailing at the time additional lettering is ordered.

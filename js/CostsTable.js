@@ -18,6 +18,7 @@ export default class CostsTable extends Component {
 		fees: PropTypes.string.isRequired,
 		total: PropTypes.number.isRequired,
 		costs: PropTypes.instanceOf(Immutable.List).isRequired,
+		pieces: PropTypes.instanceOf(Immutable.List).isRequired,
 	}
 
 	render() {
@@ -47,6 +48,20 @@ export default class CostsTable extends Component {
 							<button onClick={() => removeCost(orderId, index)}>
 								–
 							</button>
+						</td>
+					</tr>
+				).toArray()}
+			</tbody>
+			<tbody>
+				{this.props.pieces.map((piece, index) =>
+					<tr className='piece' key={index}>
+						<td>
+							<output>
+								{piece.get('kind')} {piece.get('material')} {piece.get('part')}
+							</output>
+						</td>
+						<td colSpan='2'>
+							<output className='currency amount'>{piece.get('qty')} × {currency(piece.get('amount'))}</output>
 						</td>
 					</tr>
 				).toArray()}

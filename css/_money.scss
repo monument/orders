@@ -1,12 +1,15 @@
 /* .money, #costs, and #payments
  Money chart */
-.notes, .contact, .costs, .payments {
-	flex: 1;
-}
-.money td:nth-child(0) {
-	width: 40%;
-}
 .money td:nth-child(1) {
+	width: 40%;
+	output, label {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100px;
+	}
+}
+.money td:nth-child(2) {
 	width: 60%;
 }
 
@@ -16,11 +19,17 @@
 .costs .cost:last-child {
 	border-bottom: solid 1px #ddd;
 }
-.money input, .money output {
+.money input,
+.money output {
 	margin: 0;
 	border: none;
-	padding: 1px 4px;
 }
+.money input,
+.money output,
 .money label {
 	padding: 1px 4px;
+}
+.money output,
+.money label {
+	display: block;
 }

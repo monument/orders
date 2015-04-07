@@ -22,6 +22,9 @@
 .control-buttons {
 	margin-top: 5px;
 	margin-bottom: 10px;
+	button + button {
+		margin-left: 1em;
+	}
 }
 
 .main {
@@ -61,15 +64,6 @@
 
 	padding: .5em;
 	height: 8in;
-}
-
-.preview {
-	flex: 1;
-}
-
-.preview textarea {
-	min-height: 200px;
-	width: 100%;
 }
 
 footer {
