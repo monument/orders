@@ -56,7 +56,7 @@ export default class CostsTable extends Component {
 					<tr className='piece' key={index}>
 						<td>
 							<output>
-								{piece.get('kind')} {piece.get('material')} {piece.get('part')}
+								{piece.get('kind')} {piece.get('part')}
 							</output>
 						</td>
 						<td colSpan='2'>
