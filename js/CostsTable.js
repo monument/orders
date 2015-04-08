@@ -32,8 +32,7 @@ export default class CostsTable extends Component {
 					<tr className='cost' key={index}>
 						<td>
 							<input
-								list='part-list'
-								placeholder='Part'
+								placeholder='Fee'
 								value={cost.get('part')}
 								onChange={updateIn([orderId, 'costs', index, 'part'])} />
 						</td>
