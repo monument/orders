@@ -30,7 +30,7 @@ export default class PiecesTable extends Component {
 					<th className='dim' colSpan={3}>Dimensions</th>
 					<th className='notes'>Notes</th>
 					<th className='cost'>Cost</th>
-					<th className='action add'><button onClick={() => addPiece(orderId)}>+</button></th>
+					<th className='action add'></th>
 				</tr>
 			</thead>
 			<tbody>
