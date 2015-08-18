@@ -11,7 +11,7 @@
     "test": "mocha",
     "prebuild": "mkdir -p distributable",
     "js": "browserify -t babelify $npm_package_config_browserify | exorcist distributable/app.js.map > distributable/app.js",
-    "watch:js": "watchify -v -t babelify -o distributable/app.js $npm_package_config_browserify",
+    "watch:js": "watchify -v -t babelify -o 'exorcist distributable/app.js.map > distributable/app.js' $npm_package_config_browserify",
     "css": "node-sass source/css/index.scss distributable/app.css --source-map distributable/app.css.map && autoprefixer distributable/app.css",
     "watch:css": "nodemon --watch source/css/ --ext scss --exec 'npm run css'",
     "build": "npm run js & npm run css & wait",
