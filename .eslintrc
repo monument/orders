@@ -1,0 +1,81 @@
+---
+ecmaFeatures:
+  globalReturn: true  # allow return statements in the global scope
+  jsx: true  # enable JSX
+  modules: true  # enable modules
+
+parser: babel-eslint
+
+extends: eslint:recommended
+
+env:
+  browser: true
+  es6: true
+
+globals:
+  require: false
+
+plugins:
+  - eslint-plugin-react
+
+# 1 means warning
+# 2 means error
+rules:
+  # best practices
+  curly: [2, multi-line]
+  guard-for-in: 2
+  default-case: 2
+  no-div-regex: 2
+  no-eq-null: 2
+  wrap-iife: 2
+  no-undef-init: 0
+  no-unused-vars: 1
+  no-console: 0
+  no-underscore-dangle: 0
+  strict: [1, never]
+  no-class-assign: 2
+  no-const-assign: 2
+  prefer-spread: 1
+  no-var: 2
+
+  # stylistic issues
+  new-cap: 0
+  indent: [1, tab]
+  camelcase: 2
+  comma-dangle: [1, 'always-multiline']
+  comma-style: [1, last]
+  comma-spacing: [1, {before: false, after: true}]
+  key-spacing: [2, {beforeColon: false, afterColon: true}]
+  quotes: [2, single, 'avoid-escape']
+  consistent-this: [1, self]
+  brace-style: [1, stroustrup]
+  semi: [2, never]
+  arrow-parens: [1, as-needed]
+  arrow-spacing: [1, {before: true, after: true}]
+  no-implicit-coercion: [2, {boolean: true, number: true, string: true}]
+
+  # react rules – https://github.com/yannickcr/eslint-plugin-react
+  react/display-name: 0
+  react/jsx-curly-spacing: [1, 'never']
+  react/jsx-no-duplicate-props: 1
+  react/jsx-no-undef: 2
+  react/jsx-sort-prop-types: 1
+  react/jsx-uses-react: 2
+  react/jsx-uses-vars: 2
+  react/no-did-mount-set-state: 1
+  react/no-did-update-set-state: 1
+  react/no-multi-comp: 0  # prevent multiple component definition per file
+  react/no-unknown-property: 1
+  react/prop-types: 2    # prevent missing proptypes in a react component definition
+  react/react-in-jsx-scope: 2
+  react/self-closing-comp: 1    # prevent extra closing tags for components without children
+  react/sort-comp: 1
+  react/wrap-multilines: 1    # prevent missing parentheses around multilines jsx
+
+  # jsdoc
+  valid-jsdoc:
+    - 1
+    - prefer:
+        return: returns
+        arg: param
+        argument: param
