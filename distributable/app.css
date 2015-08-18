@@ -204,26 +204,20 @@ footer input {
 .material .qty {
   width: 6%; }
 
-.material .part {
+.material .piece {
   width: 13.5%; }
 
 .material .material {
   width: 14.5%; }
 
-.material .kind {
-  width: 18%; }
-
 .material .dim {
   width: 5%; }
-
-.material .notes {
-  width: 19%; }
 
 .material .cost {
   width: 8%; }
 
 .material td.action {
-  width: 1.25em;
+  width: 3em;
   font-weight: normal;
   font-style: normal; }
 

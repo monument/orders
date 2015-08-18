@@ -5,16 +5,14 @@
 		height: 20px;
 	}
 
-	.qty      { width: 6%    }
-	.part     { width: 13.5% }
-	.material { width: 14.5% }
-	.kind     { width: 18%   }
-	.dim      { width: 5%    }
-	.notes    { width: 19%   }
-	.cost     { width: 8%    }
+	.qty         { width: 6%    }
+	.piece       { width: 13.5% }
+	.material    { width: 14.5% }
+	.dim         { width: 5%    }
+	.cost        { width: 8%    }
 
 	td.action {
-		width: 1.25em;
+		width: 3em;
 		font-weight: normal;
 		font-style: normal;
 	}

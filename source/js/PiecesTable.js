@@ -20,7 +20,7 @@ export default class PiecesTable extends Component {
 
 		return (
 			<table className='material striped table'>
-				<caption>Materials <button className='action' onClick={() => addPiece(orderId)}>+</button></caption>
+				<caption>Pieces <button className='action' onClick={() => addPiece(orderId)}>+</button></caption>
 				<thead>
 					<tr>
 						<th className='qty'>Qty</th>
