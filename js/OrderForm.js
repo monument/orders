@@ -14,7 +14,7 @@ import ContactTable from './ContactTable'
 import NoteBox from './NoteBox'
 import Signature from './Signature'
 
-import sum from './sum'
+import add from 'lodash/math/add'
 
 export default class OrderForm extends Component {
 	static propTypes = {
@@ -29,11 +29,11 @@ export default class OrderForm extends Component {
 		const costs = order.get('costs')
 			.map(c => c.get('amount'))
 			.map(parseFloat)
-			.reduce(sum, 0)
+			.reduce(add, 0)
 
 		const pieces = order.get('pieces')
 			.map(piece => parseFloat(piece.get('amount')) * parseInt(piece.get('qty')))
-			.reduce(sum, 0)
+			.reduce(add, 0)
 
 		const subtotal = costs + pieces
 		const tax = subtotal * 0.08157
@@ -44,7 +44,7 @@ export default class OrderForm extends Component {
 		const paid = order.get('payments')
 			.map(p => p.get('amount'))
 			.map(parseFloat)
-			.reduce(sum, 0)
+			.reduce(add, 0)
 
 		const balance = total - paid
 
