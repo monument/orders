@@ -80,13 +80,6 @@ button {
 .title input {
   width: 100%; }
 
-.amount {
-  padding: 2px 0;
-  height: 16px;
-  cursor: default;
-  text-align: right;
-  display: block; }
-
 .order-date {
   width: auto;
   font-size: 1em; }
@@ -194,7 +187,7 @@ footer input {
     height: 100%;
     width: 100%; }
   .table input:focus {
-    outline: #5a9dd8 auto 5px;
+    outline: none;
     background-color: #ffffdb; }
   .table tfoot tr:last-child {
     border-bottom: hidden; }
