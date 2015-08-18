@@ -1,6 +1,5 @@
 import React, {PropTypes, Component} from 'react'
 import Immutable from 'immutable'
-import Order from '../flux/OrderRecord'
 
 import OrderTitle from './OrderTitle'
 import PiecesTable from './PiecesTable'
@@ -17,8 +16,8 @@ import add from 'lodash/math/add'
 
 export default class OrderForm extends Component {
 	static propTypes = {
-		order: PropTypes.instanceOf(Immutable.Map),
 		actions: PropTypes.object.isRequired,
+		order: PropTypes.instanceOf(Immutable.Map),
 	}
 
 	render() {
@@ -49,47 +48,49 @@ export default class OrderForm extends Component {
 
 		const id = order.get('id')
 
-		return <div className='order'>
-			<div className='main'>
-				<OrderTitle orderId={id} actions={actions}
-					date={order.get('date')}
-					title={order.get('title')} />
-				<PiecesTable orderId={id} actions={actions}
-					pieces={order.get('pieces')} />
-				<DetailsTable orderId={id} actions={actions}
-					delivery={order.get('delivery')}
-					design={order.get('design')} />
+		return (
+			<div className='order'>
+				<div className='main'>
+					<OrderTitle orderId={id} actions={actions}
+						date={order.get('date')}
+						title={order.get('title')} />
+					<PiecesTable orderId={id} actions={actions}
+						pieces={order.get('pieces')} />
+					<DetailsTable orderId={id} actions={actions}
+						delivery={order.get('delivery')}
+						design={order.get('design')} />
 
-				<Preview content={order.get('preview')} orderId={id} actions={actions} />
-				<footer><input /></footer>
+					<Preview content={order.get('preview')} orderId={id} actions={actions} />
+					<footer><input /></footer>
+				</div>
+
+				<aside className='sidebar'>
+					<OrderInfoBlock
+						orderId={id}
+						actions={actions} />
+					<CostsTable
+						orderId={id}
+						actions={actions}
+						subtotal={subtotal}
+						tax={tax}
+						deliveryFee={order.get('deliveryFee')}
+						fees={order.get('fees')}
+						total={total}
+						costs={order.get('costs')}
+						pieces={order.get('pieces')} />
+					<PaymentsTable
+						orderId={id}
+						actions={actions}
+						payments={order.get('payments')}
+						balance={balance}
+						paid={paid} />
+
+					<NoteBox note={order.get('note')} onChange={ev => actions.updatePath([id, 'note'], ev)} />
+					<ContactTable orderId={id} actions={actions}
+						sale={order.get('sale')} />
+					<Signature scribble={order.get('sale').get('signature')} />
+				</aside>
 			</div>
-
-			<aside className='sidebar'>
-				<OrderInfoBlock
-					orderId={id}
-					actions={actions} />
-				<CostsTable
-					orderId={id}
-					actions={actions}
-					subtotal={subtotal}
-					tax={tax}
-					deliveryFee={order.get('deliveryFee')}
-					fees={order.get('fees')}
-					total={total}
-					costs={order.get('costs')}
-					pieces={order.get('pieces')} />
-				<PaymentsTable
-					orderId={id}
-					actions={actions}
-					payments={order.get('payments')}
-					balance={balance}
-					paid={paid} />
-
-				<NoteBox note={order.get('note')} onChange={(ev) => actions.updatePath([id, 'note'], ev)} />
-				<ContactTable orderId={id} actions={actions}
-					sale={order.get('sale')} />
-				<Signature scribble={order.get('sale').get('signature')} />
-			</aside>
-		</div>
+		)
 	}
 }

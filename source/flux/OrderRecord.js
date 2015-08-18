@@ -4,7 +4,7 @@ import {v4 as uuid} from 'node-uuid'
 const dateFormat = new Intl.NumberFormat('en-US', {style: 'decimal', minimumIntegerDigits: 2, useGrouping: false}).format
 
 const CostRecord = Immutable.Map({
-	part: '',
+	piece: '',
 	amount: '0',
 })
 
@@ -30,14 +30,15 @@ function Payment(data={}) {
 
 const PieceRecord = Immutable.Map({
 	qty: '1',
-	part: '',
+	piece: '',
 	material: '',
-	type: '',
-	kind: '',
+
+	description: '',
+
 	length: '',
 	width: '',
 	height: '',
-	notes: '',
+
 	amount: '100',
 })
 
@@ -58,6 +59,7 @@ const OrderRecord = Immutable.Map({
 	lettering: '0',
 	deliveryFee: '0',
 	fees: '0',
+
 	design: Immutable.Map({
 		designName: '',
 		letteringDirection: 'north',
@@ -68,6 +70,7 @@ const OrderRecord = Immutable.Map({
 		specialArtwork: true,
 		matchRubbing: false,
 	}),
+
 	sale: Immutable.Map({
 		name: '',
 		phone: '',
@@ -79,6 +82,7 @@ const OrderRecord = Immutable.Map({
 		soldBy: '',
 		soldAt: '',
 	}),
+
 	delivery: Immutable.Map({
 	    by: '',
 		to: '',
@@ -92,27 +96,31 @@ const OrderRecord = Immutable.Map({
 			phone: '',
 		}),
 	}),
+
 	pieces: Immutable.List(),
 })
 
 function Order(data={}) {
 	const oldOrder = Immutable.fromJS(data)
-	let order = OrderRecord.withMutations((o) => {
-		o = o.set('id', o.get('id') || uuid())
+	return OrderRecord.withMutations(order => {
 		const today = new Date()
-		o = o.set('date', o.get('date') || `${dateFormat(today.getFullYear())}-${dateFormat(today.getMonth() + 1)}-${dateFormat(today.getDate())}`)
-		o = o.merge(oldOrder)
+		order = order
+			.set('id', order.get('id') || uuid())
+			.set('date', order.get('date') || `${dateFormat(today.getFullYear())}-${dateFormat(today.getMonth() + 1)}-${dateFormat(today.getDate())}`)
+			.merge(oldOrder)
 
-		if (!o.get('costs').size)
-			o = o.set('costs', Immutable.List.of(Cost()))
-		if (!o.get('payments').size)
-			o = o.set('payments', Immutable.List.of(Payment()))
-		if (!o.get('pieces').size)
-			o = o.set('pieces', Immutable.List.of(Piece()))
+		if (!order.get('costs').size) {
+			order = order.set('costs', Immutable.List.of(Cost()))
+		}
+		if (!order.get('payments').size) {
+			order = order.set('payments', Immutable.List.of(Payment()))
+		}
+		if (!order.get('pieces').size) {
+			order = order.set('pieces', Immutable.List.of(Piece()))
+		}
 
-		return o
+		return order
 	})
-	return order
 }
 
 export default Order

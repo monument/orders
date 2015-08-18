@@ -5,7 +5,6 @@ import React from 'react'
 import App from './js/app'
 import OrderFlux from './flux/OrderFlux'
 
-import throttle from 'lodash/function/throttle'
 import debounce from 'lodash/function/debounce'
 
 let Flux = new OrderFlux()

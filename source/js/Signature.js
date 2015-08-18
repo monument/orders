@@ -6,9 +6,11 @@ export default class Signature extends Component {
 	}
 
 	render() {
-		return <label>
-			<input id='signature' readOnly value={this.props.scribble} />
-			<span>Signature</span>
-		</label>
+		return (
+			<label>
+				<input id='signature' readOnly value={this.props.scribble} />
+				<span>Signature</span>
+			</label>
+		)
 	}
 }
