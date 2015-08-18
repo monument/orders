@@ -1,7 +1,6 @@
 {
 	"optional": [
-		"utility.inlineExpressions",
-		"validation.react", 
+		"validation.react",
 		"es7.classProperties"
 	]
 }
