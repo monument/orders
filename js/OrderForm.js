@@ -36,7 +36,7 @@ export default class OrderForm extends Component {
 			.reduce(add, 0)
 
 		const subtotal = costs + pieces
-		const tax = subtotal * 0.08157
+		const tax = subtotal * 0.08517
 		const deliveryFee = parseFloat(order.get('deliveryFee'))
 		const otherFees = parseFloat(order.get('fees'))
 		const total = subtotal + tax + deliveryFee + otherFees
