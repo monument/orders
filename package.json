@@ -5,14 +5,13 @@
   "description": "A digital order sheet for Benchmark Monument",
   "main": "index.js",
   "config": {
-    "babel": "--optional utility.inlineExpressions --optional validation.react --optional es7.classProperties",
     "browserify": "--debug -e ./index.js"
   },
   "scripts": {
     "test": "mocha",
     "prebuild": "mkdir -p dist",
-    "js": "browserify -t [babelify $npm_package_config_babel] $npm_package_config_browserify | exorcist dist/app.js.map > dist/app.js",
-    "js-watch": "watchify -v -t [babelify $npm_package_config_babel] -o dist/app.js $npm_package_config_browserify",
+    "js": "browserify -t babelify $npm_package_config_browserify | exorcist dist/app.js.map > dist/app.js",
+    "js-watch": "watchify -v -t babelify -o dist/app.js $npm_package_config_browserify",
     "css": "node-sass css/index.scss dist/app.css --source-map dist/app.css.map && autoprefixer dist/app.css",
     "css-watch": "nodemon --watch css/ --ext scss --exec 'npm run css'",
     "build": "npm run js & npm run css; wait",
