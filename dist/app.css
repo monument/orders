@@ -88,9 +88,8 @@ button {
   display: block; }
 
 .order-date {
-  width: 115px;
-  height: 20px;
-  float: left; }
+  width: auto;
+  font-size: 1em; }
 
 .order-status {
   width: 100%;

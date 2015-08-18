@@ -53,6 +53,7 @@ export default class OrderForm extends Component {
 		return <div className='order'>
 			<div className='main'>
 				<OrderTitle orderId={id} actions={actions}
+					date={order.get('date')}
 					title={order.get('title')} />
 				<PiecesTable orderId={id} actions={actions}
 					pieces={order.get('pieces')} />
@@ -67,10 +68,7 @@ export default class OrderForm extends Component {
 			<aside className='sidebar'>
 				<OrderInfoBlock
 					orderId={id}
-					actions={actions}
-					date={order.get('date')}
-					balance={balance}
-					status={order.get('status')} />
+					actions={actions} />
 				<CostsTable
 					orderId={id}
 					actions={actions}
