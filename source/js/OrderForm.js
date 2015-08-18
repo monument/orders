@@ -1,5 +1,4 @@
-import React from 'react'
-const {PropTypes, Component} = React
+import React, {PropTypes, Component} from 'react'
 import Immutable from 'immutable'
 import Order from '../flux/OrderRecord'
 

@@ -1,5 +1,4 @@
-import React from 'react'
-let {PropTypes, Component} = React
+import React, {PropTypes, Component} from 'react'
 
 export default class NoteBox extends Component {
 	static propTypes = {

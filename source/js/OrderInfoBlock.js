@@ -1,5 +1,4 @@
-import React from 'react'
-let {PropTypes, Component} = React
+import React, {PropTypes, Component} from 'react'
 import curry from 'lodash/function/curry'
 import currency from './currency'
 
