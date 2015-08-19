@@ -4,14 +4,24 @@
 	border-top: $border;
 	border-bottom: $border;
 
-	th, caption {
+	caption {
+		margin-bottom: 0.25em;
+	}
+
+	th,
+	caption,
+	caption > button {
 		text-transform: uppercase;
 		font-family: Calibri, Helvetica, sans-serif;
 		font-size: 95%;
 		font-weight: normal;
 		padding: 0;
 		color: #111;
-		cursor: default;
+		// cursor: default;
+	}
+
+	caption > button {
+		padding: 0.15em 0.5em;
 	}
 
 	td + td,

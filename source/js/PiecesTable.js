@@ -20,7 +20,7 @@ export default class PiecesTable extends Component {
 
 		return (
 			<table className='material striped table'>
-				<caption>Pieces <button className='action' onClick={() => addPiece(orderId)}>+</button></caption>
+				<caption>Pieces</caption>
 				<thead>
 					<tr>
 						<th className='qty'>Qty</th>
@@ -99,6 +99,11 @@ export default class PiecesTable extends Component {
 						</tr>)
 					.toArray()}
 				</tbody>
+				<tfoot>
+					<td colSpan='10' className='add-piece'>
+						<button onClick={() => addPiece(orderId)}>Add Piece</button>
+					</td>
+				</tfoot>
 			</table>
 		)
 	}

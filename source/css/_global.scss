@@ -23,7 +23,6 @@ button {
 	align-items: center;
 }
 input, select {
-	cursor: pointer;
 	font-family: inherit;
 	color: inherit;
 	font-size: inherit;
@@ -42,9 +41,7 @@ input[type='date']::-webkit-clear-button,
 input[type='date']::-webkit-inner-spin-button {
 	display: none;
 }
-.currency {
-	text-align: right;
-}
+
 input[type='number']::-webkit-inner-spin-button {
 	display: none;
 }

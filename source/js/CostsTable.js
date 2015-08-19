@@ -26,7 +26,7 @@ export default class CostsTable extends Component {
 		const {orderId} = this.props
 		return (
 			<table className='table money' id='costs'>
-				<caption>Costs <button className='action' onClick={() => addCost(orderId)}>+</button></caption>
+				<caption>Costs <button className='action' onClick={() => addCost(orderId)}>Add</button></caption>
 				<tbody>
 					{this.props.costs.map((cost, index) =>
 						<tr className='cost' key={index}>

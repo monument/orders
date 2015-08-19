@@ -27,7 +27,6 @@ button {
           align-items: center; }
 
 input, select {
-  cursor: pointer;
   font-family: inherit;
   color: inherit;
   font-size: inherit; }
@@ -44,9 +43,6 @@ input:hover {
 input[type='date']::-webkit-clear-button,
 input[type='date']::-webkit-inner-spin-button {
   display: none; }
-
-.currency {
-  text-align: right; }
 
 input[type='number']::-webkit-inner-spin-button {
   display: none; }
@@ -138,6 +134,8 @@ button {
   border-bottom: dotted 1px #444;
   margin-bottom: 3px;
   width: 100%; }
+  .signature:hover {
+    background-color: white; }
 
 .order {
   display: -webkit-box;
@@ -165,14 +163,19 @@ footer input {
 .table {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd; }
-  .table th, .table caption {
+  .table caption {
+    margin-bottom: 0.25em; }
+  .table th,
+  .table caption,
+  .table caption > button {
     text-transform: uppercase;
     font-family: Calibri, Helvetica, sans-serif;
     font-size: 95%;
     font-weight: normal;
     padding: 0;
-    color: #111;
-    cursor: default; }
+    color: #111; }
+  .table caption > button {
+    padding: 0.15em 0.5em; }
   .table td + td,
   .table th + th {
     border-left: solid 1px #ddd; }
@@ -228,7 +231,8 @@ footer input {
  Money chart */
 .money td:nth-child(1) {
   width: 40%; }
-  .money td:nth-child(1) output, .money td:nth-child(1) label {
+  .money td:nth-child(1) output,
+  .money td:nth-child(1) label {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -257,6 +261,9 @@ footer input {
 .money label {
   display: block; }
 
+.currency {
+  text-align: left; }
+
 .details {
   display: -webkit-box;
   display: -webkit-flex;
@@ -269,7 +276,7 @@ footer input {
           flex-direction: row;
   margin-top: 1.5em; }
 
-.details label:after {
+.details label::after {
   content: ": "; }
 
 .design, .delivery {
@@ -303,9 +310,10 @@ footer input {
 .design:nth-child(1), .delivery:nth-child(1) {
   padding-right: 1em; }
 
-.details input, .details select {
-  -webkit-flex: 1;
+.details input,
+.details select {
   -webkit-box-flex: 1;
+  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1; }
 
@@ -352,11 +360,44 @@ footer input {
       -ms-flex: 1;
           flex: 1; }
 
+button {
+  border: solid 1px;
+  border-color: #aaa #999 #888;
+  background-color: white;
+  border-radius: 3px;
+  padding: 0.25em 0.75em 0.35em;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer; }
+  button:hover {
+    background-color: #dfdfdf; }
+
+button,
+select,
+input[type=radio],
+input[type=checkbox] {
+  cursor: pointer; }
+
+td.action {
+  text-align: center; }
+
 td.action button {
   border: 0;
-  width: 100%;
   height: 100%;
-  padding: 0 7px; }
+  padding: 0 0.5em; }
+
+.add-piece {
+  text-align: center; }
 
 .delete button {
   background: transparent; }
@@ -365,12 +406,21 @@ td.action button {
   background: red;
   color: white; }
 
+@media only screen {
+  body {
+    background-color: #494949;
+    margin: 0 auto; }
+  .app {
+    background-color: white;
+    padding: 1em; } }
+
+.print-big {
+  font-weight: bold;
+  text-transform: uppercase; }
+
 @media print {
-  .print-big {
-    font-weight: bold;
-    font-size: 110%;
-    text-transform: uppercase; }
-  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; }
   input {

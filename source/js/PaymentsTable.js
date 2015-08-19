@@ -23,7 +23,7 @@ export default class PaymentsTable extends Component {
 
 		return (
 			<table className='table money' id='payments'>
-				<caption>Payments <button className='action' onClick={() => addPayment(orderId)}>+</button></caption>
+				<caption>Payments <button className='action' onClick={() => addPayment(orderId)}>Add</button></caption>
 				<tbody>
 					{this.props.payments.map((payment, index) =>
 						<tr key={index}>

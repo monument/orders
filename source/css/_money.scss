@@ -2,7 +2,9 @@
  Money chart */
 .money td:nth-child(1) {
 	width: 40%;
-	output, label {
+
+	output,
+	label {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -32,4 +34,8 @@
 .money output,
 .money label {
 	display: block;
+}
+
+.currency {
+	text-align: left;
 }

@@ -1,10 +1,13 @@
+.print-big {
+	font-weight: bold;
+    text-transform: uppercase;
+}
+
 @media print {
 	.print-big {
-	    font-weight: bold;
-	    font-size: 110%;
-	    text-transform: uppercase;
 	}
-	::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+	::-webkit-inner-spin-button,
+	::-webkit-outer-spin-button {
 		appearance: none;
 		margin: 0;
 	}

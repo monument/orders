@@ -4,7 +4,7 @@
 
 	margin-top: 1.5em;
 }
-.details label:after {
+.details label::after {
 	content: ": ";
 }
 .design, .delivery {
@@ -22,8 +22,8 @@
 .design:nth-child(1), .delivery:nth-child(1) {
 	padding-right: 1em;
 }
-.details input, .details select {
-	-webkit-flex: 1;
+.details input,
+.details select {
 	flex: 1;
 }
 

@@ -44,6 +44,10 @@
 	border-bottom: dotted 1px #444;
 	margin-bottom: 3px;
 	width: 100%;
+
+	&:hover {
+		background-color: white;
+	}
 }
 
 .order {
