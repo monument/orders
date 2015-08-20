@@ -1,4 +1,5 @@
 <?php
-header("Content-type: text/plain"); // be explicit to avoid accidental XSS
-system("/usr/bin/git fetch 2>&1");
+// be explicit to avoid accidental XSS
+header("Content-type: text/plain");
+system("/usr/bin/git pull origin master 2>&1");
 echo "\nDone.\n";
