@@ -421,7 +421,8 @@ td.action button {
 @media print {
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
-    appearance: none;
+    -webkit-appearance: none;
+            appearance: none;
     margin: 0; }
   input {
     border: 0;
