@@ -432,8 +432,8 @@ td.action button {
     display: block;
     text-align: center; }
   .title {
-    -webkit-transform: rotate(90deg) translate3d(280px, -5.2in, 0);
-            transform: rotate(90deg) translate3d(280px, -5.2in, 0); }
+    -webkit-transform: rotate(90deg) translate3d(280px, -5.1in, 0);
+            transform: rotate(90deg) translate3d(280px, -5.1in, 0); }
     .title input {
       border: 0; }
   .main {
