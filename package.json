@@ -1,7 +1,7 @@
 {
   "name": "orders",
   "private": true,
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A digital order sheet for Benchmark Monument",
   "main": "index.js",
   "config": {
