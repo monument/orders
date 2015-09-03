@@ -1,34 +1,30 @@
 import Immutable from 'immutable'
 import {v4 as uuid} from 'node-uuid'
+import moment from 'moment'
 
-const dateFormat = new Intl.NumberFormat('en-US', {style: 'decimal', minimumIntegerDigits: 2, useGrouping: false}).format
-
-const CostRecord = Immutable.Map({
+const CostRecord = Immutable.Record({
 	piece: '',
 	amount: '0',
 })
 
 function Cost(data={}) {
-	const basic = Immutable.fromJS(data)
-	return CostRecord.merge(basic)
+	return CostRecord(data)
 }
 
-const PaymentRecord = Immutable.Map({
+const PaymentRecord = Immutable.Record({
 	date: '',
 	amount: '0',
 })
 
 function Payment(data={}) {
-	const basic = Immutable.fromJS(data)
-	return PaymentRecord.withMutations((p) => {
-		p = p.merge(basic)
-		const today = new Date()
-		p = p.set('date', p.get('date') || `${dateFormat(today.getFullYear())}-${dateFormat(today.getMonth() + 1)}-${dateFormat(today.getDate())}`)
+	return PaymentRecord(data).withMutations(p => {
+		const today = moment(new Date())
+		p = p.set('date', p.get('date') || `${today.year()}-${today.month()}-${today.day()}`)
 		return p
 	})
 }
 
-const PieceRecord = Immutable.Map({
+const PieceRecord = Immutable.Record({
 	qty: '1',
 	piece: '',
 	material: '',
@@ -43,11 +39,10 @@ const PieceRecord = Immutable.Map({
 })
 
 function Piece(data={}) {
-	const basic = Immutable.fromJS(data)
-	return PieceRecord.merge(basic)
+	return PieceRecord(data)
 }
 
-const OrderRecord = Immutable.Map({
+const OrderRecord = Immutable.Record({
 	id: '',
 	status: 'quote',
 	date: '',
@@ -84,7 +79,7 @@ const OrderRecord = Immutable.Map({
 	}),
 
 	delivery: Immutable.Map({
-	    by: '',
+		by: '',
 		to: '',
 		near: '',
 		spaces: '',
@@ -101,13 +96,11 @@ const OrderRecord = Immutable.Map({
 })
 
 function Order(data={}) {
-	const oldOrder = Immutable.fromJS(data)
-	return OrderRecord.withMutations(order => {
-		const today = new Date()
+	return OrderRecord(data).withMutations(order => {
+		const today = moment(new Date())
 		order = order
 			.set('id', order.get('id') || uuid())
-			.set('date', order.get('date') || `${dateFormat(today.getFullYear())}-${dateFormat(today.getMonth() + 1)}-${dateFormat(today.getDate())}`)
-			.merge(oldOrder)
+			.set('date', order.get('date') || `${today.year()}-${today.month()}-${today.day()}`)
 
 		if (!order.get('costs').size) {
 			order = order.set('costs', Immutable.List.of(Cost()))
@@ -124,4 +117,4 @@ function Order(data={}) {
 }
 
 export default Order
-export {Order, Cost, Payment, Piece}
+export {Order, Cost, Payment, Piece, OrderRecord}

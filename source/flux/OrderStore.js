@@ -2,7 +2,6 @@ import {Store} from 'flummox'
 import Immutable from 'immutable'
 import Order from './OrderRecord'
 import {Piece, Cost, Payment} from './OrderRecord'
-import contains from 'lodash/collection/contains'
 
 export default class OrderStore extends Store {
 	constructor(flux) {
@@ -28,7 +27,7 @@ export default class OrderStore extends Store {
 
 		// prepare state
 		this.state = {
-			orders: Immutable.Map()
+			orders: Immutable.Map(),
 		}
 	}
 
@@ -61,7 +60,7 @@ export default class OrderStore extends Store {
 	}
 
 	onSendOrderToTrello({orderId}) {
-		console.log('sending order to trello...')
+		console.log('sending order to trello...', orderId)
 	}
 
 	onUpdatePath({path, ev}) {
@@ -79,8 +78,9 @@ export default class OrderStore extends Store {
 	_removeItem({orderId, index, key, archetype}) {
 		let order = this.state.orders.get(orderId)
 		let things = order.get(key).delete(index)
-		if (!things.size)
+		if (!things.size) {
 			things = things.push(archetype())
+		}
 		order = order.set(key, things)
 		this.setState({orders: this.state.orders.set(orderId, order)})
 	}

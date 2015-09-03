@@ -1,6 +1,8 @@
 import React, {PropTypes, Component} from 'react'
 import curry from 'lodash/function/curry'
 
+import moment from 'moment'
+
 export default class OrderTitle extends Component {
 	static propTypes = {
 		actions: PropTypes.shape({
@@ -28,8 +30,7 @@ export default class OrderTitle extends Component {
 				<label className='order-date'>
 					Date Ordered:
 					<input
-						placeholder='mm/dd/yyyy'
-						type='date'
+						placeholder='yyyy-mm-dd'
 						value={this.props.date}
 						onChange={updateIn([orderId, 'date'])}
 					/>

@@ -14,10 +14,12 @@ import Signature from './Signature'
 
 import add from 'lodash/math/add'
 
+import {OrderRecord} from '../flux/OrderRecord'
+
 export default class OrderForm extends Component {
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		order: PropTypes.instanceOf(Immutable.Map),
+		order: PropTypes.instanceOf(OrderRecord),
 	}
 
 	render() {

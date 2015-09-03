@@ -30,7 +30,6 @@ export default class PaymentsTable extends Component {
 							<td>
 								<input
 									placeholder='MM/DD/YYYY'
-									type='date'
 									required
 									value={payment.get('date')}
 									onChange={updateIn([orderId, 'payments', index, 'date'])}
