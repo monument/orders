@@ -1,5 +1,3 @@
-import intl from 'intl'
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -22,6 +20,18 @@ if (!Flux.getStore('orders').state.orders || !Flux.getStore('orders').state.orde
 let saveState = () => localStorage.setItem('fluxxor-state', Flux.serialize())
 Flux.getStore('orders').addListener('change', debounce(saveState, 1000))
 
-///
-ReactDOM.render(<App flux={Flux} />, document.querySelector('#root'))
-///
+function run() {
+    ReactDOM.render(<App flux={Flux} />, document.querySelector('#root'))
+}
+if (!global.Intl) {
+    require.ensure([
+        'intl',
+        'intl/locale-data/jsonp/en.js'
+    ], function (require) {
+        require('intl');
+        require('intl/locale-data/jsonp/en.js');
+        run()
+    })
+} else {
+    run()
+}
