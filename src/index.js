@@ -1,6 +1,7 @@
 import intl from 'intl'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import App from './js/app'
 import OrderFlux from './flux/order-flux'
@@ -22,5 +23,5 @@ let saveState = () => localStorage.setItem('fluxxor-state', Flux.serialize())
 Flux.getStore('orders').addListener('change', debounce(saveState, 1000))
 
 ///
-React.render(<App flux={Flux} />, document.querySelector('.app'))
+ReactDOM.render(<App flux={Flux} />, document.querySelector('#root'))
 ///
