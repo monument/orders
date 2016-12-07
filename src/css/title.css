@@ -1,6 +1,7 @@
 .title {
-	font-family: 'Calibri', 'Cantarell', 'Ubuntu', 'Lucida Grande', sans-serif;
+	font-family: Calibri, Cantarell, Ubuntu, Lucida Grande, sans-serif;
 }
+
 .title input {
 	width: 100%;
 }

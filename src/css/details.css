@@ -1,7 +1,6 @@
 .details {
 	display: flex;
 	flex-direction: row;
-
 	margin-top: 1.5em;
 }
 .details label::after {

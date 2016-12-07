@@ -1,0 +1,19 @@
+.material thead tr {
+	height: 20px;
+}
+
+.material .qty      { width: 6%;    }
+.material .piece    { width: 13.5%; }
+.material .material { width: 14.5%; }
+.material .dim      { width: 5%;    }
+.material .cost     { width: 8%;    }
+
+.material td.action {
+	width: 3em;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.material .dim input {
+	text-align: center;
+}
