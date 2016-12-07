@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import OrderForm from './order-form'
 import FluxComponent from 'flummox/component'
 
+import '../css'
 export default class App extends Component {
 	static propTypes = {
 		flux: PropTypes.object.isRequired,
