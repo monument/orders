@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from 'react'
 import {curry} from 'lodash'
-import Quill from 'react-quill-editor'
+import Quill from 'react-quill'
 
 const toolbar = [
 	{ label: 'Size', type: 'size', items: [
