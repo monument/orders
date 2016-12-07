@@ -31,7 +31,6 @@
     "node-uuid": "1.4.7",
     "react": "15.4.1",
     "react-dom": "15.4.1",
-    "react-quill": "0.4.1",
-    "react-quill-editor": "0.3.6"
+    "react-quill": "0.4.1"
   }
 }
