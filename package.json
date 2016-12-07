@@ -17,7 +17,7 @@
   ],
   "author": "Hawken MacKay Rives",
   "license": "MIT",
-  "homepage": "http://orders.benchmarkmonument.com/",
+  "homepage": "https://orders.benchmarkmonument.com/",
   "devDependencies": {
     "react-scripts": "0.8.1"
   },
