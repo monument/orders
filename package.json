@@ -18,7 +18,7 @@
   ],
   "author": "Hawken MacKay Rives",
   "license": "MIT",
-  "homepage": "https://orders.benchmarkmonument.com/",
+  "homepage": "https://monument.github.io/orders",
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-scripts": "0.8.1"
