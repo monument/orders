@@ -3,7 +3,7 @@ import intl from 'intl'
 import React from 'react'
 
 import App from './js/app'
-import OrderFlux from './flux/OrderFlux'
+import OrderFlux from './flux/order-flux'
 
 import debounce from 'lodash/function/debounce'
 

@@ -1,7 +1,6 @@
 import {Store} from 'flummox'
 import Immutable from 'immutable'
-import Order from './OrderRecord'
-import {Piece, Cost, Payment} from './OrderRecord'
+import Order, {Piece, Cost, Payment} from './order-record'
 
 export default class OrderStore extends Store {
 	constructor(flux) {

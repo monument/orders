@@ -1,20 +1,20 @@
 import React, {PropTypes, Component} from 'react'
 import Immutable from 'immutable'
 
-import OrderTitle from './OrderTitle'
-import PiecesTable from './PiecesTable'
-import DetailsTable from './DetailsTable'
-import Preview from './Preview'
-import OrderInfoBlock from './OrderInfoBlock'
-import CostsTable from './CostsTable'
-import PaymentsTable from './PaymentsTable'
-import ContactTable from './ContactTable'
-import NoteBox from './NoteBox'
-import Signature from './Signature'
+import OrderTitle from './order-title'
+import PiecesTable from './pieces-table'
+import DetailsTable from './details-table'
+import Preview from './preview'
+import OrderInfoBlock from './order-info-block'
+import CostsTable from './costs-table'
+import PaymentsTable from './payments-table'
+import ContactTable from './contact-table'
+import NoteBox from './note-box'
+import Signature from './signature'
 
 import add from 'lodash/math/add'
 
-import {OrderRecord} from '../flux/OrderRecord'
+import {OrderRecord} from '../flux/order-record'
 
 export default class OrderForm extends Component {
 	static propTypes = {

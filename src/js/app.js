@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import OrderForm from './OrderForm'
+import OrderForm from './order-form'
 import FluxComponent from 'flummox/component'
 
 export default class App extends Component {
