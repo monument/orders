@@ -2,10 +2,10 @@ import intl from 'intl'
 
 import React from 'react'
 
-import App from './app'
-import OrderFlux from './flux/order-flux'
+import App from './js/app'
+import OrderFlux from './flux/OrderFlux'
 
-import debounce from 'lodash/debounce'
+import debounce from 'lodash/function/debounce'
 
 let Flux = new OrderFlux()
 
