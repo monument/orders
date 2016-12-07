@@ -1,0 +1,50 @@
+/* Table styles */
+.table {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.table caption {
+	margin-bottom: 0.25em;
+}
+.table th,
+.table caption,
+.table caption > button {
+	text-transform: uppercase;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 95%;
+	font-weight: normal;
+	padding: 0;
+	color: #111;
+}
+.table caption > button {
+	padding: 0.15em 0.5em;
+}
+.table td + td,
+.table th + th {
+	border-left: solid 1px #ddd;
+}
+.table tr,
+.table thead tr:first-child {
+	border-bottom: solid 1px #ddd;
+}
+.table:not(:first-child) {
+	margin-top: 1em;
+}
+.table a {
+	cursor: pointer;
+}
+.table input,
+.table output {
+	padding: 1px 4px;
+	margin: 0;
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+.table input:focus {
+	outline: none;
+	background-color: #ffffdb;
+}
+.table tfoot tr:last-child {
+	border-bottom: hidden;
+}

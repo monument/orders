@@ -1,0 +1,46 @@
+/* .money, #costs, and #payments
+ Money chart */
+.money td:nth-child(1) {
+	width: 40%;
+}
+
+.money td:nth-child(1) output,
+.money td:nth-child(1) label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100px;
+}
+
+.money td:nth-child(2) {
+	width: 60%;
+}
+
+.money td:last-child {
+	border-right: none;
+}
+
+.costs .cost:last-child {
+	border-bottom: solid 1px #ddd;
+}
+
+.money input,
+.money output {
+	margin: 0;
+	border: none;
+}
+
+.money input,
+.money output,
+.money label {
+	padding: 1px 4px;
+}
+
+.money output,
+.money label {
+	display: block;
+}
+
+.currency {
+	text-align: left;
+}

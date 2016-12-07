@@ -1,22 +1,15 @@
 {
   "name": "orders",
   "private": true,
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "A digital order sheet for Benchmark Monument",
-  "main": "index.js",
-  "config": {
-    "browserify": "--debug -e ./source/index.js"
-  },
   "scripts": {
-    "test": "mocha",
-    "prebuild": "mkdir -p distributable",
-    "js": "browserify -t babelify $npm_package_config_browserify | exorcist distributable/app.js.map > distributable/app.js",
-    "watch:js": "watchify -v -t babelify -o 'exorcist distributable/app.js.map > distributable/app.js' $npm_package_config_browserify",
-    "css": "node-sass source/css/index.scss distributable/app.css --source-map distributable/app.css.map && postcss -u autoprefixer distributable/app.css -o distributable/app.css",
-    "watch:css": "nodemon --watch source/css/ --ext scss --exec 'npm run css'",
-    "build": "npm run js & npm run css & wait",
-    "start": "npm run watch:js & npm run watch:css & browser-sync start --port=4000 --server --files='distributable/*.css, distributable/*.js, *.html' & wait"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
+  "main": "index.js",
   "repository": "https://github.com/monument/orders",
   "keywords": [
     "benchmarkmonument",
@@ -24,30 +17,19 @@
   ],
   "author": "Hawken MacKay Rives",
   "license": "MIT",
-  "homepage": "http://orders.benchmarkmonument.com/",
-  "dependencies": {
-    "flummox": "3.5.2",
-    "immutable": "3.7.4",
-    "intl": "0.1.4",
-    "lodash": "3.10.1",
-    "moment": "2.10.6",
-    "react": "0.13.3",
-    "react-quill-editor": "0.3.6"
-  },
+  "homepage": "https://orders.benchmarkmonument.com/",
   "devDependencies": {
-    "autoprefixer": "5.2.0",
-    "babel-core": "5.8.22",
-    "babel-eslint": "4.0.10",
-    "babelify": "6.2.0",
-    "browser-sync": "2.8.2",
-    "browserify": "11.0.1",
-    "eslint": "1.2.1",
-    "eslint-plugin-react": "3.2.3",
-    "exorcist": "0.4.0",
-    "mocha": "2.2.5",
-    "node-sass": "3.2.0",
-    "nodemon": "1.4.1",
-    "postcss-cli": "2.0.0",
-    "watchify": "3.3.1"
+    "react-scripts": "0.8.1"
+  },
+  "dependencies": {
+    "flummox": "3.6.8",
+    "immutable": "3.8.1",
+    "intl": "1.2.5",
+    "lodash": "4.17.2",
+    "moment": "2.17.1",
+    "node-uuid": "1.4.7",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "react-quill": "0.4.1"
   }
 }

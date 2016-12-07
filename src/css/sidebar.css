@@ -1,0 +1,5 @@
+.sidebar {
+	margin-left: 0.5em;
+	min-width: 190px;
+	flex: 1;
+}

@@ -1,0 +1,69 @@
+.order-status {
+	width: 100%;
+	margin-top: 5px;
+}
+
+.control-buttons {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.control-buttons button + button {
+	margin-left: 1em;
+}
+@media print {
+	.control-buttons {
+		display: none;
+	}
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	flex: 3;
+	padding-right: 0.5em;
+}
+
+.print {
+	display: none;
+}
+
+.note {
+	background: lightyellow;
+	margin-top: 7px;
+	border: solid 1px #ddd;
+	min-height: 8em;
+	font-family: inherit;
+	width: 100%;
+	padding: 2px;
+	transition: none;
+	flex: 1;
+}
+
+.signature {
+	margin-top: 25px;
+	border: none;
+	border-bottom: dotted 1px #444;
+	margin-bottom: 3px;
+	width: 100%;
+}
+.signature:hover {
+	background-color: white;
+}
+
+.order {
+	display: flex;
+	flex-direction: row;
+	padding: 0.5em;
+	height: 8in;
+}
+
+footer {
+	width: 100%;
+	border-bottom: dashed 1px #808080;
+	display: none;
+}
+
+footer input {
+	border: 0;
+	height: 100%;
+}

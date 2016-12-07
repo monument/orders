@@ -1,0 +1,68 @@
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0.5em auto;
+	font-family: Verdana, sans-serif;
+	color: #333;
+	font-size: 11px;
+	width: 8in;
+	box-sizing: border-box;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+tr {
+	height: 2.25em;
+}
+
+td {
+	padding: 0;
+}
+
+button {
+	padding-bottom: 5px;
+	align-items: center;
+}
+
+input, select {
+	font-family: inherit;
+	color: inherit;
+	font-size: inherit;
+}
+
+input {
+	width: inherit;
+	padding: 1px;
+	height: inherit;
+	border: solid 1px #ddd;
+}
+
+input:hover {
+	background-color: lightyellow;
+}
+
+input[type=date]::-webkit-clear-button,
+input[type=date]::-webkit-inner-spin-button {
+	display: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+	display: none;
+}
+
+input.currency::-webkit-inner-spin-button {
+	display: none;
+}
+
+input[list]:not(:hover)::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
+button {
+	cursor: pointer;
+}

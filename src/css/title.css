@@ -1,0 +1,12 @@
+.title {
+	font-family: Calibri, Cantarell, Ubuntu, Lucida Grande, sans-serif;
+}
+
+.title input {
+	width: 100%;
+}
+
+.order-date {
+	width: auto;
+	font-size: 1em;
+}
