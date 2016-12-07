@@ -3,6 +3,8 @@ import OrderForm from './order-form'
 import FluxComponent from 'flummox/component'
 
 import '../css'
+import logo from '../images/bmcheader.png'
+
 export default class App extends Component {
 	static propTypes = {
 		flux: PropTypes.object.isRequired,
@@ -11,7 +13,7 @@ export default class App extends Component {
 		return (
 			<div className='app'>
 				<header className='bmlogo'>
-					<img src='source/images/bmcheader.png' role="presentation" />
+					<img src={logo} role='presentation' />
 				</header>
 				<FluxComponent
 					flux={this.props.flux}
