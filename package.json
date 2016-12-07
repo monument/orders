@@ -7,7 +7,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "deploy": "npm run build&&gh-pages -d build",
+    "deploy": "npm run build&&gh-pages -d build&&rm -rf build",
     "eject": "react-scripts eject"
   },
   "main": "index.js",
