@@ -10,7 +10,7 @@ export default class App extends Component {
 		return (
 			<div className='app'>
 				<header className='bmlogo'>
-					<img src='source/images/bmcheader.png' />
+					<img src='source/images/bmcheader.png' role="presentation" />
 				</header>
 				<FluxComponent
 					flux={this.props.flux}

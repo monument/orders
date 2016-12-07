@@ -1,8 +1,6 @@
 import React, {PropTypes, Component} from 'react'
 import curry from 'lodash/curry'
 
-import moment from 'moment'
-
 export default class OrderTitle extends Component {
 	static propTypes = {
 		actions: PropTypes.shape({

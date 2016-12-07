@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react'
-import Immutable from 'immutable'
 
 import OrderTitle from './order-title'
 import PiecesTable from './pieces-table'
@@ -32,7 +31,7 @@ export default class OrderForm extends Component {
 			.reduce(add, 0)
 
 		const pieces = order.get('pieces')
-			.map(piece => parseFloat(piece.get('amount')) * parseInt(piece.get('qty')))
+			.map(piece => parseFloat(piece.get('amount')) * parseInt(piece.get('qty'), 10))
 			.reduce(add, 0)
 
 		const subtotal = costs + pieces

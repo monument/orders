@@ -100,9 +100,11 @@ export default class PiecesTable extends Component {
 					.toArray()}
 				</tbody>
 				<tfoot>
-					<td colSpan='10' className='add-piece'>
-						<button onClick={() => addPiece(orderId)}>Add Piece</button>
-					</td>
+					<tr>
+						<td colSpan='10' className='add-piece'>
+							<button onClick={() => addPiece(orderId)}>Add Piece</button>
+						</td>
+					</tr>
 				</tfoot>
 			</table>
 		)
