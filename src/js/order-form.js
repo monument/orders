@@ -12,7 +12,7 @@ import ContactTable from './contact-table'
 import NoteBox from './note-box'
 import Signature from './signature'
 
-import add from 'lodash/math/add'
+import add from 'lodash/add'
 
 import {OrderRecord} from '../flux/order-record'
 

@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react'
-import curry from 'lodash/function/curry'
+import curry from 'lodash/curry'
 
 import moment from 'moment'
 

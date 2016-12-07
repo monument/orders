@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from 'react'
 import Immutable from 'immutable'
-import curry from 'lodash/function/curry'
+import curry from 'lodash/curry'
 import currency from './currency'
 
 export default class CostsTable extends Component {
