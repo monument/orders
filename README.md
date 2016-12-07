@@ -25,7 +25,7 @@ All this needs to do is allow the user to enter the existing fields in a
 computerized fashion. It should look as much like the current paper version
 *as possible*.
 
-
+-----
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
