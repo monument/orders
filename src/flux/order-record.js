@@ -18,9 +18,8 @@ const PaymentRecord = Immutable.Record({
 
 function Payment(data={}) {
 	return PaymentRecord(data).withMutations(p => {
-		const today = moment(new Date())
-		p = p.set('date', p.get('date') || `${today.year()}-${today.month()}-${today.day()}`)
-		return p
+		const today = moment()
+		return p.set('date', p.get('date') || `${today.year()}-${today.month()}-${today.day()}`)
 	})
 }
 
@@ -97,7 +96,7 @@ const OrderRecord = Immutable.Record({
 
 function Order(data={}) {
 	return OrderRecord(data).withMutations(order => {
-		const today = moment(new Date())
+		const today = moment()
 		order = order
 			.set('id', order.get('id') || uuid())
 			.set('date', order.get('date') || `${today.year()}-${today.month()}-${today.day()}`)
